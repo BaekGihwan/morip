@@ -1,0 +1,705 @@
+@charset "UTF-8";
+
+/* 첫번째 설명문 */
+.morip_introduce {
+	/* border: 1px solid red;	 */
+	width: 1120px;
+	height: 70px;
+	
+	margin: 0 auto;
+	padding-top: 30px;
+}
+
+.morip_introduce 
+.morip_text {	
+	font-family: sans-serif;
+	font-size: 30px;	
+	color: #222;
+	float: left;
+}
+
+.morip_introduce span {
+	font-family: 'Indie Flower', cursive;
+	color: blue;
+}
+
+.morip_introduce 
+.morip_description {
+	margin-top: 10px;
+	margin-left: 44px;
+	width: 400px;
+	height: 66px;
+	opacity: .7;
+	font-family: 'Roboto', sans-serif;
+	font-size: 14px;
+	font-weight: 400;
+	font-style: normal;
+	font-stretch: normal;
+	line-height: 1.57;
+	letter-spacing: normal;
+	color: #222;
+	float: left;
+	text-align: left;
+}
+
+/* 두번째 배너문 */
+.morip_banner {
+	width: 1120px;
+	height: 344px;
+	background-image: url('../image/banner1.png');
+	background-size: 1120px 344px; 
+	/* border: 1px solid orange; */
+	margin: 0 auto;
+}
+
+.morip_banner > img {	
+	width: auto;
+	height: 344px;
+}
+
+/* 세번째 배너슬라이더 */
+.morip_banner_slider {
+	/* border: 1px solid yellow; */
+	position: relative;
+	width: 1120px;
+	height: 175px;
+	overflow: hidden;
+	padding: 10px 0px 10px 0px;
+	margin: 0 auto;
+}
+
+.morip_banner_slider 
+.img {
+	position: relative;
+	/* background-image: url('../image/?????.jpg'); 
+	background-size: cover;	 */
+	width: 175px;
+	height: 155px;
+	display: inline-block;
+	margin: 0px 10px;	
+	border-radius: 30px;
+	outline: none;
+	cursor: pointer;
+}
+
+.img0 {
+	background-image: url('../image/city/전체.jpg'); 
+	background-size: 175px 155px;		
+}
+
+.img1 {
+	background-image: url('../image/city/서울.jpg'); 
+	background-size: 175px 155px;		
+}
+
+.img2 {
+	background-image: url('../image/city/부산.jpg'); 
+	background-size: 175px 155px;		
+}
+
+.img3 {
+	background-image: url('../image/city/대구.jpg'); 
+	background-size: 175px 155px;		
+}
+
+.img4 {
+	background-image: url('../image/city/인천.jpg'); 
+	background-size: 175px 155px;		
+}
+
+.img5 {
+	background-image: url('../image/city/광주.jpg'); 
+	background-size: 175px 155px;		
+}
+
+.img6 {
+	background-image: url('../image/city/대전.jpg'); 
+	background-size: 175px 155px;		
+}
+
+.img7 {
+	background-image: url('../image/city/울산.jpg'); 
+	background-size: 175px 155px;		
+}
+
+.img8 {
+	background-image: url('../image/city/강원도.jpg'); 
+	background-size: 175px 155px;		
+}
+
+.img9 {
+	background-image: url('../image/city/경기도.jpg'); 
+	background-size: 175px 155px;		
+}
+
+.img10 {
+	background-image: url('../image/city/충북.jpg'); 
+	background-size: 175px 155px;		
+}
+
+.img11 {
+	background-image: url('../image/city/충남.jpg'); 
+	background-size: 175px 155px;		
+}
+
+.img12 {
+	background-image: url('../image/city/전북.jpg'); 
+	background-size: 175px 155px;		
+}
+
+.img13 {
+	background-image: url('../image/city/전남.jpg'); 
+	background-size: 175px 155px;		
+}
+
+.img14 {
+	background-image: url('../image/city/경북.jpg'); 
+	background-size: 175px 155px;		
+}
+
+.img15 {
+	background-image: url('../image/city/경남.jpg'); 
+	background-size: 175px 155px;		
+}
+
+.img16 {
+	background-image: url('../image/city/제주도.jpg'); 
+	background-size: 175px 155px;		
+}
+
+.morip_banner_slider 
+.img 
+.content {
+	position: absolute;
+	top:50%;
+	left:50%;
+	transform: translate(-50%, -50%);                                                                   
+	font-size: 23px;
+	color: white;
+	z-index: 2;
+	text-align: center;
+}
+
+.morip_banner_slider 
+.img-cover {
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	background-color: rgba(0, 0, 0, 0.4);                                                                 
+	z-index:1;
+	border-radius: 30px;
+	outline: none;
+}
+
+.next {
+	position: absolute;
+	top: 735px;
+	right: 220px;
+	font-size: 2em;
+	color: #006669;
+	cursor: pointer;
+}
+
+.prev {
+	position: absolute;
+	top: 735px;
+	left: 220px;
+	font-size: 2em;
+	color: #006669;
+	cursor: pointer;
+}
+
+/* 베스트여행작가 */
+.morip_bestBlog {
+	/* border: 1px solid green; */	
+	width: 1120px;
+	margin: 0 auto;
+}
+
+.morip_bestBlog 
+span {
+	color: red;	
+	font-size: 15px;
+}
+
+.morip_bestBlog 
+.morip_bestBlogWriter {
+	display: flex;
+}
+
+.morip_bestBlog 
+.morip_bestBlogWriter 
+.writer_info {
+	float: left;
+	width: 300px;
+	height: 368px;
+	border: 1px solid black;	
+} 
+
+.morip_bestBlog 
+.morip_bestBlogWriter 
+.writer_info 
+.profile_bg {
+	width: 300px;
+    height: 120px;
+    background-color: rgba(0,0,0,.5);
+    background-size: cover;
+    background-position: 50%;
+    background-repeat: no-repeat;
+}
+
+.morip_bestBlog 
+.morip_bestBlogWriter 
+.writer_info
+.profile_image {
+	position: absolute;
+	width: 60px;
+	height: 60px;	
+	background-image: url('../image/test.jpg');
+	background-size: 60px 60px;
+	margin-left: 37px;
+	margin-top: 80px;
+	border-radius: 19px;
+	order-radius: 39px;
+    border: 5px solid #fff;
+}
+
+.morip_bestBlog 
+.morip_bestBlogWriter 
+.writer_info 
+.profile_detail {
+	margin-top: 48px;
+    margin-left: 40px;
+}
+
+.morip_bestBlog 
+.morip_bestBlogWriter 
+.writer_info 
+.profile_detail 
+.profile_name {
+	margin-bottom: 10px;
+    width: 220px;
+    height: 20px;
+    font-size: 20px;
+    font-weight: 600;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1;
+    letter-spacing: normal;
+    color: #222;
+}
+
+.morip_bestBlog 
+.morip_bestBlogWriter 
+.writer_info 
+.profile_detail 
+.description {
+	width: 220px;
+    height: 54px;
+    font-family: AppleSDGothicNeo;
+    font-size: 13px;
+    font-weight: 200;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.38;
+    letter-spacing: normal;
+    color: #666;
+}
+
+.follow_button {
+	padding-left: 18px;
+    padding-right: 18px;
+    height: 40px;
+    border-radius: 19px;
+    background-color: white;
+}
+
+.follow_button:hover{
+	cursor: pointer;
+}
+
+.morip_bestBlog 
+.morip_bestBlogWriter 
+.writer_info 
+.profile_detail 
+.link_wrapper{
+	text-align: right;
+    margin-right: 20px;
+    margin-top: 22px;
+} 
+
+.morip_bestBlog 
+.morip_bestBlogWriter 
+.writer_info 
+.profile_detail 
+.link_wrapper a{
+	height: 16px;
+    font-family: AppleSDGothicNeo;
+    font-size: 13px;
+    font-weight: 600;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: right;
+    color: #f05136;
+} 
+
+.morip_bestBlog 
+.morip_bestBlogWriter 
+.writer_post {
+	float: left;
+	margin-left: 10px;
+	/* border: 1px solid purple; */
+	width: 790px;
+	height: 378px;	
+}
+.follow_button > span {
+    /* font-family: sans-serif; */
+    /* font-weight: 600; */
+    font-style: normal;
+    font-stretch: normal;
+    /* line-height: 1.54; */
+    letter-spacing: normal;
+    text-align: center;
+    color: #222;
+}
+
+
+.follow_button > img {
+	font-weight: bold;
+	border-style: none;
+	width: 11px;
+	height: 11px;
+}
+
+.morip_bestBlog 
+.morip_bestBlogWriter 
+.writer_post 
+.post {
+	display: flex;
+	/* border: 1px solid gray; */
+	osition: relative;
+    width: 810px;
+    height: 116px;
+    border: 1px solid #ddd;
+    background-color: #fff;
+    margin-bottom: 10px;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+/* .black{
+  background:#000;
+  background:rgba(0,0,0,0.6);
+  position: fixed;
+}
+ */
+ 
+ 
+.post_image {
+	/* background-image: url('../image/banner2.png');  */
+	background-size: 116px 116px;	
+	width: 116px;
+}
+
+.post_image
+.post_image_like {
+
+    width: 40px;
+    height: 40px;
+    border: 1px solid rgba(0,0,0,.1);
+    background-color: rgba(0,0,0,.8);
+    /* float: right; */
+    text-align: center;
+	float: right;
+	margin-top: 76px;
+}
+.post_image_like span {
+	height: 16px;
+    font-family: Montserrat;
+    font-size: 13px;
+    font-weight: 500;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 3;
+    letter-spacing: normal;
+    text-align: center;
+    color: #fff;
+}
+
+.post_text {
+	/* background-color: blue; */
+	width: 80%;
+	height: 100%;
+	text-overflow: hidden;
+	margin-left: 15px;
+}
+.post_title {
+	/* background-color: orange; */
+	display: table;
+	height: 50%;
+}
+
+.post_title .post_title_p {
+	display:table-cell; 
+	text-align:center; 
+	vertical-align: middle;
+	font-size: 20px;
+}
+
+
+.post_content {
+	/* background-color: green; */
+	display: table;
+	height: 50%;
+
+}
+
+.post_content .post_content_p {
+	display:table-cell; 
+	/* text-align:center;  */
+	vertical-align:middle;
+	font-family: 'Indie Flower', cursive;
+	font-size: 13px;
+
+	
+}
+
+ 
+ /* food_post */
+.food_post_bg_image{	
+	width: 1120px;
+	height: 600px;	
+	background-image: url('../image/11111.png');
+	background-size: 1120px 600px;
+	margin: 0 auto;
+	display: flex;
+} 
+ 
+.food_post_bg_image 
+.food_post{
+	width: 350px; 
+	height: 470px;
+	/* border: 1px solid red; */
+	margin-top: 80px;
+	float: left;
+	margin-left: 20px;
+	background-color: white;
+	box-shadow: 3px 3px 10px #999;
+}
+ 
+.food_post_bg_image 
+.food_post 
+.food_post_name{
+	/* width: 350px; */
+	height: 70px;
+	/* border: 1px solid red; */
+	/* border-bottom: 3px solid black; */
+	line-height: 70px;
+	margin-left: 50px;
+	font-size: 25px;
+	font-weight: 800;
+}
+.food_post_bg_image 
+.food_post 
+.food_post_image{
+	/* border: 1px solid red; */
+	width: 350px;
+	height: 230px;
+	background-size: 350px 230px;	
+} 
+
+.food_post_bg_image 
+.food_post
+.food_post_contents {
+	/* border: 1px solid red; */
+	width: 350px;
+	
+}
+
+.food_post_bg_image 
+.food_post
+.food_post_contents
+.content1 {
+	border-bottom: 3px solid black;
+	width: 350px;
+	display: flex;
+}
+
+.food_post_bg_image 
+.food_post
+.food_post_contents 
+.fa-comment-dots{
+	font-size: 20px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	margin-left: 15px;
+	
+} 
+
+.food_post_bg_image 
+.food_post
+.food_post_contents 
+.food_post_like_count {
+	font-size: 15px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	margin-left: 10px;
+	
+} 
+
+.food_post_bg_image 
+.food_post
+.food_post_contents 
+.fa-link{
+	font-size: 20px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	margin-left: 230px;
+}
+ 
+.food_post_bg_image 
+.food_post
+.food_post_contents
+.content2, .content3, .content4 {
+	margin-top: 8px;
+	width: 330px;
+	/* border: 1px solid red; */
+	display: flex;
+	overflow: hidden;
+}
+
+.food_post_bg_image 
+.food_post
+.food_post_contents
+.content2
+.fa-map-marker-alt, .fa-clock {
+	font-size: 20px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	margin-left: 15px;
+} 
+ 
+.food_post_bg_image 
+.food_post
+.food_post_contents
+.content2
+.content2_name, .content3_name{
+	font-size: 15px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	margin-left: 15px;
+} 
+ 
+.food_post_bg_image 
+.food_post
+.food_post_contents
+.content2
+.content2_address, .content3_pone, .content4_time {
+	font-size: 15px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	margin-left: 20px;
+} 
+
+.food_post_bg_image 
+.food_post
+.food_post_contents
+.content3
+.fa-phone-alt {
+	font-size: 20px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	margin-left: 12px;
+}
+
+
+
+
+.text1{
+	width: 1120px;
+	margin: 0 auto;
+}
+
+
+/* 
+ 
+#aaa {
+	border: 1px solid red;
+	width: 100px;
+	height: 100px;
+	overflow: hidden;
+} 
+
+
+.font1 {
+	width: 1000px;
+	font-size: 3em;
+	font-family: 'Do Hyeon', sans-serif;
+	margin: 0 auto;
+}
+.font2 {
+	width: 1000px;
+	margin: 0 auto;
+	font-size: 3em;
+	font-family: 'Gothic A1', sans-serif;
+}
+
+.font3 {
+	width: 1000px;
+	margin: 0 auto;
+	font-size: 3em;
+	font-family: 'Indie Flower', cursive;
+}
+
+.font4 {
+	width: 1000px;
+	margin: 0 auto;
+	font-size: 3em;
+	font-family: 'Jua', sans-serif;
+}
+.font5 {
+	width: 1000px;
+	margin: 0 auto;
+	font-size: 3em;
+	font-family: 'Noto Sans KR', sans-serif;
+}
+
+
+
+.font7 {
+	width: 1000px;
+	margin: 0 auto;
+	font-size: 3em;
+	font-family: 'Roboto', sans-serif;
+}
+
+.font6 {
+	width: 1000px;
+	margin: 0 auto;
+	font-size: 3em;
+	font-family: 'Poppins', sans-serif;
+}
+
+.font8 {
+	width: 1000px;
+	margin: 0 auto;
+	font-size: 3em;
+}
+
+.font9 {
+	font-size-adjust: 0.58;
+	letter-spacing: 10px;
+	font-size-adjust: inherit;
+	width: 1000px;
+	margin: 0 auto;
+	font-size: 3em;
+}
+ */
+
+
+
+
+
+

@@ -1,0 +1,370 @@
+@charset "UTF-8";
+
+
+.morip_banner_slider {
+	/* border: 1px solid yellow; */
+	position: relative;
+	width: 1120px;
+	height: 175px;
+	overflow: hidden;
+	padding: 10px 0px 10px 0px;
+	margin: 0 auto;
+}
+
+.morip_banner_slider 
+.img {
+	position: relative;
+	/* background-image: url('../image/?????.jpg'); 
+	background-size: cover;	 */
+	width: 175px;
+	height: 155px;
+	display: inline-block;
+	margin: 0px 10px;	
+	border-radius: 30px;
+	outline: none;
+	cursor: pointer;
+}
+
+.img0 {
+	background-image: url('../image/city/전체.jpg'); 
+	background-size: 175px 155px;		
+}
+
+.img1 {
+	background-image: url('../image/city/서울.jpg'); 
+	background-size: 175px 155px;		
+}
+
+.img2 {
+	background-image: url('../image/city/부산.jpg'); 
+	background-size: 175px 155px;		
+}
+
+.img3 {
+	background-image: url('../image/city/대구.jpg'); 
+	background-size: 175px 155px;		
+}
+
+.img4 {
+	background-image: url('../image/city/인천.jpg'); 
+	background-size: 175px 155px;		
+}
+
+.img5 {
+	background-image: url('../image/city/광주.jpg'); 
+	background-size: 175px 155px;		
+}
+
+.img6 {
+	background-image: url('../image/city/대전.jpg'); 
+	background-size: 175px 155px;		
+}
+
+.img7 {
+	background-image: url('../image/city/울산.jpg'); 
+	background-size: 175px 155px;		
+}
+
+.img8 {
+	background-image: url('../image/city/강원도.jpg'); 
+	background-size: 175px 155px;		
+}
+
+.img9 {
+	background-image: url('../image/city/경기도.jpg'); 
+	background-size: 175px 155px;		
+}
+
+.img10 {
+	background-image: url('../image/city/충북.jpg'); 
+	background-size: 175px 155px;		
+}
+
+.img11 {
+	background-image: url('../image/city/충남.jpg'); 
+	background-size: 175px 155px;		
+}
+
+.img12 {
+	background-image: url('../image/city/전북.jpg'); 
+	background-size: 175px 155px;		
+}
+
+.img13 {
+	background-image: url('../image/city/전남.jpg'); 
+	background-size: 175px 155px;		
+}
+
+.img14 {
+	background-image: url('../image/city/경북.jpg'); 
+	background-size: 175px 155px;		
+}
+
+.img15 {
+	background-image: url('../image/city/경남.jpg'); 
+	background-size: 175px 155px;		
+}
+
+.img16 {
+	background-image: url('../image/city/제주도.jpg'); 
+	background-size: 175px 155px;		
+}
+
+.morip_banner_slider 
+.img 
+.content {
+	position: absolute;
+	top:50%;
+	left:50%;
+	transform: translate(-50%, -50%);                                                                   
+	font-size: 23px;
+	color: white;
+	z-index: 2;
+	text-align: center;
+}
+
+.morip_banner_slider 
+.img-cover {
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	background-color: rgba(0, 0, 0, 0.4);                                                                 
+	z-index:1;
+	border-radius: 30px;
+	outline: none;
+}
+
+.next {
+	position: absolute;
+	top: 735px;
+	right: 220px;
+	font-size: 2em;
+	color: #006669;
+	cursor: pointer;
+}
+
+.prev {
+	position: absolute;
+	top: 735px;
+	left: 220px;
+	font-size: 2em;
+	color: #006669;
+	cursor: pointer;
+}
+
+
+/* 리스트 */
+/*무한 스크롤 jsp*/
+.tableHeadder{
+  font-size:s9px;
+  width:100%;
+}
+.myBlog_wrapper{
+  position:relative;
+  top:160px;
+  width:70%;
+  height:300px;
+  padding:40px auto;
+  margin:50px auto;
+}
+
+.myblogList{
+display: flex;
+
+}
+
+/* #myblog_feed{
+  width: 270px;
+  margin:10px;
+  padding:10px;
+  background-color: #dcdcd3;
+  border-radius: 20px;
+  
+} 
+
+.listImg{
+  width:250px;
+  height:200px;
+margin-left: 20px; 
+  
+  border-radius: 20px;
+}
+
+.myblog_img{
+  overflow: hidden;
+}
+.myblog_img {
+ width:250px;
+  height:200px;
+}
+.myblog_subject{
+  font-size: 18px;
+  font-weight: bold;
+  margin:10px;
+  margin-bottom:10px;
+  text-align: left;
+  
+}
+.myblog_content{
+  font-size: 18px;
+  margin:10px;
+  text-align: left;
+  font-family: 'Nanum Pen Script', cursive;
+}
+.myblog_travleDay{
+  font-size: 10px;
+}
+.myblog_userFunction{
+  display: flex;
+  align-items: center;
+}
+.myblog_travleDay{
+  flex-grow:5;
+  text-align: right;
+}
+.reply{
+  flex-grow: 1;
+}
+.like{
+  flex-grow: 1;
+}
+
+*/
+
+/* 블로그 보여주기 기환 버젼! */
+.blogList_wrapper {
+	width: 1120px;
+	margin: 0 auto;
+	display: flex;
+}
+
+#blogList_feed{
+  width: 270px;
+  height: 400px;
+  margin: 10px;
+  background-color: #dcdcd3;
+  border-radius: 20px;
+}
+
+.listImg{
+  width:250px;
+  height:200px;
+  margin-top: 5px;
+  margin-left: 5px;
+  /*margin-left: 20px;*/
+  border-radius: 20px;
+}
+
+
+
+.blogList_subject{
+  font-size: 18px;
+  font-weight: bold;
+  margin:10px;
+  margin-bottom:10px;
+  text-align: left;
+  
+}
+.blogList_content{
+  font-size: 18px;
+  margin:10px;
+  text-align: left;
+  font-family: 'Nanum Pen Script', cursive;
+}
+/* 
+.blogList_userFunction{
+  display: flex;
+  align-items: center;
+}
+
+.like{
+	border-left: 5px;
+  flex-grow: 1;
+}
+.reply{
+  flex-grow: 1;
+}
+
+
+
+.blogList_travleDay{
+ font-size: 10px;
+  flex-grow:5;
+  text-align: right;
+}
+
+
+
+ */
+
+
+.blogList_userFunction{
+	/* border: 1px solid red; */
+	display: flex;
+	justify-content: space-between
+	/* align-items: center; */
+}
+
+.like{
+  	margin-left: 5px;
+}
+/* 
+.reply{
+  flex-grow: 1;
+  margin-left: 10px; 
+}
+ */
+.blogList_travleDay {
+	margin-right: 5px;
+	margin-top: 4px;
+	font-size: 13px;
+}
+
+
+/* 
+.blogList_travleDay{
+  flex-grow:5;
+  text-align: right;
+}
+
+
+.blogList_travleDay{
+  font-size: 10px;
+}
+
+ */
+
+
+
+
+.writeBlog {
+	width: 1120px;
+	height: 80px;
+	margin: 0 auto;
+}
+
+.write_text {
+	margin-left: 30px;
+	font-size: 30px;
+	line-height: 80px;
+}
+
+.write_blog {
+	border: 1px solid #c9c9c9;
+	width: 150px;
+	height: 50px;
+	float: right;
+	margin-right: 15px;
+	margin-top: 15px;
+	font-size: 15px;
+	color: #3f3f3f;
+	text-align: center;
+	line-height: 50px;
+	cursor: pointer;
+}
+
+
+
+
+
+

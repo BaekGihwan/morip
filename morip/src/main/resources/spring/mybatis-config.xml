@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+  <configuration>
+     <typeAliases>
+     	<!-- 
+     	<typeAlias type="myblog.bean.MyblogDTO" alias="myblog"/>
+     	 
+        <typeAlias type="member.bean.MemberDTO" alias="member"/>
+        <typeAlias type="member.bean.ZipcodeDTO" alias="zipcode"/> 
+        <typeAlias type="board.bean.BoardDTO" alias="board"/>
+     	-->
+     </typeAliases>
+  </configuration>
