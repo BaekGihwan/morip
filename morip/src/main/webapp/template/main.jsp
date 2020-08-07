@@ -13,6 +13,9 @@
 
 <body class="morip_main">
 
+
+
+
   <!-- morip info
   <div class="morip_introduce">	
     
@@ -129,9 +132,8 @@
   <div class="morip_bestBlog">
   	<h2>이런 여행은 어떠세요?</h2>
     <h3><span>BEST</span> 여행작가</h3>
-    
-    <div class="morip_bestBlogWriter">
-    
+    <br>
+    <div class="morip_bestBlogWriter">    
       <div class="writer_info">  
       	<div class="profile_bg">
       	  <div class="profile_image" style="background-image: url('../image/test.jpg')";></div>
@@ -208,6 +210,7 @@
   <div class="text1">
   	<h2>배고프신가요?? 이런음식은 어떠세요?</h2>
     <h3><span>Top3</span> 맛집!</h3>
+    <br>
   </div> 
   <!-- 맛집 -->
   <div class="bestFood_post">
@@ -230,15 +233,11 @@
   	       <i class="fas fa-phone-alt"></i>
   	       <!-- <p class="content3_name">연락처</p> -->
   	       <div class="content3_pone">02-1111-2222</div>
-  	     </div>
-  	     
-<!--   	     <div class="content4">
+  	     </div>  	     
+  	     <div class="content4">
   	       <i class="far fa-clock"></i>
   	       <div class="content4_time">매일 15:00 - 23:00</div>
   	     </div>
-  -->
-  	     
-  	     
   	   </div>
   	 </div>
   	 <div class="food_post"></div>
@@ -246,7 +245,7 @@
   	</div>
   </div>
   
-    <br><br>
+  <br><br>
   <br><br>
   <br><br>
 
