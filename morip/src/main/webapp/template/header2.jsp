@@ -25,20 +25,28 @@
       </div>
       <!-- 로그인후 버튼 -->
       <div class="header_login header_afterLogin">
-	    <button type="button"><i class="fas fa-home fa-2x"></i></button>&emsp;
-	    <button type="button"><i class="fas fa-envelope fa-2x"></i></button>&emsp;
+        <button type="button"><i class="fas fa-home fa-2x"></i></button>&emsp;
+        <button type="button"><i class="fas fa-envelope fa-2x"></i></button>&emsp;
 	    <button type="button"><i class="fas fa-heart fa-2x"></i></button>&emsp;
-	    <button type="button"><i class="fas fa-cog fa-2x"></i></button>&emsp;
-	    <button type="button"><i class="fas fa-sign-out-alt fa-2x"></i></button>
+	    <button type="button" class="userPhoto" style="background-image: url('../image/testimg.png')"></button>&emsp;
+
+		<!-- userPhoto을 누르면 나오는 메뉴바 -->
+      	<div class="userMenu">
+      	  <input type="hidden"  id="clickCheck" value="on">
+      	  <a class="userPage_icon" href="">
+      	    <i class="fas fa-user-alt" aria-hidden="true">&nbsp;&nbsp;마이페이지</i>
+      	  </a>      	  
+      	  <a class="userSetting_icon" href="">
+      	    <i class="far fas fa-cog" aria-hidden="true">&nbsp;&nbsp;정보수정</i>
+      	  </a>      	  
+      	  <a class="userLogout_icon" href="">
+      	    <i class="fas fa-sign-out-alt" aria-hidden="true">&nbsp;&nbsp;로그아웃</i>
+      	  </a>      	  
+      	</div>
       </div>
     </div>
-  </header>
+  </header> 
 </body>
 
 <script type="text/javascript" src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
-<script type="text/javascript">
-$('#blog').click(function(){
-	location.href='https://www.naver.com';	
-});
-
-</script>
+<script type="text/javascript" src="../js/header.js" ></script>

@@ -255,7 +255,7 @@ span {
 	position: absolute;
 	width: 60px;
 	height: 60px;	
-	background-image: url('../image/test.jpg');
+	/* background-image: url('../image/test.jpg'); */
 	background-size: 60px 60px;
 	margin-left: 37px;
 	margin-top: 80px;
