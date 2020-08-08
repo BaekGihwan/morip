@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="matzipSQL">
+ 	<insert id="matzipInsert" parameterType="matzip">
+ 		insert into matziptable values(#{category},#{title},#{link},#{description},
+ 		#{telephone},#{address},#{roadAddress},#{mapx},#{mapy},#{image1},#{image2},#{image3},#{image4})
+ 	</insert>
+ 	<select id="matzipList" parameterType="string" resultType="matzip">
+ 		select * from matziptable where address like '%'||#{address}||'%' 
+ 	</select>
+ 	<select id="matzipList2" resultType="matzip">
+ 		select * from matziptable 
+ 	</select>
+ 	<select id="getMatzipView" parameterType="string" resultType="matzip">
+ 		select * from matziptable where title = #{title}
+ 	</select>
+ </mapper> 
