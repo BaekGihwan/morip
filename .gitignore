@@ -97,4 +97,5 @@ pom.properties
 MANIFEST.MF
 Servers/
 *.xml
+.xml
 # End of https://www.toptal.com/developers/gitignore/api/eclipse
