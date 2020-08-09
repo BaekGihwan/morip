@@ -5,7 +5,7 @@ input:focus, #writeFormId:focus{
 	border: 1.5px solid #000;	
 }
 
-.container-emailModifyForm{ 
+.container-memberModifyForm{ 
 	/* border: 1px solid red; */
 	margin: 0 auto;
 	align: center;
@@ -13,7 +13,7 @@ input:focus, #writeFormId:focus{
 	width: 600px;
 }
 
-.emailModifyFormTitle {
+.memberModifyFormTitle {
 	text-align: center;
     width: 100%;
     display: block;
@@ -25,7 +25,7 @@ input:focus, #writeFormId:focus{
     padding-top: 100px;
 }
 
-.container-emailModifyForm-text{
+.container-memberModifyForm-text{
 	margin: 0 auto;
 	width: 600px;
 }
@@ -38,7 +38,7 @@ input:focus, #writeFormId:focus{
 	margin: 0 auto;
 }
 
-.container-emailModifyprofile {
+.container-memberModifyprofile {
 	/* border: 1px solid orange; */
 	margin: 0 auto;
 	margin-right: 35px;
@@ -75,10 +75,10 @@ input:focus, #writeFormId:focus{
     color: #0095f6;
 }
 
-.emailModifyForm-email,
-.emailModifyForm-pwd,
-.emailModifyForm-repwd,
-.emailModifyForm-nickName {
+.memberModifyForm-email,
+.memberModifyForm-pwd,
+.memberModifyForm-repwd,
+.memberModifyForm-nickName {
 	display:inline-block;
 	font-family: Poppins-Regular;
     font-size: 16px;
@@ -87,10 +87,10 @@ input:focus, #writeFormId:focus{
     padding-bottom: 10px;
 }
 
-#emailModifyFormEmail,
-#emailModifyFormPwd,
-#emailModifyFormRepwd,
-#emailModifyFormNickName{
+#memberModifyFormEmail,
+#memberModifyFormPwd,
+#memberModifyFormRepwd,
+#memberModifyFormNickName{
 	font-family: Poppins-Regular;
     color: #333333;
     font-size: 16px;
@@ -115,9 +115,9 @@ input:focus, #writeFormId:focus{
 	margin-right: 35px;	
 }
 
-#emailModifyFormBtn,
-#emailModifyFormresetBtn,
-#emailModifyFormDropBtn {
+#memberModifyFormBtn,
+#memberModifyFormresetBtn,
+#memberModifyFormDropBtn {
 	text-align: center;
 	padding: 0 17px;
 	height: 50px;
@@ -130,9 +130,10 @@ input:focus, #writeFormId:focus{
     border: none;
     margin-left: 3px;
     margin-top: 35px;
+    cursor: pointer;
 }
 
-.writeForm-gender{
+.memberModifyForm-gender{
 	display:inline-block;
 	font-family: Poppins-Regular;
     font-size: 16px;

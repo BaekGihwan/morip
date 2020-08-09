@@ -9,3 +9,13 @@ $('.userPhoto').click(function(){
 		border:'1px solid gray'
 	});
 });
+
+
+$('#blog').click(function(){
+	location.href='../blog/blogList';	
+});
+
+
+$('#matzip').click(function(){
+	location.href='../matzip/matzipListShow';	
+});

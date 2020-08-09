@@ -142,7 +142,7 @@ input, select, textarea {
 
 		}
 
-	a {
+	#ex1 {
 		-moz-transition: border-bottom-color 0.2s ease, color 0.2s ease;
 		-webkit-transition: border-bottom-color 0.2s ease, color 0.2s ease;
 		-ms-transition: border-bottom-color 0.2s ease, color 0.2s ease;
@@ -1866,8 +1866,8 @@ input, select, textarea {
 			.icon.style2:active {
 				background-color: rgba(242, 132, 158, 0.1);
 			}
-
-/* List */
+/* 
+List
 
 	ol {
 		list-style: decimal;
@@ -1917,7 +1917,7 @@ input, select, textarea {
 		dl dd {
 			margin-left: 2em;
 		}
-
+ */
 /* Actions */
 
 	ul.actions {
@@ -2398,9 +2398,9 @@ input, select, textarea {
 				background-color: rgba(144, 144, 144, 0.075);
 			}
 
-		table td {
+		/* table td {
 			padding: 0.75em 0.75em;
-		}
+		} */
 
 		table th {
 			font-size: 0.9em;
@@ -2448,7 +2448,7 @@ input, select, textarea {
 	input[type="submit"],
 	input[type="reset"],
 	input[type="button"],
-	button,
+
 	.button {
 		-moz-appearance: none;
 		-webkit-appearance: none;
@@ -2834,7 +2834,7 @@ input, select, textarea {
 
 /* Header */
 
-	#header {
+	/* #header {
 		padding: 8em 0 0.1em 0 ;
 	}
 
@@ -2862,7 +2862,7 @@ input, select, textarea {
 				#header .logo .symbol img {
 					display: block;
 					width: 8em;
-					/* height: 2em;  */
+					height: 2em; 
 				}
 
 		#header nav {
@@ -2967,7 +2967,7 @@ input, select, textarea {
 					}
 
 		}
-
+ */
 /* Menu */
 
 	#wrapper {
@@ -3169,7 +3169,7 @@ input, select, textarea {
 		}
 
 /* Footer */
-
+/* 
 	#footer {
 		padding: 5em 0 6em 0 ;
 		background-color: #f6f6f6;
@@ -3316,7 +3316,7 @@ input, select, textarea {
 					}
 
 		}
-
+ */
 /* Wrapper */
 
 	#wrapper > * > .inner {
@@ -3387,14 +3387,16 @@ input, select, textarea {
 		border-spacing:5px;
 		
 	}
-	td{
-		background-color:#d2bd9f;
-	}
+	/* td{
+		
+	} */
 	#givefont{
 		font-size:10pt;
 	}
 	#giveCenter{
 		vertical-align:middle;
+		background-color:#d2bd9f;
+		padding: 0.75em 0.75em;
 	}
 	#ex1{
 		font-family: 'Noto Sans KR', sans-serif;

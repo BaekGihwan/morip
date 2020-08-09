@@ -15,7 +15,8 @@
 	<context:component-scan base-package="myblog.bean"/>
 	<context:component-scan base-package="myblog.service"/>
 	<context:component-scan base-package="myblog.conf"/>	 -->
-	<context:component-scan base-package="matzip.service"/>
-    <context:component-scan base-package="matzip.dao"/>
-    <context:component-scan base-package="matzip.bean"/>
+	<!-- matzip -->
+	<context:component-scan base-package="matzip.service" />
+    <context:component-scan base-package="matzip.dao" />
+    <context:component-scan base-package="matzip.bean" />
 </beans:beans>

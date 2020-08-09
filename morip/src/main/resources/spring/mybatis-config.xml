@@ -11,5 +11,7 @@
         <typeAlias type="member.bean.ZipcodeDTO" alias="zipcode"/> 
         <typeAlias type="board.bean.BoardDTO" alias="board"/>
      	-->
+     	<!-- matzip -->
+     	<typeAlias type="matzip.bean.MatzipDTO" alias="matzip"/>
      </typeAliases>
   </configuration>
