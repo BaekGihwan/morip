@@ -670,7 +670,7 @@
 		          var title = $(this).attr('name');
 		          //var matzipAddress= '맛집';
 		          $(this).parent().css('background-color','#cea461');              
-		          $('td').not($(this).parent()).css('background-color','#d2bd9f');
+		          $('#giveCenter').not($(this).parent()).css('background-color','#d2bd9f');
 		          // 주소-좌표 변환 객체를 생성합니다
 		          var geocoder = new kakao.maps.services.Geocoder();
 		                         

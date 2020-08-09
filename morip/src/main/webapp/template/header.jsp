@@ -17,7 +17,7 @@
       <div class="header_menu">
         <ul>
           <li><span id="blog">블로그</span></li>
-          <li><span>지역맛집</span></li>
+          <li><span id="matzip">지역맛집</span></li>
           <li><span>커뮤니티</span></li>
           <li><span>고객센터</span></li>
         </ul>
@@ -31,9 +31,6 @@
 </body>
 
 <script type="text/javascript" src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
-<script type="text/javascript">
-$('#blog').click(function(){
-	location.href='../blog/blogList';	
-});
+<script type="text/javascript" src="../js/header.js"></script>
 
-</script>
+

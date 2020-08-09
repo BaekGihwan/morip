@@ -4,13 +4,23 @@
 	padding:0; 
 	margin: 0;
 }
-span, button {
+
+/* span, button {
+	font-family: 'Noto Sans KR', sans-serif;
+} */
+
+.header_menu > ul > li > span {
 	font-family: 'Noto Sans KR', sans-serif;
 }
 
-ul, li {
-	list-style:none;
+.header_login > .header_loginBtn{
+	font-family: 'Noto Sans KR', sans-serif;
 }
+
+
+/* ul, li {
+	list-style:none;
+} */
 
 a {
 	text-decoration:none; 
@@ -50,6 +60,7 @@ img {
 .header {
 	display: flex;
 	justify-content: space-between;
+	background-color: white;
 }
 
 .header_logo {
@@ -132,6 +143,7 @@ li:hover > span::after {
 	align-items: center;
  	justify-content: center;
 }
+
 .header_loginBtn {
 	display: inline-block;
 	width: 133px;
