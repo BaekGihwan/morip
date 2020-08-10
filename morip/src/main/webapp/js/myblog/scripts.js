@@ -29,7 +29,7 @@ $('#writeBlogImg').click(function(){
 });
 /*글 작성 모달에서 여행기 버튼 클릭시 */
 $('#travelsWriteImg').click(function(){
-	alert("asafasfag");
+	location.href="/morip/myblog/travlesWrite1";
 });
 //날짜 형식 변환
 Date.prototype.format = function (f) {
