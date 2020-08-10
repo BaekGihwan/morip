@@ -1,0 +1,206 @@
+@charset "UTF-8";
+button:hover{
+	cursor: pointer;
+}
+input:focus, #writeFormId:focus{
+	outline:  none;
+	border: 1.5px solid #000;	
+}
+.container-writeForm{
+	padding; margin: 0 auto;
+	align: center;
+	/* display: flex;
+	align-content: center; */
+	width: 100%;
+}
+/*=============================*/
+.writeFormTitle {
+	font-family: 'Noto Sans KR', sans-serif;
+	text-align: center;
+    width: 100%;
+    display: block;
+    font-size: 39px;
+    color: #555555;
+    line-height: 1.2;
+    padding-bottom: 53px;
+    padding-top: 100px;
+    letter-spacing: 15px;
+}
+/*=============================*/
+.container-writeForm-text{
+	margin: 0 auto;
+	width: 400px;
+}
+.writeForm-Id{
+	display:inline-block;
+    font-size: 16px;
+    color: #555555;
+    padding-top: 25px;
+    padding-bottom: 10px;
+    letter-spacing: 2px;
+}
+#name{
+    color: #333333;
+    font-size: 16px;
+    height: 50px;
+    width: 380px;
+    padding: 0 20px;
+    margin-left: 10px;
+    margin-right: 10px;
+    border-style: solid;
+ 	border-radius: 10px;
+ 	border-top-width: 1px;
+    border-bottom-width: 1px;
+    border-left-width: 1px;
+    border-right-width: 1px;
+}
+/*=============================*/
+.writeForm-NickName{
+	display:inline-block;
+    font-size: 16px;
+    color: #555555;
+    padding-top: 25px;
+    padding-bottom: 10px;
+    letter-spacing: 2px;
+}
+#nickName{
+    color: #333333;
+    font-size: 16px;
+    height: 50px;
+    width: 380px;
+    padding: 0 20px;
+    margin-left: 10px;
+    margin-right: 10px;
+    border-style: solid;
+ 	border-radius: 10px;
+ 	border-top-width: 1px;
+    border-bottom-width: 1px;
+    border-left-width: 1px;
+    border-right-width: 1px;
+}
+/*=============================
+.writeForm-tel{
+	display:inline-block;
+	font-family: Poppins-Regular;
+    font-size: 16px;
+    color: #555555;
+    padding-top: 25px;
+    padding-bottom: 10px;
+}
+select{
+	font-family: Poppins-Regular;
+    color: #333333;
+    font-size: 18px;
+    height: 50px;
+    width: 115px;
+    padding: 0 25px;
+    margin-left: 10px;
+	-webkit-appearance: none; 네이티브 외형 감추기
+     border-style: solid;
+ 	border-radius: 10px;
+ 	border-top-width: 1px;
+    border-bottom-width: 1px;
+    border-left-width: 1px;
+    border-right-width: 1px;
+}
+.telBox{
+	font-family: Poppins-Regular;
+    color: #333333;
+    font-size: 18px;
+    height: 50px;
+    width: 115px;
+    padding: 0 10px;
+    border-style: solid;
+ 	border-radius: 10px;
+ 	border-width: 1px;
+ 	padding: 0 35px;
+}
+=============================*/
+.writeForm-resident{
+	display:inline-block;
+    font-size: 16px;
+    color: #555555;
+    padding-top: 25px;
+    padding-bottom: 10px;
+    letter-spacing: 2px;
+}
+.writeFormResident{
+    color: #333333;
+    font-size: 18px;
+    height: 50px;
+    width: 170px;
+    padding: 0 20px;
+    margin-left: 10px;
+    margin-right: 10px;
+    border-style: solid;
+ 	border-radius: 10px;
+    border-width: 1px;
+}
+/*=============================*/
+.writeForm-gender{
+	display:inline-block;
+    font-size: 16px;
+    color: #555555;
+    padding-top: 25px;
+    padding-bottom: 10px;
+    letter-spacing: 2px;	
+}
+#gender1{
+	margin-left: 30px;
+}
+#gender2{
+	margin-left: 30px;
+}
+input[type="radio"]{
+	display: inline-block;
+	width: 20px; 
+	height: 20px; 
+	vertical-align: middle; 
+	border-radius: 0; 
+	border: 0; 
+	margin:0; 
+	padding:0; 
+	cursor: pointer;
+	background-color: #000; */
+}
+/*=============================*/
+.container-writeFormBtn{
+	margin-top: 35px;
+	margin-bottom: 35px;
+}
+#writeBtn{
+	text-align: center;
+    padding: 0 60px;
+    height: 60px;
+    background-color: #333333;
+    border-radius: 10px;
+    font-size: 16px;
+    color: #fff;
+    outline: none !important;
+    border: none;
+    margin-right: 20px;
+}
+#writeFormresetBtn{
+	text-align: center;
+    padding: 0 60px;
+    height: 60px;
+    background-color: #333333;
+    border-radius: 10px;
+    font-size: 16px;
+    color: #fff;
+    outline: none !important;
+    border: none;
+}
+/*=============================*/
+#nameDiv{
+	margin-left: 20px;
+}
+#nickNameDiv{
+	margin-left: 20px;
+}
+#writeForm-residenDiv{
+	margin-left: 20px;
+	font-size: 8pt;
+}
+/*=============================*/
+

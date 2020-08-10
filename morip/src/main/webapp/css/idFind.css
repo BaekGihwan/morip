@@ -1,0 +1,254 @@
+@charset "UTF-8";
+
+button:hover {
+	cursor: pointer;
+}
+
+input:focus, #writeFormId:focus {
+	outline: none;
+	border: 1.5px solid #000;
+}
+
+.container-idFindForm {padding;
+	margin: 0 auto;
+	align: center;
+	width: 100%;
+}
+/*=============================*/
+.idFindFormTitle {
+	font-family: 'Noto Sans KR', sans-serif;
+	text-align: center;
+	width: 100%;
+	display: block;
+	font-size: 39px;
+	color: #555555;
+	line-height: 1.2;
+	padding-bottom: 53px;
+	padding-top: 100px;
+	letter-spacing: 10px;
+}
+
+.container-idFindForm-text {
+	margin: 0 auto;
+	width: 400px;
+}
+/*=============================*/
+.idFindForm-Id {
+	display: inline-block;
+	font-size: 16px;
+	color: #555555;
+	padding-top: 25px;
+	padding-bottom: 10px;
+	letter-spacing: 2px;
+}
+
+#name {
+	color: #333333;
+	font-size: 16px;
+	height: 50px;
+	width: 340px;
+	padding: 0 20px;
+	margin-left: 10px;
+	margin-right: 10px;
+	border-style: solid;
+	border-radius: 10px;
+	border-top-width: 1px;
+	border-bottom-width: 1px;
+	border-left-width: 1px;
+	border-right-width: 1px;
+}
+/*=============================*/
+/* .idFindForm-tel {
+	display: inline-block;
+	font-size: 16px;
+	color: #555555;
+	padding-top: 25px;
+	padding-bottom: 10px;
+}
+
+select {
+	color: #333333;
+	font-size: 18px;
+	height: 50px;
+	width: 110px;
+	padding: 0 20px;
+	margin-left: 10px;
+	border-style: solid;
+	border-radius: 10px;
+	border-top-width: 1px;
+	border-bottom-width: 1px;
+	border-left-width: 1px;
+	border-right-width: 1px;
+}
+
+.telBox {
+	color: #333333;
+	font-size: 18px;
+	height: 50px;
+	width: 65px;
+	border-style: solid;
+	border-radius: 10px;
+	border-width: 1px;
+	padding: 0 25px;
+} */
+/*=============================*/
+.idFindForm-resident {
+	display: inline-block;
+	font-size: 16px;
+	color: #555555;
+	padding-top: 25px;
+	padding-bottom: 10px;
+	letter-spacing: 2px;
+}
+
+.idFindFormResident {
+	color: #333333;
+	font-size: 18px;
+	height: 50px;
+	width: 128px;
+	padding: 0 20px;
+	margin-left: 10px;
+	margin-right: 10px;
+	border-style: solid;
+	border-radius: 10px;
+	border-width: 1px;
+}
+/*=============================*/
+.container-idFindFormBtn {
+	margin-top: 50px;
+	margin-bottom: 35px;
+	margin-left: 10px;
+}
+
+#idFindBtn {
+	text-align: center;
+	padding: 0 45px;
+	height: 60px;
+	background-color: #333333;
+	border-radius: 10px;
+	font-size: 16px;
+	color: #fff;
+	outline: none !important;
+	border: none;
+	margin-right: 20px;
+}
+
+#idFindFormresetBtn {
+	text-align: center;
+	padding: 0 55px;
+	height: 60px;
+	background-color: #333333;
+	border-radius: 10px;
+	font-size: 16px;
+	color: #fff;
+	outline: none !important;
+	border: none;
+}
+/*=============================*/
+#nameDiv {
+	margin-left: 20px;
+}
+
+#residenDiv {
+	margin-left: 20px;
+	margin-bottom: 10px;
+}
+/*============모달모달모달모달=================*/
+#modal {
+	width: 500px;
+	height: 300px;
+	display: none;
+	position: fixed;
+	z-index: 1;
+	top: 28%;
+	left: 37%;
+}
+
+#modal .modal_content {
+	width: 500px;
+	height: 330px;
+	background: #fff;
+	border: 2px solid #666;
+}
+
+.modal_layer {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.5); /*rgb가아닌 투명도가 포함된 rgba 화면 살짝어둡게한거*/
+	z-index: -1; /* 가장앞에 나올수있게?? */
+}
+
+.modaltext {
+	display: inline-block;
+	font-size: 23px;
+	color: #555555;
+	padding-top: 40px;
+	margin-left: 60px;
+	letter-spacing: 8px;
+}
+
+#modalname {
+	display: inline-block;
+	font-size: 20px;
+	color: #555555;
+	padding-top: 25px;
+	margin-left: 60px;
+	font-weight: bolder;
+}
+/* #modalspan{
+	display:inline-block;
+    font-size: 20px;
+    color: #555555;
+    padding-top: 38px;
+    margin-left: 5px;
+} */
+#modalId {
+	display: inline-block;
+	font-size: 20px;
+	color: #555555;
+	padding-top: 25px;
+	margin-left: 60px;
+	font-weight: bolder;
+}
+
+.madalBtn- {
+	margin-top: 35px;
+}
+
+#modalBtn {
+	margin-left: 150px;
+	margin-right: 40px;
+	padding: 0 15px;
+	height: 50px;
+	width: 80px;
+	background-color: #333333;
+	border-radius: 10px;
+	font-size: 20px;
+	color: #fff;
+	outline: none !important;
+	border: none;
+}
+
+#cancelBtn {
+	padding: 0 15px;
+	height: 50px;
+	width: 80px;
+	background-color: #333333;
+	border-radius: 10px;
+	font-size: 20px;
+	color: #fff;
+	outline: none !important;
+	border: none;
+}
+
+#modalDiv {
+	margin-left: 30px;
+}
+
+#remodalDiv {
+	margin-left: 30px;
+}
+/*=============================*/
