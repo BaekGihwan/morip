@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="memberSQL">
+	<!-- 로그인 -->
+	<select id="snsLogin" parameterType="java.util.Map" resultType="member">
+		select * from membertable where email=#{email} and pwd=#{pwd}
+	</select>
+	
+	<!-- 회원가입  -->
+	<insert id="moripWrite" parameterType="member">
+		insert into membertable(membertable_seq, email, pwd, name, nickname, idCardNumber1, idCardNumber2, gender)
+			values(membertable_seq.nextval, #{email}, #{pwd}, #{name}, #{nickname}, #{idCardNumber1}, #{idCardNumber2}, #{gender})
+	</insert>
+	
+	<!-- 새비밀번호 -->
+	<update id="changePwd" parameterType="java.util.Map" >
+		update membertable set pwd=#{pwd} where email=#{email}
+	</update>
+	
+	<!-- 아이디 존재 여부 확인 -->
+	<select id="checkId" parameterType="String" resultType="member">
+		select * from membertable where email=#{email}
+	</select>
+	
+	<!-- 닉네임 존재 여부 확인 -->
+	<select id="checkNickname" parameterType="String" resultType="member">
+		select * from membertable where nickname=#{nickname}
+	</select>
+	
+	<!-- 유저 존재 여부 확인 -->
+	<select id="checkUser" parameterType="java.util.Map" resultType="member">
+		select * from membertable where name=#{name} and idcardnumber1=#{idCard1} and idcardnumber2=#{idCard2}
+	</select>
+</mapper>
