@@ -4,14 +4,11 @@
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
   <configuration>
      <typeAliases>
-     	<!-- 
-     	<typeAlias type="myblog.bean.MyblogDTO" alias="myblog"/>
-     	 
-        <typeAlias type="member.bean.MemberDTO" alias="member"/>
-        <typeAlias type="member.bean.ZipcodeDTO" alias="zipcode"/> 
-        <typeAlias type="board.bean.BoardDTO" alias="board"/>
-     	-->
+     	<!-- myblog -->
+     	<typeAlias type="myblog.bean.MyblogDTO" alias="myblog"/>	
      	<!-- matzip -->
      	<typeAlias type="matzip.bean.MatzipDTO" alias="matzip"/>
+     	<!-- member -->
+     	<typeAlias type="member.bean.MemberDTO" alias="member"/>
      </typeAliases>
   </configuration>
