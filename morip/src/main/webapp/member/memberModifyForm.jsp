@@ -69,7 +69,7 @@
 		<!-- 아래 버튼 -->
 		<div class="container-memberModifyFormBtn">
 		  <button type="button" id="memberModifyFormBtn">정보수정</button>
-		  <button type="button" id="memberModifyFormresetBtn" type="reset">다시작성</button>
+		  <button type="button" id="memberModifyFormResetBtn">다시작성</button>
 		  <button type="button" id="memberModifyFormDropBtn">회원탈퇴</button>
 		</div>  
         </div>

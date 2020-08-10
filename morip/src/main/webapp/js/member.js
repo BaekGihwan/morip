@@ -1,11 +1,11 @@
 var regEmail = /([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
 var regPwd = /^.*(?=^.{8,15}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&+=]).*$/;
-// 정보수정 쪽
+
+// 정보수정 버튼
 $('#memberModifyFormBtn').click(function(){
 	$('#pwdDiv').empty();
 	$('#repwdDiv').empty();	
-	$('#nickNameDiv').empty();
-	
+	$('#nickNameDiv').empty();	
 	if($('#memberModifyFormPwd').val() == '') {
     	$('#pwdDiv').text('비밀번호를 입력하세요');
         $('#pwdDiv').css('color', 'red');
@@ -42,6 +42,13 @@ $('#memberModifyFormBtn').click(function(){
 		})	
 	}
 });
+// 리셋 버튼
+$('#memberModifyFormResetBtn').click(function(){
+	$('#memberModifyFormPwd').val("");
+	$('#memberModifyFormRepwd').val("");
+	$('#memberModifyFormNickName').val("");
+});
+
 // 회원탈퇴쪽
 $('#memberModifyFormDropBtn').click(function(){
 	/* swal("회원탈퇴 성공!", "이용해주셔서 감사합니다.", "success"); */
