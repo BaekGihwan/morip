@@ -5,8 +5,6 @@
   <head>
     <meta charset="utf-8">
     <title>mypage</title>
-    <!-- Favicon-->
-    <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" />
     <!-- Font Awesome icons (free version)-->
     <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" crossorigin="anonymous"></script>
     <!-- Google fonts-->
@@ -16,7 +14,7 @@
      <!--hover.css-->
      <link href="../css/hover.css" rel="stylesheet" />
     <!-- Core theme CSS (includes Bootstrap)-->
-    <link href="../css/styles1.css" rel="stylesheet" />
+    <link href="../css/myblog/styles1.css" rel="stylesheet" />
     <!-- CSS only -->
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 
@@ -40,7 +38,7 @@
     <div class="profileImg_wrapper">
       <div class="profileCircle">
         <div class="userProfile">
-          <img class="userProfileImg" src="../image/harin.jpg">
+          <img class="userProfileImg" src="../image/myblog/harin.jpg">
         </div>
       </div>
       <div class="userId">
@@ -82,7 +80,7 @@
           <!--첫번째 리스트-->
           <div id="myblog_feed" class="hvr-grow-shadow">
             <div class="myblog_img">
-              <img class="listImg"src="../image/architecture.jpg" alt="">
+              <img class="listImg"src="../image/myblog/architecture.jpg" alt="">
             </div>
             <div class="myblog_info">
               <div class="myblog_subject">
@@ -107,7 +105,7 @@
           <!--두번째 리스트-->
           <div id="myblog_feed" class="hvr-grow-shadow">
             <div class="myblog_img">
-              <img class="listImg"src="../image/gyungju.jpg" alt="">
+              <img class="listImg"src="../image/myblog/gyungju.jpg" alt="">
             </div>
             <div class="myblog_info">
               <div class="myblog_subject">
@@ -132,7 +130,7 @@
           <!--세번쨰 리스트-->
           <div id="myblog_feed" class="hvr-grow-shadow">
             <div class="myblog_img">
-              <img class="listImg"src="../image/game.png" alt="">
+              <img class="listImg"src="../image/myblog/game.png" alt="">
             </div>
             <div class="myblog_info">
               <div class="myblog_subject">
@@ -176,32 +174,32 @@
         <div class="modal-body">
           <table class="modal_table">
             <tr>
-              <td style="width:70px;"><img id="modal_userImg"src="../image/paris.jpg"></td>
+              <td style="width:70px;"><img id="modal_userImg"src="../image/myblog/paris.jpg"></td>
               <td id="modal_userID">USER_ID</td>
               <td id="modal_userFollow"><buttton class="btn btn-outline-primary">팔로우</button></td>
             </tr>
             <tr>
-              <td style="width:70px;"><img id="modal_userImg"src="../image/circus.png"></td>
+              <td style="width:70px;"><img id="modal_userImg"src="../image/myblog/circus.png"></td>
               <td id="modal_userID">USER_ID</td>
               <td id="modal_userFollow"><buttton class="btn btn-outline-primary">팔로우</button></td>
             </tr>
             <tr>
-              <td style="width:70px;"><img id="modal_userImg"src="../image/safe.png"></td>
+              <td style="width:70px;"><img id="modal_userImg"src="../image/myblog/safe.png"></td>
               <td id="modal_userID">USER_ID</td>
               <td id="modal_userFollow"><buttton class="btn btn-outline-primary">팔로우</button></td>
             </tr>
             <tr>
-              <td style="width:70px;"><img id="modal_userImg"src="../image/user.png"></td>
+              <td style="width:70px;"><img id="modal_userImg"src="../image/myblog/user.png"></td>
               <td id="modal_userID">USER_ID</td>
               <td id="modal_userFollow"><buttton class="btn btn-outline-primary">팔로우</button></td>
             </tr>
             <tr>
-              <td style="width:70px;"><img id="modal_userImg"src="../image/cake.png"></td>
+              <td style="width:70px;"><img id="modal_userImg"src="../image/myblog/cake.png"></td>
               <td id="modal_userID">USER_ID</td>
               <td id="modal_userFollow"><buttton class="btn btn-outline-primary">팔로우</button></td>
             </tr>
             <tr>
-              <td style="width:70px;"><img id="modal_userImg"src="../image/paris.jpg"></td>
+              <td style="width:70px;"><img id="modal_userImg"src="../image/myblog/paris.jpg"></td>
               <td id="modal_userID">USER_ID</td>
               <td id="modal_userFollow"><buttton class="btn btn-outline-primary">팔로우</button></td>
             </tr>
@@ -248,13 +246,10 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
   <!-- Third party plugin JS-->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
-  <!-- Contact form JS-->
-  <script src="assets/mail/jqBootstrapValidation.js"></script>
-  <script src="assets/mail/contact_me.js"></script>
   <!--AOS 라이브러리-->
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <!-- Core theme JS-->
-  <script src="../js/scripts.js"></script>
+  <script src="../js/myblog/scripts.js"></script>
   <script>
       AOS.init({
           easing: 'ease-out-back',

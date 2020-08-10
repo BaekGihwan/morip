@@ -1,0 +1,42 @@
+/*********1페이지*********/
+
+.inputWrapper{
+  width:65%;
+  height:600px;
+  display:flex;
+  margin:10px auto;
+  align-items: center;
+}
+.input{
+  width:100%;
+}
+.subjectInput,.imgInput{
+    width:100%;
+    color:#5a5a56;
+}
+.subjectInput{
+  margin:40px;
+  margin-bottom:60px;
+  padding-bottom: 30px;
+  border-bottom:1px solid #b7b7b3;
+}
+.imgInput{
+  margin:40px;
+  margin-bottom:60px;
+}
+.userChoiceImg{
+  background-color: gray;
+  width:200px;
+  height:200px;
+}
+.single-input {
+  width: 100%;
+  line-height: 40px;
+  border:1px solid #d7ccc8;
+  border-radius: 10px;
+  background: #f9f9ff;
+  padding: 0 20px;
+}
+.userChoiceImg{
+  margin-bottom:20px;
+}
