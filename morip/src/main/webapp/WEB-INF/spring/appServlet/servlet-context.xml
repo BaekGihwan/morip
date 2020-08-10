@@ -20,6 +20,8 @@
 	<resources mapping="/img/**" location="/img/" />
 	<resources mapping="/assets/**" location="/assets/" />
 	<resources mapping="/blog/**" location="/blog/" />
+	<resources mapping="/webfonts/**" location="/webfonts/" />
+	<resources mapping="/vendor/**" location="/vendor/" />
 	
 	<!-- JSON 어노테이션 -->
 	<!-- Spring Web MVC를 하기 위해 설정해야 하는 값들이 자동으로 추가 -->		
@@ -39,5 +41,7 @@
 	<context:component-scan base-package="main.controller" />
 	<context:component-scan base-package="blog.controller" />
 	<context:component-scan base-package="myblog.controller" />
+	<context:component-scan base-package="matzip.controller" />
+	<context:component-scan base-package="member.controller"/>
 	
 </beans:beans>

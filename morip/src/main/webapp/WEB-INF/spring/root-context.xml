@@ -10,9 +10,35 @@
 	
 	<!-- Root Context: defines shared resources visible to all other web components -->
 	<context:component-scan base-package="spring.conf" />
-	<!--  myblog
+	<!--  myblog -->
 	<context:component-scan base-package="myblog.dao"/>
 	<context:component-scan base-package="myblog.bean"/>
 	<context:component-scan base-package="myblog.service"/>
-	<context:component-scan base-package="myblog.conf"/>	 -->
+	<context:component-scan base-package="myblog.conf"/>	
+	<!-- matzip -->
+	<context:component-scan base-package="matzip.service" />
+    <context:component-scan base-package="matzip.dao" />
+    <context:component-scan base-package="matzip.bean" />
+    <!-- member -->
+	<context:component-scan base-package="member.service"/>
+	<context:component-scan base-package="member.dao"/>
+	<context:component-scan base-package="member.bean"/>
+	<!-- ................................................................. -->	
+	<!-- 이메일 발송 bean 설정 -->
+	<beans:bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+		<beans:property name="host" value="smtp.gmail.com" />
+        <beans:property name="port" value="587" />
+        <beans:property name="username" value="moriptest@gmail.com" />
+        <beans:property name="password" value="!ahflq123"/>
+        
+        
+        <beans:property name="javaMailProperties">
+            <beans:props>
+                <beans:prop key="mail.transport.protocol">smtp</beans:prop>
+                <beans:prop key="mail.smtp.auth">true</beans:prop>
+                <beans:prop key="mail.smtp.starttls.enable">true</beans:prop>
+                <beans:prop key="mail.debug">true</beans:prop>
+            </beans:props>
+        </beans:property>
+    </beans:bean>
 </beans:beans>
