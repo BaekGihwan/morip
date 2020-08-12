@@ -41,8 +41,8 @@ public class MemberDAOMybatis implements MemberDAO {
 	}
 	
 	@Override
-	public MemberDTO checkId(String email) {
-		return sqlSession.selectOne("memberSQL.checkId", email);
+	public MemberDTO getMember(String email) {
+		return sqlSession.selectOne("memberSQL.getMember", email);
 	}
 
 	@Override

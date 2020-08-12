@@ -10,7 +10,7 @@
     <div class="header">
       <!-- 메인로고 -->
       <div class="header_logo">
-        <a href="#">
+        <a href="../main/index">
           <img src="../image/logo.png" alt=메인로고>
         </a>
       </div>
@@ -18,7 +18,7 @@
       <div class="header_menu">
         <ul>
           <li><span id="blog">블로그</span></li>
-          <li><span>지역맛집</span></li>
+          <li><span id="matzip">지역맛집</span></li>
           <li><span>커뮤니티</span></li>
           <li><span>고객센터</span></li>
         </ul>
@@ -28,24 +28,24 @@
         <button type="button"><i class="fas fa-home fa-2x"></i></button>&emsp;
         <button type="button"><i class="fas fa-envelope fa-2x"></i></button>&emsp;
 	    <button type="button"><i class="fas fa-heart fa-2x"></i></button>&emsp;
-	    <button type="button" class="userPhoto" style="background-image: url('../image/testimg.png')"></button>&emsp;
-
+	   <!--  <button type="button" class="userPhoto" style="background-image: url('../image/testimg.png')"></button>&emsp; -->
+		<img class="userPhoto" alt="" src="../storage/${userPhoto }">
 		<!-- userPhoto을 누르면 나오는 메뉴바 -->
       	<div class="userMenu">
       	  <input type="hidden"  id="clickCheck" value="on">
-      	  <a class="userPage_icon" href="">
-      	    <i class="fas fa-user-alt" aria-hidden="true">&nbsp;&nbsp;마이페이지</i>
-      	  </a>      	  
-      	  <a class="userSetting_icon" href="">
-      	    <i class="far fas fa-cog" aria-hidden="true">&nbsp;&nbsp;정보수정</i>
-      	  </a>      	  
-      	  <a class="userLogout_icon" href="">
-      	    <i class="fas fa-sign-out-alt" aria-hidden="true">&nbsp;&nbsp;로그아웃</i>
-      	  </a>      	  
+      	  <button class="userPageBtn">
+      	    <i class="fas fa-user-alt mypage" aria-hidden="true"></i>&nbsp;&nbsp;마이페이지
+      	  </button>      	  
+      	  <button class="userSettingBtn">
+      	    <i class="far fas fa-cog modify" aria-hidden="true"></i>&nbsp;&nbsp;정보수정
+      	  </button>      	  
+      	  <button class="userLogoutBtn">
+      	    <i class="fas fa-sign-out-alt logout" aria-hidden="true"></i>&nbsp;&nbsp;로그아웃
+      	  </button>      	  
       	</div>
       </div>
     </div>
-  </header> 
+  </header>
 </body>
 
 <script type="text/javascript" src="http://code.jquery.com/jquery-3.5.1.min.js"></script>

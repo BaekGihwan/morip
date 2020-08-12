@@ -252,3 +252,9 @@ select {
 	margin-left: 30px;
 }
 /*=============================*/
+
+.hr {
+	border-bottom: 4px solid black;
+	width: 400px;
+	margin: 0 auto;
+}

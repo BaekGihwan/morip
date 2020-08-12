@@ -11,10 +11,9 @@
 	<!-- Root Context: defines shared resources visible to all other web components -->
 	<context:component-scan base-package="spring.conf" />
 	<!--  myblog -->
-	<context:component-scan base-package="myblog.dao"/>
-	<context:component-scan base-package="myblog.bean"/>
 	<context:component-scan base-package="myblog.service"/>
-	<context:component-scan base-package="myblog.conf"/>	
+	<context:component-scan base-package="myblog.dao"/>
+	<context:component-scan base-package="myblog.bean"/>		
 	<!-- matzip -->
 	<context:component-scan base-package="matzip.service" />
     <context:component-scan base-package="matzip.dao" />

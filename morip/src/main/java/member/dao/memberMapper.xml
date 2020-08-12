@@ -20,7 +20,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</update>
 	
 	<!-- 아이디 존재 여부 확인 -->
-	<select id="checkId" parameterType="String" resultType="member">
+	<select id="getMember" parameterType="String" resultType="member">
 		select * from membertable where email=#{email}
 	</select>
 	

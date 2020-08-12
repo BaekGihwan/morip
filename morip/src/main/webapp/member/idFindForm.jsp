@@ -14,7 +14,10 @@
 	<div class="container-idFindForm">
 		
 			<span class="idFindFormTitle">아이디 찾기</span>
-			<hr align="center" width="400px" size="4" color="black">
+			<!-- 기환수정 200811 -->
+			<!-- <hr align="center" width="400px" size="4" color="black"> -->
+			<div class="hr"></div>
+			<!-- 기환수정 200811 -->
 <!---------------------------------------------------------------------->
 			<div class="container-idFindForm-text">
 			
@@ -64,6 +67,7 @@
 			
 		
 	</div>
+	<br><br>
 
 <script type="text/javascript" src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script type="text/javascript">	

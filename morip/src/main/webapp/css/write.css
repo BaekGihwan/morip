@@ -59,4 +59,9 @@ button:hover{
 	outline: none !important;
     border: none;
 	background-color: #fff;
-	}
+}
+.hr {
+	border-bottom: 4px solid black;
+	width: 400px;
+	margin: 0 auto;
+}

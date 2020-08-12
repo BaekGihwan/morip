@@ -19,10 +19,9 @@
 	<resources mapping="/image/**" location="/image/" />
 	<resources mapping="/img/**" location="/img/" />
 	<resources mapping="/assets/**" location="/assets/" />
-	<resources mapping="/blog/**" location="/blog/" />
 	<resources mapping="/webfonts/**" location="/webfonts/" />
 	<resources mapping="/vendor/**" location="/vendor/" />
-	
+	<resources mapping="/storage/**" location="/storage/" />
 	<!-- JSON 어노테이션 -->
 	<!-- Spring Web MVC를 하기 위해 설정해야 하는 값들이 자동으로 추가 -->		
 	<beans:bean id="jsonView" class="org.springframework.web.servlet.view.json.MappingJackson2JsonView">
@@ -34,6 +33,10 @@
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
 	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<beans:property name="suffix" value=".jsp" />
+	</beans:bean>
+	<!-- 파일 업로드 -->
+	<beans:bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<beans:property name="maxUploadSize" value="5000000"/>
 	</beans:bean>
 	
 	<context:component-scan base-package="com.spring.morip" />	
