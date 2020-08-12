@@ -4,32 +4,40 @@
 <head>
 <title>회원정보 수정</title>
 <!--===============================================================================================-->
-<link rel="stylesheet" type="text/css" href="../css/emailModifyForm.css">
+<link rel="stylesheet" type="text/css" href="../css/memberModifyForm.css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
 <!--===============================================================================================-->
 </head>
 <body>
+  <form name="memberModifyProfile" id="memberModifyProfile" method="post" enctype="multipart/form-data">
   <div class="container-memberModifyForm">
     <!-- 타이틀 -->
     <span class="memberModifyFormTitle">회원정보 수정</span>	
-    <hr align="center" width="400px" size="4" color="black"><br>
+    <!-- <hr align="center" width="400px" size="4" color="black"><br> -->
+    <div class="hr"></div>
     <div class="container-memberModifyForm-text">
       <!-- 프로필 -->
       <div class="box_container">
-        <div class="box1">
+        <div class="box11">
           <div class="container-memberModifyprofile">
-            <div class="modifyProfile" style="background-image: url('../image/test.jpg')"></div>
+          
+            <img class="modifyProfile" alt="" src="../storage/${memberDTO.image }">
             <div class="userProfile">
-		      <div class="userName">백기환</div>
-		      <div class="chageProfileBtn">프로필 사진 바꾸기</div>
+		      <div class="userName">${memberDTO.name }</div>		      
+		      <div class="changeImage">
+		        <label for="image">프로필 사진변경</label>
+		        <input type="file" name="img" id="image" class="btn-file" onchange="change(this.files)">
+		      </div>
 		    </div>
           </div>
         </div>
-        <div class="box2">
+        <div class="box21">
         <!-- 이메일 보여주는 부분 여기는 수정 불가! -->
 		<div class="container-memberModifyFormEmail">
 		  <span class="memberModifyForm-email">이메일</span>					
 		</div>				
-		<input id="memberModifyFormEmail" type="text" readonly> 
+		<input id="memberModifyFormEmail" type="text" value="${memberDTO.email }" readonly> 
 		<!-- 비밀번호 변경 -->
 		<div class="container-memberModifyForm-pwd">
 		  <span class="memberModifyForm-pwd">비밀번호</span>					
@@ -37,15 +45,14 @@
 		<input id="memberModifyFormPwd" type="password" placeholder="비밀번호를 입력하세요"> 
 		<div id="pwdDiv"></div>          
         </div>
-      </div>
-    
+      </div>    
       <!-- empty -->
       <div class="box_container">
-        <div class="box1">
+        <div class="box11">
           <div class="empty">
           </div>
         </div>
-        <div class="box2">
+        <div class="box21">
         <!-- 재확인비밀번호 변경 -->
 		<div class="container-memberModifyForm-repwd">
 		  <span class="memberModifyForm-repwd">재확인 비밀번호</span>					
@@ -56,7 +63,7 @@
 		<div class="container-memberModifyForm-nickName">
 		  <span class="memberModifyForm-nickName">닉네임</span>					
 		</div>  
-		<input id="memberModifyFormNickName" type="text" placeholder="닉네임을 입력하세요"> 
+		<input id="memberModifyFormNickName" type="text" value="${memberDTO.nickname }" placeholder="닉네임을 입력하세요"> 
 		<div id="nickNameDiv"></div> 
 		<!-- 성별 변경 -->
 		<div class="container-memberModifyForm-gender">
@@ -76,9 +83,20 @@
       </div>
     </div>
   </div> <!-- container-emailModifyForm -->
+ </form>  
 </body>
+<br>
 <script type="text/javascript" src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
-<!-- Optional: include a polyfill for ES6 Promises for IE11 -->
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script>
-<script type="text/javascript" src="../js/member.js"></script>
+<script type="text/javascript" src="../js/member/memberModifyForm.js"></script>
+<script type="text/javascript">
+$(function(){
+	if("${memberDTO.gender}" == "0"){
+		document.getElementById("gender1").checked = true;
+
+   	}else {
+   		document.getElementById("gender2").checked = true;   
+   	}
+});
+</script>
+

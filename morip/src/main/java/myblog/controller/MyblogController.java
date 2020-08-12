@@ -1,9 +1,10 @@
 package myblog.controller;
 
-import java.util.List;
-import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,6 +21,7 @@ public class MyblogController {
 	@Autowired
 	public MyblogService myblogService;
 	//mypage 부분
+	/*
 	@RequestMapping(value="/myblog/mypage", method=RequestMethod.GET)
 	public ModelAndView mypage() {
 		System.out.println("mypage 들어옴");
@@ -27,6 +29,15 @@ public class MyblogController {
 		mav.setViewName("/myblog/mypage"); 
 		return mav;
 	}
+	*/
+	
+	@RequestMapping(value="/myblog/mypage", method=RequestMethod.GET)
+	public String mypage(Model model) {
+		model.addAttribute("display", "/myblog/mypage.jsp");
+		return "/main/index";
+	}
+	
+	
 	@RequestMapping(value="/myblog/infinityScroll", method=RequestMethod.POST)
 	public ModelAndView infinityScroll(Model model, int pg) {
 		System.out.println("infinityScroll 실행됨"+pg);

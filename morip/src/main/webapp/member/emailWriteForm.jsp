@@ -9,7 +9,8 @@
 <body>
 	<div class="container-emailWriteForm">
 			<span class="emailWriteFormTitle">회원가입</span>
-			<hr align="center" width="400px" size="4" color="black">
+			<!-- <hr align="center" width="400px" size="4" color="black"> -->
+			<div class="hr"></div>
 			
 			<div class="container-emailWriteForm-text">
 <!---------------------------------------------------------------------->

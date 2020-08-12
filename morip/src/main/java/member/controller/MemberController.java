@@ -1,11 +1,13 @@
 package member.controller;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
 
 import javax.mail.internet.MimeMessage;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,11 +16,14 @@ import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import member.bean.MemberDTO;
@@ -34,38 +39,47 @@ public class MemberController {
 	private JavaMailSender mailSender;
 	
 	@RequestMapping(value="/member/loginForm", method=RequestMethod.GET)
-	public String login(HttpSession session) {
+	public String login(HttpSession session, Model model) {
+		/*
 		session.invalidate();
 		return "../member/loginForm";
+		 */
+		session.invalidate();		
+		model.addAttribute("display", "/member/loginForm.jsp");
+		return "/main/index";
 	}
 	
 	//--------------------------------------------------------------------------------------------------------------------------
 	
 	@RequestMapping(value="/member/write")
-	public String write(HttpSession session) {
+	public String write(HttpSession session, Model model) {
 		session.invalidate();
-		return "../member/write";
+		model.addAttribute("display", "/member/write.jsp");
+		return "/main/index";
 	}
 	
 	
 	@RequestMapping(value = "/member/emailWriteForm")
-	public String emailWriteForm(HttpSession session) {
+	public String emailWriteForm(HttpSession session, Model model) {
 		session.invalidate();
-		return "../member/emailWriteForm";
+		model.addAttribute("display", "/member/emailWriteForm.jsp");
+		return "/main/index";
 	}
 	
 	@RequestMapping(value="/member/kakaoWrite", method=RequestMethod.POST)
 	@ResponseBody
-	public String kakaoWrite(@RequestParam String email, HttpSession session) {
+	public String kakaoWrite(@RequestParam String email, HttpSession session, Model model) {
 		session.setAttribute("kakaoEmail", email);
-		return "../member/writeForm.jsp";
+		model.addAttribute("display", "/member/writeForm.jsp");
+		return "/main/index";
 	}
 	
 	@RequestMapping(value="/member/googleWrite", method=RequestMethod.POST)
 	@ResponseBody
-	public String googleWrite(@RequestParam String email, HttpSession session) {
+	public String googleWrite(@RequestParam String email, HttpSession session, Model model) {
 		session.setAttribute("googleEmail", email);
-		return "../member/writeForm.jsp";
+		model.addAttribute("display", "/member/writeForm.jsp");
+		return "/main/index";
 	}
 	
 	@RequestMapping(value="/member/moripWrite", method=RequestMethod.POST)
@@ -180,6 +194,7 @@ public class MemberController {
 		
 		if (memberDTO != null && passMatch == true) {
 			session.setAttribute("memEmail", memberDTO.getEmail());
+			session.setAttribute("userPhoto", memberDTO.getImage());
 			mav.addObject("memberDTO", memberDTO);
 		}
 		mav.addObject("passMatch", passMatch);
@@ -187,23 +202,24 @@ public class MemberController {
 		return mav;
 	}
 	
-	@RequestMapping(value = "/member/logout", method = RequestMethod.POST)
-	@ResponseBody
-	public String logout(@RequestParam String memEmail, HttpSession session){
+	@RequestMapping(value="/member/logout", method=RequestMethod.GET)
+	public ModelAndView logout(HttpSession session) {
 		session.invalidate();
-		return "../main/index";
-	}
+		return new ModelAndView("redirect:/main/index");
+	} // logout
 	
 	//--------------------------------------------------------------------------------------------------------------------------
 	
 	@RequestMapping(value = "/member/idFindForm")
-	public String idFindForm() {
-		return "../member/idFindForm";
+	public String idFindForm(Model model) {
+		model.addAttribute("display", "/member/idFindForm.jsp");
+		return "/main/index";
 	}
 	
 	@RequestMapping(value = "/member/pwdFindForm")
-	public String pwdFindForm() {
-		return "../member/pwdFindForm";
+	public String pwdFindForm(Model model) {
+		model.addAttribute("display", "/member/pwdFindForm.jsp");
+		return "/main/index";
 	}
 	
 	@RequestMapping(value = "/member/checkId")
@@ -291,5 +307,41 @@ public class MemberController {
 		
 		return "../member/loginForm.jsp";
 	}
-	 
+	
+	@RequestMapping(value = "/member/memberModifyForm", method = RequestMethod.GET)
+	public String memberModifyForm(HttpSession session, Model model) {
+		//model.addAllAttributes("memEmail", session.getAttribute("memEmail"));
+		String email = (String) session.getAttribute("memEmail");
+		MemberDTO memberDTO = memberService.getMember(email);
+		model.addAttribute("memberDTO", memberDTO);
+		model.addAttribute("display", "/member/memberModifyForm.jsp");
+		return "/main/index";
+	}
+	
+	
+	@RequestMapping(value = "/member/profileChange", method = RequestMethod.POST)
+	@ResponseBody
+	public ModelAndView profileChange(HttpSession session, @RequestParam  MultipartFile img){
+		System.out.println("ajax 실행되면 들어온다.");
+		System.out.println(img.getOriginalFilename());
+	
+		String email = (String) session.getAttribute("memEmail");
+		MemberDTO memberDTO = memberService.getMember(email);
+		String filePath = "E:\\spring\\project\\morip\\src\\main\\webapp\\storage";
+		String fileName = img.getOriginalFilename();
+		File file = new File(filePath, fileName);
+		
+		//파일 복사
+		try {
+			FileCopyUtils.copy(img.getInputStream(), new FileOutputStream(file));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		System.out.println(fileName);
+		memberDTO.setImage(fileName);		
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("memberDTO", memberDTO);
+		mav.setViewName("jsonView");		
+		return mav;
+	}		
 }

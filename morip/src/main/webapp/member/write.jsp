@@ -10,10 +10,11 @@
 <div class="container-write">
 
 	<span class="semiWriteTitle"> 회원가입 </span>
-		<hr align="center" width="400px" size="4" color="black">
+		<!-- <hr align="center" width="400px" size="4" color="black"> -->
+		<div class="hr"></div>
 		<span class="semiWriteText">
-			글자적어요 회원가입해요 라랄라라랄<br>
-			글자적어요 회원가입해요 라랄라라랄
+			여행지에서의 추억과 행복한 순간을<br>
+			MORIP과 함께  나누세요
 		</span>
 		
 		<div class="container-semiWriteBtn">
@@ -37,8 +38,9 @@
 				"/>
 			</button>
 		</div>
-
 </div>
+<br>
+<br>
 
 <script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script src="http://developers.kakao.com/sdk/js/kakao.min.js"></script>

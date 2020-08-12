@@ -235,3 +235,9 @@ input:focus, #writeFormId:focus {
 	margin-bottom: 20px;
 }
 /*=============================*/
+
+.hr {
+	border-bottom: 4px solid black;
+	width: 400px;
+	margin: 0 auto;
+}

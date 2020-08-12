@@ -12,8 +12,10 @@
 <input type="hidden" id="emailBtnClick" value="0"> 
 	<div class="container-pwdFindForm">
 			<span class="pwdFindFormTitle">비밀번호 찾기</span>
-			<hr align="center" width="400px" size="4" color="black">
-			
+			<!-- 기환수정 200811 -->
+			<!-- <hr align="center" width="400px" size="4" color="black"> -->
+			<div class="hr"></div>
+			<!-- 기환수정 200811 -->
 			<div class="container-pwdFindForm-text">
 <!---------------------------------------------------------------------->
 				<div class="container-pwdFindFormId">
@@ -54,6 +56,7 @@
 		 	
 		 	</div>
 	</div>
+<br><br>
 
 
 

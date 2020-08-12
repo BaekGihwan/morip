@@ -26,7 +26,7 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	public MemberDTO getMember(String email) {
-		return memberDAO.checkId(email);
+		return memberDAO.getMember(email);
 	}
 
 	@Override

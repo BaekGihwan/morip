@@ -36,6 +36,7 @@ input:focus, #writeFormId:focus{
 	width: 100%;
 	align-items: center;
 	margin: 0 auto;
+	margin-top: 15px;
 }
 
 .container-memberModifyprofile {
@@ -46,10 +47,7 @@ input:focus, #writeFormId:focus{
 }
 
 .modifyProfile {
-	width: 50px;
-	height: 50px;	
-	background-size: 50px 50px;
-	border-radius: 50px;
+	border: 1px solid gray;
 	width: 150px;
 	height: 150px;	
 	background-size: 150px 150px;
@@ -68,12 +66,48 @@ input:focus, #writeFormId:focus{
 	font-size: 20px;	
 }
 
-.chageProfileBtn {
+/* .chageProfileBtn {
 	margin-top: 5px;
 	font-size: 14px;
 	cursor: pointer;
     color: #0095f6;
+} */
+.chageProfileBtn{
+	border: 0;
+    color: #0095f6;
+    color: rgba(var(--d69,0,149,246),1);    
+    
+    cursor: pointer;
+     font-size: 14px;
+    line-height: 18px;
+     display: inline;
+    padding: 0;
+    position: relative;
+
+    appearance: none;
+    background: 0 0;
+
+    box-sizing: border-box;
+    
+
+    font-weight: 600;
+
+    text-transform: inherit;
+    text-overflow: ellipsis;
+
+    user-select: none;
+    width: auto; 
 }
+
+ 
+
+
+
+
+
+
+
+
 
 .memberModifyForm-email,
 .memberModifyForm-pwd,
@@ -95,7 +129,7 @@ input:focus, #writeFormId:focus{
     color: #333333;
     font-size: 16px;
     height: 50px;
-    width: 305px;
+    width: 265px;
     padding: 0 20px;
     margin-left: 10px;
     margin-right: 10px;
@@ -151,3 +185,39 @@ input:focus, #writeFormId:focus{
 	font-family: Poppins-Regular;
 	margin-left: 30px;
 }
+
+
+.hr {
+	border-bottom: 4px solid black;
+	width: 400px;
+	margin: 0 auto;
+}
+
+/* 프로필 사신 변경*/ 
+.changeImage{
+	height: 100px;
+	width: 100px;
+	overflow: hidden;
+} 
+
+.changeImage label { 
+    font-size: 15px;
+    color: #337ab7;
+    border: none;
+    cursor: pointer;
+} 
+.changeImage input[type="file"] { /* 파일 필드 숨기기 */ 
+cursor: pointer;
+	position: absolute; 
+	width: 1px; 
+	height: 1px; 
+	padding: 0; 
+	margin: -1px; 
+	overflow: hidden; 
+	clip:rect(0,0,0,0); 
+	border: 0; 
+}
+
+
+
+

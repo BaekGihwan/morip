@@ -1,7 +1,5 @@
 package matzip.bean;
 
-import java.util.Date;
-
 import org.springframework.context.annotation.ComponentScan;
 
 import lombok.Data;
