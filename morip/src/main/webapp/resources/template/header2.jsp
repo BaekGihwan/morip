@@ -21,8 +21,8 @@
         <ul>
           <li><span id="blog">블로그</span></li>
           <li><span id="matzip">지역맛집</span></li>
-          <li><span>커뮤니티</span></li>
-          <li><span>고객센터</span></li>
+          <li><span id="board">커뮤니티</span></li>
+          <li><span id="serviceCenter">고객센터</span></li>
         </ul>
       </div>
       <!-- 로그인후 버튼 -->
