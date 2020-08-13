@@ -10,8 +10,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!-- 회원가입  -->
 	<insert id="moripWrite" parameterType="member">
-		insert into membertable(membertable_seq, email, pwd, name, nickname, idCardNumber1, idCardNumber2, gender, checkid)
-			values(membertable_seq.nextval, #{email}, #{pwd}, #{name}, #{nickname}, #{idCardNumber1}, #{idCardNumber2}, #{gender}, #{checkid})
+		insert into membertable(membertable_seq, email, pwd, name, nickname, idCardNumber1, idCardNumber2, gender, image ,checkid)
+			values(membertable_seq.nextval, #{email}, #{pwd}, #{name}, #{nickname}, #{idCardNumber1}, #{idCardNumber2}, #{gender}, #{image}, #{checkid})
 	</insert>
 	
 	<!-- 새비밀번호 -->
@@ -36,8 +36,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!-- 회원정보 수정 -->
 	<update id="memberModify" parameterType="member">
-		update membertable set gender=#{gender}
-							 , image=#{image}
-		where email=#{email}
+		update membertable set pwd=#{pwd}, nickname=#{nickname}, gender=#{gender}, image=#{image}
+		where email=#{email} and checkid=#{checkid}
 	</update>
 </mapper>

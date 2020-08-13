@@ -14,4 +14,5 @@ public class MemberDTO {
 	private String gender;
 	private String image;
 	private String backimage;
+	private String checkid;
 }

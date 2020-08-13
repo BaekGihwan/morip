@@ -47,6 +47,7 @@
 <script src="https://apis.google.com/js/platform.js?onload=init" async defer></script>
 <script type="text/javascript">
 var email=null;
+var pwd=null;
 
 $('#writeKakao').click(function(){
 	Kakao.init("9de483e18225043b33859dd6ffca7770");
@@ -60,7 +61,7 @@ $('#writeKakao').click(function(){
 					$.ajax({
 			    		type : 'post',
 			    		url : '/morip/member/checkId',
-			    		data : '&email=' + email,
+			    		data : '&email=' + email + '&checkid=' + '0',
 			    		dataType : 'json',
 			    		success : function(data) {
 			    			if (data.memberDTO == null) {
@@ -103,7 +104,7 @@ function checkLoginStatus(){
 		$.ajax({
     		type : 'post',
     		url : '/morip/member/checkId',
-    		data : '&email=' + email,
+    		data : '&email=' + email + '&checkid=' + '0',
     		dataType : 'json',
     		success : function(data) {
     			if (data.memberDTO == null) {

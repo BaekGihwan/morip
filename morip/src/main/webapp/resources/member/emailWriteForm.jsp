@@ -107,9 +107,10 @@ $('#emailWriteFormBtn').click(function(){
 			url : '/morip/member/writeForm',
 			data : {'email' : $('#emailWriteFormId').val(),
 				    'pwd' : $('#emailWriteFormPwd').val()},
-			dataType : 'text',
-			success : function(data) {
-				location.href = data;
+			success : function() {
+				
+					 location.href = '../member/writeForm2';
+					
 			},
 			error : function(err) {
 				console.log(err);
@@ -156,7 +157,7 @@ $('#emailBtn').click(function(){
     	$.ajax({
     		type : 'post',
     		url : '/morip/member/checkId',
-    		data : '&email=' + $('#emailWriteFormId').val(),
+    		data : '&email=' + $('#emailWriteFormId').val() + '&checkid=' + '1',
     		dataType : 'json',
     		success : function(data) {
     			if (data.memberDTO == null) {

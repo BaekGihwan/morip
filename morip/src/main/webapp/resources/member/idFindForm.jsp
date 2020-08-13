@@ -14,10 +14,7 @@
 	<div class="container-idFindForm">
 		
 			<span class="idFindFormTitle">아이디 찾기</span>
-			<!-- 기환수정 200811 -->
-			<!-- <hr align="center" width="400px" size="4" color="black"> -->
-			<div class="hr"></div>
-			<!-- 기환수정 200811 -->
+			<hr align="center" width="400px" size="4" color="black">
 <!---------------------------------------------------------------------->
 			<div class="container-idFindForm-text">
 			
@@ -67,61 +64,67 @@
 			
 		
 	</div>
-	<br><br>
 
 <script type="text/javascript" src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
-<script type="text/javascript">	
-
+<script type="text/javascript">
 //아이디찾기
 $('#idFindBtn').click(function(){
-		$('#nameDiv').empty();
-		$('#residenDiv').empty();
-		
-	    if($('#name').val() == '') { 
-	        $('#nameDiv').text('이름을 입력하세요.');
-	        $('#nameDiv').css('color', 'red');
-	        $('#nameDiv').css('font-size', '8pt');
-	        $('#nameDiv').css('font-weight', 'bold');
-	        $('#name').focus();
-	        
-	    }else if($('#idCardNumber1').val() == '') { 
-	        $('#residenDiv').text('주민번호를 입력하세요.');
-	        $('#residenDiv').css('color', 'red');
-	        $('#residenDiv').css('font-size', '8pt');
-	        $('#residenDiv').css('font-weight', 'bold');
-	        $('#idCardNumber1').focus();
-	    }else if($('#idCardNumber2').val() == '') { 
-	        $('#residenDiv').text('주민번호를 입력하세요.');
-	        $('#residenDiv').css('color', 'red');
-	        $('#residenDiv').css('font-size', '8pt');
-	        $('#residenDiv').css('font-weight', 'bold');
-	        $('#idCardNumber2').focus();    
-	        
-	    }else{
-    		$.ajax({
-	   			type: 'post',
-	   			url: '/morip/member/findId',
-	   			data: {	'name': $('#name').val(),
-	   					'idCard1': $('#idCardNumber1').val(),
-						'idCard2': $('#idCardNumber2').val(),	},
-				dataType : 'json',		
-	   			success: function(data){
-	   				//alert(JSON.stringify(data));
+	$('#nameDiv').empty();
+	$('#residenDiv').empty();
+	
+    if($('#name').val() == '') { 
+        $('#nameDiv').text('이름을 입력하세요.');
+        $('#nameDiv').css('color', 'red');
+        $('#nameDiv').css('font-size', '8pt');
+        $('#nameDiv').css('font-weight', 'bold');
+        $('#name').focus();
+        
+    }else if($('#idCardNumber1').val() == '') { 
+        $('#residenDiv').text('주민번호를 입력하세요.');
+        $('#residenDiv').css('color', 'red');
+        $('#residenDiv').css('font-size', '8pt');
+        $('#residenDiv').css('font-weight', 'bold');
+        $('#idCardNumber1').focus();
+    }else if($('#idCardNumber2').val() == '') { 
+        $('#residenDiv').text('주민번호를 입력하세요.');
+        $('#residenDiv').css('color', 'red');
+        $('#residenDiv').css('font-size', '8pt');
+        $('#residenDiv').css('font-weight', 'bold');
+        $('#idCardNumber2').focus();    
+        
+    }else{
+   		$.ajax({
+   			type: 'post',
+   			url: '/morip/member/findId',
+   			data: {	'name': $('#name').val(),
+   					'idCard1': $('#idCardNumber1').val(),
+					'idCard2': $('#idCardNumber2').val(),
+					'checkid': "1",	},
+			dataType : 'json',		
+   			success: function(data){
+   				if(data.memberDTO != null){
 	   				$('#modal').css({
 			      		"display": "block"
 			   		});
 	   				$('#modalname').text($('#name').val());
 	   				$('#modalId').text(data.memberDTO.email);
-	   			},
-	   			error: function(err){
-	   				console.log(err);
-	   			}
-   			}); // ajax
-   			
-    		$('#modalBtn').click(function(){
-    			location.href="../member/loginForm.jsp";
-    		});
-   	 	}
+   				}else{
+   					$('#modal').css({
+			      		"display": "block"
+			   		});
+   					$('#modalname').text($('#name').val());
+   					$('#modalId').text("존재하지 않는 회원");
+   				}
+   			},
+   			error: function(err){
+   				console.log(err);
+   			}
+  			}); // ajax
+  			
+   		$('#modalBtn').click(function(){
+   			location.href="../member/loginForm.jsp";
+   		});
+  	 	}
 });
 
 document.getElementById("cancelBtn").onclick = function() {
