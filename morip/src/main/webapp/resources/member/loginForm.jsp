@@ -152,7 +152,7 @@ $('#kakaoLoginBtn').click(function(){
 					$.ajax({
 						type : 'post',
 						url : '/morip/member/snsLogin',
-						data : 'email=' + email,
+						data : 'email=' + email + '&checkid=' + '0',
 						dataType : 'json',
 						success : function(data) {
 							if (data.memberDTO != null) {
@@ -188,7 +188,7 @@ function checkLoginStatus(){
 	$.ajax({
 		type : 'post',
 		url : '/morip/member/snsLogin',
-		data : 'email=' + email,
+		data : 'email=' + email + '&checkid=' + '0',
 		dataType : 'json',
 		success : function(data) {
 			if (data.memberDTO != null) {
@@ -226,7 +226,8 @@ $('#loginBtn').click(function(){
 		type : 'post',
 		url : '/morip/member/emailLogin',
 		data : {'email' : email,
-				'pwd' : pwd},
+				'pwd' : pwd,
+				'checkid' : "1"},
 		dataType : 'json',
 		success : function(data) {
 			if (data.memberDTO != null && data.passMatch == true) {

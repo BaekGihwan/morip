@@ -10,7 +10,7 @@ public interface MemberService {
 
 	public void moripWrite(MemberDTO memberDTO);
 
-	public MemberDTO getMember(String email);
+	public MemberDTO getMember(String email, String checkid);
 
 	public void changePwd(Map<String, String> map);
 

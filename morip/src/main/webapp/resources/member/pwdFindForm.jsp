@@ -12,10 +12,8 @@
 <input type="hidden" id="emailBtnClick" value="0"> 
 	<div class="container-pwdFindForm">
 			<span class="pwdFindFormTitle">비밀번호 찾기</span>
-			<!-- 기환수정 200811 -->
-			<!-- <hr align="center" width="400px" size="4" color="black"> -->
-			<div class="hr"></div>
-			<!-- 기환수정 200811 -->
+			<hr align="center" width="400px" size="4" color="black">
+			
 			<div class="container-pwdFindForm-text">
 <!---------------------------------------------------------------------->
 				<div class="container-pwdFindFormId">
@@ -56,7 +54,6 @@
 		 	
 		 	</div>
 	</div>
-<br><br>
 
 
 
@@ -127,7 +124,8 @@ $('#emailBtn').click(function(){
 		$.ajax({
 			type: 'post',
 			url: '/morip/member/checkId',
-			data: {'email': $('#pwdFindFormId').val()},
+			data: {	'email': $('#pwdFindFormId').val(),
+					'checkid': "1"	},
 			dataType: 'json',
 			success: function(data){
 				if(data.memberDTO == null){

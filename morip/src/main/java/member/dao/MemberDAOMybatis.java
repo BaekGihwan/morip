@@ -17,10 +17,10 @@ public class MemberDAOMybatis implements MemberDAO {
 	private SqlSession sqlSession;
 
 	@Override
-	public MemberDTO snsLogin(String email, String pwd) {
+	public MemberDTO snsLogin(String email, String checkid) {
 		Map<String, String> map = new HashMap<String, String>();
 		map.put("email", email);
-		map.put("pwd", pwd);
+		map.put("checkid", checkid);
 		MemberDTO memberDTO = sqlSession.selectOne("memberSQL.snsLogin", map);
 		return memberDTO;
 	}
@@ -41,8 +41,11 @@ public class MemberDAOMybatis implements MemberDAO {
 	}
 	
 	@Override
-	public MemberDTO getMember(String email) {
-		return sqlSession.selectOne("memberSQL.getMember", email);
+	public MemberDTO getMember(String email, String checkid) {
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("email", email);
+		map.put("checkid", checkid);
+		return sqlSession.selectOne("memberSQL.getMember", map);
 	}
 
 	@Override

@@ -86,9 +86,10 @@ public class MemberController {
 		String inputPass = memberDTO.getPwd();
 		String pass = passEncoder.encode(inputPass);
 		memberDTO.setPwd(pass);
+		memberDTO.setImage("noimage.png");
 		memberService.moripWrite(memberDTO);
 		
-		memberDTO = memberService.getMember(memberDTO.getEmail());
+		memberDTO = memberService.getMember(memberDTO.getEmail(), memberDTO.getCheckid());
 		
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("memberDTO", memberDTO);
@@ -152,10 +153,17 @@ public class MemberController {
 	
 	@RequestMapping(value = "/member/writeForm", method = RequestMethod.POST)
 	@ResponseBody
-	public String writeForm(@RequestParam String email, String pwd, HttpSession session, Model model) {
+	public String writeForm(@RequestParam String email, String pwd, HttpSession session) {
 		session.setAttribute("email", email);
 		session.setAttribute("pwd", pwd);
+		
+		return "/member/writeForm2";
+	}
+	
+	@RequestMapping(value = "/member/writeForm2", method = RequestMethod.GET)
+	public String writeForm2(Model model) {
 		model.addAttribute("display", "/resources/member/writeForm.jsp");
+		
 		return "/resources/main/index";
 	}
 	
@@ -163,12 +171,13 @@ public class MemberController {
 	
 	@RequestMapping(value = "/member/snsLogin", method = RequestMethod.POST)
 	@ResponseBody
-	public ModelAndView snsLogin(@RequestParam String email, HttpSession session) {
-		String pwd = "null";
-		MemberDTO memberDTO = memberService.snsLogin(email, pwd);
+	public ModelAndView snsLogin(@RequestParam String email, String checkid, HttpSession session) {
+		boolean passMatch = false;
+		MemberDTO memberDTO = memberService.snsLogin(email, checkid);
 		
 		if(memberDTO != null) {
 			session.setAttribute("memEmail", memberDTO.getEmail());
+			session.setAttribute("checkid", memberDTO.getCheckid());
 		}
 		
 		ModelAndView mav = new ModelAndView();
@@ -179,11 +188,11 @@ public class MemberController {
 	
 	@RequestMapping(value = "/member/emailLogin", method = RequestMethod.POST)
 	@ResponseBody
-	public ModelAndView emailLogin(@RequestParam String email, @RequestParam String pwd, HttpSession session) {
+	public ModelAndView emailLogin(@RequestParam String email, @RequestParam String pwd, String checkid, HttpSession session) {
 		boolean passMatch = false;
 		ModelAndView mav = new ModelAndView();
 		
-		MemberDTO memberDTO = memberService.getMember(email);
+		MemberDTO memberDTO = memberService.getMember(email, checkid);
 		if(memberDTO != null) {
 			passMatch = passEncoder.matches(pwd, memberDTO.getPwd());
 		}
@@ -191,6 +200,7 @@ public class MemberController {
 		if (memberDTO != null && passMatch == true) {
 			session.setAttribute("memEmail", memberDTO.getEmail());
 			session.setAttribute("userPhoto", memberDTO.getImage());
+			session.setAttribute("checkid", memberDTO.getCheckid());
 			System.out.println(memberDTO.getEmail());
 			mav.addObject("memberDTO", memberDTO);
 		}
@@ -219,10 +229,11 @@ public class MemberController {
 		return "/resources/main/index";
 	}
 	
+	
 	@RequestMapping(value = "/member/checkId")
-	public ModelAndView checkId(@RequestParam String email) {
+	public ModelAndView checkId(@RequestParam String email, String checkid) {
 		System.out.println("이메일뭐오냐" + email);
-		MemberDTO memberDTO = memberService.getMember(email);
+		MemberDTO memberDTO = memberService.getMember(email, checkid);
 		
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("memberDTO", memberDTO);
@@ -232,11 +243,12 @@ public class MemberController {
 	
 	@RequestMapping(value = "/member/findId", method = RequestMethod.POST)
 	@ResponseBody
-	public ModelAndView findId(@RequestParam String name, String idCard1, String idCard2) {
+	public ModelAndView findId(@RequestParam String name, String idCard1, String idCard2, String checkid) {
 		Map<String, String> map = new HashMap<String, String>();
 		map.put("name", name);
 		map.put("idCard1", idCard1);
 		map.put("idCard2", idCard2);
+		map.put("checkid", checkid);
 
 		MemberDTO memberDTO = memberService.checkUser(map);
 		ModelAndView mav = new ModelAndView();
@@ -311,7 +323,8 @@ public class MemberController {
 	public String memberModifyForm(HttpSession session, Model model) {
 		//model.addAllAttributes("memEmail", session.getAttribute("memEmail"));
 		String email = (String) session.getAttribute("memEmail");
-		MemberDTO memberDTO = memberService.getMember(email);
+		String checkid = (String) session.getAttribute("checkid");
+		MemberDTO memberDTO = memberService.getMember(email, checkid);
 		model.addAttribute("memberDTO", memberDTO);
 		model.addAttribute("display", "/resources/member/memberModifyForm.jsp");
 		return "/resources/main/index";
@@ -321,8 +334,8 @@ public class MemberController {
 	@RequestMapping(value="/member/memberModify", method=RequestMethod.POST)
 	@ResponseBody
 	public void memberModify(@ModelAttribute MemberDTO memberDTO, 
-							 @RequestParam MultipartFile img) {
-		String filePath = "E:\\spring\\project\\morip\\src\\main\\webapp\\storage\\";
+							 @RequestParam MultipartFile img, HttpSession session) {
+		String filePath = "C:\\00bitcamp\\GitHub\\Project\\morip\\morip\\src\\main\\webapp\\storage\\";
 		String fileName = img.getOriginalFilename();
 		File file = new File(filePath, fileName);
 		try {
@@ -330,9 +343,14 @@ public class MemberController {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}		
-		memberDTO.setImage(fileName);	
-		System.out.println(memberDTO.getGender());
+		memberDTO.setImage(fileName);
+		String inputPass = memberDTO.getPwd();
+		String pass = passEncoder.encode(inputPass);
+		memberDTO.setPwd(pass);
+		String checkid = (String) session.getAttribute("checkid");
+		memberDTO.setCheckid(checkid);
 		System.out.println(memberDTO.getEmail());
+		System.out.println(memberDTO.getGender());
 		System.out.println(memberDTO.getImage());
 		System.out.println(memberDTO.getNickname());
 		memberService.memberModify(memberDTO);

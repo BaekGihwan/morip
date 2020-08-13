@@ -12,14 +12,17 @@
 <c:if test="${kakaoEmail != null }">
 	<input type="hidden" id="email" value="${kakaoEmail }">
 	<input type="hidden" id="pwd" value=null>
+	<input type="hidden" id="checkid" value="0">
 </c:if>
 <c:if test="${googleEmail != null }">
 	<input type="hidden" id="email" value="${googleEmail }">
 	<input type="hidden" id="pwd" value=null>
+	<input type="hidden" id="checkid" value="0">
 </c:if>
 <c:if test="${email != null }">
 	<input type="hidden" id="email" value="${email }">
 	<input type="hidden" id="pwd" value="${pwd }">
+	<input type="hidden" id="checkid" value="1">
 </c:if>
 
 	<div class="container-writeForm">
@@ -89,11 +92,12 @@ $('#writeBtn').click(function(){
 	        genderChoice = gender[i].value;
 	    }
 	}
+	var checkid = $('#checkid').val();
 	$.ajax({
 		type : 'post',
 		url : '/morip/member/moripWrite',
 		data : 'email=' + email + '&name=' + name+ '&pwd=' + pwd + '&nickname=' + nickname
-				+ '&idCardNumber1=' + idCardNumber1 + '&idCardNumber2=' + idCardNumber2 + '&gender=' + genderChoice,
+				+ '&idCardNumber1=' + idCardNumber1 + '&idCardNumber2=' + idCardNumber2 + '&gender=' + genderChoice + '&checkid=' + checkid,
 		dataType : 'json',
 		success : function(data) {
 			if (data.memberDTO != null) {
@@ -112,29 +116,37 @@ $('#writeBtn').click(function(){
 
 /* ---------------------- 닉네임 존재 유무 ------------------------ */
 $('#nickName').focusout(function(){
-	$.ajax({
-		type : 'post',
-		url : '/morip/member/checkNickname',
-		data : '&nickname=' + $('#nickName').val(),
-		dataType : 'json',
-		success : function(data) {
-			if (data.memberDTO == null) {
-				$('#nickNameDiv').text('사용가능한 닉네임입니다.');
-				$('#nickNameDiv').css('color', 'blue');
-				$('#nameDiv').css('font-size', '8pt');
-		        $('#nickNameDiv').css('font-weight', 'bold');
-			} else {
-				$('#nickNameDiv').text('존재하는 닉네임입니다.');
-				$('#nickNameDiv').css('color', 'red');
-				$('#nameDiv').css('font-size', '8pt');
-		        $('#nickNameDiv').css('font-weight', 'bold');
-		        $('#nickName').focus();
+	if ($('#nickName').val() == '') {
+		$('#nickNameDiv').text('닉네임을 입력해주세요.');
+		$('#nickNameDiv').css('color', 'red');
+		$('#nameDiv').css('font-size', '8pt');
+        $('#nickNameDiv').css('font-weight', 'bold');
+        $('#nickName').focus();
+	} else {
+		$.ajax({
+			type : 'post',
+			url : '/morip/member/checkNickname',
+			data : '&nickname=' + $('#nickName').val(),
+			dataType : 'json',
+			success : function(data) {
+				if (data.memberDTO == null) {
+					$('#nickNameDiv').text('사용가능한 닉네임입니다.');
+					$('#nickNameDiv').css('color', 'blue');
+					$('#nameDiv').css('font-size', '8pt');
+			        $('#nickNameDiv').css('font-weight', 'bold');
+				} else {
+					$('#nickNameDiv').text('존재하는 닉네임입니다.');
+					$('#nickNameDiv').css('color', 'red');
+					$('#nameDiv').css('font-size', '8pt');
+			        $('#nickNameDiv').css('font-weight', 'bold');
+			        $('#nickName').focus();
+				}
+			},
+			error : function(err) {
+				console.log(err);
 			}
-		},
-		error : function(err) {
-			console.log(err);
-		}
-	});	
+		});	
+	}
 });
 
 /*----------------------- 주민번호 유효성 검사 ----------------------*/
