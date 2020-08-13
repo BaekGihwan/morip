@@ -21,7 +21,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
@@ -45,8 +44,8 @@ public class MemberController {
 		return "../member/loginForm";
 		 */
 		session.invalidate();		
-		model.addAttribute("display", "/member/loginForm.jsp");
-		return "/main/index";
+		model.addAttribute("display", "/resources/member/loginForm.jsp");
+		return "/resources/main/index";
 	}
 	
 	//--------------------------------------------------------------------------------------------------------------------------
@@ -54,32 +53,31 @@ public class MemberController {
 	@RequestMapping(value="/member/write")
 	public String write(HttpSession session, Model model) {
 		session.invalidate();
-		model.addAttribute("display", "/member/write.jsp");
-		return "/main/index";
-	}
-	
+		model.addAttribute("display", "/resources/member/write.jsp");
+		return "/resources/main/index";
+	}	
 	
 	@RequestMapping(value = "/member/emailWriteForm")
 	public String emailWriteForm(HttpSession session, Model model) {
 		session.invalidate();
-		model.addAttribute("display", "/member/emailWriteForm.jsp");
-		return "/main/index";
+		model.addAttribute("display", "/resources/member/emailWriteForm.jsp");
+		return "/resources/main/index";
 	}
 	
 	@RequestMapping(value="/member/kakaoWrite", method=RequestMethod.POST)
 	@ResponseBody
 	public String kakaoWrite(@RequestParam String email, HttpSession session, Model model) {
 		session.setAttribute("kakaoEmail", email);
-		model.addAttribute("display", "/member/writeForm.jsp");
-		return "/main/index";
+		model.addAttribute("display", "/resources/member/writeForm.jsp");
+		return "/resources/main/index";
 	}
 	
 	@RequestMapping(value="/member/googleWrite", method=RequestMethod.POST)
 	@ResponseBody
 	public String googleWrite(@RequestParam String email, HttpSession session, Model model) {
 		session.setAttribute("googleEmail", email);
-		model.addAttribute("display", "/member/writeForm.jsp");
-		return "/main/index";
+		model.addAttribute("display", "/resources/member/writeForm.jsp");
+		return "/resources/main/index";
 	}
 	
 	@RequestMapping(value="/member/moripWrite", method=RequestMethod.POST)
@@ -94,8 +92,7 @@ public class MemberController {
 		
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("memberDTO", memberDTO);
-		mav.setViewName("jsonView");
-		
+		mav.setViewName("jsonView");		
 		session.invalidate();
 		return mav;
 	}
@@ -106,8 +103,7 @@ public class MemberController {
 		MemberDTO memberDTO = memberService.checkNickname(nickname);
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("memberDTO", memberDTO);
-		mav.setViewName("jsonView");
-		
+		mav.setViewName("jsonView");		
 		return mav;
 	}
 	
@@ -150,17 +146,17 @@ public class MemberController {
             mailSender.send(message);
         } catch (Exception e) {
             System.out.println(e);
-        }
-        
+        }        
         return dice+"";
     }
 	
 	@RequestMapping(value = "/member/writeForm", method = RequestMethod.POST)
 	@ResponseBody
-	public String writeForm(@RequestParam String email, String pwd, HttpSession session) {
+	public String writeForm(@RequestParam String email, String pwd, HttpSession session, Model model) {
 		session.setAttribute("email", email);
 		session.setAttribute("pwd", pwd);
-		return "../member/writeForm.jsp";
+		model.addAttribute("display", "/resources/member/writeForm.jsp");
+		return "/resources/main/index";
 	}
 	
 	//--------------------------------------------------------------------------------------------------------------------------
@@ -195,6 +191,7 @@ public class MemberController {
 		if (memberDTO != null && passMatch == true) {
 			session.setAttribute("memEmail", memberDTO.getEmail());
 			session.setAttribute("userPhoto", memberDTO.getImage());
+			System.out.println(memberDTO.getEmail());
 			mav.addObject("memberDTO", memberDTO);
 		}
 		mav.addObject("passMatch", passMatch);
@@ -212,18 +209,19 @@ public class MemberController {
 	
 	@RequestMapping(value = "/member/idFindForm")
 	public String idFindForm(Model model) {
-		model.addAttribute("display", "/member/idFindForm.jsp");
-		return "/main/index";
+		model.addAttribute("display", "/resources/member/idFindForm.jsp");
+		return "/resources/main/index";
 	}
 	
 	@RequestMapping(value = "/member/pwdFindForm")
 	public String pwdFindForm(Model model) {
-		model.addAttribute("display", "/member/pwdFindForm.jsp");
-		return "/main/index";
+		model.addAttribute("display", "/resources/member/pwdFindForm.jsp");
+		return "/resources/main/index";
 	}
 	
 	@RequestMapping(value = "/member/checkId")
 	public ModelAndView checkId(@RequestParam String email) {
+		System.out.println("이메일뭐오냐" + email);
 		MemberDTO memberDTO = memberService.getMember(email);
 		
 		ModelAndView mav = new ModelAndView();
@@ -296,7 +294,7 @@ public class MemberController {
     
 	@RequestMapping(value = "/member/changePwd", method = RequestMethod.POST)
 	@ResponseBody
-	public String changePwd(@RequestParam String email, String pwd) {
+	public String changePwd(@RequestParam String email, String pwd, Model model) {
 		String pass = passEncoder.encode(pwd);
 		
 		Map<String, String> map = new HashMap<String, String>();
@@ -304,21 +302,44 @@ public class MemberController {
 		map.put("pwd", pass);
 		
 		memberService.changePwd(map);
-		
-		return "../member/loginForm.jsp";
+		model.addAttribute("display", "/resources/member/loginForm.jsp");
+		return "/resources/main/index";
 	}
 	
+	// 회원정보 수정 창
 	@RequestMapping(value = "/member/memberModifyForm", method = RequestMethod.GET)
 	public String memberModifyForm(HttpSession session, Model model) {
 		//model.addAllAttributes("memEmail", session.getAttribute("memEmail"));
 		String email = (String) session.getAttribute("memEmail");
 		MemberDTO memberDTO = memberService.getMember(email);
 		model.addAttribute("memberDTO", memberDTO);
-		model.addAttribute("display", "/member/memberModifyForm.jsp");
-		return "/main/index";
+		model.addAttribute("display", "/resources/member/memberModifyForm.jsp");
+		return "/resources/main/index";
 	}
 	
+	// 회원정보 수정
+	@RequestMapping(value="/member/memberModify", method=RequestMethod.POST)
+	@ResponseBody
+	public void memberModify(@ModelAttribute MemberDTO memberDTO, 
+							 @RequestParam MultipartFile img) {
+		String filePath = "E:\\spring\\project\\morip\\src\\main\\webapp\\storage\\";
+		String fileName = img.getOriginalFilename();
+		File file = new File(filePath, fileName);
+		try {
+			FileCopyUtils.copy(img.getInputStream(), new FileOutputStream(file));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}		
+		memberDTO.setImage(fileName);	
+		System.out.println(memberDTO.getGender());
+		System.out.println(memberDTO.getEmail());
+		System.out.println(memberDTO.getImage());
+		System.out.println(memberDTO.getNickname());
+		memberService.memberModify(memberDTO);
+	}
 	
+
+	/* 
 	@RequestMapping(value = "/member/profileChange", method = RequestMethod.POST)
 	@ResponseBody
 	public ModelAndView profileChange(HttpSession session, @RequestParam  MultipartFile img){
@@ -344,4 +365,5 @@ public class MemberController {
 		mav.setViewName("jsonView");		
 		return mav;
 	}		
+	*/
 }

@@ -31,17 +31,30 @@ $('#memberModifyFormBtn').click(function(){
         $('#nickNameDiv').css('font-weight', 'bold');
         $('#memberModifyFormNickName').focus();    
     }else {
-		// a작스 실행
-		Swal.fire({
- 		icon: 'success',
-  		title: '회원정보 수정완료!'
-		}).then((result) => {
-			if (result.value) {
-				location.href='https://www.google.com';
+		$.ajax({
+			type: 'post',
+			enctype: 'multipart/form-data',
+			processData: false, //문자열이 아닌 파일 형식으로 보내준다
+			contentType: false,
+			url: '/morip/member/memberModify',
+			data: new FormData($('#memberModifyProfile')[0]),
+			success: function(){			
+				Swal.fire({
+ 					icon: 'success',
+  					title: '회원정보 수정완료!'
+				}).then((result) => {
+					if (result.value) {
+					location.href='../main/index';
+					}
+				})
+			},
+			error: function(err){
+				console.log(err)
 			}
-		})	
+		});
 	}
 });
+
 // 리셋 버튼
 $('#memberModifyFormResetBtn').click(function(){
 	$('#memberModifyFormPwd').val("");
@@ -68,7 +81,7 @@ $('#memberModifyFormDropBtn').click(function(){
       			'success'
     		).then((result) => {
     			if (result.value) {
-    				location.href='https://www.naver.com';
+    				location.href='../main/index';
     			}
     		})
   		}
@@ -102,7 +115,7 @@ function readURL(input) {
 		reader.readAsDataURL(input.files[0]);
 	}
 }
-// 모디파이하기
+
 
 
 

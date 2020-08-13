@@ -16,4 +16,6 @@ public interface MatzipService {
 
 	public MatzipDTO getMapzipView2(String title);
 
+	public List<MatzipDTO> matzipThreeList();
+
 }

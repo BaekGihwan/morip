@@ -35,4 +35,8 @@ public class MatzipDAOMybatis implements MatzipDAO {
 		return sqlSession.selectOne("matzipSQL.getMatzipView", title);
 	}
 	
+	@Override
+	public List<MatzipDTO> matzipThreeList() {
+		return sqlSession.selectList("matzipSQL.matzipThreeList");
+	}
 }

@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class IndexController {
 	@RequestMapping(value="/main/index", method=RequestMethod.GET)
 	public String index(Model model) {
-		model.addAttribute("display", "/template/main.jsp");
-		return "/main/index";
+		model.addAttribute("display", "/resources/template/main.jsp");
+		return "/resources/main/index";
 	}
 }
