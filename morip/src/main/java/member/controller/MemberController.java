@@ -199,7 +199,7 @@ public class MemberController {
 		
 		if (memberDTO != null && passMatch == true) {
 			session.setAttribute("memEmail", memberDTO.getEmail());
-			session.setAttribute("userPhoto", memberDTO.getImage());
+			session.setAttribute("image", memberDTO.getImage());
 			session.setAttribute("checkid", memberDTO.getCheckid());
 			System.out.println(memberDTO.getEmail());
 			mav.addObject("memberDTO", memberDTO);
@@ -231,10 +231,11 @@ public class MemberController {
 	
 	
 	@RequestMapping(value = "/member/checkId")
-	public ModelAndView checkId(@RequestParam String email, String checkid) {
+	public ModelAndView checkId(@RequestParam String email, String checkid, HttpSession session) {
 		System.out.println("이메일뭐오냐" + email);
+		System.out.println("체크아이디뭐오냐" + checkid);		
 		MemberDTO memberDTO = memberService.getMember(email, checkid);
-		
+		session.setAttribute("image", memberDTO.getImage());
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("memberDTO", memberDTO);
 		mav.setViewName("jsonView");
@@ -335,7 +336,7 @@ public class MemberController {
 	@ResponseBody
 	public void memberModify(@ModelAttribute MemberDTO memberDTO, 
 							 @RequestParam MultipartFile img, HttpSession session) {
-		String filePath = "C:\\00bitcamp\\GitHub\\Project\\morip\\morip\\src\\main\\webapp\\storage\\";
+		String filePath = "E:\\spring\\gihwan\\morip\\morip\\src\\main\\webapp\\storage\\";
 		String fileName = img.getOriginalFilename();
 		File file = new File(filePath, fileName);
 		try {
