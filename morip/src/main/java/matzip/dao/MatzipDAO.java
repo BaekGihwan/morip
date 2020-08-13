@@ -12,4 +12,6 @@ public interface MatzipDAO {
 
 	public MatzipDTO getMatzipView(String title);
 
+	public List<MatzipDTO> matzipThreeList();
+
 }

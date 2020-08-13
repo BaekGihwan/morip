@@ -17,4 +17,8 @@ public interface MemberDAO {
 	public MemberDTO checkUser(Map<String, String> map);
 
 	public MemberDTO checkNickname(String nickname);
+
+	public void memberModify(MemberDTO memberDTO);
+
+
 }

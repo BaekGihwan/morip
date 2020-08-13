@@ -5,13 +5,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="memberSQL">
 	<!-- 로그인 -->
 	<select id="snsLogin" parameterType="java.util.Map" resultType="member">
-		select * from membertable where email=#{email} and pwd=#{pwd}
+		select * from membertable where email=#{email} and checkid=#{checkid}
 	</select>
 	
 	<!-- 회원가입  -->
 	<insert id="moripWrite" parameterType="member">
-		insert into membertable(membertable_seq, email, pwd, name, nickname, idCardNumber1, idCardNumber2, gender)
-			values(membertable_seq.nextval, #{email}, #{pwd}, #{name}, #{nickname}, #{idCardNumber1}, #{idCardNumber2}, #{gender})
+		insert into membertable(membertable_seq, email, pwd, name, nickname, idCardNumber1, idCardNumber2, gender, checkid)
+			values(membertable_seq.nextval, #{email}, #{pwd}, #{name}, #{nickname}, #{idCardNumber1}, #{idCardNumber2}, #{gender}, #{checkid})
 	</insert>
 	
 	<!-- 새비밀번호 -->
@@ -20,8 +20,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</update>
 	
 	<!-- 아이디 존재 여부 확인 -->
-	<select id="getMember" parameterType="String" resultType="member">
-		select * from membertable where email=#{email}
+	<select id="getMember" parameterType="java.util.Map" resultType="member">
+		select * from membertable where email=#{email} and checkid=#{checkid}
 	</select>
 	
 	<!-- 닉네임 존재 여부 확인 -->
@@ -31,6 +31,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!-- 유저 존재 여부 확인 -->
 	<select id="checkUser" parameterType="java.util.Map" resultType="member">
-		select * from membertable where name=#{name} and idcardnumber1=#{idCard1} and idcardnumber2=#{idCard2}
+		select * from membertable where name=#{name} and idcardnumber1=#{idCard1} and idcardnumber2=#{idCard2} and checkid=#{checkid}
 	</select>
+	
+	<!-- 회원정보 수정 -->
+	<update id="memberModify" parameterType="member">
+		update membertable set gender=#{gender}
+							 , image=#{image}
+		where email=#{email}
+	</update>
 </mapper>

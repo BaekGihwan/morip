@@ -4,8 +4,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -33,8 +31,8 @@ public class MyblogController {
 	
 	@RequestMapping(value="/myblog/mypage", method=RequestMethod.GET)
 	public String mypage(Model model) {
-		model.addAttribute("display", "/myblog/mypage.jsp");
-		return "/main/index";
+		model.addAttribute("display", "/resources/myblog/mypage.jsp");
+		return "/resources/main/index";
 	}
 	
 	
@@ -64,6 +62,7 @@ public class MyblogController {
 		mav.setViewName("/myblog/writeBlog"); 
 		return mav;
 	}
+	
 	//travlesWrite 부분
 	@RequestMapping(value="/myblog/travlesWrite1", method=RequestMethod.GET)
 	public ModelAndView travlesWrite1() {

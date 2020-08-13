@@ -49,4 +49,9 @@ public class MemberDAOMybatis implements MemberDAO {
 	public MemberDTO checkNickname(String nickname) {
 		return sqlSession.selectOne("memberSQL.checkNickname", nickname);
 	}
+	
+	@Override
+	public void memberModify(MemberDTO memberDTO) {
+		sqlSession.update("memberSQL.memberModify", memberDTO);
+	}
 }

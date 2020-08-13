@@ -259,5 +259,11 @@ public class MatzipServiceImpl implements MatzipService {
 		// TODO Auto-generated method stub
 		return matzipDAO.getMatzipView(title);
 	}
+	
+	// 메인에 베스트 3개 뿌려주기 
+	@Override
+	public List<MatzipDTO> matzipThreeList() {
+		return matzipDAO.matzipThreeList();
+	}
 
 }

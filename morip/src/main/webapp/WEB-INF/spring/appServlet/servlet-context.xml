@@ -17,7 +17,6 @@
 	<resources mapping="/css/**" location="/css/" />
 	<resources mapping="/js/**" location="/js/" />
 	<resources mapping="/image/**" location="/image/" />
-	<resources mapping="/img/**" location="/img/" />
 	<resources mapping="/assets/**" location="/assets/" />
 	<resources mapping="/webfonts/**" location="/webfonts/" />
 	<resources mapping="/vendor/**" location="/vendor/" />

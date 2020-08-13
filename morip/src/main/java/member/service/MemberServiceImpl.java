@@ -43,4 +43,10 @@ public class MemberServiceImpl implements MemberService {
 	public MemberDTO checkNickname(String nickname) {
 		return memberDAO.checkNickname(nickname);
 	}
+	
+	@Override
+	public void memberModify(MemberDTO memberDTO) {
+		memberDAO.memberModify(memberDTO);
+		
+	}
 }

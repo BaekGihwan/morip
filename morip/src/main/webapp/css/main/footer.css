@@ -1,0 +1,45 @@
+@charset "UTF-8";
+
+/* footer */
+footer address{
+	font-size: 13px;
+    color: #cfcfcf;
+}
+
+footer h4{
+    padding-left: 18px;
+}
+
+.footer {
+	width: 980px;
+    padding: 17px 0;
+    margin: 0 auto;
+}
+
+.footer:after{
+    content: '';
+    display: block;
+    clear: both;
+}
+
+.box1 {
+	width: 50%;
+	float: left;
+}
+
+.box1 > img {
+	width: 100px;
+	height: 57px;
+}
+
+.box2 {
+	float: left;
+	margin-top: 10px;
+	align-self: center;
+	margin-left: 150px;	
+}
+
+.box2 li{
+    float:left;
+    margin: 15px;
+}
