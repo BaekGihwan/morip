@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 
 <head>
-  <link rel="stylesheet" href="../css/main.css">
+  <link rel="stylesheet" href="../css/main/main.css">
   <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,400&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:ital@1&display=swap" rel="stylesheet">  

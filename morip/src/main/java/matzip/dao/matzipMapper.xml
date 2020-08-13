@@ -23,4 +23,7 @@
       	(select * from matziptable order by title)tt) 
       where rn=14 or rn=19 or rn=58 order by title desc
    </select>
+   <select id="matzipAllList" parameterType="map" resultType="matzip">
+		select * from (select rownum rn, tt.* from (select * from matziptable order by title)tt) where rn &gt;= #{startNum} and rn &lt;= #{endNum}
+	</select>
  </mapper> 

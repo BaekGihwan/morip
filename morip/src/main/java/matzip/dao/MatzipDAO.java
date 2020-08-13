@@ -14,4 +14,6 @@ public interface MatzipDAO {
 
 	public List<MatzipDTO> matzipThreeList();
 
+	public List<MatzipDTO> matzipAllList(int startNum, int endNum);
+
 }

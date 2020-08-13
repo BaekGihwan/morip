@@ -22,45 +22,15 @@
 	<body class="is-preload">
 		<!-- Wrapper -->
 			<div id="wrapper">
-
-				<!-- Header -->
-					<!-- <header id="header">
-						<div class="inner">
-
-							Logo
-								<a href="index.html" class="logo">
-									<span class="title" style="font-size:20pt;">&ensp;몰 입</span><br>
-									<span class="symbol"> <img src="../images/morip2.png" alt="" /></span>
-								</a>
-
-							Nav
-								<nav>
-									<ul>
-										<li><a href="#menu">Menu</a></li>
-									</ul>
-								</nav>
-
-						</div>
-					</header>
-
-				Menu
-					<nav id="menu">
-						<h2>Menu</h2>
-						<ul>
-							<li><a href="index.html">Home</a></li>
-							<li><a href="generic.html">Ipsum veroeros</a></li>
-							<li><a href="generic.html">Tempus etiam</a></li>
-							<li><a href="generic.html">Consequat dolor</a></li>
-							<li><a href="elements.html">Elements</a></li>
-						</ul>
-					</nav> -->
+				<input type="hidden" id="pg" value="1">
 
 				<!-- Main -->
 					<div id="main">
 						<div class="inner">
 							<header>
-								<div id="divYo"><span id="yo">요</span><span id="gi">기</span><span id="ee">이</span> <span id="oh">오</span><span id="ddon">똔</span><span id="de">데</span><span id="question">?</span><!-- <hr width=1000> --></div>
+								<div id="divYo"><span id="yo">요</span><span id="gi">기</span><span id="ee">이</span> <span id="oh">오</span><span id="ddon">똔</span><span id="de">데</span><span id="question">?</span></div>
 								<!-- <p>Etiam quis viverra lorem, in semper lorem. Sed nisl arcu euismod sit amet nisi euismod sed cursus arcu elementum ipsum arcu vivamus quis venenatis orci lorem ipsum et magna feugiat veroeros aliquam. Lorem ipsum dolor sit amet nullam dolore.</p> --><br>
+								<!-- <div><lottie-player src="https://assets2.lottiefiles.com/packages/lf20_o1WDlm.json"  background="transparent"  speed="0.6"  style="width: 400px; height: 400px;"  loop  autoplay></lottie-player></div> -->
 								<div class="row gtr-uniform gtr-50">
 									<div class="col-8 col-12-xsmall">
 										<input type="text" id="matzipText" name="matzipText">
@@ -105,6 +75,9 @@
 										</div>
 									</a>
 								</article>
+								<div id="allDiv" style="width:100%;">
+								<img id="infinity" src="../image/matzip/backTop.png" style="margin-top:10px;margin-left:10px;width:100%;">
+								</div>
 								<div id="pajuDiv" style="width:100%;">
 								<img src="../image/matzip/backTop.png" style="margin-top:10px;margin-left:10px;width:100%;">
 								<div style="width:100%; height:380px;display:flex;padding:10px;">
@@ -506,48 +479,6 @@
             <input type="hidden" id="matzipAddress3" value="">
             <input type="hidden" id="matzipAddress4" value="">
 
-				
-				<!-- Footer -->
-					<!-- <footer id="footer">
-						<div class="inner">
-							<section>
-								<h2>Get in touch</h2>
-								<form method="post" action="#">
-									<div class="fields">
-										<div class="field half">
-											<input type="text" name="name" id="name" placeholder="Name" />
-										</div>
-										<div class="field half">
-											<input type="email" name="email" id="email" placeholder="Email" />
-										</div>
-										<div class="field">
-											<textarea name="message" id="message" placeholder="Message"></textarea>
-										</div>
-									</div>
-									<ul class="actions">
-										<li><input type="submit" value="Send" class="primary" /></li>
-									</ul>
-								</form>
-							</section>
-							<section>
-								<h2>Follow</h2>
-								<ul class="icons">
-									<li><a href="#" class="icon brands style2 fa-twitter"><span class="label">Twitter</span></a></li>
-									<li><a href="#" class="icon brands style2 fa-facebook-f"><span class="label">Facebook</span></a></li>
-									<li><a href="#" class="icon brands style2 fa-instagram"><span class="label">Instagram</span></a></li>
-									<li><a href="#" class="icon brands style2 fa-dribbble"><span class="label">Dribbble</span></a></li>
-									<li><a href="#" class="icon brands style2 fa-github"><span class="label">GitHub</span></a></li>
-									<li><a href="#" class="icon brands style2 fa-500px"><span class="label">500px</span></a></li>
-									<li><a href="#" class="icon solid style2 fa-phone"><span class="label">Phone</span></a></li>
-									<li><a href="#" class="icon solid style2 fa-envelope"><span class="label">Email</span></a></li>
-								</ul>
-							</section>
-							<ul class="copyright">
-								<li>&copy; Untitled. All rights reserved</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
-							</ul>
-						</div>
-					</footer> -->
-
 			</div>
 
 		<!-- Scripts -->
@@ -632,7 +563,7 @@
 		                                 });
 		                                 // 인포윈도우로 장소에 대한 설명을 표시합니다
 		                          		kakao.maps.event.addListener(marker, 'click', function() {
-										      // 마커 위에 인포윈도우를 표시합니다
+										      //마커 위에 인포윈도우를 표시합니다
 										      //alert($(this).prop('html'));
 										      //alert(test);
 										      //alert(title);
@@ -670,7 +601,7 @@
 		          var title = $(this).attr('name');
 		          //var matzipAddress= '맛집';
 		          $(this).parent().css('background-color','#cea461');              
-		          $('#giveCenter').not($(this).parent()).css('background-color','#d2bd9f');
+		          $('.hvr-forward').not($(this).parent()).css('background-color','#d2bd9f');
 		          // 주소-좌표 변환 객체를 생성합니다
 		          var geocoder = new kakao.maps.services.Geocoder();
 		                         
