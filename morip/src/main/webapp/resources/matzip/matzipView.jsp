@@ -9,13 +9,18 @@
 <title>Insert title here</title>
 </head>
 <body>
+<div id="matzipView">
+
 <input type="hidden" id="title" value="${title }">
 <div id="" style="width:100%;height:250px;display:flex;">
-<div class="hvr-grow-shadow" style="width:25%;height:250px;"><img id="img1" src="../image/matzip/pic01.jpg" width="100%" height="250px"></div><div class="hvr-grow-shadow" style="width:25%;height:250px;"><img id="img2" src="../image/matzip/pic04.jpg" width="100%" height="250px"></div><div class="hvr-grow-shadow" style="width:25%;height:250px;"><img id="img3" src="../image/matzip/pic01.jpg" width="100%" height="250px"></div><div class="hvr-grow-shadow" style="width:25%;height:250px;"><img id="img4" src="../image/matzip/pic04.jpg" width="100%" height="250px"></div>
+<div class="hvr-grow-shadow" style="width:20%;height:250px;"><img id="img1" src="" width="100%" height="250px"></div><div class="hvr-grow-shadow" style="width:20%;height:250px;"><img id="img2" src="" width="100%" height="250px"></div><div class="hvr-grow-shadow" style="width:20%;height:250px;"><img id="img3" src="" width="100%" height="250px"></div><div class="hvr-grow-shadow" style="width:20%;height:250px;"><img id="img4" src="" width="100%" height="250px"></div><div class="hvr-grow-shadow" style="width:20%;height:250px;"><img id="img5" src="" width="100%" height="250px"></div>
 </div>
+<!-- <div id="" style="width:100%;height:250px;display:flex;">
+<div id="matzipImage" class="hvr-grow-shadow" style="width:100%;height:400px;"></div>
+</div> -->
 <div style="height:530px;">
-<div style="width:60%;height:500px;border-top:3px solid gray;border-left:1px solid #D5D5D5;border-right:1px solid #D5D5D5;border-bottom:1px solid #D5D5D5;position:absolute;left:20%;top:220px;background-color:white;">
-<div id="matzipTitle" style="width:500px;height:60px;/* left:33%;*/top:15%;position:relative;background-color:white;text-align:center;margin:auto;font-size:25pt;border-bottom:1px solid gray;"></div>
+<div style="width:60%;height:500px;border-top:3px solid gray;border-left:1px solid #D5D5D5;border-right:1px solid #D5D5D5;border-bottom:1px solid #D5D5D5;position:absolute;left:20%;top:300px;background-color:white;">
+<div id="matzipTitle" style="width:500px;height:50px;/* left:33%;*/top:15%;position:relative;background-color:white;text-align:center;margin:auto;font-size:25pt;border-bottom:1px solid gray;overflow:hidden;"></div>
 <div id="matzipCategory" style="width:30%;margin:auto;top:15%;position:relative;font-size:15pt;text-align:center;padding:5px;"></div>
 
 <div style="display:flex;position:relative;left:10%;top:20%;">
@@ -36,8 +41,9 @@
 <div style="width:40%;height:60px;position:relative;left:13%;top:35%;display:flex;"><div style="border:1px solid #EAEAEA;width:20px;height:15px;margin:5px;border-radius:7px;font-size:7pt;padding:2px;color:gray;">지번</div><div style="margin:5px;color:gray;">송파동 55-7</div></div> -->
 </div>
 </div>
+
 <!-- <div style="border:1px solid red;position:absolute;width:100%;"> -->
-<div style="width:60%;height:1000px;border-top:3px solid gray;border-left:1px solid #D5D5D5;border-right:1px solid #D5D5D5;border-bottom:1px solid #D5D5D5;background-color:white;position:absolute;left:20%;">
+<div style="width:60%;height:1000px;border-top:3px solid gray;border-left:1px solid #D5D5D5;border-right:1px solid #D5D5D5;border-bottom:1px solid #D5D5D5;background-color:white;left:20%; margin: 0 auto;">
 <div style="color:gray;font-size:22pt;"><div style="margin:20px;">블로그 리뷰</div><center><hr width="97%"></center></div>
 <div style="width:100%;height:200px;display:flex;position:relative;">
 <div style="border:1px solid black;width:17%;height:130px;margin:35px;"></div>
@@ -64,6 +70,11 @@
 <div style="border-right:1px solid gray;height:20px;position:absolute;padding:10px;left:220px;top:150px;margin-left:5%;">샐리의 식탁</div><div style="height:20px;position:absolute;padding:10px;left:328px;top:150px;margin-left:5%;">2020.03.24</div>
 </div>
 </div>
+
+</div> <!-- // 메인 닫히는곳 -->
+<br><br><br>
+
+</body>
 <!-- </div> -->
 <script type="text/javascript" src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=352d90d2c3a60113b4d24ad68f0b720d&libraries=services"></script>
@@ -78,7 +89,7 @@ $(document).ready(function(){
 	$.ajax({
 		type:'post',
 		url:'../matzip/getMatzipView',
-		data:'title='+titleSend,
+		data:'title='+titleSend+' 음식점',
 		dataType:'json',
 		success:function(data){
 			//alert(data.matzip.address);
@@ -121,7 +132,42 @@ $(document).ready(function(){
 	                     
 	     
 	                 });
-	                 
+	                 //alert($('#matzipTitle').text());
+	                 $.ajax({
+	                       type:'post',
+	                        url:'../matzip/matzipImage',
+	                        data:{'matzipTitle': titleSend+' 맛집'},
+	                        dataType:'json',
+	                       success:function(data){
+	                    	   $('#img1').prop('src',data.list[0].link);
+	                    	   $('#img2').prop('src',data.list[1].link);
+	                    	   $('#img3').prop('src',data.list[2].link);
+	                    	   $('#img4').prop('src',data.list[3].link);
+	                    	   $('#img5').prop('src',data.list[4].link);
+	                          /* $.each(data.list,function(index,items){
+	                             $('<a/>',{
+//	                                 href:items.link
+	                             }).append($('<img/>',{
+	                                class:'img',
+	                                src:items.link,
+	                                width:'20%',
+	                                height:'100%'
+	                             }))   .appendTo($('#matzipImage'));
+	                             
+	                             
+	                             
+	                          }); */
+//	                           
+	                          /* $('#matzipImage').on('click','.img',function(){
+	                                let url = $('.img').attr('src');
+	                                let imgWindow = window.open(url,"","width=500,height=500");
+	                             }); */
+//	                           
+	                       },
+	                       error:function(err){
+	                            console.log(err);
+	                         }
+	                    });
 	                 }
 	                 
 	                 var mapContainer = document.getElementById('map'),
@@ -146,33 +192,37 @@ $(document).ready(function(){
 		success:function(data){
 			$('#matzipTelephone').text(data.matzip.telephone);
 			$('#matzipTime').text(data.matzip.time);
-			$('#img1').prop('src','../image/matzip/'+data.matzip.image1);
+			/* $('#img1').prop('src','../image/matzip/'+data.matzip.image1);
 			$('#img2').prop('src','../image/matzip/'+data.matzip.image2);
 			$('#img3').prop('src','../image/matzip/'+data.matzip.image3);
-			$('#img4').prop('src','../image/matzip/'+data.matzip.image4);
+			$('#img4').prop('src','../image/matzip/'+data.matzip.image4); */
 		},
 		error:function(err){
 			console.log(err);
 		}
-	});
+	}); 
 	$('#img1').click(function(){
 		let url = $('#img1').attr('src');
-		let imgWindow = window.open(url,"","width=500,height=500");
+		let imgWindow = window.open(url,"","width=500,height=500,top=100,left="+$(window).width()/3);
 	});
 	$('#img2').click(function(){
 		let url = $('#img2').attr('src');
-		let imgWindow = window.open(url,"","width=500,height=500");
+		let imgWindow = window.open(url,"","width=500,height=500,top=100,left="+$(window).width()/3);
 	});
 	$('#img3').click(function(){
 		let url = $('#img3').attr('src');
-		let imgWindow = window.open(url,"","width=500,height=500");
+		let imgWindow = window.open(url,"","width=500,height=500,top=100,left="+$(window).width()/3);
 	});
 	$('#img4').click(function(){
 		let url = $('#img4').attr('src');
-		let imgWindow = window.open(url,"","width=500,height=500");
+		let imgWindow = window.open(url,"","width=500,height=500,top=100,left="+$(window).width()/3);
+	});
+	$('#img5').click(function(){
+		let url = $('#img5').attr('src');
+		let imgWindow = window.open(url,"","width=500,height=500,top=100,left="+$(window).width()/3);
 	});
 });
 </script>
-</body>
+
 
 </html>

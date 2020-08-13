@@ -183,6 +183,7 @@
 			});
 
 })(jQuery);
+var clicks0;
 var clicks1;
 var clicks2;
 var clicks3;
@@ -197,7 +198,18 @@ var clicks11;
 var clicks12;
 var clicks13;
 var clicks14;
+var $window = $(this);
+	var scrollTop = $window.scrollTop();
+	var windowHeight = $window.height();
+	var documentHeight = $(document).height();
+	var height=1500;
+	var pg = $('#pg').val();
+	var count = $('#count').val();
+	var list = "";
+	var loading = false;    //중복실행여부 확인 변수
+    var page = 1;   //불러올 페이지
 $(document).ready(function(){
+	$('#allDiv').hide();
 	$('#pajuDiv').hide();
 	$('#chuncheonDiv').hide();
 	$('#incheonDiv').hide();
@@ -213,6 +225,7 @@ $(document).ready(function(){
 	$('#jejuDiv').hide();
 	$('#busanDiv').hide();
 	$('#showSearch').hide();
+	clicks0=0;
 	clicks1=0;
 	clicks2=0;
 	clicks3=0;
@@ -227,9 +240,101 @@ $(document).ready(function(){
 	clicks12=0;
 	clicks13=0;
 	clicks14=0;
+	
+});
+
+$('#allA').click(function(){
+	$('#pajuDiv').hide();
+	$('#chuncheonDiv').hide();
+	/*
+	$.ajax({
+		type:'get',
+		url:'../matzip/matzipList/infinityScroll',
+		data:'pg='+$('#pg').val(),
+		dataType:'json',
+		success:function(data){
+			$.each(data.list,function(index,items){
+				$('#pajuImg'+index).prop('src','../image/matzip/'+data.list[index].image3);
+				$('#pajuTitle'+index).text(data.list[index].title);
+				$('#pajuAddr'+index).text(data.list[index].roadAddress);
+				$('#pajuTel'+index).text(data.list[index].telephone);
+			});
+		},
+		error:function(err){
+			console.log(err);
+		}		
+	});
+	*/
+	var number=1;
+	var number2=300;
+	$(window).scroll(function(){
+    console.log("documentHeight:" + documentHeight + " | scrollTop:" + $window.scrollTop() + " | windowHeight: " + windowHeight );
+        //if($(window).scrollTop()>=($(document).height() - $(window).height())/number)
+        //if($(window).scrollTop()%500==0)
+        if($(window).scrollTop()>=600*number+number2)
+        {
+            if(!loading)    //실행 가능 상태라면?
+            {
+                loading = true; //실행 불가능 상태로 변경
+                console.log(number);
+                number++;
+                number2 = number2+200;
+                loadingPage(); 
+            }
+        }
+    });  
+function loadingPage(){
+    	$.ajax({
+					type: 'post',
+					url: '../matzip/infinityScroll',
+					data: 'pg='+pg,
+					dataType: 'json',
+					success: function(data){
+						pg++;
+						count++;			
+						var tempNumber= 0;
+						if(data.list.length!='0'){   //데이터가 존재할 때
+						$.each(data.list, function(index, items){
+							//처음 시작을 여는 div
+							if(tempNumber%4==0){
+								height+=380;
+								//$('.content').css('height',height+'px');
+								list += '<div class="middleDiv" data-aos="fade-up" data-aos-duration="3000" style="width:100%; height:380px;display:flex;padding:10px;">';
+							}
+							list+='<div id="smallDiv" class="hvr-grow">';
+							list+='<div id="allTitle" style="font-size:15pt;font-weight:bold;margin-left:10px;overflow:hidden;width:100%;">'+items.title+'</div>';
+							list+='<div id="allImgDiv" style="width:100%;height:180px;">';
+							list+='<img id="allImg" src="../image/matzip/'+items.image3+'" width="100%" height="180px"></div>';
+            				list+='<div style="display:flex;padding:5px;margin-top:5px;"><i class="fas fa-map-marker-alt" style="margin:5px;"></i><div id="allAddr" style="font-size:10pt;font-weight:bold;height:30px;">'+items.address+'</div></div>';
+            				list+='<div style="display:flex;margin:7px;"><i class="fas fa-phone-alt" style="margin:5px;"></i><div id="allTel" style="font-size:10pt;font-weight:bold;">'+items.telephone+'</div></div>';
+            				list+='</div>';
+            				//닫아주는 div
+							if(tempNumber%4==3){
+								list+='</div>';
+							}
+							tempNumber++;
+						});
+						$('#allDiv').append(list);
+						$('#pg').val(pg);
+						list='';
+						loading = false;
+						}
+					}   //success
+				});   //AJAX
+    }
+	if(clicks0==0) {
+		$('#allDiv').slideDown(1000);
+		loadingPage();
+		clicks0++;
+		if(clicks2==1) clicks2--;
+		if(clicks1==1) clicks1--;
+	}else {
+		$('#allDiv').slideUp(1000);
+		clicks0--;
+	}
 });
 $('#pajuA').click(function(){
-	
+	$('#allDiv').hide();
 	$('#chuncheonDiv').hide();
 	
 	$.ajax({
@@ -253,6 +358,7 @@ $('#pajuA').click(function(){
 	if(clicks1==0) {
 		$('#pajuDiv').slideDown(1000);
 		clicks1++;
+		if(clicks0==1) clicks0--;
 		if(clicks2==1) clicks2--;
 	}else {
 		$('#pajuDiv').slideUp(1000);
@@ -260,6 +366,7 @@ $('#pajuA').click(function(){
 	}
 });
 $('#chuncheonA').click(function(){
+	$('#allDiv').hide();
 	$('#pajuDiv').hide();
 	$.ajax({
 		type:'get',
@@ -283,6 +390,7 @@ $('#chuncheonA').click(function(){
 		$('#chuncheonDiv').slideDown(1000);
 		clicks2++;
 		if(clicks1==1) clicks1--;
+		if(clicks0==1) clicks0--;
 	}else {
 		$('#chuncheonDiv').slideUp(1000);
 		clicks2--;
@@ -712,6 +820,10 @@ $('#smallDiv').click(function(){
 	alert($(this).children().first().text());
 });
 */
+ $('#allDiv').on('click','#smallDiv', function(){
+ 	location.href='../matzip/matzipView?title='+$(this).children().first().text();
+ 	//alert($(this).children().first().text());
+ });
  $('#pajuDiv').on('click','#smallDiv', function(){
  	location.href='../matzip/matzipView?title='+$(this).children().first().text();
  	//alert($(this).children().first().text());
