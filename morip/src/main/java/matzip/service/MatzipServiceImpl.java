@@ -284,7 +284,7 @@ public class MatzipServiceImpl implements MatzipService {
 	             
 	             String text = URLEncoder.encode(matzipTitle, "utf-8");
 	              URL url;
-	            url= new URL("https://openapi.naver.com/v1/search/image?query=" + text + "&display=5&start=1&sort=sim");
+	            url= new URL("https://openapi.naver.com/v1/search/image?query=" + text + "&display=8&start=1&sort=sim");
 	            
 	           HttpURLConnection con = (HttpURLConnection) url.openConnection();
 	            con.setRequestMethod("GET");
@@ -318,9 +318,9 @@ public class MatzipServiceImpl implements MatzipService {
 	            String data = sb.toString();
 	            String[] array;
 	            array = data.split("\"");
-	            String[] title = new String[5];
-	            String[] link = new String[5];
-	            String[] thumbnail = new String[5];
+	            String[] title = new String[8];
+	            String[] link = new String[8];
+	            String[] thumbnail = new String[8];
 	           
 	            int k = 0;
 	            for (int i = 0; i < array.length; i++) {

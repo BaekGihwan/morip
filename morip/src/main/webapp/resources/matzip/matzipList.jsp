@@ -499,7 +499,7 @@
 		          $.ajax({
 		             type: 'post',
 		             url : '../matzip/matzipSearch',
-		             data: {'matzipText': $('#matzipText').val()},
+		             data: {'matzipText': $('#matzipText').val()+' 맛집'},
 		             dataType:'json',
 		             success : function(data){
 		                $('#showMatzipList').empty();
