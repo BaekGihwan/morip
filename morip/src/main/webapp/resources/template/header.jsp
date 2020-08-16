@@ -15,7 +15,7 @@
       </div>
       <!-- 가운데 메뉴 -->
       <div class="header_menu">
-        <ul>
+        <ul style="margin: 0px; line-height: 1.5;">
           <li><span id="blog">블로그</span></li>
           <li><span id="matzip">지역맛집</span></li>
           <li><span id="board">커뮤니티</span></li>
