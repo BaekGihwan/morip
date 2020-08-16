@@ -364,7 +364,103 @@ margin-left: 20px;
 }
 
 
+/* 모달창 */
+.modal-body{
+	text-align:center;
+}
+.bodyHeader{
+	height:50px;
+	font-family: 'Gothic A1', sans-serif;
+	color:#8aacc8;
+	font-size:23px;
+}
+.writeOptionWrapper{
+	margin:20px;
+	height:200px;
+	display:flex;
+	justify-content:center;
+}
+.travelsWriteWrapper{
+	width:200px;
+	height:200px;
+}
+.writeBlogWrapper{
+	width:200px;
+	height:300px;
+}
+#travelsWriteImg,#writeBlogImg{
+	display:flex;
+	width:100px;
+	height:100px;
+	margin:0 auto;
+	text-align:center;
+	border-radius: 75px;
+	border:2px solid #8aacc8;;
+	align-items: center;
+	justify-content:center;
+	cursor:pointer;
+}
+#writeOptionImg{
+	font-size: 30px;
+	color:#8aacc8;
+}
+#optionText{
+	width:150px;
+	font-size:8px;
+	margin:0 auto;
+	color:#525f72;
+}
+.optionContentWrapper{
+	margin:0 auto;
 
 
+/*글작성BTN 모달창*/
+.modal-body{
+	text-align:center;
+}
+.bodyHeader{
+	height:50px;
+	font-family: 'Gothic A1', sans-serif;
+	color:#8aacc8;
+	font-size:23px;
+}
+.writeOptionWrapper{
+	margin:20px;
+	height:200px;
+	display:flex;
+	justify-content:center;
+}
+.travelsWriteWrapper{
+	width:200px;
+	height:200px;
+}
+.writeBlogWrapper{
+	width:200px;
+	height:300px;
+}
+#travelsWriteImg,#writeBlogImg{
+	display:flex;
+	width:100px;
+	height:100px;
+	margin:0 auto;
+	text-align:center;
+	border-radius: 75px;
+	border:2px solid #8aacc8;;
+	align-items: center;
+	justify-content:center;
+	cursor:pointer;
+}
+#writeOptionImg{
+	font-size: 30px;
+	color:#8aacc8;
+}
+#optionText{
+	width:150px;
+	font-size:8px;
+	margin:0 auto;
+	color:#525f72;
+}
+.optionContentWrapper{
+	margin:0 auto;
 
 

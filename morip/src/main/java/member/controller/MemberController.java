@@ -385,4 +385,11 @@ public class MemberController {
 		return mav;
 	}		
 	*/
+	
+	
+	@RequestMapping(value = "/member/del", method = RequestMethod.POST)
+	public void del() {
+		System.out.println("dddd");
+	}
+	
 }
