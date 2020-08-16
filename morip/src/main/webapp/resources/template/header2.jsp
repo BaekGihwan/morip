@@ -6,6 +6,8 @@
   <script src="https://kit.fontawesome.com/75c3f69c14.js" crossorigin="anonymous"></script>
 </head>
 <body onLoad="pageStart()">
+<input type="hidden" id="memEmail" value="${memEmail }">
+<input type="hidden" id="checkid" value="${checkid }">
   <header >
     <div class="header">
       <!-- 메인로고 -->
@@ -19,8 +21,8 @@
         <ul>
           <li><span id="blog">블로그</span></li>
           <li><span id="matzip">지역맛집</span></li>
-          <li><span>커뮤니티</span></li>
-          <li><span>고객센터</span></li>
+          <li><span id="board">커뮤니티</span></li>
+          <li><span id="serviceCenter">고객센터</span></li>
         </ul>
       </div>
       <!-- 로그인후 버튼 -->
@@ -29,7 +31,7 @@
         <button type="button"><i class="fas fa-envelope fa-2x"></i></button>&emsp;
 	    <button type="button"><i class="fas fa-heart fa-2x"></i></button>&emsp;
 	   <!--  <button type="button" class="userPhoto" style="background-image: url('../image/testimg.png')"></button>&emsp; -->
-		<img class="userPhoto" alt="" src="../storage/${userPhoto }">
+		<img class="userPhoto" alt="" src="../storage/${image }">
 		<!-- userPhoto을 누르면 나오는 메뉴바 -->
       	<div class="userMenu">
       	  <input type="hidden"  id="clickCheck" value="on">
@@ -45,27 +47,27 @@
       	</div>
       </div>
     </div>
+    
+    <input type="button" id="testBtn" value="사진리로딩 버튼" style="display: none;">
   </header>
 </body>
 
 <script type="text/javascript" src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script type="text/javascript" src="../js/main/header.js" ></script>
+<script type="text/javascript" src="../js/main/memberModifyForm.js" ></script>
 <script type="text/javascript">
-/* $(function () {
-let email = ${memEmail };
-alert(email);
+$('#testBtn').click(function(){
 	$.ajax({
 		type: 'post',
 		url: '/morip/member/checkId',
-		data: 'email=' + email,
+		data: '&email=' + $('#memEmail').val() + '&checkid=' + $('#checkid').val(),
 		dataType: 'json',
 		success: function(data){
-			alert(JSON.stringify(data));
+			$('.userPhoto').attr('src','../storage/'+data.memberDTO.image);
 		},
 		error: function(err){
 			console.log(err);
-		}
+		}		
 	});
-});  */
-
+});
 </script>

@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import matzip.bean.MatzipDTO;
+import matzip.bean.MatzipImageDTO;
 import matzip.dao.MatzipDAO;
 
 @Service("matzipService")
@@ -265,5 +266,98 @@ public class MatzipServiceImpl implements MatzipService {
 	public List<MatzipDTO> matzipThreeList() {
 		return matzipDAO.matzipThreeList();
 	}
+
+	public List<MatzipDTO> matzipAllList(int pg) {
+		int endNum = pg*8;
+		int startNum = endNum-7;
+		List<MatzipDTO> list = matzipDAO.matzipAllList(startNum,endNum);
+		//session.setAttribute("ar", ar);
+		return list;
+	}
+
+	@Override
+	   public List<MatzipImageDTO> matzipImage(String matzipTitle) {
+	      
+	      List<MatzipImageDTO> list = new ArrayList<MatzipImageDTO>();
+	      
+	      try {
+	             
+	             String text = URLEncoder.encode(matzipTitle, "utf-8");
+	              URL url;
+	            url= new URL("https://openapi.naver.com/v1/search/image?query=" + text + "&display=8&start=1&sort=sim");
+	            
+	           HttpURLConnection con = (HttpURLConnection) url.openConnection();
+	            con.setRequestMethod("GET");
+	            con.setRequestProperty("X-Naver-Client-Id", clientID);
+	            con.setRequestProperty("X-Naver-Client-Secret", clientSecret);
+	            
+	            int responseCode = con.getResponseCode();
+	            
+	            BufferedReader br;
+	            if (responseCode == 200) {
+	                br = new BufferedReader(new InputStreamReader(con.getInputStream()));
+	            } else {
+	                br = new BufferedReader(new InputStreamReader(con.getErrorStream()));
+	            }
+	            sb = new StringBuilder();
+	            String line;
+
+	            while ((line = br.readLine()) != null) {
+	                sb.append(line + "\n");
+	            }
+
+
+	            try {
+	            br.close();
+	         } catch (IOException e) {
+	            // TODO Auto-generated catch block
+	            e.printStackTrace();
+	         }
+	            con.disconnect();
+	            System.out.println(sb);
+	            String data = sb.toString();
+	            String[] array;
+	            array = data.split("\"");
+	            String[] title = new String[8];
+	            String[] link = new String[8];
+	            String[] thumbnail = new String[8];
+	           
+	            int k = 0;
+	            for (int i = 0; i < array.length; i++) {
+	                if (array[i].equals("title"))
+	                    title[k] = array[i + 2];
+	                if (array[i].equals("link"))
+	                    link[k] = array[i + 2];
+	                if (array[i].equals("thumbnail")) {
+	                   thumbnail[k] = array[i + 2];
+	                    k++;
+	                }
+	                
+	                    
+	                
+	                
+	            }
+	            for(int i=0;i<k;i++) {
+	                  MatzipImageDTO matzipImageDTO = new MatzipImageDTO();
+	                  matzipImageDTO.setTitle(title[i]);
+	                  matzipImageDTO.setLink(link[i]);
+	                  matzipImageDTO.setThumbnail(thumbnail[i]);
+	                  list.add(i,matzipImageDTO);
+	            }
+	            
+	            //System.out.println(matzipText1);
+	            System.out.println(list.get(0).getTitle());
+	            
+	            
+	          } catch (MalformedURLException e) {
+	            // TODO Auto-generated catch block
+	            e.printStackTrace();
+	         }  catch (Exception e) {
+	               System.out.println(e);
+	           }
+	          
+	          return list;
+
+	   }
 
 }

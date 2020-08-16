@@ -14,7 +14,8 @@
 	<div class="container-idFindForm">
 		
 			<span class="idFindFormTitle">아이디 찾기</span>
-			<hr align="center" width="400px" size="4" color="black">
+			<!-- <hr align="center" width="400px" size="4" color="black"> -->
+			<div class="hr"></div>
 <!---------------------------------------------------------------------->
 			<div class="container-idFindForm-text">
 			

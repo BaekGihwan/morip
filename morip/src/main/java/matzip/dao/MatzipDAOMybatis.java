@@ -1,6 +1,8 @@
 package matzip.dao;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,5 +40,13 @@ public class MatzipDAOMybatis implements MatzipDAO {
 	@Override
 	public List<MatzipDTO> matzipThreeList() {
 		return sqlSession.selectList("matzipSQL.matzipThreeList");
+	}
+
+	@Override
+	public List<MatzipDTO> matzipAllList(int startNum, int endNum) {
+		Map<String, Integer> map = new HashMap<String, Integer>();
+		map.put("startNum", startNum);
+	    map.put("endNum", endNum);
+		return sqlSession.selectList("matzipSQL.matzipAllList",map);
 	}
 }
