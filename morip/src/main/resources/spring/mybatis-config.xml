@@ -10,5 +10,7 @@
      	<typeAlias type="matzip.bean.MatzipDTO" alias="matzip"/>
      	<!-- member -->
      	<typeAlias type="member.bean.MemberDTO" alias="member"/>
+     	<!-- board -->
+     	<typeAlias type="board.bean.BoardDTO" alias="board"/>
      </typeAliases>
   </configuration>
