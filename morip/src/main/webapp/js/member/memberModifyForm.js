@@ -44,7 +44,7 @@ $('#memberModifyFormBtn').click(function(){
   					title: '회원정보 수정완료!'
 				}).then((result) => {
 					if (result.value) {
-					location.href='../main/index';
+						location.href='../main/index';
 					}
 				})
 			},
@@ -74,16 +74,22 @@ $('#memberModifyFormDropBtn').click(function(){
 		cancelButtonColor: '#d33',
 		confirmButtonText: 'Yes'
 	}).then((result) => {
-		if (result.value) {
-			Swal.fire(
-				'회원탈퇴완료',
-      			'그동안 이용해주셔서 감사합니다.',
-      			'success'
-    		).then((result) => {
-    			if (result.value) {
-    				location.href='../main/index';
-    			}
-    		})
+		if (result.value) { 			
+			$.ajax({
+				type : 'post',
+				url : '../member/dropMorip',
+				success: function(){
+					Swal.fire(
+						'회원탈퇴완료',
+		      			'그동안 이용해주셔서 감사합니다.',
+		      			'success'
+		    		).then((result) => {
+		    			if (result.value) {
+		    				location.href='../main/index';
+		    			}
+		    		})
+				}
+			});
   		}
 	})
 });

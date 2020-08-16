@@ -68,16 +68,14 @@ public class MemberController {
 	@ResponseBody
 	public String kakaoWrite(@RequestParam String email, HttpSession session, Model model) {
 		session.setAttribute("kakaoEmail", email);
-		model.addAttribute("display", "/resources/member/writeForm.jsp");
-		return "/resources/main/index";
+		return "/member/writeForm2";
 	}
 	
 	@RequestMapping(value="/member/googleWrite", method=RequestMethod.POST)
 	@ResponseBody
 	public String googleWrite(@RequestParam String email, HttpSession session, Model model) {
 		session.setAttribute("googleEmail", email);
-		model.addAttribute("display", "/resources/member/writeForm.jsp");
-		return "/resources/main/index";
+		return "/member/writeForm2";
 	}
 	
 	@RequestMapping(value="/member/moripWrite", method=RequestMethod.POST)
@@ -86,7 +84,12 @@ public class MemberController {
 		String inputPass = memberDTO.getPwd();
 		String pass = passEncoder.encode(inputPass);
 		memberDTO.setPwd(pass);
-		memberDTO.setImage("noimage.png");
+		if(session.getAttribute("kakaoImage") != null) {
+			memberDTO.setImage((String) session.getAttribute("kakaoImage"));
+		} else {
+			memberDTO.setImage("noimage.png");
+		}
+		
 		memberService.moripWrite(memberDTO);
 		
 		memberDTO = memberService.getMember(memberDTO.getEmail(), memberDTO.getCheckid());
@@ -214,6 +217,15 @@ public class MemberController {
 		session.invalidate();
 		return new ModelAndView("redirect:/main/index");
 	} // logout
+	
+	@RequestMapping(value="/member/dropMorip", method=RequestMethod.POST)
+	@ResponseBody
+	public void dropMorip(HttpSession session) {
+		String email = (String)session.getAttribute("memEmail");
+		String checkid = (String)session.getAttribute("checkid");
+		memberService.dropMorip(email, checkid);
+		session.invalidate();
+	}
 	
 	//--------------------------------------------------------------------------------------------------------------------------
 	
