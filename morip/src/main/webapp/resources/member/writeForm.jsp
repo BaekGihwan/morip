@@ -77,6 +77,7 @@
 </body>
 
 <script type="text/javascript"src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 <script type="text/javascript">
 $('#writeBtn').click(function(){
 	var email = $('#email').val();
@@ -101,11 +102,31 @@ $('#writeBtn').click(function(){
 		dataType : 'json',
 		success : function(data) {
 			if (data.memberDTO != null) {
-				alert("회원가입을 축하드립니다.");
-				location.href = '../main/index';
+				Swal.fire({
+					title: '가입 성공',
+					text: "로그인 화면으로 이동합니다.",
+					icon: 'success',
+					confirmButtonColor: '#3085d6',
+					cancelButtonColor: '#d33',
+					confirmButtonText: 'Yes'
+				}).then((result) => {
+					if (result.value) {
+						location.href='../member/loginForm';
+					}
+				})
 			} else {
-				alert("회원가입을 실패했습니다.");
-				location.href = '../member/loginForm';
+				Swal.fire({
+					title: '가입 실패',
+					text: "로그인 화면으로 이동합니다.",
+					icon: 'warning',
+					confirmButtonColor: '#3085d6',
+					cancelButtonColor: '#d33',
+					confirmButtonText: 'Yes'
+				}).then((result) => {
+					if (result.value) {
+						location.href='../member/loginForm';
+					}
+				})
 			}
 		},
 		error : function(err) {

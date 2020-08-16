@@ -39,4 +39,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		update membertable set pwd=#{pwd}, nickname=#{nickname}, gender=#{gender}, image=#{image}
 		where email=#{email} and checkid=#{checkid}
 	</update>
+	
+	<!-- 회원탈퇴 -->
+	<update id="dropMorip" parameterType="java.util.Map">
+		delete membertable where email=#{email} and checkid=#{checkid}
+	</update>
 </mapper>

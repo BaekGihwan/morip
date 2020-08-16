@@ -49,4 +49,9 @@ public class MemberServiceImpl implements MemberService {
 		memberDAO.memberModify(memberDTO);
 		
 	}
+
+	@Override
+	public void dropMorip(String email, String checkid) {
+		memberDAO.dropMorip(email, checkid);
+	}
 }

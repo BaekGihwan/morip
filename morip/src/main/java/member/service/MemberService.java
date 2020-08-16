@@ -20,5 +20,6 @@ public interface MemberService {
 
 	public void memberModify(MemberDTO memberDTO);
 
+	public void dropMorip(String email, String checkid);
 
 }
