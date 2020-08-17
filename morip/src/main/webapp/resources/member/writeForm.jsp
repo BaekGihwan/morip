@@ -28,7 +28,8 @@
 	<div class="container-writeForm">
 		<form class="writeForm">
 			<span class="writeFormTitle">추가정보</span>
-			<hr align="center" width="400px" size="4" color="black">
+			<!-- <hr align="center" width="400px" size="4" color="black"> -->
+			<div class="hr"></div>
 <!---------------------------------------------------------------------->
 			<div class="container-writeForm-text">
 			

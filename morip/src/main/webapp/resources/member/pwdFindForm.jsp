@@ -146,6 +146,7 @@ $('#emailBtn').click(function(){
 						confirmButtonText: 'Yes'
 					})
 				} else {
+					$('.idDiv').show();
 					$.ajax({
 						type: 'post',
 						url: '/morip/member/pwdFindMail',
@@ -155,7 +156,6 @@ $('#emailBtn').click(function(){
 							$('#emailCode').val(data);
 							$('#nameDiv').empty();
 							$('#emailBtnClick').val('1');
-							$('.idDiv').show();
 						},
 						error: function(err){
 							console.log(err);

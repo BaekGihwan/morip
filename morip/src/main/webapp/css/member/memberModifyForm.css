@@ -1,18 +1,11 @@
 @charset "UTF-8";
 
+/* 여기부터시작 */
 input:focus, #writeFormId:focus{
 	outline:  none;
 	border: 1.5px solid #000;	
 }
-
-.container-memberModifyForm{ 
-	/* border: 1px solid red; */
-	margin: 0 auto;
-	align: center;
-	align-content: center;
-	width: 600px;
-}
-
+/* 위에 이름 부분 */
 .memberModifyFormTitle {
 	text-align: center;
     width: 100%;
@@ -25,22 +18,23 @@ input:focus, #writeFormId:focus{
     padding-top: 100px;
 }
 
-.container-memberModifyForm-text{
+.container-memberModifyForm-text{	
 	margin: 0 auto;
 	width: 600px;
-}
-
-.box_container{
-	/* border: 1px solid blue; */
 	display: flex;
-	width: 100%;
-	align-items: center;
-	margin: 0 auto;
-	margin-top: 15px;
 }
 
+.box11 {
+	width: 170px;
+	margin-top: 20px;
+	margin-left: 20px;
+}
+
+.box22 {
+}
+
+/* 사진프로필쪽 */
 .container-memberModifyprofile {
-	/* border: 1px solid orange; */
 	margin: 0 auto;
 	margin-right: 35px;
 	text-align: center;
@@ -53,61 +47,13 @@ input:focus, #writeFormId:focus{
 	background-size: 150px 150px;
 	border-radius: 150px;
 	text-align: right;
-	cursor: pointer;
-}
-
-.userProfile {
-	 align-self: center;
-	 margin-left: 10px;
 }
 
 .userName {
 	margin-top: 10px;
 	font-size: 20px;	
+	width: 150px;
 }
-
-/* .chageProfileBtn {
-	margin-top: 5px;
-	font-size: 14px;
-	cursor: pointer;
-    color: #0095f6;
-} */
-.chageProfileBtn{
-	border: 0;
-    color: #0095f6;
-    color: rgba(var(--d69,0,149,246),1);    
-    
-    cursor: pointer;
-     font-size: 14px;
-    line-height: 18px;
-     display: inline;
-    padding: 0;
-    position: relative;
-
-    appearance: none;
-    background: 0 0;
-
-    box-sizing: border-box;
-    
-
-    font-weight: 600;
-
-    text-transform: inherit;
-    text-overflow: ellipsis;
-
-    user-select: none;
-    width: auto; 
-}
-
- 
-
-
-
-
-
-
-
-
 
 .memberModifyForm-email,
 .memberModifyForm-pwd,
@@ -129,8 +75,7 @@ input:focus, #writeFormId:focus{
     color: #333333;
     font-size: 16px;
     height: 50px;
-    /* width: 265px; */
-    width: 305px;
+    width: 300px;
     padding: 0 20px;
     margin-left: 10px;
     margin-right: 10px;
@@ -143,31 +88,7 @@ input:focus, #writeFormId:focus{
   	margin-bottom: 15px;
 }
 
-.empty {
-	/* border: 1px solid green; */
-	width: 150px;
-	height: 200px;
-	margin-right: 35px;	
-}
-
-#memberModifyFormBtn,
-#memberModifyFormResetBtn,
-#memberModifyFormDropBtn {
-	text-align: center;
-	padding: 0 17px;
-	height: 50px;
-	background-color: #333333;
-	border-radius: 10px;
-    font-family: Poppins-Regular;
-    font-size: 16px;
-    color: #fff;
-    outline: none !important;
-    border: none;
-    margin-left: 3px;
-    margin-top: 35px;
-    cursor: pointer;
-}
-
+/* 성별부분*/
 .memberModifyForm-gender{
 	display:inline-block;
 	font-family: Poppins-Regular;
@@ -186,7 +107,6 @@ input:focus, #writeFormId:focus{
 	font-family: Poppins-Regular;
 	margin-left: 30px;
 }
-
 
 .hr {
 	border-bottom: 4px solid black;
@@ -208,7 +128,7 @@ input:focus, #writeFormId:focus{
     cursor: pointer;
 } 
 .changeImage input[type="file"] { /* 파일 필드 숨기기 */ 
-cursor: pointer;
+	cursor: pointer;
 	position: absolute; 
 	width: 1px; 
 	height: 1px; 
@@ -220,5 +140,22 @@ cursor: pointer;
 }
 
 
-
+/* 아래 버튼 부분 */
+#memberModifyFormBtn,
+#memberModifyFormResetBtn,
+#memberModifyFormDropBtn {
+	text-align: center;
+	padding: 0 17px;
+	height: 50px;
+	background-color: #333333;
+	border-radius: 10px;
+    font-family: Poppins-Regular;
+    font-size: 16px;
+    color: #fff;
+    outline: none !important;
+    border: none;
+    margin-left: 3px;
+    margin-top: 35px;
+    cursor: pointer;
+}
 

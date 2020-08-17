@@ -10,6 +10,7 @@ $('.userPhoto').click(function(){
 		border:'1px solid gray'
 	});
 });
+
 // 블로그버튼
 $('#blog').click(function(){
 	location.href='../blog/blogList';	
