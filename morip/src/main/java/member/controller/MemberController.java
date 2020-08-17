@@ -235,7 +235,7 @@ public class MemberController {
 		System.out.println("이메일뭐오냐" + email);
 		System.out.println("체크아이디뭐오냐" + checkid);		
 		MemberDTO memberDTO = memberService.getMember(email, checkid);
-		session.setAttribute("image", memberDTO.getImage());
+		//session.setAttribute("image", memberDTO.getImage());
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("memberDTO", memberDTO);
 		mav.setViewName("jsonView");

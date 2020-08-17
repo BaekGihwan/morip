@@ -25,7 +25,7 @@ $('#writeOptionBtn').click(function(){
 });
 /*글 작성 모달에서 에세이 버튼 클릭시 */
 $('#writeBlogImg').click(function(){
-	location.href="/morip/myblog/writeBlog";
+	location.href="/morip/myblog/writeBlog1";
 });
 /*글 작성 모달에서 여행기 버튼 클릭시 */
 $('#travelsWriteImg').click(function(){
@@ -63,6 +63,10 @@ String.prototype.zf = function (len) { return "0".string(len - this.length) + th
 Number.prototype.zf = function (len) { return this.toString().zf(len); };
 
 /*무한스크롤*/
+//페이지 로딩 되자마자 1pg 뜨기
+$(document).ready(function(){
+	loadingPage();
+});
 //변수 선언
 	var $window = $(this);
 	var scrollTop = $window.scrollTop();
@@ -86,7 +90,8 @@ Number.prototype.zf = function (len) { return this.toString().zf(len); };
             }
         }
     });  
-    function loadingPage(){
+
+        function loadingPage(){
     	$.ajax({
 					type: 'post',
 					url: '/morip/myblog/infinityScroll',
@@ -100,23 +105,26 @@ Number.prototype.zf = function (len) { return this.toString().zf(len); };
 						$.each(data.list, function(index, items){
 							let startdate= new Date(items.startdate).format('yyyy-MM-dd'); 
 							let enddate = new Date(items.enddate).format('yyyy-MM-dd');  
+							let seq = items.blogboardtable_seq;
 							//처음 시작을 여는 div
 							if(tempNumber%3==0){
+							
 								height+=380;
 								$('.content').css('height',height+'px');
 								list += '<div class="myblogList" data-aos="fade-up" data-aos-duration="3000">';
 							}
-							list+='<div id="myblog_feed" class="hvr-grow-shadow">';
+							list+='<div id="myblog_feed" class="hvr-grow-shadow" onclick="viewEnter('+seq+')">';
 							list+='<div class="myblog_img">';
-							list+='<img class="listImg" src="../image/architecture.jpg"></div>';
+							list+='<img class="listImg" src="../storage/'+items.mainimage+'"></div>';
             				list+='<div class="myblog_info"><div class="myblog_subject">'+items.subject+'</div>';
             				list+='<div class="myblog_content">'+items.content+'</div>';
-            				list+='<div class="myblog_userFunction"><div class="like'+items.seq+'" style="cursor:pointer;"onclick="likeClick('+items.seq+')"><i class="far fa-heart"></i></div>';
-            				list+='<div class="reply"><i class="fas fa-comment-dots"></i></div><div class="myblog_travleDay">';
+            				list+='<div class="myblog_userFunction"><div class="like'+seq+'" style="cursor:pointer;"onclick="likeClick('+seq+')"><i class="far fa-heart"></i></div>';
+            				list+='<div class="reply"> 34 </div><div class="myblog_travleDay">';
             				list+= startdate +'~'+ enddate+'</div></div></div></div>';
-            				list+='<input type="hidden" id="likeCheck'+items.seq+'" value="unlike">';
+            				list+='<input type="hidden" id="likeCheck'+seq+'" value="unlike">';
             				//닫아주는 div
 							if(tempNumber%3==2){
+							console.log(tempNumber);
 								list+='</div>';
 							}
 							tempNumber++;
@@ -129,3 +137,8 @@ Number.prototype.zf = function (len) { return this.toString().zf(len); };
 					}   //success
 				});   //AJAX
     }
+    
+    //뷰 페이지 진입
+   	function viewEnter(seq){
+   		location.href="view?seq="+seq;
+   	}

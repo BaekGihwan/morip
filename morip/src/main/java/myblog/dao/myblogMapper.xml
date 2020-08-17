@@ -4,7 +4,25 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="myblogSQL">
 	<select id="infinityScroll" resultType="myblog" parameterType="java.util.Map">
-		select * from(select rownum rn, tt.*from (select * from blogboardtable order by seq desc)tt)
+		select * from(select rownum rn, tt.*from (select * from blogboardtable where step=0 order by blogboardtable_seq desc)tt)
  		where rn<![CDATA[ >= ]]>#{startNum} and rn<![CDATA[ <= ]]>#{endNum}
 	</select>
+	<insert id="insertWriteBlog" parameterType="java.util.Map">
+	 insert into blogboardtable(blogboardtable_seq, nickname ,email, subject, content, mainimage, logtime, publicoption)  values(blogboardtable_seq.nextval, #{nickname },#{email }, #{subject }, #{content},#{backgroundImg } ,sysdate,#{publicoption })
+	</insert>
+	<select id="getView" resultType="myblog" parameterType="Integer">
+		select * from blogboardtable where blogboardtable_seq=#{seq}
+	</select>
+	<delete id="deleteBlogBoard" parameterType="java.util.Map">
+		delete blogboardtable where blogboardtable_seq=#{seq} or pseq=#{seq}
+	</delete>
+	<insert id="insertReply" parameterType="java.util.Map">
+	 insert into blogboardtable(blogboardtable_seq, nickname,email, content, logtime, ref, step, pseq)  values(blogboardtable_seq.nextval, #{nickname },#{email }, #{content}, sysdate, #{ref}, #{step}, #{pseq})
+	</insert>
+	<select id="loadReply" resultType="myblog" parameterType="Integer">
+		select * from blogboardtable where ref=#{ref} and step!=0 order by step, blogboardtable_seq
+	</select>
+	<update id="updateReply" parameterType="java.util.Map">
+		update blogboardtable set content = #{content}, logtime = sysdate where blogboardtable_seq = #{seq}
+	</update>
 </mapper>
