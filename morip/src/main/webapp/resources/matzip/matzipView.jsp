@@ -139,7 +139,7 @@ var imgLink6;
 var imgLink7;
 var imgLink8;
 $(document).ready(function(){
-   $('#matzipImageSlider').css('width',$(window).width());
+	$('#matzipImageSlider').css('width',$(window).width());
    //alert($('#title').val());
    var titleSend = $('#title').val();
    titleSend=titleSend.replace('<b>','');
@@ -204,13 +204,13 @@ $(document).ready(function(){
 //                              $('#img4').prop('src',data.list[3].link);
 //                              $('#img5').prop('src',data.list[4].link);
                                 imgLink0 = data.list[0].link;
-                              imgLink1 = data.list[1].link;
-                                 imgLink2 = data.list[2].link;
-                              imgLink3 = data.list[3].link;
-                              imgLink4 = data.list[4].link;
-                              imgLink5 = data.list[5].link;
-                              imgLink6 = data.list[6].link;
-                              imgLink7 = data.list[7].link;
+                        		imgLink1 = data.list[1].link;
+                       		 	imgLink2 = data.list[2].link;
+                        		imgLink3 = data.list[3].link;
+                        		imgLink4 = data.list[4].link;
+                        		imgLink5 = data.list[5].link;
+                        		imgLink6 = data.list[6].link;
+                        		imgLink7 = data.list[7].link;
                              $.each(data.list,function(index,items){
 //                             $('#linkImg'+index).prop('src',data.list[index].link);
                                    $('.linkImg'+index).css({'background-image':'url('+items.link+')'})
@@ -276,30 +276,38 @@ $(document).ready(function(){
          console.log(err);
       }
    }); 
+   let imgWindow;
    $('.linkImg0').click(function(){
-      let imgWindow = window.open(imgLink0,"","width=500,height=500,top=100,left="+$(window).width()/3);
+      imgWindow = window.open(imgLink0,"","width=500,height=500,top=100,left="+$(window).width()/3);
+      imgWindow.onunload=function(){
+   	   $('this').off();
+      }
    });
    $('.linkImg1').click(function(){
-      let imgWindow = window.open(imgLink1,"","width=500,height=500,top=100,left="+$(window).width()/3);
+      imgWindow = window.open(imgLink1,"","width=500,height=500,top=100,left="+$(window).width()/3);
    });
    $('.linkImg2').click(function(){
-      let imgWindow = window.open(imgLink2,"","width=500,height=500,top=100,left="+$(window).width()/3);
+      imgWindow = window.open(imgLink2,"","width=500,height=500,top=100,left="+$(window).width()/3);
    });
    $('.linkImg3').click(function(){
-      let imgWindow = window.open(imgLink3,"","width=500,height=500,top=100,left="+$(window).width()/3);
+      imgWindow = window.open(imgLink3,"","width=500,height=500,top=100,left="+$(window).width()/3);
    });
    $('.linkImg4').click(function(){
-      let imgWindow = window.open(imgLink4,"","width=500,height=500,top=100,left="+$(window).width()/3);
+      imgWindow = window.open(imgLink4,"","width=500,height=500,top=100,left="+$(window).width()/3);
    });
    $('.linkImg5').click(function(){
-      let imgWindow = window.open(imgLink5,"","width=500,height=500,top=100,left="+$(window).width()/3);
+      imgWindow = window.open(imgLink5,"","width=500,height=500,top=100,left="+$(window).width()/3);
    });
    $('.linkImg6').click(function(){
-      let imgWindow = window.open(imgLink6,"","width=500,height=500,top=100,left="+$(window).width()/3);
+      imgWindow = window.open(imgLink6,"","width=500,height=500,top=100,left="+$(window).width()/3);
    });
    $('.linkImg7').click(function(){
-      let imgWindow = window.open(imgLink7,"","width=500,height=500,top=100,left="+$(window).width()/3);
+      imgWindow = window.open(imgLink7,"","width=500,height=500,top=100,left="+$(window).width()/3);
    });
+   imgWindow.onunload=function(){
+	   location.reload();
+   }
+
 });
 </script>
 <script type="text/javascript" src="../js/matzip/slideImage.js"></script>
