@@ -77,19 +77,23 @@ public class BoardController {
 	 public String boardView(@RequestParam String boardtable_seq,
 			 				 @RequestParam String pg,
 			 				 Model model) {
-	 
+		 BoardDTO boardDTO = boardService.getBoard(boardtable_seq);
+		 model.addAttribute("boardDTO", boardDTO);
+		 model.addAttribute("memNickName", "테스트");
+		 
 		 model.addAttribute("boardtable_seq", boardtable_seq); 
 		 model.addAttribute("pg", pg);
 		 model.addAttribute("display", "/resources/board/boardView.jsp"); 
 		 return "/resources/main/index";
 	 }
 	 
+
 	 @RequestMapping(value="getBoardView", method=RequestMethod.POST)
 		public ModelAndView getBoardView(@RequestParam String boardtable_seq,
 										 @CookieValue(value="memHit", required=false) Cookie cookie,      
 										 HttpServletResponse response,
 										 HttpSession session) {
-
+		 	System.out.println("겟보드뷰");
 		 	System.out.println(boardtable_seq);
 			BoardDTO boardDTO = boardService.getBoard(boardtable_seq);
 			

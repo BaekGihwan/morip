@@ -122,8 +122,7 @@ $(document).ready(function(){
 		data: 'boardtable_seq='+$('#boardtable_seq').val(),
 		dataType: 'json',
 		success : function(data){
-			//alert(JSON.stringify(data));
-			
+			//alert(JSON.stringify(data));			
 			$('#subjectSpan').text(data.boardDTO.subject);
 			$('#nickNameSpan').text(data.boardDTO.nickname);
 			$('#contentSpan').html(data.boardDTO.content);
@@ -137,8 +136,7 @@ $(document).ready(function(){
 		},
 		error: function(err){
 			console.log(err);
-		}
-		
+		}		
 	});
 
 });
