@@ -1,0 +1,279 @@
+@charset "UTF-8";
+header, .background{
+	width:100%;
+  position: fixed;
+  height: 500px;
+}
+.backgroundCover{
+	background-color: black;
+	opacity: 0.7;
+	z-index:1;
+	height:100%;
+}
+body, html{
+	margin:0;
+	padding:0;
+	width:100%;
+	height:100%;
+}
+#morip{
+	width: 120px;
+	height: 70px;
+	cursor: pointer;
+}
+#person{
+	width: 30px;
+	height: 30px;
+	float: left;
+}
+.navber-header{
+	display:flex;
+}
+.step1{
+	width:30%;
+	margin:auto;
+}
+.step2{
+	width:65%;
+	margin:auto;
+}
+.step3{
+	width:5%;
+	margin:auto;
+	display:flex;
+}
+.backgroundImg{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index:0;
+}
+.subjectbackground{
+	width:100%;
+	height:100%;
+	z-index:2;
+	display: flex;
+	color:white;
+	justify-content: center;
+	align-items: center;
+}
+.blogSubjectWrapper{
+	width:45%;
+	z-index:2;
+}
+.dateWrapper{
+	width:100%;
+	height:25%;
+	font-size: 13px;
+	color:white;
+	margin-top:10px;
+	margin-bottom:10px;
+}
+.subjectWrapper{
+	width:100%;
+	height:50%;
+	margin-top:10px;
+	margin-bottom:10px;
+	opacity: 1;
+}
+.userinfowrapper{
+	width:100%;
+	height:25%;
+	display: flex;
+	align-items: center;
+	margin-top:10px;
+	margin-bottom:10px;
+}
+.dateWrapper{
+	display: flex;
+	align-items: center;
+}
+.view_userImg{
+	width:40px;
+	height:40px;
+	border-radius: 75%;
+}
+.view_userId{
+	margin-left:20px;
+	color:white;
+}
+.subjectWrapper{
+	font-family: 'Noto Sans KR', sans-serif;
+	font-size: 35px;
+	color:white;
+	display: flex;
+	align-items: center;
+}
+/*content*/
+.contentContainer{
+	position:absolute;
+ 	width:100%;
+ 	margin-top:500px;
+	background-color: white;
+	display: flex;
+	justify-content: center;
+}
+.contentWrapper{
+	width:100%;
+}
+.content{
+	width:45%;
+	margin:0 auto;
+	padding-top:100px;
+	padding-bottom:100px;
+}
+.contentInner{
+	margin:100px;
+	margin-top:50px;
+}
+.sideBar{
+	width:100px;
+	height:100px;
+	position:absolute;
+	z-index: 3;
+	left:13%;
+	top:600px;
+	border-top:2px solid gray;
+}
+.likeOption,.replyOption{
+	font-size: 20px;
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+	margin:10px;
+}
+.likeOption{
+	margin-top:20px;
+}
+.likeOption p, .replyOption p{
+	margin:0;
+	font-size: 15px;
+}
+#likeBtn, #replyBtn{
+	cursor: pointer;
+}
+/*글하단 설정부분*/
+.view_boardOption{
+  height:60px;
+  display:flex;
+  align-items: center;
+  border-top:1px solid gray;
+}
+.view_reply, .view_like{
+  margin:10px;
+  padding:0.3em;
+}
+.view_likeWrapper, .view_replyWrapper{
+    height:50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 13px;
+    cursor:pointer;
+}
+.view_controlOption{
+	position: absolute;
+	left:75%;
+	top:50px;
+	font-size: 20px;
+}
+/* view로 보려주는 글 옵션 */
+#modifyBoard, #deleteBoard{
+  width:100%;
+  height:50%;
+  display:flex;
+  justify-content: space-around;
+  align-items: center;
+  cursor: pointer;
+  background-color: white;
+}
+
+/*boardRepy*/
+.view_replyBoard{
+  margin:0 auto;
+	display:block;
+}
+.view_replyListWrapper,.view_replyDiv{
+  width:100%;
+  margin:50px auto;
+}
+.view_replyDiv{
+  padding-left:70px;
+}
+.view_replyList, .view_replyInputWrapper,.view_boardReplyInputWrapper{
+  display: flex;
+}
+.view_userImgWrapper{
+  width:10%;
+  margin-right:20px;
+}
+.view_userImg{
+  width:40px;
+  height:40px;
+  border-radius: 75%;
+}
+.view_replyContent{
+  width:90%;;
+}
+.view_replyContent p{
+  font-size:14px;
+  margin-top:5px;
+}
+.reply_userID{
+  font-family: 'Noto Sans KR', sans-serif;
+}
+.optionBtn{
+  width:10%;
+  display: flex;
+  justify-content: center;
+}
+.view_replyBtnWrapper{
+  width:100%;
+  display: flex;
+  justify-content: flex-end;
+}
+.hvr-grow{
+  width:40px;
+  height:25px;
+  border:1px solid gray;
+  font-size: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+/* 댓글을 달 떄 입력할 폼 CSS*/
+.view_replyInputWrapper,.view_boardReplyInputWrapper{
+  border:2px solid gray;
+  border-radius: 5px;
+  display: flex;
+  margin-bottom:10px;
+}
+#replyInputBox{
+  width:100%;
+  margin-top:10px;
+}
+.reply_contentInput{
+  width:97%;
+  margin:10px auto;
+}
+.view_replyContentInputWrapper{
+  width:100%;
+  display:flex;
+}
+.reply_inputOption{
+  width:100%;
+  display:flex;
+  justify-content: flex-end;
+}
+#resetBtn, #insertBtn{
+  margin:10px;
+  width:100px;
+  font-size: 13px;
+}
+.container{
+	width:100%;
+	height:500px;
+}
