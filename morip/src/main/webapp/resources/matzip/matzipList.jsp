@@ -488,13 +488,20 @@
 			<script src="../js/matzip/util.js"></script>
 			<script src="../js/matzip/matzip.js"></script>
 			<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=352d90d2c3a60113b4d24ad68f0b720d&libraries=services"></script>
+			<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 		    <script type="text/javascript">
 		    var test;
 		    let address = null;
 		    let result1;
 		    $('#matzipSearchBtn').click(function(){
 		       if($('#matzipText').val()==''){
-		          alert('검색어를 입력해주세요!');
+		          //alert('검색어를 입력해주세요!');
+		          Swal.fire({
+				  icon: 'warning',
+				  title: '검색어를<br>입력해주세요!'
+				  //text: 'Something went wrong!',
+				  //footer: '<a href>Why do I have this issue?</a>'
+				})
 		       }else {
 		          $.ajax({
 		             type: 'post',

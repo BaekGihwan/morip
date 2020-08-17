@@ -3,6 +3,7 @@
 <head>
   <link rel="stylesheet" href="../css/blog/blogList.css">
   <script src="https://kit.fontawesome.com/75c3f69c14.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
  <br><br> 
@@ -133,9 +134,12 @@
        -->
        <div class="writeBlog">
          <span class="write_text">여행기</span>
-         <p class="write_blog">블로그 작성하기</p>
+         <!-- <p class="write_blog">블로그 작성하기</p> -->
+         <button type="button" class="btn btn-outline-secondary write_blog" id="writeOptionBtn" >블로그 작성하기</button>
        </div>
        
+
+
        
        
       <!-- 리스트 보여주기 기환 버젼 -->
@@ -266,13 +270,51 @@
           </th>
         </table>
       </div>
-</body> -->
+-->
 
-<!-- JQuery  -->
+
+
+
+
+
+
+
+<!-- 글작성 BTN -->
+  <div class="modal fade" id="writeOptionModal" role="dialog">
+    <div class="modal-dialog">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-body">
+        	<button type="button" class="close" data-dismiss="modal">×</button>
+        	<div class="bodyHeader">새로 만들기</div>
+			<div class="writeOptionWrapper">
+				<div class="travelsWriteWrapper">
+					<div id="travelsWriteImg" class="hvr-grow-shadow"><i id="writeOptionImg" class="fas fa-suitcase" ></i></div>
+					<div class="optionContentWrapper">
+						<h5>여행기</h5>
+						<div id="optionText">여행 기록을 코스별, 일정별로 깔끔하게 기록해보세요.</div>
+					</div>
+				</div>
+				<div class="writeBlogWrapper">
+					<div id="writeBlogImg" class="hvr-grow-shadow"><i id="writeOptionImg" class="far fa-edit"></i></div>
+					<div class="optionContentWrapper">
+						<h5>M에세이</h5>
+						<div id="optionText">여행을 자유롭게 나만의 에세이로 기록해보세요.</div>
+					</div>
+				</div>
+			</div>
+        </div>
+        <div id="count" value="1"></div>
+      </div>
+    </div>
+  </div>
+</body> 
+
+
 <script type="text/javascript" src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
-<!-- Slick Carousel -->
-<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>		
+<!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 <script type="text/javascript" src="../js/main/main.js" ></script>		
-<script type="text/javascript" src="../js/blog/blog.js" ></script>
-
-
+<script type="text/javascript" src="../js/blog/blogList.js" ></script>
