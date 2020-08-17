@@ -14,7 +14,8 @@
 	<div class="container-idFindForm">
 		
 			<span class="idFindFormTitle">아이디 찾기</span>
-			<hr align="center" width="400px" size="4" color="black">
+			<!-- <hr align="center" width="400px" size="4" color="black"> -->
+			<div class="hr"></div>
 <!---------------------------------------------------------------------->
 			<div class="container-idFindForm-text">
 			
@@ -66,6 +67,7 @@
 	</div>
 
 <script type="text/javascript" src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 <script type="text/javascript">
 //아이디찾기
 $('#idFindBtn').click(function(){
@@ -122,7 +124,7 @@ $('#idFindBtn').click(function(){
   			}); // ajax
   			
    		$('#modalBtn').click(function(){
-   			location.href="../member/loginForm.jsp";
+   			location.href="../member/loginForm";
    		});
   	 	}
 });

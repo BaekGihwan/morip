@@ -18,6 +18,14 @@ $('#blog').click(function(){
 $('#matzip').click(function(){
 	location.href='../matzip/matzipListShow';	
 });
+// 커뮤니티 버튼
+$('#board').click(function(){
+	location.href='../board/boardList';	
+});
+// 고객센터 버튼
+$('#serviceCenter').click(function(){
+	location.href='../serviceCenter/serviceCenterList';	
+});
 // 로그인버튼
 $('.header_loginBtn').click(function(){
 	location.href='../member/loginForm';

@@ -38,13 +38,15 @@ $('#memberModifyFormBtn').click(function(){
 			contentType: false,
 			url: '/morip/member/memberModify',
 			data: new FormData($('#memberModifyProfile')[0]),
-			success: function(){			
+			success: function(){		
+			$('#testBtn').trigger('click', 'continue');
 				Swal.fire({
  					icon: 'success',
+ 					confirmButtonText: '확인',
   					title: '회원정보 수정완료!'
 				}).then((result) => {
-					if (result.value) {
-					location.href='../main/index';
+					if (result.value) {											
+						location.href='../main/index';
 					}
 				})
 			},
@@ -64,7 +66,6 @@ $('#memberModifyFormResetBtn').click(function(){
 
 // 회원탈퇴쪽
 $('#memberModifyFormDropBtn').click(function(){
-	/* swal("회원탈퇴 성공!", "이용해주셔서 감사합니다.", "success"); */
 	Swal.fire({
 		title: '회원탈퇴',
 		text: "정말로 탈퇴하시겠습니까?",
@@ -72,18 +73,25 @@ $('#memberModifyFormDropBtn').click(function(){
 		showCancelButton: true,
 		confirmButtonColor: '#3085d6',
 		cancelButtonColor: '#d33',
-		confirmButtonText: 'Yes'
+		confirmButtonText: '확인',
+  		cancelButtonText: '취소',
 	}).then((result) => {
-		if (result.value) {
-			Swal.fire(
-				'회원탈퇴완료',
-      			'그동안 이용해주셔서 감사합니다.',
-      			'success'
-    		).then((result) => {
-    			if (result.value) {
-    				location.href='../main/index';
-    			}
-    		})
+		if (result.value) { 			
+			$.ajax({
+				type : 'post',
+				url : '../member/dropMorip',
+				success: function(){
+					Swal.fire(
+						'회원탈퇴완료',
+		      			'그동안 이용해주셔서 감사합니다.',
+		      			'success'
+		    		).then((result) => {
+		    			if (result.value) {
+		    				location.href='../main/index';
+		    			}
+		    		})
+				}
+			});
   		}
 	})
 });

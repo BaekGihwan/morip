@@ -12,7 +12,8 @@
 <body class="morip_main">
 
   <br><br>
-    <!-- morip banner -->
+  
+  <!-- morip banner -->
   <div class="morip_banner">
     <img alt="" src="../image/main/banner1.png">
   </div>
@@ -277,47 +278,6 @@
   <br><br>
   <br><br>
   <br><br>
-
-<!-- 
-<div id="aaa">
-  <div id="bbb">asdfasdfasdfasdfasdfasdfasdf</div>
-</div>
-
-
-
-
-  <br><br>
-  <h1>test</h1>
-  <div class="font1">Do Hyeon</div>
-  <div class="font2">Gothic A1</div>
-  <div class="font3">Indie Flower</div>
-  <div class="font4">Jua</div>
-  <div class="font5">Noto Sans KR header</div>
-  
-  <div class="font7">Roboto 잡다구리</div>
-  
-  <div class="font6">기본 잡다구리  더 많은 여행기 보기 </div>
-  <div class="font8">기본 잡다구리  더 많은 여행기 보기</div>
-  <div class="font9">기본 잡다구리  더 많은 여행기 보기</div>
-  
-  
-  <br><br>
-  <br><br>
-  <br><br>
-  <br><br>
-  <br><br>
-  <br><br>
-  <br><br>
-  <br><br>
-  <br><br>
-  <br><br>
-  <br><br>
-  <br><br>
-  <br><br>
-  <br><br>
-  <br><br>
-  <br><br>
-   -->
 </body>
 
 <!-- JQuery  -->

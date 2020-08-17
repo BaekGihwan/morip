@@ -57,6 +57,7 @@
 
 
 <script type="text/javascript" src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 <script type="text/javascript">
 //회원가입
 $('.idDiv').hide();
@@ -70,7 +71,14 @@ $('#emailWriteFormBtn').click(function(){
 	$('#repwdDiv').empty();
 	
 	if($('#mailCheck').val() == '0'){
-		alert("메일 인증을 해주세요.");
+		Swal.fire({
+			title: '필수',
+			text: "메일 인증을해주세요.",
+			icon: 'warning',
+			confirmButtonColor: '#3085d6',
+			cancelButtonColor: '#d33',
+			confirmButtonText: 'Yes'
+		})
 	} else if($('#emailWriteFormId').val() == '') { // 이거는 id속성으로 해서 찾는거다
         $('#nameDiv').text('이메일을 입력하세요.');
         $('#nameDiv').css('color', 'red');
@@ -100,7 +108,14 @@ $('#emailWriteFormBtn').click(function(){
         $('#repwd').focus();    
         
     } else if($('#checkCode').val() == '0' && $('#email-id').val() != '') {
-    	alert("인증번호 확인을 체크해주세요.");
+    	Swal.fire({
+			title: '필수',
+			text: "메일 인증을해주세요.",
+			icon: 'warning',
+			confirmButtonColor: '#3085d6',
+			cancelButtonColor: '#d33',
+			confirmButtonText: 'Yes'
+		})
 	} else {
 		$.ajax({
 			type : 'post',
@@ -108,9 +123,7 @@ $('#emailWriteFormBtn').click(function(){
 			data : {'email' : $('#emailWriteFormId').val(),
 				    'pwd' : $('#emailWriteFormPwd').val()},
 			success : function() {
-				
-					 location.href = '../member/writeForm2';
-					
+				location.href = '../member/writeForm2';
 			},
 			error : function(err) {
 				console.log(err);
