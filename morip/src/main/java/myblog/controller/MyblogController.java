@@ -43,11 +43,11 @@ public class MyblogController {
 	*/
 	
 	@RequestMapping(value="/myblog/mypage", method=RequestMethod.GET)
-	public String mypage(Model model) {
+	public String mypage(HttpSession session , Model model) {
 		model.addAttribute("display", "/resources/myblog/mypage.jsp");
 		return "/resources/main/index";
 	}
-	
+	//, @RequestParam(value="nickname") String nickname
 	
 	@RequestMapping(value="/myblog/infinityScroll", method=RequestMethod.POST)
 	public ModelAndView infinityScroll(Model model, int pg) {
@@ -83,6 +83,7 @@ public class MyblogController {
 		UUID uid = UUID.randomUUID();
 		String fileName = uid.toString() + "_" + backgroundImg.getOriginalFilename();
 		String filePath = "E:\\spring\\gihwan\\morip\\morip\\src\\main\\webapp\\storage\\";
+
 		File file = new File(filePath,fileName);
 		try {
 			FileCopyUtils.copy(backgroundImg.getInputStream(), new FileOutputStream(file));
@@ -118,10 +119,9 @@ public class MyblogController {
 		
 		String content = URLDecoder.decode(map.get("content"), "UTF-8");
 		map.replace("content", content);
-		
-	
-		System.out.println(map.get("subject")+","+map.get("content")+","+map.get("nickname")+","+map.get("email"));
-		
+		System.out.println("작성자"+session.getAttribute("nickname"));
+		System.out.println("해쉬태그:"+map.get("hashtag"));
+		System.out.println(map.get("subject")+","+map.get("content")+","+map.get("nickname"));
 		myblogService.insertWriteBlog(map);
 		System.out.println("save 들어와서 저장하는 중...");
 	}

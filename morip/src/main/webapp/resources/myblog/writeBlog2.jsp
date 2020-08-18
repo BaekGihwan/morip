@@ -29,7 +29,7 @@
     <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.1/summernote.js"></script>
 
     <!-- include summernote plugin-->
-    <script type="text/javascript" src="../js/summernote-map-plugin-master/summernote-map-plugin.js"></script>
+    <script type="text/javascript" src="../js/myblog/summernote-map-plugin-master/summernote-map-plugin.js"></script>
 	
     <title></title>
   </head>
@@ -92,6 +92,14 @@
                   </div>
               </div>
             </div>
+              	<div class="hashtagWrapper">
+	            	<div class="hashtagTitle">
+	            	 해쉬태그
+	            	</div>
+	            	<div class="hashtagInput">
+	            		<textarea id="hashtagInputText" placeholder="#해쉬태그 #입력하세요" ></textarea>
+	            	</div>
+	            </div>
           </div>
         </div>
       </div>
@@ -113,7 +121,7 @@
 
 	  var markupStr = $('#summernote').summernote('code');
 	  let content = markupStr.replace(/&nbsp;/g, " ");
-	  
+	  let hashtag = $('#hashtagInputText').val();
 	  console.log(content);
 	  if(markupStr.trim()==''){
 		  alert("내용을 입력해주세요");
@@ -121,7 +129,7 @@
 	    	$.ajax({
 	    		type : 'post',
 	    		url : '/morip/myblog/save',
-	    		data : 'content='+content+"&subject="+$('#subject').val()+"&backgroundImg="+$('#backgroundImg').val()+"&publicoption="+publicOption,
+	    		data : 'content='+content+"&subject="+$('#subject').val()+"&backgroundImg="+$('#backgroundImg').val()+"&publicoption="+publicOption+"&hashtag="+hashtag,
 	    		success : function(){
 	    			alert("여행기 작성이 완료되었습니다!");
 	    				location.href="mypage";
