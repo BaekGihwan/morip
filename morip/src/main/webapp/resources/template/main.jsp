@@ -2,23 +2,21 @@
     pageEncoding="UTF-8"%>
 
 <head>
+<!--===============================================================================================-->
   <link rel="stylesheet" href="../css/main/main.css">
   <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,400&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:ital@1&display=swap" rel="stylesheet">  
   <script src="https://kit.fontawesome.com/75c3f69c14.js" crossorigin="anonymous"></script>
+<!--===============================================================================================-->
 </head>
-
 <body class="morip_main">
-
-  <br><br>
-  
+  <br><br>  
   <!-- morip banner -->
   <div class="morip_banner">
     <img alt="" src="../image/main/banner1.png">
   </div>
-  <br><br>
-  
+  <br><br>  
   <!-- morip slider -->
  <!--  <i class="fas fa-chevron-left prev"></i>
   <i class="fas fa-chevron-right next"></i> -->
@@ -109,8 +107,7 @@
   	  <div class="img-cover"></div>
   	</div>
   </div>  
-  <br>
-  
+  <br>  
   <!-- morip bestBlog -->
   <div class="morip_bestBlog">
   	<h2>이런 여행은 어떠세요?</h2>
@@ -119,7 +116,8 @@
     <div class="morip_bestBlogWriter">    
       <div class="writer_info">  
       	<div class="profile_bg">
-      	  <div class="profile_image" style="background-image: url('../image/test.jpg')"></div>
+      	  <img class="profile_image" alt="" src="../storage/${image }">
+      	  <!-- <div class="profile_image" style="background-image: url('../image/test.jpg')"></div> -->
       	</div>
       	<div class="profile_detail">
       	  <p class="profile_name">순수쟁이 기환</p>
@@ -228,7 +226,7 @@
         <div class="food_post_contents">
           <div class="content1">
             <i class="fas fa-comment-dots"></i>
-            <p class="food_post_like_count">113</p>
+            <p class="food_post_like_count">100</p>
             <a id="food_link2"><i class="fas fa-link"></i></a>
           </div>
           <div class="content2">
@@ -253,7 +251,7 @@
         <div class="food_post_contents">
           <div class="content1">
             <i class="fas fa-comment-dots"></i>
-            <p class="food_post_like_count">113</p>
+            <p class="food_post_like_count">93</p>
             <a id="food_link3"><i class="fas fa-link"></i></a>
           </div>
           <div class="content2">
@@ -280,9 +278,15 @@
   <br><br>
 </body>
 
-<!-- JQuery  -->
 <script type="text/javascript" src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
-<!-- Slick Carousel -->
 <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>		
-<!-- main.jsp script -->		
 <script type="text/javascript" src="../js/main/main.js" ></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	alert("ddddd");
+	
+	
+	
+});
+
+</script>

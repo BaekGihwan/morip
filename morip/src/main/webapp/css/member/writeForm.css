@@ -43,7 +43,7 @@ input:focus, #writeFormId:focus{
     color: #333333;
     font-size: 16px;
     height: 50px;
-    width: 380px;
+    width: 340px;
     padding: 0 20px;
     margin-left: 10px;
     margin-right: 10px;
@@ -67,7 +67,7 @@ input:focus, #writeFormId:focus{
     color: #333333;
     font-size: 16px;
     height: 50px;
-    width: 380px;
+    width: 340px;
     padding: 0 20px;
     margin-left: 10px;
     margin-right: 10px;
@@ -128,8 +128,8 @@ select{
     color: #333333;
     font-size: 18px;
     height: 50px;
-    width: 170px;
-    padding: 0 20px;
+    width: 168px;
+    /* padding: 0 20px; */
     margin-left: 10px;
     margin-right: 10px;
     border-style: solid;
@@ -203,4 +203,8 @@ input[type="radio"]{
 	font-size: 8pt;
 }
 /*=============================*/
-
+.hr {
+	border-bottom: 4px solid black;
+	width: 400px;
+	margin: 0 auto;
+}
