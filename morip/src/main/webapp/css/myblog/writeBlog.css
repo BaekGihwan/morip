@@ -219,3 +219,22 @@ body, html{
  margin:10px auto;
 }
 
+/************************해쉬 태그 인풋**************************/
+.hashtagWrapper{
+	margin-top:95%;
+	width:100%;
+}
+.hashtagInput{
+	height:150px;
+}
+#hashtagInputText{
+	margin:auto;
+	height:100px;
+	width:80%;
+}
+.hashtagTitle{
+	height:50px;
+	color:gray;
+	font-weight: bold;
+	letter-spacing: 7pt;
+}

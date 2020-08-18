@@ -43,11 +43,11 @@ public class MyblogController {
 	*/
 	
 	@RequestMapping(value="/myblog/mypage", method=RequestMethod.GET)
-	public String mypage(Model model) {
+	public String mypage(HttpSession session , Model model) {
 		model.addAttribute("display", "/resources/myblog/mypage.jsp");
 		return "/resources/main/index";
 	}
-	
+	//, @RequestParam(value="nickname") String nickname
 	
 	@RequestMapping(value="/myblog/infinityScroll", method=RequestMethod.POST)
 	public ModelAndView infinityScroll(Model model, int pg) {
@@ -82,7 +82,7 @@ public class MyblogController {
 		String nickname = "뚜르라기";
 		UUID uid = UUID.randomUUID();
 		String fileName=uid.toString() + "_" + backgroundImg.getOriginalFilename();
-		String filePath = "D:\\spring\\MORIP\\MORIP_myblogTeam\\src\\main\\webapp\\storage";
+		String filePath = "D:\\project\\morip\\morip\\src\\main\\webapp\\storage";
 		File file = new File(filePath,fileName);
 		try {
 			FileCopyUtils.copy(backgroundImg.getInputStream(), new FileOutputStream(file));
@@ -114,6 +114,7 @@ public class MyblogController {
 		String content = URLDecoder.decode(map.get("content"), "UTF-8");
 		map.replace("content", content);
 		System.out.println("작성자"+session.getAttribute("nickname"));
+		System.out.println("해쉬태그:"+map.get("hashtag"));
 		System.out.println(map.get("subject")+","+map.get("content")+","+map.get("nickname"));
 		myblogService.insertWriteBlog(map);
 		System.out.println("save 들어와서 저장하는 중...");
@@ -124,8 +125,8 @@ public class MyblogController {
     public ModelAndView handleFileUpload(@RequestParam("file") MultipartFile file) throws IOException {
 		UUID uid = UUID.randomUUID();
 		String fileName=uid.toString() + "_" + file.getOriginalFilename();
-		String filePath1 = "D:\\spring\\MORIP\\MORIP_myblogTeam\\src\\main\\webapp\\storage";
-		String filePath2 = "D:\\spring\\MORIP\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\MORIP_myblogTeam\\storage";
+		String filePath1 = "D:\\project\\morip\\morip\\src\\main\\webapp\\storage";
+		String filePath2 = "D:\\project\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\morip\\storage";
 		File file1 = new File(filePath1,fileName);
 		File file2 = new File(filePath2,fileName);
 		try {
