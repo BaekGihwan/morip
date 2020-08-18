@@ -31,6 +31,7 @@ $('#writeBlogImg').click(function(){
 $('#travelsWriteImg').click(function(){
 	location.href="/morip/myblog/travlesWrite1";
 });
+
 //날짜 형식 변환
 Date.prototype.format = function (f) {
     if (!this.valueOf()) return " ";

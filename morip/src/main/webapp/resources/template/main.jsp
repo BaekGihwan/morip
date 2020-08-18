@@ -283,7 +283,7 @@
 <script type="text/javascript" src="../js/main/main.js" ></script>
 <script type="text/javascript">
 $(document).ready(function(){
-	alert("ddddd");
+	//alert("ddddd");
 	
 	
 	
