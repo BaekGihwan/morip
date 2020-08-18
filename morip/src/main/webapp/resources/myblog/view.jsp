@@ -21,11 +21,10 @@
     
   </head>
   <body>
-    <div class="navber-header" style="height:86px;">
-      <!--여기가 네비게이셔션 바가 들어갈 자리-->
+  
       <input type="hidden" class="view_seq" value="${seq }">
-    </div>
-    <header>
+    
+    <div id="viewheader">
       <div class="background">
       	<div class="backgroundImg" style="background: url('../storage/${myblogDTO.mainimage}') no-repeat 50% 50%; background-size: cover;">s </div>
       	<div class="backgroundCover" ></div>
@@ -46,7 +45,7 @@
             </div>
           </div>
       </div>
-    </header>
+    </div>
     <div class="sideBar">
       <div class="likeOption">
         <i id="likeBtn" class="far fa-heart"></i>
@@ -178,5 +177,16 @@
   <!-- sweetAlert -->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
   <script src="../js/myblog/view.js"></script>
+  <Script>
+  	$(document).ready(function(){
+  		let divheight= $('.contentWrapper').height();
+  		$('#footer').css("z-index", "90");
+  		let footer = $('#footer');
+  		$('.contentWrapper').append(footer);
+  		footer.css("width", $('.contentWrapper').width());
+  		$('.userMenu').css("z-index","90");
+  	});
+
+  </Script>
 </html>
 /

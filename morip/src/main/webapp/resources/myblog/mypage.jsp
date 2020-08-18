@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
   <head>
@@ -30,15 +31,13 @@
   
   </head>
   <body>
-    <header>
-      <nav class="navBar">
-       	네비게이션 바
-      </nav>
+    <div id="mypageHeadder">
+	
       <div class="backgroundImg">
       </div>
       <div class="layer">
       </div>
-    </header>
+    </div>
     <div class="profileImg_wrapper">
       <div class="profileCircle">
         <div class="userProfile">
@@ -46,9 +45,11 @@
         </div>
       </div>
       <div class="userId">
-        UserId_120329
+        ${nickname}
       </div>
     </div>
+    <input type="hidden" id="pageNickname" value="${pageNickname }">
+    <input type="hidden" id="nickname" value="${nickname}">
   <!--content -->
   <input type="hidden" id="pg" value="1">
   <div class="content">
@@ -104,7 +105,7 @@
             <tr>
               <td style="width:70px;"><img id="modal_userImg"src="../image/myblog/paris.jpg"></td>
               <td id="modal_userID">USER_ID</td>
-              <td id="modal_userFollow"><buttton class="btn btn-outline-primary">팔로우</button></td>
+              <td id="modal_userFollow"><button class="btn btn-outline-primary">팔로우</button></td>
             </tr>
             <tr>
               <td style="width:70px;"><img id="modal_userImg"src="../image/myblog/circus.png"></td>
@@ -186,5 +187,6 @@
       easing: 'ease-out-back',
       duration: 1000
   });
+
   </script>
 </html>

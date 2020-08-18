@@ -66,6 +66,13 @@ Number.prototype.zf = function (len) { return this.toString().zf(len); };
 //페이지 로딩 되자마자 1pg 뜨기
 $(document).ready(function(){
 	loadingPage();
+/*	if($('#pageNickname').val().equals($('#nickname').val())){
+		$('#writeOptionBtn').show();
+	} else {
+	
+	}
+	*/
+	$('.userMenu').css("z-index","90");
 });
 //변수 선언
 	var $window = $(this);
@@ -109,9 +116,9 @@ $(document).ready(function(){
 							//처음 시작을 여는 div
 							if(tempNumber%3==0){
 							
-								height+=380;
+								height+=350;
 								$('.content').css('height',height+'px');
-								list += '<div class="myblogList" data-aos="fade-up" data-aos-duration="3000">';
+								list += '<div class="myblogList" id="myblogList" data-aos="fade-up" data-aos-duration="3000">';
 							}
 							list+='<div id="myblog_feed" class="hvr-grow-shadow" onclick="viewEnter('+seq+')">';
 							list+='<div class="myblog_img">';
