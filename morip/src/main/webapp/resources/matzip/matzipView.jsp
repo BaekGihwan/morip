@@ -351,7 +351,7 @@ $(document).ready(function(){
 						list += '<div class="middleDiv" data-aos="fade-up" data-aos-duration="3000" style="width:100%; height:380px;display:flex;padding:10px;">';
 					} */
 					list+='<div id="reviewInDiv" class="hvr-grow" style="width:100%;height:200px;display:flex;position:relative;">';
-					list+='<div style="border:1px solid black;width:17%;height:130px;margin:35px;">'+'</div>';
+					list+='<div style="width:17%;height:130px;margin:35px;background-size:100% 130px;'+'background-image:url(../storage/'+items.mainimage+');"></div>';
 					list+='<div style="width:55%;height:40px;margin:25px;position:relative;left:5px;top:0px;font-weight:bold;font-size:20pt;overflow:hidden;">'+items.subject+'</div>';
 					list+='<div style="width:65%;height:60px;position:absolute;left:235px;top:75px;margin-left:5%;overflow:hidden;">'+items.content+'</div>';
 					list+='<div style="border-right:1px solid gray;height:20px;position:absolute;padding:10px;left:220px;top:150px;margin-left:5%;">'+items.nickname+'</div>';
