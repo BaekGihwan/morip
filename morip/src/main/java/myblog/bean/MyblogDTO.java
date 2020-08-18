@@ -2,6 +2,8 @@ package myblog.bean;
 
 import java.sql.Date;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import lombok.Data;
 
 @Data
@@ -17,6 +19,7 @@ public class MyblogDTO {
 	 private int ref;
 	 private int step;
 	 private int pseq;
+	 @JsonFormat(shape=JsonFormat.Shape.STRING,pattern="yyyy.MM.dd")
 	 private Date logtime;
 	 private String publicoption;
 }
