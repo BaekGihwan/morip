@@ -174,7 +174,6 @@ $(document).ready(function(){
                         
         
                     });
-                    alert($('#matzipTitle').text());
                     
                     $.ajax({
                           type:'post',
@@ -182,7 +181,6 @@ $(document).ready(function(){
                            data:{'matzipTitle': $('#matzipTitle').text()+' 맛집'},
                            dataType:'json',
                           success:function(data){
-                        	  alert($('#matzipTitle').text());
                              $.each(data.list,function(index,items){
                             	 
                             	imgLink[index]=data.list[index].link;
