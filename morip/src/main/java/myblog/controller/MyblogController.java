@@ -81,8 +81,8 @@ public class MyblogController {
 	public String imageSave(HttpSession session,@RequestParam(value="backgroundImg") MultipartFile backgroundImg) {
 		String nickname = "뚜르라기";
 		UUID uid = UUID.randomUUID();
-		String fileName=uid.toString() + "_" + backgroundImg.getOriginalFilename();
-		String filePath = "D:\\spring\\MORIP\\MORIP_myblogTeam\\src\\main\\webapp\\storage";
+		String fileName = uid.toString() + "_" + backgroundImg.getOriginalFilename();
+		String filePath = "E:\\spring\\gihwan\\morip\\morip\\src\\main\\webapp\\storage\\";
 		File file = new File(filePath,fileName);
 		try {
 			FileCopyUtils.copy(backgroundImg.getInputStream(), new FileOutputStream(file));
@@ -109,12 +109,19 @@ public class MyblogController {
 	/*작성한 글 저장*/
 	@RequestMapping(value="/myblog/save", method= {RequestMethod.POST})
 	public @ResponseBody void saveWriteBlog(HttpSession session, @RequestParam Map <String , String> map) throws UnsupportedEncodingException {
-		map.put("nickname", "뚜르라기");
-		map.put("email", "ka28@naver.com");
+		
+		String email = (String) session.getAttribute("memEmail");
+		String nickname = (String) session.getAttribute("nickname");
+		
+		map.put("email", email);
+		map.put("nickname", nickname);
+		
 		String content = URLDecoder.decode(map.get("content"), "UTF-8");
 		map.replace("content", content);
-		System.out.println("작성자"+session.getAttribute("nickname"));
-		System.out.println(map.get("subject")+","+map.get("content")+","+map.get("nickname"));
+		
+	
+		System.out.println(map.get("subject")+","+map.get("content")+","+map.get("nickname")+","+map.get("email"));
+		
 		myblogService.insertWriteBlog(map);
 		System.out.println("save 들어와서 저장하는 중...");
 	}
@@ -124,13 +131,13 @@ public class MyblogController {
     public ModelAndView handleFileUpload(@RequestParam("file") MultipartFile file) throws IOException {
 		UUID uid = UUID.randomUUID();
 		String fileName=uid.toString() + "_" + file.getOriginalFilename();
-		String filePath1 = "D:\\spring\\MORIP\\MORIP_myblogTeam\\src\\main\\webapp\\storage";
-		String filePath2 = "D:\\spring\\MORIP\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\MORIP_myblogTeam\\storage";
+		String filePath1 = "E:\\spring\\gihwan\\morip\\morip\\src\\main\\webapp\\storage\\";
+		//String filePath2 = "D:\\spring\\MORIP\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\MORIP_myblogTeam\\storage";
 		File file1 = new File(filePath1,fileName);
-		File file2 = new File(filePath2,fileName);
+		//File file2 = new File(filePath2,fileName);
 		try {
 			FileCopyUtils.copy(file.getInputStream(), new FileOutputStream(file1));
-			FileCopyUtils.copy(file.getInputStream(), new FileOutputStream(file2));
+			//FileCopyUtils.copy(file.getInputStream(), new FileOutputStream(file2));
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
