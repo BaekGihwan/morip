@@ -198,6 +198,7 @@ var clicks11;
 var clicks12;
 var clicks13;
 var clicks14;
+
 var $window = $(this);
 	var scrollTop = $window.scrollTop();
 	var windowHeight = $window.height();
