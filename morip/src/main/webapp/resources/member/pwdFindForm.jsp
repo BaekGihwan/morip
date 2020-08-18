@@ -58,6 +58,7 @@
 
 
 <script type="text/javascript" src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 <script type="text/javascript">
 $('.idDiv').hide();
 //비밀번호 찾기
@@ -81,7 +82,14 @@ $('#pwdFindBtn').click(function(){
 	        $('#pwdFindFormId').focus();         
 	       
 	    } else if($('#emailBtnClick').val() == '0'){
-	    	alert("메일인증 버튼을 누르세요");
+	    	Swal.fire({
+				title: '필수',
+				text: "메일 인증을해주세요.",
+				icon: 'warning',
+				confirmButtonColor: '#3085d6',
+				cancelButtonColor: '#d33',
+				confirmButtonText: 'Yes'
+			})
 	    } else if($('#email-id').val() == '') {
 	    	$('#reidDiv').text('메일인증번호를 입력하세요');
 	        $('#reidDiv').css('color', 'red');
@@ -99,7 +107,7 @@ $('#pwdFindBtn').click(function(){
 		}else{
 			$('#modal').css({
 			      "display": "block"
-			   });			   
+			});			   
 		}
  
 }); 
@@ -129,8 +137,16 @@ $('#emailBtn').click(function(){
 			dataType: 'json',
 			success: function(data){
 				if(data.memberDTO == null){
-					alert("존재하지 않는 회원입니다.");
+					Swal.fire({
+						title: '존재하지 않는 회원입니다.',
+						text: "메일을 다시 확인해주세요.",
+						icon: 'warning',
+						confirmButtonColor: '#3085d6',
+						cancelButtonColor: '#d33',
+						confirmButtonText: 'Yes'
+					})
 				} else {
+					$('.idDiv').show();
 					$.ajax({
 						type: 'post',
 						url: '/morip/member/pwdFindMail',
@@ -140,7 +156,6 @@ $('#emailBtn').click(function(){
 							$('#emailCode').val(data);
 							$('#nameDiv').empty();
 							$('#emailBtnClick').val('1');
-							$('.idDiv').show();
 						},
 						error: function(err){
 							console.log(err);
@@ -154,6 +169,7 @@ $('#emailBtn').click(function(){
 		}); //ajax 아이디 존재여부 확인
 	 }
 });
+
 $('#pwdFindBtn').click(function(){
 	$('#checkCode').val('1');
 });
@@ -207,8 +223,18 @@ $('#modalBtn').click(function(){
 				},
 			dataType : 'text',	
 			success: function(data){
-				alert("비번변경완료");
-				location.href=data;
+				Swal.fire({
+					title: '성공',
+					text: "비밀번호가 변경되었습니다.",
+					icon: 'success',
+					confirmButtonColor: '#3085d6',
+					cancelButtonColor: '#d33',
+					confirmButtonText: 'Yes'
+				}).then((result) => {
+					if (result.value) {
+						location.href='../member/loginForm';
+					}
+				})
 			},
 			error: function(err){
 				console.log(err);

@@ -39,10 +39,6 @@ public class MemberController {
 	
 	@RequestMapping(value="/member/loginForm", method=RequestMethod.GET)
 	public String login(HttpSession session, Model model) {
-		/*
-		session.invalidate();
-		return "../member/loginForm";
-		 */
 		session.invalidate();		
 		model.addAttribute("display", "/resources/member/loginForm.jsp");
 		return "/resources/main/index";
@@ -68,16 +64,14 @@ public class MemberController {
 	@ResponseBody
 	public String kakaoWrite(@RequestParam String email, HttpSession session, Model model) {
 		session.setAttribute("kakaoEmail", email);
-		model.addAttribute("display", "/resources/member/writeForm.jsp");
-		return "/resources/main/index";
+		return "/member/writeForm2";
 	}
 	
 	@RequestMapping(value="/member/googleWrite", method=RequestMethod.POST)
 	@ResponseBody
 	public String googleWrite(@RequestParam String email, HttpSession session, Model model) {
 		session.setAttribute("googleEmail", email);
-		model.addAttribute("display", "/resources/member/writeForm.jsp");
-		return "/resources/main/index";
+		return "/member/writeForm2";
 	}
 	
 	@RequestMapping(value="/member/moripWrite", method=RequestMethod.POST)
@@ -86,7 +80,12 @@ public class MemberController {
 		String inputPass = memberDTO.getPwd();
 		String pass = passEncoder.encode(inputPass);
 		memberDTO.setPwd(pass);
-		memberDTO.setImage("noimage.png");
+		if(session.getAttribute("kakaoImage") != null) {
+			memberDTO.setImage((String) session.getAttribute("kakaoImage"));
+		} else {
+			memberDTO.setImage("noimage.png");
+		}
+		
 		memberService.moripWrite(memberDTO);
 		
 		memberDTO = memberService.getMember(memberDTO.getEmail(), memberDTO.getCheckid());
@@ -177,6 +176,7 @@ public class MemberController {
 		
 		if(memberDTO != null) {
 			session.setAttribute("memEmail", memberDTO.getEmail());
+			session.setAttribute("nickname", memberDTO.getNickname());
 			session.setAttribute("checkid", memberDTO.getCheckid());
 		}
 		
@@ -199,9 +199,9 @@ public class MemberController {
 		
 		if (memberDTO != null && passMatch == true) {
 			session.setAttribute("memEmail", memberDTO.getEmail());
+			session.setAttribute("nickname", memberDTO.getNickname());
 			session.setAttribute("image", memberDTO.getImage());
 			session.setAttribute("checkid", memberDTO.getCheckid());
-			System.out.println(memberDTO.getEmail());
 			mav.addObject("memberDTO", memberDTO);
 		}
 		mav.addObject("passMatch", passMatch);
@@ -215,6 +215,15 @@ public class MemberController {
 		return new ModelAndView("redirect:/main/index");
 	} // logout
 	
+	@RequestMapping(value="/member/dropMorip", method=RequestMethod.POST)
+	@ResponseBody
+	public void dropMorip(HttpSession session) {
+		String email = (String)session.getAttribute("memEmail");
+		String checkid = (String)session.getAttribute("checkid");
+		memberService.dropMorip(email, checkid);
+		session.invalidate();
+	}
+	
 	//--------------------------------------------------------------------------------------------------------------------------
 	
 	@RequestMapping(value = "/member/idFindForm")
@@ -227,16 +236,14 @@ public class MemberController {
 	public String pwdFindForm(Model model) {
 		model.addAttribute("display", "/resources/member/pwdFindForm.jsp");
 		return "/resources/main/index";
-	}
-	
+	}	
 	
 	@RequestMapping(value = "/member/checkId")
 	public ModelAndView checkId(@RequestParam String email, String checkid, HttpSession session) {
-		System.out.println("이메일뭐오냐" + email);
-		System.out.println("체크아이디뭐오냐" + checkid);		
+		System.out.println("이메일뭐오냐" + email);	
 		MemberDTO memberDTO = memberService.getMember(email, checkid);
-		session.setAttribute("image", memberDTO.getImage());
 		ModelAndView mav = new ModelAndView();
+		System.out.println(memberDTO.getImage());
 		mav.addObject("memberDTO", memberDTO);
 		mav.setViewName("jsonView");
 		return mav;
@@ -330,59 +337,42 @@ public class MemberController {
 		model.addAttribute("display", "/resources/member/memberModifyForm.jsp");
 		return "/resources/main/index";
 	}
-	
+		
 	// 회원정보 수정
 	@RequestMapping(value="/member/memberModify", method=RequestMethod.POST)
 	@ResponseBody
 	public void memberModify(@ModelAttribute MemberDTO memberDTO, 
 							 @RequestParam MultipartFile img, HttpSession session) {
-		String filePath = "E:\\spring\\gihwan\\morip\\morip\\src\\main\\webapp\\storage\\";
-		String fileName = img.getOriginalFilename();
-		File file = new File(filePath, fileName);
-		try {
-			FileCopyUtils.copy(img.getInputStream(), new FileOutputStream(file));
-		} catch (IOException e) {
-			e.printStackTrace();
-		}		
-		memberDTO.setImage(fileName);
+		String image =  (String)session.getAttribute("image");
+		String checkid = (String) session.getAttribute("checkid");
+		
+		if(img.getOriginalFilename() == "") {
+			memberDTO.setImage(image);
+		}else {
+			String filePath = "E:\\spring\\gihwan\\morip\\morip\\src\\main\\webapp\\storage\\";
+			String fileName = img.getOriginalFilename();
+			File file = new File(filePath, fileName);
+			try {
+				FileCopyUtils.copy(img.getInputStream(), new FileOutputStream(file));
+			} catch (IOException e) {
+				e.printStackTrace();
+			}		
+			memberDTO.setImage(fileName);		
+			session.setAttribute("nickname", memberDTO.getNickname());
+			session.setAttribute("image", memberDTO.getImage());
+		}					
 		String inputPass = memberDTO.getPwd();
 		String pass = passEncoder.encode(inputPass);
 		memberDTO.setPwd(pass);
-		String checkid = (String) session.getAttribute("checkid");
 		memberDTO.setCheckid(checkid);
-		System.out.println(memberDTO.getEmail());
-		System.out.println(memberDTO.getGender());
-		System.out.println(memberDTO.getImage());
-		System.out.println(memberDTO.getNickname());
 		memberService.memberModify(memberDTO);
+	}	
+	
+	public void aaaa(HttpSession session) {
+		String name = (String) session.getAttribute("nickname");
 	}
 	
-
-	/* 
-	@RequestMapping(value = "/member/profileChange", method = RequestMethod.POST)
-	@ResponseBody
-	public ModelAndView profileChange(HttpSession session, @RequestParam  MultipartFile img){
-		System.out.println("ajax 실행되면 들어온다.");
-		System.out.println(img.getOriginalFilename());
 	
-		String email = (String) session.getAttribute("memEmail");
-		MemberDTO memberDTO = memberService.getMember(email);
-		String filePath = "E:\\spring\\project\\morip\\src\\main\\webapp\\storage";
-		String fileName = img.getOriginalFilename();
-		File file = new File(filePath, fileName);
-		
-		//파일 복사
-		try {
-			FileCopyUtils.copy(img.getInputStream(), new FileOutputStream(file));
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		System.out.println(fileName);
-		memberDTO.setImage(fileName);		
-		ModelAndView mav = new ModelAndView();
-		mav.addObject("memberDTO", memberDTO);
-		mav.setViewName("jsonView");		
-		return mav;
-	}		
-	*/
+	
+	
 }

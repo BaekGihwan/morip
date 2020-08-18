@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import matzip.bean.MatzipDTO;
+import myblog.bean.MyblogDTO;
 
 @Transactional
 @Repository("matzipDAO")
@@ -48,5 +49,23 @@ public class MatzipDAOMybatis implements MatzipDAO {
 		map.put("startNum", startNum);
 	    map.put("endNum", endNum);
 		return sqlSession.selectList("matzipSQL.matzipAllList",map);
+	}
+
+	@Override
+	public List<MyblogDTO> getMatzipReview(String title, int startNum, int endNum) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("keyword", title);
+		//System.out.println(map.get("keyword"));
+		map.put("startNum", startNum);
+	    map.put("endNum", endNum);
+	    //List<MyblogDTO> list = sqlSession.selectList("matzipSQL.getMatzipReview",map);
+	    //System.out.println(list.get(0).getSubject());
+		return sqlSession.selectList("matzipSQL.getMatzipReview",map);
+	}
+
+	@Override
+	public String getReviewCount(String keyword) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne("matzipSQL.getReviewCount",keyword);
 	}
 }

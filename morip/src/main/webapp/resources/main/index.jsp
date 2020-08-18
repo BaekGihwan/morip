@@ -11,7 +11,7 @@
   <table id="mainTable">
     <!-- header부분 -->
     <tr>
-      <td id="header">   
+      <td id="header" style="height: 86px; width: 1120px;">   
         <jsp:include page="../template/top.jsp" />   
       </td>
     </tr>
@@ -31,6 +31,9 @@
     </tr>
   </table>
 </body>
+
 <!-- JQuery  -->
-<script type="text/javascript" src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
+<!-- <script type="text/javascript" src="http://code.jquery.com/jquery-3.5.1.min.js"></script> -->
+
+
 </html>

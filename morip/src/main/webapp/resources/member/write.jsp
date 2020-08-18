@@ -45,9 +45,11 @@
 <script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script src="http://developers.kakao.com/sdk/js/kakao.min.js"></script>
 <script src="https://apis.google.com/js/platform.js?onload=init" async defer></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 <script type="text/javascript">
 var email=null;
 var pwd=null;
+var image=null;
 
 $('#writeKakao').click(function(){
 	Kakao.init("9de483e18225043b33859dd6ffca7770");
@@ -70,16 +72,26 @@ $('#writeKakao').click(function(){
 									url : '/morip/member/kakaoWrite',
 									data : 'email=' + email,
 									dataType : 'text',
-									success : function(data) {
-										location.href = data;
+									success : function() {
+										location.href = '../member/writeForm2';
 									},
 									error : function(err) {
 										console.log(err);
 									}
 								});//ajax 카카오
 			    			} else {
-			    				alert("존재하는 아이디입니다.");
-			    				location.href = "../member/loginForm.jsp";
+			    				Swal.fire({
+			    					title: '존재하는 회원',
+			    					text: "로그인 화면으로 이동합니다.",
+			    					icon: 'warning',
+			    					confirmButtonColor: '#3085d6',
+			    					cancelButtonColor: '#d33',
+			    					confirmButtonText: 'Yes'
+			    				}).then((result) => {
+			    					if (result.value) {
+			    						location.href='../member/loginForm';
+			    					}
+			    				})
 			    			}
 			    		},
 			    		error : function(err) {
@@ -114,15 +126,25 @@ function checkLoginStatus(){
     					data : 'email=' + email,
     					dataType : 'text',
     					success : function(data) {
-    						location.href = data;
+    						location.href = '../member/writeForm2';
     					},
     					error : function(err) {
     						console.log(err);
     					}
     				});//ajax 구글
     			} else {
-    				alert("존재하는 아이디입니다.");
-    				location.href = "../member/loginForm.jsp";
+    				Swal.fire({
+    					title: '존재하는 회원',
+    					text: "로그인 화면으로 이동합니다.",
+    					icon: 'warning',
+    					confirmButtonColor: '#3085d6',
+    					cancelButtonColor: '#d33',
+    					confirmButtonText: 'Yes'
+    				}).then((result) => {
+    					if (result.value) {
+    						location.href='../member/loginForm';
+    					}
+    				})
     			}
     		},
     		error : function(err) {

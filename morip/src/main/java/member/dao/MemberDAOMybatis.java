@@ -57,4 +57,12 @@ public class MemberDAOMybatis implements MemberDAO {
 	public void memberModify(MemberDTO memberDTO) {
 		sqlSession.update("memberSQL.memberModify", memberDTO);
 	}
+
+	@Override
+	public void dropMorip(String email, String checkid) {
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("email", email);
+		map.put("checkid", checkid);
+		sqlSession.update("memberSQL.dropMorip", map);
+	}
 }

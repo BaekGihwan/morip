@@ -20,4 +20,34 @@ public class MyblogServiceImpl implements MyblogService {
 		
 		return myblogDAO.infinityScroll(map);
 	}
+
+	@Override
+	public void insertWriteBlog(Map<String, String> map) {
+		myblogDAO.insertWriteBlog(map);
+	}
+
+	@Override
+	public MyblogDTO viewPage(int seq) {
+		return myblogDAO.getView(seq);
+	}
+
+	@Override
+	public void deleteBlogBoard(Map<String, String> map) {
+		myblogDAO.deleteBlogBoard(map);
+	}
+
+	@Override
+	public void insertReply(Map<String, String> map) {
+		myblogDAO.insertReply(map);
+		
+	}
+	@Override
+	public List<MyblogDTO> loadReply(int ref) {
+		return myblogDAO.loadReply(ref);
+	}
+
+	@Override
+	public void updateReply(Map<String, String> map) {
+		myblogDAO.updateReply(map);
+	}
 }

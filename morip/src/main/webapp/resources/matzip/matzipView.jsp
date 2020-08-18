@@ -13,6 +13,7 @@
 <div id="matzipView">
 
 <input type="hidden" id="title" value="${title }">
+<input type="hidden" id="pg" value="1">
 
 
 <div id="matzipImageSlider" style="height:250px;overflow:hidden;" >
@@ -58,9 +59,9 @@
 </div>
 
 <!-- <div style="border:1px solid red;position:absolute;width:100%;"> -->
-<div style="width:60%;height:1000px;border-top:3px solid gray;border-left:1px solid #D5D5D5;border-right:1px solid #D5D5D5;border-bottom:1px solid #D5D5D5;background-color:white;left:20%; margin: 0 auto;">
+<div id="reviewOutDiv" style="width:60%;border-top:3px solid gray;border-left:1px solid #D5D5D5;border-right:1px solid #D5D5D5;border-bottom:1px solid #D5D5D5;background-color:white;left:20%; margin: 0 auto;">
 <div style="color:gray;font-size:22pt;"><div style="margin:20px;">블로그 리뷰</div><center><hr width="97%"></center></div>
-<div style="width:100%;height:200px;display:flex;position:relative;">
+<!-- <div id="reviewInDiv" style="width:100%;height:200px;display:flex;position:relative;">
 <div style="border:1px solid black;width:17%;height:130px;margin:35px;"></div>
 <div style="border:1px solid black;width:55%;height:30px;margin:25px;position:relative;left:5px;top:0px;"></div>
 <div style="border:1px solid black;width:65%;height:60px;position:absolute;left:235px;top:75px;margin-left:5%;"></div>
@@ -83,7 +84,7 @@
 <div style="border:1px solid black;width:55%;height:30px;margin:25px;position:relative;left:5px;top:0px;"></div>
 <div style="border:1px solid black;width:65%;height:60px;position:absolute;left:235px;top:75px;margin-left:5%;"></div>
 <div style="border-right:1px solid gray;height:20px;position:absolute;padding:10px;left:220px;top:150px;margin-left:5%;">샐리의 식탁</div><div style="height:20px;position:absolute;padding:10px;left:328px;top:150px;margin-left:5%;">2020.03.24</div>
-</div>
+</div> -->
 </div>
 
 </div> <!-- // 메인 닫히는곳 -->
@@ -106,12 +107,22 @@ var imgLink5;
 var imgLink6;
 var imgLink7;
 var imgLink8;
-
-
+  
 var imgLink = new Array();
 
+var $window = $(this);
+var scrollTop = $window.scrollTop();
+var windowHeight = $window.height();
+var documentHeight = $(document).height();
+var height=1500;
+var pg = $('#pg').val();
+//var count = $('#count').val();
+var list = "";
+var loading = false;    //중복실행여부 확인 변수
+var page = 1;   //불러올 페이지
+
 $(document).ready(function(){
-   $('#matzipImageSlider').css('width',$(window).width());
+	$('#matzipImageSlider').css('width',$(window).width());
    //alert($('#title').val());
    var titleSend = $('#title').val();
    titleSend=titleSend.replace('<b>','');
@@ -172,21 +183,6 @@ $(document).ready(function(){
                            dataType:'json',
                           success:function(data){
                         	  alert($('#matzipTitle').text());
-                        
-//                              $('#img1').prop('src',data.list[0].link);
-//                              $('#img2').prop('src',data.list[1].link);
-//                              $('#img3').prop('src',data.list[2].link);
-//                              $('#img4').prop('src',data.list[3].link);
-//                              $('#img5').prop('src',data.list[4].link);
-//                               imgLink0 = data.list[0].link;
-//                               imgLink1 = data.list[1].link;
-//                               imgLink2 = data.list[2].link;
-//                               imgLink3 = data.list[3].link;
-//                               imgLink4 = data.list[4].link;
-//                               imgLink5 = data.list[5].link;
-//                               imgLink6 = data.list[6].link;
-//                               imgLink7 = data.list[7].link;
-                          
                              $.each(data.list,function(index,items){
                             	 
                             	imgLink[index]=data.list[index].link;
@@ -260,6 +256,7 @@ $(document).ready(function(){
          console.log(err);
       }
    }); 
+   let imgWindow;
    $('.linkImg0').click(function(){
       let imgWindow = window.open(imgLink[0],"","width=500,height=500,top=100,left="+$(window).width()/3);
    });
@@ -284,6 +281,66 @@ $(document).ready(function(){
    $('.linkImg7').click(function(){
       let imgWindow = window.open(imgLink[7],"","width=500,height=500,top=100,left="+$(window).width()/3);
    });
+   /* imgWindow.onunload=function(){
+	   location.reload();
+   } */
+   $(window).scroll(function(){
+	    console.log("documentHeight:" + documentHeight + " | scrollTop:" + $window.scrollTop() + " | windowHeight: " + windowHeight );
+	        //if($(window).scrollTop()>=($(document).height() - $(window).height())/number)
+	        //if($(window).scrollTop()%500==0)
+	        //if($(window).scrollTop()>=600*number+number2)
+	        if($(window).scrollTop()+100>=$(document).height() - $(window).height())
+	        {
+	            if(!loading)    //실행 가능 상태라면?
+	            {
+	                loading = true; //실행 불가능 상태로 변경
+	                //console.log(number);
+	                loadingPage(); 
+	            }
+	        }
+	    });  
+   function loadingPage(){
+	   $.ajax({
+		   type:'post',
+		   url:'/morip/matzip/getMatzipReview',
+		   data:'title='+titleSend+'&pg='+$('#pg').val(),
+		   dataType:'json',
+		   success:function(data){
+			   pg++;
+				//count++;			
+				var tempNumber= 0;
+				if(data.list.length!='0'){   //데이터가 존재할 때
+				$.each(data.list, function(index, items){
+					//처음 시작을 여는 div
+					/* if(tempNumber%2==0){
+						height+=380;
+						//$('.content').css('height',height+'px');
+						list += '<div class="middleDiv" data-aos="fade-up" data-aos-duration="3000" style="width:100%; height:380px;display:flex;padding:10px;">';
+					} */
+					list+='<div id="reviewInDiv" class="hvr-grow" style="width:100%;height:200px;display:flex;position:relative;">';
+					list+='<div style="width:17%;height:130px;margin:35px;background-size:100% 130px;'+'background-image:url(../storage/'+items.mainimage+');"></div>';
+					list+='<div style="width:55%;height:40px;margin:25px;position:relative;left:5px;top:0px;font-weight:bold;font-size:20pt;overflow:hidden;">'+items.subject+'</div>';
+					list+='<div style="width:65%;height:60px;position:absolute;left:235px;top:75px;margin-left:5%;overflow:hidden;">'+items.content+'</div>';
+					list+='<div style="border-right:1px solid gray;height:20px;position:absolute;padding:10px;left:220px;top:150px;margin-left:5%;">'+items.nickname+'</div>';
+					list+='<div style="height:20px;position:absolute;padding:10px;left:328px;top:150px;margin-left:5%;">'+items.logtime+'</div>';
+   					list+='</div>';
+   					//닫아주는 div
+					/* if(tempNumber%4==3){
+						list+='</div>';
+					} */
+					tempNumber++;
+				});
+				$('#reviewOutDiv').append(list);
+				$('#pg').val(pg);
+				list='';
+				loading = false;
+				}
+		   },
+		   error:function(err){
+			   console.log(err);
+		   }
+	   });
+   }
 });
 </script>
 <script type="text/javascript" src="../js/matzip/slideImage.js"></script>

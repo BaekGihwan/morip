@@ -135,7 +135,8 @@
 	<script src="../js/member/login.js"></script>
 <!--===============================================================================================-->
 <script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
-<script src="http://developers.kakao.com/sdk/js/kakao.min.js"></script>\
+<script src="http://developers.kakao.com/sdk/js/kakao.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 <script src="https://apis.google.com/js/platform.js?onload=init" async defer></script>
 <script type="text/javascript">
 var email = null;
@@ -158,11 +159,21 @@ $('#kakaoLoginBtn').click(function(){
 							if (data.memberDTO != null) {
 								location.href = '../main/index';
 							} else {
-								if(confirm("존재하지 않는 회원입니다.\n가입을 원하시면 '예'를 눌러주세요")){
-									location.href = '../member/write';
-								}else{
-									location.href = '../member/loginForm';
-								}
+								Swal.fire({
+									title: '존재하지 않는 회원',
+									text: "가입을 원하시면 '예'를 눌어주세요.",
+									icon: 'warning',
+									showCancelButton: true,
+									confirmButtonColor: '#3085d6',
+									cancelButtonColor: '#d33',
+									confirmButtonText: 'Yes'
+								}).then((result) => {
+									if (result.value) {
+										location.href='../member/write';
+									} else {
+										location.href = '../member/loginForm';
+									}
+								})
 							}
 						},
 						error : function(err) {
@@ -194,11 +205,21 @@ function checkLoginStatus(){
 			if (data.memberDTO != null) {
 				location.href = '../main/index';
 			} else {
-				if(confirm("존재하지 않는 회원입니다.\n가입을 원하시면 '예'를 눌러주세요")){
-					location.href = '../member/write';
-				}else{
-					location.href = '../member/loginForm';
-				}
+				Swal.fire({
+					title: '존재하지 않는 회원',
+					text: "가입을 원하시면 '예'를 눌어주세요.",
+					icon: 'warning',
+					showCancelButton: true,
+					confirmButtonColor: '#3085d6',
+					cancelButtonColor: '#d33',
+					confirmButtonText: 'Yes'
+				}).then((result) => {
+					if (result.value) {
+						location.href='../member/write';
+					} else {
+						location.href = '../member/loginForm';
+					}
+				})
 			}
 		},
 		error : function(err) {
@@ -233,8 +254,18 @@ $('#loginBtn').click(function(){
 			if (data.memberDTO != null && data.passMatch == true) {
 				location.href = '../main/index';
 			} else {
-				alert("아이디 또는 비밀번호가 일치하지 않습니다.");
-				location.href = '../member/loginForm';
+				Swal.fire({
+					title: '로그인 실패',
+					text: "아이디 또는 비밀번호가 일치하지 않습니다.",
+					icon: 'warning',
+					confirmButtonColor: '#3085d6',
+					cancelButtonColor: '#d33',
+					confirmButtonText: 'Yes'
+				}).then((result) => {
+					if (result.value) {
+						location.href='../member/loginForm';
+					}
+				})
 			}
 		},
 		error : function(err) {
