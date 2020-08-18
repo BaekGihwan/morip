@@ -38,7 +38,7 @@
       <div class="layer">
       </div>
     </div>
-    <div class="profileImg_wrapper">
+   <div class="profileImg_wrapper">
       <div class="profileCircle">
         <div class="userProfile">
           <img class="userProfileImg" src="../image/myblog/harin.jpg">
@@ -85,8 +85,6 @@
       </div>
     </div>
   </div>
-    <footer>
-    </footer>
   </body>
   <!---->
   <!------------- Modal --------------->
