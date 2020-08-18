@@ -528,7 +528,8 @@
 		                });
 		                
 		                //alert($('#matzipAddress0').val());
-		                
+		                alert('맛집서치버튼클릭!');
+		                alert($('#matzipText').val());
 		                result1='success';
 		                //alert(result1);
 		                
@@ -625,7 +626,7 @@
 					      //alert($(this).prop('html'));
 					      //alert(test);
 					      //alert(title);
-					      //alert(title);
+					      alert(title);
 					      title = title.replace('<b>','');
 					      //title = title.replace('</b>','');
 					      location.href='../matzip/matzipView?title='+title;

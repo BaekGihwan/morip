@@ -14,49 +14,16 @@
 
 <input type="hidden" id="title" value="${title }">
 
-<!-- <div id="matzipImageSlider" style="width:100%;height:250px;overflow:hidden;" > -->
-<!-- <div class="hvr-grow-shadow" style="width:20%;height:250px"><div id="linkImg0"></div></div> -->
-<!-- <div class="hvr-grow-shadow" style="width:20%;height:250px"><div id="linkImg1"></div></div> -->
-<!-- <div class="hvr-grow-shadow" style="width:20%;height:250px"><div id="linkImg2"></div></div> -->
-<!-- <div class="hvr-grow-shadow" style="width:20%;height:250px"><div id="linkImg3"></div></div> -->
-<!-- <div class="hvr-grow-shadow" style="width:20%;height:250px"><div id="linkImg4"></div></div> -->
-<!-- <div class="hvr-grow-shadow" style="width:20%;height:250px"><div id="linkImg5"></div></div> -->
-<!-- <div class="hvr-grow-shadow" style="width:20%;height:250px"><div id="linkImg6"></div></div> -->
-<!-- <div class="hvr-grow-shadow" style="width:20%;height:250px"><div id="linkImg7"></div></div> -->
-<!-- <!-- <div class="hvr-grow-shadow" style="width:20%;height:250px"><div class="linkImg5" style="width:100%;height:250px"></div></div> --> 
-<!-- <!-- <div class="hvr-grow-shadow" style="width:20%;height:250px"><div class="linkImg6" style="width:100%;height:250px"></div></div> -->
-<!-- <!-- <div class="hvr-grow-shadow" style="width:20%;height:250px"><div class="linkImg7" style="width:100%;height:250px"></div></div> --> 
-<!-- </div> -->
-
-
-<!-- <div style="font-size:30px;"><i class="fas fa-chevron-left prev" style=";float:left"></i> -->
-<!-- <i class="fas fa-chevron-right next" style=";float:right"></i></div> -->
-<!-- <div id="matzipImageSlider" style="width:100%;height:250px;display:flex;"> -->
-<!-- <div  style="width:20%;height:250px;display: inline-block;vertical-align: middle;"><img id="linkImg0" src="" width="100%" height="250px"></div> -->
-<!-- <div  style="width:20%;height:250px;display: inline-block;vertical-align: middle;"><img id="linkImg1" src="" width="100%" height="250px"></div> -->
-<!-- <div  style="width:20%;height:250px;display: inline-block;vertical-align: middle;"><img id="linkImg2" src="" width="100%" height="250px"></div> -->
-<!-- <div  style="width:20%;height:250px;display: inline-block;vertical-align: middle;"><img id="linkImg3" src="" width="100%" height="250px"></div> -->
-<!-- <div  style="width:20%;height:250px;display: inline-block;vertical-align: middle;"><img id="linkImg4" src="" width="100%" height="250px"></div> -->
-<!-- <div  style="width:20%;height:250px;display: inline-block;vertical-align: middle;"><img id="linkImg5" src="" width="100%" height="250px"></div> -->
-<!-- <div  style="width:20%;height:250px;display: inline-block;vertical-align: middle;"><img id="linkImg6" src="" width="100%" height="250px"></div> -->
-<!-- <div  style="width:20%;height:250px;display: inline-block;vertical-align: middle;"><img id="linkImg7" src="" width="100%" height="250px"></div> -->
-<!-- <div  style="width:20%;height:250px;"><img id="linkImg5" src="" width="100%" height="250px"></div> -->
-<!-- <div  style="width:20%;height:250px;"><img id="linkImg6" src="" width="100%" height="250px"></div> -->
-<!-- <div  style="width:20%;height:250px;"><img id="linkImg7" src="" width="100%" height="250px"></div> -->
-<!-- <div class="hvr-grow-shadow" style="width:20%;height:250px;"><img id="linkImg5" src="" width="100%" height="250px"></div> -->
-<!-- <div class="hvr-grow-shadow" style="width:20%;height:250px;"><img id="linkImg6" src="" width="100%" height="250px"></div> -->
-<!-- <div class="hvr-grow-shadow" style="width:20%;height:250px;"><img id="linkImg7" src="" width="100%" height="250px"></div> -->
-<!-- </div> -->
 
 <div id="matzipImageSlider" style="height:250px;overflow:hidden;" >
-<div class="hvr-grow-shadow" style="width:100%;height:250px"><img class="linkImg0" style="width:100%;height:250px"></div>
-<div class="hvr-grow-shadow" style="width:100%;height:250px"><img class="linkImg1" style="width:100%;height:250px"></div>
-<div class="hvr-grow-shadow" style="width:100%;height:250px"><img class="linkImg2" style="width:100%;height:250px"></div>
-<div class="hvr-grow-shadow" style="width:100%;height:250px"><img class="linkImg3" style="width:100%;height:250px"></div>
-<div class="hvr-grow-shadow" style="width:100%;height:250px"><img class="linkImg4" style="width:100%;height:250px"></div>
-<div class="hvr-grow-shadow" style="width:100%;height:250px"><img class="linkImg5" style="width:100%;height:250px"></div>
-<div class="hvr-grow-shadow" style="width:100%;height:250px"><img class="linkImg6" style="width:100%;height:250px"></div>
-<div class="hvr-grow-shadow" style="width:100%;height:250px"><img class="linkImg7" style="width:100%;height:250px"></div>
+<div class="hvr-grow-shadow" style="width:100%;height:250px"><img class="linkImg0"  style="width:100%;height:250px;background-image:url('../image/matzip/unnamed.jpg');background-size:100% 100%;'"></div>
+<div class="hvr-grow-shadow" style="width:100%;height:250px"><img class="linkImg1"  style="width:100%;height:250px;background-image:url('../image/matzip/unnamed.jpg');background-size:100% 100%;"></div>
+<div class="hvr-grow-shadow" style="width:100%;height:250px"><img class="linkImg2"  style="width:100%;height:250px;background-image:url('../image/matzip/unnamed.jpg');background-size:100% 100%;"></div>
+<div class="hvr-grow-shadow" style="width:100%;height:250px"><img class="linkImg3"  style="width:100%;height:250px;background-image:url('../image/matzip/unnamed.jpg');background-size:100% 100%;"></div>
+<div class="hvr-grow-shadow" style="width:100%;height:250px"><img class="linkImg4"  style="width:100%;height:250px;background-image:url('../image/matzip/unnamed.jpg');background-size:100% 100%;"></div>
+<div class="hvr-grow-shadow" style="width:100%;height:250px"><img class="linkImg5"  style="width:100%;height:250px;background-image:url('../image/matzip/unnamed.jpg');background-size:100% 100%;"></div>
+<div class="hvr-grow-shadow" style="width:100%;height:250px"><img class="linkImg6"  style="width:100%;height:250px;background-image:url('../image/matzip/unnamed.jpg');background-size:100% 100%;"></div>
+<div class="hvr-grow-shadow" style="width:100%;height:250px"><img class="linkImg7"  style="width:100%;height:250px;background-image:url('../image/matzip/unnamed.jpg');background-size:100% 100%;"></div>
 </div>
 
 <!-- <div style="font-size:30px;width:100%;height:100%"><i class="fas fa-chevron-left prev" style=";float:left"></i> -->
@@ -130,6 +97,7 @@
 
 <script type="text/javascript">
 let result1;
+
 var imgLink1;
 var imgLink2;
 var imgLink3;
@@ -138,6 +106,10 @@ var imgLink5;
 var imgLink6;
 var imgLink7;
 var imgLink8;
+
+
+var imgLink = new Array();
+
 $(document).ready(function(){
    $('#matzipImageSlider').css('width',$(window).width());
    //alert($('#title').val());
@@ -147,18 +119,18 @@ $(document).ready(function(){
    //alert(titleSend);
    $.ajax({
       type:'post',
-      url:'../matzip/getMatzipView',
-      data:'title='+titleSend+' 음식점',
+      url:'../matzip/matzipSearch',
+      data:'matzipText='+titleSend,
       dataType:'json',
       success:function(data){
          //alert(data.matzip.address);
-         $('#matzipTitle').html(data.matzip.title);
-         $('#matzipCategory').text(data.matzip.category);
-         $('#matzipRoadAddress').text(data.matzip.roadAddress);
-         $('#matzipAddress').text(data.matzip.address);
-         $('#matzipLink').text(data.matzip.link);
-         $('#matzipLink').prop('href',data.matzip.link);
-         
+         $('#matzipTitle').html(data.list[0].title);
+         $('#matzipCategory').text(data.list[0].category);
+         $('#matzipRoadAddress').text(data.list[0].roadAddress);
+         $('#matzipAddress').text(data.list[0].address);
+         $('#matzipLink').text(data.list[0].link);
+         $('#matzipLink').prop('href',data.list[0].link);
+        
          result1='success';
             
             
@@ -191,30 +163,39 @@ $(document).ready(function(){
                         
         
                     });
-                    //alert($('#matzipTitle').text());
+                    alert($('#matzipTitle').text());
+                    
                     $.ajax({
                           type:'post',
                            url:'../matzip/matzipImage',
-                           data:{'matzipTitle': titleSend+' 맛집'},
+                           data:{'matzipTitle': $('#matzipTitle').text()+' 맛집'},
                            dataType:'json',
                           success:function(data){
+                        	  alert($('#matzipTitle').text());
+                        
 //                              $('#img1').prop('src',data.list[0].link);
 //                              $('#img2').prop('src',data.list[1].link);
 //                              $('#img3').prop('src',data.list[2].link);
 //                              $('#img4').prop('src',data.list[3].link);
 //                              $('#img5').prop('src',data.list[4].link);
-                                imgLink0 = data.list[0].link;
-                              imgLink1 = data.list[1].link;
-                                 imgLink2 = data.list[2].link;
-                              imgLink3 = data.list[3].link;
-                              imgLink4 = data.list[4].link;
-                              imgLink5 = data.list[5].link;
-                              imgLink6 = data.list[6].link;
-                              imgLink7 = data.list[7].link;
+//                               imgLink0 = data.list[0].link;
+//                               imgLink1 = data.list[1].link;
+//                               imgLink2 = data.list[2].link;
+//                               imgLink3 = data.list[3].link;
+//                               imgLink4 = data.list[4].link;
+//                               imgLink5 = data.list[5].link;
+//                               imgLink6 = data.list[6].link;
+//                               imgLink7 = data.list[7].link;
+                          
                              $.each(data.list,function(index,items){
+                            	 
+                            	imgLink[index]=data.list[index].link;
+                            	 
 //                             $('#linkImg'+index).prop('src',data.list[index].link);
+								
                                    $('.linkImg'+index).css({'background-image':'url('+items.link+')'})
                                    $('.linkImg'+index).css({'background-size':'100% 100%'})
+									
                                    
                                    
                                    
@@ -243,6 +224,7 @@ $(document).ready(function(){
                                console.log(err);
                             }
                        });
+                    
                     }
                     
                     var mapContainer = document.getElementById('map'),
@@ -259,6 +241,8 @@ $(document).ready(function(){
          console.log(err);
       }
    });
+   
+   
    $.ajax({
       type:'post',
       url:'../matzip/getMatzipView2',
@@ -277,28 +261,28 @@ $(document).ready(function(){
       }
    }); 
    $('.linkImg0').click(function(){
-      let imgWindow = window.open(imgLink0,"","width=500,height=500,top=100,left="+$(window).width()/3);
+      let imgWindow = window.open(imgLink[0],"","width=500,height=500,top=100,left="+$(window).width()/3);
    });
    $('.linkImg1').click(function(){
-      let imgWindow = window.open(imgLink1,"","width=500,height=500,top=100,left="+$(window).width()/3);
+      let imgWindow = window.open(imgLink[1],"","width=500,height=500,top=100,left="+$(window).width()/3);
    });
    $('.linkImg2').click(function(){
-      let imgWindow = window.open(imgLink2,"","width=500,height=500,top=100,left="+$(window).width()/3);
+      let imgWindow = window.open(imgLink[2],"","width=500,height=500,top=100,left="+$(window).width()/3);
    });
    $('.linkImg3').click(function(){
-      let imgWindow = window.open(imgLink3,"","width=500,height=500,top=100,left="+$(window).width()/3);
+      let imgWindow = window.open(imgLink[3],"","width=500,height=500,top=100,left="+$(window).width()/3);
    });
    $('.linkImg4').click(function(){
-      let imgWindow = window.open(imgLink4,"","width=500,height=500,top=100,left="+$(window).width()/3);
+      let imgWindow = window.open(imgLink[4],"","width=500,height=500,top=100,left="+$(window).width()/3);
    });
    $('.linkImg5').click(function(){
-      let imgWindow = window.open(imgLink5,"","width=500,height=500,top=100,left="+$(window).width()/3);
+      let imgWindow = window.open(imgLink[5],"","width=500,height=500,top=100,left="+$(window).width()/3);
    });
    $('.linkImg6').click(function(){
-      let imgWindow = window.open(imgLink6,"","width=500,height=500,top=100,left="+$(window).width()/3);
+      let imgWindow = window.open(imgLink[6],"","width=500,height=500,top=100,left="+$(window).width()/3);
    });
    $('.linkImg7').click(function(){
-      let imgWindow = window.open(imgLink7,"","width=500,height=500,top=100,left="+$(window).width()/3);
+      let imgWindow = window.open(imgLink[7],"","width=500,height=500,top=100,left="+$(window).width()/3);
    });
 });
 </script>
