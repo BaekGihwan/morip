@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
 import matzip.bean.MatzipDTO;
 import matzip.bean.MatzipImageDTO;
 import matzip.dao.MatzipDAO;
+import myblog.bean.MyblogDTO;
 
 @Service("matzipService")
 public class MatzipServiceImpl implements MatzipService {
@@ -359,5 +360,21 @@ public class MatzipServiceImpl implements MatzipService {
 	          return list;
 
 	   }
+
+	@Override
+	public List<MyblogDTO> getMatzipReview(String title, int pg) {
+		int endNum = pg*2;
+		int startNum = endNum-1;
+		List<MyblogDTO> list = matzipDAO.getMatzipReview(title, startNum,endNum);
+		//System.out.println(list.get(0).getSubject());
+		//session.setAttribute("ar", ar);
+		return list;
+	}
+
+	@Override
+	public String getReviewCount(String keyword) {
+		// TODO Auto-generated method stub
+		return matzipDAO.getReviewCount(keyword);
+	}
 
 }
