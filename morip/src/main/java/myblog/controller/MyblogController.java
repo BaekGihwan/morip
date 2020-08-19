@@ -25,7 +25,6 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import hashtag.service.HashtagService;
-import matzip.service.MatzipService;
 import myblog.bean.FollowDTO;
 import myblog.bean.LikeDTO;
 import myblog.bean.MyblogDTO;
@@ -139,10 +138,10 @@ public class MyblogController {
 		String filePath1 = "E:\\spring\\gihwan\\morip\\morip\\src\\main\\webapp\\storage\\";
 		//String filePath2 = "D:\\spring\\MORIP\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\MORIP_myblogTeam\\storage";
 		File file1 = new File(filePath1,fileName);
-		File file2 = new File(filePath2,fileName);
+		//File file2 = new File(filePath2,fileName);
 		try {
 			FileCopyUtils.copy(file.getInputStream(), new FileOutputStream(file1));
-			FileCopyUtils.copy(file.getInputStream(), new FileOutputStream(file2));
+			//FileCopyUtils.copy(file.getInputStream(), new FileOutputStream(file2));
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
@@ -226,9 +225,8 @@ public class MyblogController {
 		
 		@RequestMapping(value="/myblog/insertReply", method= {RequestMethod.POST})
 		public @ResponseBody void insertReply(HttpSession session, @RequestParam Map <String , String> map) {
-			map.put("email",(String)session.getAttribute("email"));
+			map.put("email",(String)session.getAttribute("memEmail"));
 			map.put("nickname", (String)session.getAttribute("nickname"));
-			map.put("email", "ka28@naver.com");
 			System.out.println("작성자"+session.getAttribute("email"));
 			myblogService.insertReply(map);
 			System.out.println("insertReply 들어와서 저장하는 중...");
