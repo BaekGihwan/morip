@@ -34,6 +34,7 @@
     <title></title>
   </head>
   <body>
+  <input type="hidden" id="nickname" value="${nickname }">
     <input type="hidden" id="subject" value="${subject }">
     <input type="hidden" id="backgroundImg" value="${fileName }">
     <article class="contentWrapper">
@@ -41,18 +42,24 @@
         <div class="writeEditor">
           <!--상태 진행 바-->
           <div class="contentHeader" style=" ">
-            	에세이 작성
+            	여행기 작성
           </div>
           <div class="stepBarWrapper">
             <input type="hidden" id="stepPg" value="2">
             <div class="step1">
               <div class="stepHeader">STEP1</div>
               <div class="stepContent">
-               	에세이 제목과 배경 설정
+               	여행 일정 등록
               </div>
             </div>
             <div class="step2">
               <div class="stepHeader">STEP2</div>
+              <div class="stepContent">
+               	에세이 제목과 배경 설정
+              </div>
+            </div>
+            <div class="step3">
+              <div class="stepHeader">STEP3</div>
               <div class="stepContent">
                	에세이 내용 작성
               </div>
@@ -111,6 +118,7 @@
   <script src="../js/myblog/writeBlog.js"></script>
     <!-- Bootstrap core JS-->
   <script> 
+  var nickname=$('#nickname').val();
   $('#saveBtn').click(function(){
 	  let publicOption = 0;
 	  if($("#primary-switch").is(":checked")){
@@ -131,8 +139,8 @@
 	    		url : '/morip/myblog/save',
 	    		data : 'content='+content+"&subject="+$('#subject').val()+"&backgroundImg="+$('#backgroundImg').val()+"&publicoption="+publicOption+"&hashtag="+hashtag,
 	    		success : function(){
-	    			alert("여행기 작성이 완료되었습니다!");
-	    				location.href="mypage";
+	    			alert("여행기 작성이 완료되었습니다!"+nickname);
+    				location.href="mypage?nickname="+nickname;
 	    		},
 	    		error : function(e){
 					console.log(e);
@@ -179,7 +187,6 @@
         processData: false,
         dataType:"json",
         success: function(data) {
-
           	$('#summernote').summernote('insertImage', data.url, data.fileName);
         }
       });

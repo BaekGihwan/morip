@@ -32,8 +32,7 @@
   </head>
   <body>
     <div id="mypageHeadder">
-	
-      <div class="backgroundImg">
+      <div class="backgroundImg" style="background: url(../storage/${memberDTO.backimage}) no-repeat 50% 50%; background-size: cover;">
       </div>
       <div class="layer">
       </div>
@@ -41,14 +40,15 @@
    <div class="profileImg_wrapper">
       <div class="profileCircle">
         <div class="userProfile">
-          <img class="userProfileImg" src="../image/myblog/harin.jpg">
+          <img class="userProfileImg" src="../storage/${memberDTO.image}" style="width:100%; height:100%;">
         </div>
       </div>
       <div class="userId">
-        ${nickname}
+        ${memberDTO.nickname}
       </div>
     </div>
     <input type="hidden" id="pageNickname" value="${pageNickname }">
+    <input type="hidden" id="pageEmail" value="${memberDTO.email}">
     <input type="hidden" id="nickname" value="${nickname}">
   <!--content -->
   <input type="hidden" id="pg" value="1">
@@ -71,7 +71,7 @@
           </div>
         </div>
         <button type="button" class="btn btn-outline-secondary" id="writeOptionBtn" style="font-size:9px; border-radius:20px; width:100px;">글 작성</button>
-        <button type="button" class="btn btn-outline-secondary" style="font-size:9px; border-radius:20px; width:100px;">회원정보수정</button>
+        <button type="button" class="btn btn-outline-secondary" id="modifyMemberBtn" style="font-size:9px; border-radius:20px; width:100px;">회원정보수정</button>
         <button type="button" class="btn btn-outline-primary" id="followBtn"style="font-size: 9px; border-radius: 20px; width: 100px;">팔로우</button>
 		<input type="hidden" id="followCheck" value="uncheck">
       </div>

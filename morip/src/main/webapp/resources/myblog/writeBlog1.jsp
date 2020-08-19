@@ -31,18 +31,24 @@
         <div class="writeEditor">
           <!--상태 진행 바-->
           <div class="contentHeader" style=" ">
-            에세이 작성
+            여행기 작성
           </div>
           <div class="stepBarWrapper">
             <input type="hidden" id="stepPg" value="1">
             <div class="step1">
               <div class="stepHeader">STEP1</div>
               <div class="stepContent">
-               	에세이 제목과 배경 설정
+               	여행 일정 등록
               </div>
             </div>
             <div class="step2">
               <div class="stepHeader">STEP2</div>
+              <div class="stepContent">
+               	에세이 제목과 배경 설정
+              </div>
+            </div>
+            <div class="step3">
+              <div class="stepHeader">STEP3</div>
               <div class="stepContent">
                	에세이 내용 작성
               </div>
@@ -72,6 +78,11 @@
         </div>
         <div class="writeOption">
           <div class="stepChoiceWrapper">
+            <div class="hvr-backward " id="backwardBtn">
+              <div class="stepChoiceContent">
+                	이 전
+              </div>
+            </div>
             <div class="hvr-forward" id="forwardBtn">
               <div class="stepChoiceContent">
                	 다 음

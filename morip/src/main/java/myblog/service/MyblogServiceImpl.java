@@ -8,6 +8,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import member.bean.MemberDTO;
 import myblog.bean.FollowDTO;
 import myblog.bean.LikeDTO;
 import myblog.bean.MyblogDTO;
@@ -22,7 +23,7 @@ public class MyblogServiceImpl implements MyblogService {
 	private HttpSession session;
 	
 	@Override
-	public List <MyblogDTO> infinityScroll(Map<String, Integer> map) {
+	public List <MyblogDTO> infinityScroll(Map<String,Object> map) {
 		
 		return myblogDAO.infinityScroll(map);
 	}
@@ -55,6 +56,25 @@ public class MyblogServiceImpl implements MyblogService {
 	@Override
 	public void updateReply(Map<String, String> map) {
 		myblogDAO.updateReply(map);
+	}
+
+
+	@Override
+	public MemberDTO loadMember(String nickname) {
+		return myblogDAO.loadMember(nickname);
+	}
+
+	@Override
+	   public int boardSize(String email) {
+	      
+	      return myblogDAO.boardSize(email);
+	   }
+
+	
+	@Override
+	public MyblogDTO boardWriteCheck(Map<String, String> map) {
+		
+		return myblogDAO.boardWriteCheck(map);
 	}
 	
 	@Override
@@ -163,5 +183,5 @@ public class MyblogServiceImpl implements MyblogService {
 		
 		return myblogDAO.replySize(seq);
 	}
-	
+
 }

@@ -32,8 +32,6 @@ li {
 }
 
 .backgroundImg {
-	background: url(../../image/myblog/architecture.jpg) no-repeat 50% 50%;
-	background-size: cover;
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -184,9 +182,6 @@ li {
 	margin: 50px auto;
 }
 
-.numberDiv {
-	cursor: pointer;
-}
 /*
 .content_wrapper{
   height:2000px;
@@ -219,13 +214,6 @@ li {
 
 .myblog_img {
 	overflow: hidden;
-}
-
-.myblog_info
-,
-.myblog_img
-,
-{
 }
 .myblog_subject {
 	font-size: 18px;

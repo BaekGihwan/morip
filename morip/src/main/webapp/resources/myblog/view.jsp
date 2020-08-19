@@ -21,9 +21,10 @@
     
   </head>
   <body>
-  
-      <input type="hidden" class="view_seq" value="${seq }">
-    
+    <input type="hidden" id="pageNickname" value="${myblogDTO.nickname }">
+    <input type="hidden" id="nickname" value="${nickname}">
+    <input type="hidden" class="view_seq" value="${seq }">
+    	
     <div id="viewheader">
       <div class="background">
       	<div class="backgroundImg" style="background: url('../storage/${myblogDTO.mainimage}') no-repeat 50% 50%; background-size: cover;">s </div>
@@ -39,9 +40,7 @@
             </div>
             <div class="userinfowrapper">
               <img class="view_userImg"src="../image/myblog/pic01.jpg">
-              <div class="view_userId">
-              	${myblogDTO.nickname}
-              </div>
+              <div class="view_userId" id="view_userId">${myblogDTO.nickname}</div>
             </div>
           </div>
       </div>
@@ -66,17 +65,10 @@
           	${myblogDTO.content}
           </div>
           <div class="view_boardOption">
-            <div class="view_like">
-              <div class="view_likeWrapper">
-                <i class="" id="likeBtn" style="margin-right:10px;"></i>
-                <p>공감하기</p>
-                <input type="hidden" id="likeCheck" value="off">
-              </div>
-            </div>
             <div class="view_reply">
               <div class="view_replyWrapper">
-                <i class="far fa-comment-dots" style="margin-right:10px;"></i>
-                <p>댓글쓰기</p>
+                <i class="far fa-comment-dots" style="margin-right:10px; margin-bottom: 0px;"></i>
+                <p style="margin-bottom: 0px;">댓글쓰기</p>
               </div>
             </div>
           </div>
@@ -86,9 +78,9 @@
               <div class="view_replyContentInputWrapper">
                 <div class="reply_contentInput">
                     <div class="reply_userID">
-                      ${myblogDTO.nickname}
+                      ${nickname}
                     </div>
-                    <textarea id="replyInputBox${seq }" class="form-control" aria-label="With textarea"></textarea>
+                    <textarea id="replyInputBox${seq }" class="form-control" aria-label="With textarea" style="resize: none;"></textarea>
                     <div class="reply_inputOption">
                       <button id="insertBtn" class="btn btn-light" onclick="insertBtn(${seq})">등록</button>
                     </div>
@@ -124,7 +116,7 @@
                 <div class="view_replyListWrapper">
                   <div class="view_replyList">
                     <div class="view_userImgWrapper">
-                      <img class="view_userImg" src="../image/myblog/game.png">+++++++++++++
+                      <img class="view_userImg" src="../image/myblog/game.png">
                       
                     </div>
                     <div class="view_replyContent">
@@ -178,8 +170,24 @@
     </div>
     <script type="text/javascript">
     $(document).ready(function(){
-    	console.log($('.view_seq').val());
-    	var seq = $('.view_seq').val();
+      console.log($('.view_seq').val());
+      var seq = $('.view_seq').val();
+      
+      $.ajax({
+    	  type: 'post',
+    	  url: '/morip/myblog/boardWriteCheck',
+    	  data: 'seq='+seq,
+    	  dataType: 'json',
+    	  success: function(data){
+    		  if(data.myblogDTO.email != data.memEmail){
+    			  $('.view_controlOption').css('display', 'none');
+    		  }
+    	  },
+    	  error: function(err){
+    		  console.log(err);
+    	  }
+      });
+      
       //좋아요 체크
       $.ajax({
           type: 'post',
@@ -228,7 +236,9 @@
     		  console.log(err);
     	  }
       });
-    });
+
+      
+    });//$(document).ready
     </script>
   </body>
   <!-- sweetAlert -->

@@ -2,7 +2,7 @@ package myblog.dao;
 
 import java.util.List;
 import java.util.Map;
-
+import member.bean.MemberDTO;
 import myblog.bean.FollowDTO;
 import myblog.bean.LikeDTO;
 import myblog.bean.MyblogDTO;
@@ -52,5 +52,12 @@ public interface MyblogDAO {
 
 	public int replySize(String seq);
 
+	public MyblogDTO boardWriteCheck(Map<String, String> map);
+
+	public void updateReply(Map<String, String> map);
+
+	public MemberDTO loadMember(String nickname);
+
+	public int boardSize(String email);
 
 }

@@ -101,6 +101,7 @@ body, html{
 .view_userId{
 	margin-left:20px;
 	color:white;
+	cursor: pointer;
 }
 .subjectWrapper{
 	font-family: 'Noto Sans KR', sans-serif;
@@ -170,7 +171,7 @@ body, html{
   align-items: center;
   border-top:1px solid gray;
 }
-.view_reply, .view_like{
+.view_reply{
   margin:10px;
   padding:0.3em;
 }
@@ -215,7 +216,7 @@ body, html{
   display: flex;
 }
 .view_userImgWrapper{
-  width:10%;
+  width:5%;
   margin-right:20px;
 }
 .view_userImg{

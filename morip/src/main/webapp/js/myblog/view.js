@@ -1,4 +1,7 @@
 var view_seq = $('.view_seq').val();  // 원글 ref값
+var nickname = $('#nickname').val();
+var pageNickname = $('#pageNickname').val();
+
 	$(window).scroll(function () {
 				var height = $(document).scrollTop();
 				if(height>=550){
@@ -14,13 +17,18 @@ var view_seq = $('.view_seq').val();  // 원글 ref값
 	  $('.switch_infomation').hide();
 	  $('.writeOptionDiv').hide();
 	  $('.view_replyBoard').toggle();
-		$('.view_replyBoard').css('display','block');
+	  $('.view_replyBoard').css('display','block');
 	  let option= $('.view_controlOption').offset();
+	  
+	  //로그인 한 유저의 이름과 글 작성자가 같은지의 유무 확인
+	  
+
 	});
+	
+	
 	/*글 옵션 버튼 눌렀을 때 div 띄워주기*/
 	$('.view_controlOption').click(function(){
-	  if($('#clickCheck').val()=='off'){
-	    $('.writeOptionDiv').show();
+	    $('.writeOptionDiv').toggle();
 	    $('.writeOptionDiv').css({
 	      position:'absolute',
 	      top:event.pageY+20,
@@ -29,11 +37,6 @@ var view_seq = $('.view_seq').val();  // 원글 ref값
 	      height:'100px',
 	      border:'1px solid gray'
 	    });
-	    $('#clickCheck').val('on');
-	  } else if($('#clickCheck').val()=='on'){
-	    $('.writeOptionDiv').hide();
-	    $('#clickCheck').val('off');
-	  }
 	});
 	$('#modifyBoard').click(function(){
 	  alert("수정 버튼 클릭");
@@ -41,7 +44,7 @@ var view_seq = $('.view_seq').val();  // 원글 ref값
 	$('#deleteBoard').click(function(){
 		deleteBoard(view_seq);
 	});
-	//삭제하는 함수
+	 //삭제하는 함수
 	function deleteBoard(seq){
 		Swal.fire({
 		  title: '글을 삭제하시겠습니까???',
@@ -100,7 +103,7 @@ var view_seq = $('.view_seq').val();  // 원글 ref값
 	      '<div class="view_replyContentInputWrapper">'+
 	        '<div class="reply_contentInput">'+
 	            '<div class="reply_userID">'+
-	             '로그인한 유저이름'+
+	             nickname+
 	            '</div>'+
 	            '<textarea id="replyInputBox'+seq+'" class="form-control" aria-label="With textarea"></textarea>'+
 	            '<div class="reply_inputOption">'+
@@ -246,6 +249,7 @@ function loadReply(){
 					if(data.list.length!='0'){   //데이터가 존재할 때
 						$.each(data.list, function(index, items){
 							//console.log(items.content);
+							let replyNickname = items.nickname;
 							let seq = items.blogboardtable_seq;
 							let pseq = items.pseq;
 							let replyForm=
@@ -257,7 +261,7 @@ function loadReply(){
 							                '</div>'+
 							                '<div class="view_replyContent">'+
 							                    '<div class="reply_userID">'+
-							                     items.nickname+
+							                     replyNickname+
 							                    '</div>'+
 							                    '<div class="reply_content">'+
 							                     '<p>'+
@@ -266,19 +270,17 @@ function loadReply(){
 							                    '</div>'+
 							                '</div>'+
 							              '</div>'+
-							              '<div class="view_replyBtnWrapper">'+
-							              	'<div id="replyBtn1" class="hvr-grow" onclick="replyBtnClick('+seq+')">'+
-							                  '답글'+
-							                '</div>'+
-							                '<div id="deleteBtn" class="hvr-grow" onclick="deleteBtnClick('+seq+')">'+
-							                  '삭제'+
-							                '</div>'+
-							                '<div id="modifyBtn" class="hvr-grow" onclick="modifyBtnClick('+seq+')">'+
-							                 '수정'+
-							                '</div>'+
-							              '</div>'+
-							            '</div>'+
-							          '</div>';
+							              '<div class="view_replyBtnWrapper">';
+							              if(items.step!=2){
+							              	replyForm += '<div id="replyBtn1" class="hvr-grow" onclick="replyBtnClick('+seq+')">'+ '답글'+ '</div>';
+							              }
+							              	
+							                //댓글의 삭제와 수정기능은 작성자 만이 할 수 있음
+							                if(nickname==replyNickname){
+							              		replyForm += '<div id="deleteBtn" class="hvr-grow" onclick="deleteBtnClick('+seq+')">'+'삭제'+'</div>'+
+							                				'<div id="modifyBtn" class="hvr-grow" onclick="modifyBtnClick('+seq+')">'+ '수정'+ '</div>'
+							              	}
+							         		replyForm += '</div>'+'</div>'+'</div>';
 							  if(items.step==1){  //본문글의 댓글일 때
 							  	$('.replyInsertDiv').append(replyForm);
 							  } else {
@@ -362,35 +364,52 @@ $(function(){
 
 //좋아요 클릭
 $('#likeBtn').click(function(){
-	if($('#likeViewCheck').val()=='unlike'){ // likeCheck가 unlike일때
-		$.ajax({
-			type: 'post',
-			url: '/morip/myblog/like',
-			data: {'seq' : $('.view_seq').val()},
-			success: function(){
-				$('#likeI').attr('class', 'fas fa-heart');
-            	$('#likeI').css('color', 'red');
-            	$('#likeCheck').attr('value', 'like');
-            	location.reload();
-			},
-			error: function(){
-				console.log(err);
+	$.ajax({
+		type: 'post',
+		url: '/morip/myblog/boardWriteCheck',
+		data: 'seq='+$('.view_seq').val(),
+		dataType: 'json',
+		success: function(data){
+			if(data.myblogDTO.email != data.memEmail){
+				if($('#likeViewCheck').val()=='unlike'){ // likeCheck가 unlike일때
+					$.ajax({
+						type: 'post',
+						url: '/morip/myblog/like',
+						data: {'seq' : $('.view_seq').val()},
+						success: function(){
+							$('#likeI').attr('class', 'fas fa-heart');
+							$('#likeI').css('color', 'red');
+							$('#likeCheck').attr('value', 'like');
+							location.reload();
+						},
+						error: function(){
+							console.log(err);
+						}
+					});
+				} else if($('#likeViewCheck').val()=='like'){ // likeCheck가 like일때
+					$.ajax({
+						type: 'post',
+						url: '/morip/myblog/unlike',
+						data: {'seq' : $('.view_seq').val()},
+						success: function(){
+							$('#likeI').attr('class', 'far fa-heart');
+							$('#likeCheck').attr('value', 'unlike');
+							location.reload();
+						},
+						error: function(err){
+							console.log(err);
+						}
+					});
+				}
 			}
-		});
-	} else if($('#likeViewCheck').val()=='like'){ // likeCheck가 like일때
-		$.ajax({
-			type: 'post',
-			url: '/morip/myblog/unlike',
-			data: {'seq' : $('.view_seq').val()},
-			success: function(){
-				$('#likeI').attr('class', 'far fa-heart');
-				$('#likeCheck').attr('value', 'unlike');
-				location.reload();
-			},
-			error: function(err){
-				console.log(err);
-			}
-		});
-	}
-	
+		},
+		error: function(err){
+			console.log(err);
+		}
+	});
+});
+
+$('#view_userId').click(function(){
+	var view_userId = $('#view_userId').text();
+	location.href='/morip/myblog/mypage/'+view_userId;
 });

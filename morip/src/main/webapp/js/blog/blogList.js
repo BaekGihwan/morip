@@ -118,8 +118,8 @@ var loading = false;    //중복실행여부 확인 변수
 var page = 1;   //불러올 페이지
 
 $(window).scroll(function(){
-console.log("documentHeight:" + documentHeight + " | scrollTop:" + scrollTop + " | windowHeight: " + windowHeight );
-    if($(window).scrollTop()+200>=$(document).height() - $(window).height())
+console.log("documentHeight:" + documentHeight + " | scrollTop:" + $window.scrollTop() + " | windowHeight: " + windowHeight );
+    if($(window).scrollTop()+1000>=$(document).height() - $(window).height())
     {
         if(!loading)    //실행 가능 상태라면?
         {
@@ -146,7 +146,7 @@ function loadingPage(){
 					let seq = items.blogboardtable_seq;
 					//처음 시작을 여는 div
 					if(tempNumber%4==0){
-						height+=230;
+						height+=300;
 						$('.blogList_wrapper').css('height',height+'px');
 						list += '<div class="blogList" id="blogList" data-aos="fade-up" data-aos-duration="3000">';
 					}
@@ -177,6 +177,6 @@ function loadingPage(){
 
 //뷰 페이지 진입
 function viewEnter(seq){
-	location.href="view?seq="+seq;
+	location.href="../myblog/view?seq="+seq;
 }
 
