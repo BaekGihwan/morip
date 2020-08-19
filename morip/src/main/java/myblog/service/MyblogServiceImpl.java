@@ -58,6 +58,12 @@ public class MyblogServiceImpl implements MyblogService {
 	}
 	
 	@Override
+	public MyblogDTO boardWriteCheck(Map<String, String> map) {
+		
+		return myblogDAO.boardWriteCheck(map);
+	}
+	
+	@Override
 	public void like(Map<String, String> map) {
 		
 		String email = (String) session.getAttribute("memEmail");

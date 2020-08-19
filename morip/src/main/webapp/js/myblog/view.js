@@ -14,13 +14,12 @@ var view_seq = $('.view_seq').val();  // 원글 ref값
 	  $('.switch_infomation').hide();
 	  $('.writeOptionDiv').hide();
 	  $('.view_replyBoard').toggle();
-		$('.view_replyBoard').css('display','block');
+	  $('.view_replyBoard').css('display','block');
 	  let option= $('.view_controlOption').offset();
 	});
 	/*글 옵션 버튼 눌렀을 때 div 띄워주기*/
 	$('.view_controlOption').click(function(){
-	  if($('#clickCheck').val()=='off'){
-	    $('.writeOptionDiv').show();
+	    $('.writeOptionDiv').toggle();
 	    $('.writeOptionDiv').css({
 	      position:'absolute',
 	      top:event.pageY+20,
@@ -29,11 +28,6 @@ var view_seq = $('.view_seq').val();  // 원글 ref값
 	      height:'100px',
 	      border:'1px solid gray'
 	    });
-	    $('#clickCheck').val('on');
-	  } else if($('#clickCheck').val()=='on'){
-	    $('.writeOptionDiv').hide();
-	    $('#clickCheck').val('off');
-	  }
 	});
 	$('#modifyBoard').click(function(){
 	  alert("수정 버튼 클릭");
@@ -362,35 +356,52 @@ $(function(){
 
 //좋아요 클릭
 $('#likeBtn').click(function(){
-	if($('#likeViewCheck').val()=='unlike'){ // likeCheck가 unlike일때
-		$.ajax({
-			type: 'post',
-			url: '/morip/myblog/like',
-			data: {'seq' : $('.view_seq').val()},
-			success: function(){
-				$('#likeI').attr('class', 'fas fa-heart');
-            	$('#likeI').css('color', 'red');
-            	$('#likeCheck').attr('value', 'like');
-            	location.reload();
-			},
-			error: function(){
-				console.log(err);
+	$.ajax({
+		type: 'post',
+		url: '/morip/myblog/boardWriteCheck',
+		data: 'seq='+$('.view_seq').val(),
+		dataType: 'json',
+		success: function(data){
+			if(data.myblogDTO.email != data.memEmail){
+				if($('#likeViewCheck').val()=='unlike'){ // likeCheck가 unlike일때
+					$.ajax({
+						type: 'post',
+						url: '/morip/myblog/like',
+						data: {'seq' : $('.view_seq').val()},
+						success: function(){
+							$('#likeI').attr('class', 'fas fa-heart');
+							$('#likeI').css('color', 'red');
+							$('#likeCheck').attr('value', 'like');
+							location.reload();
+						},
+						error: function(){
+							console.log(err);
+						}
+					});
+				} else if($('#likeViewCheck').val()=='like'){ // likeCheck가 like일때
+					$.ajax({
+						type: 'post',
+						url: '/morip/myblog/unlike',
+						data: {'seq' : $('.view_seq').val()},
+						success: function(){
+							$('#likeI').attr('class', 'far fa-heart');
+							$('#likeCheck').attr('value', 'unlike');
+							location.reload();
+						},
+						error: function(err){
+							console.log(err);
+						}
+					});
+				}
 			}
-		});
-	} else if($('#likeViewCheck').val()=='like'){ // likeCheck가 like일때
-		$.ajax({
-			type: 'post',
-			url: '/morip/myblog/unlike',
-			data: {'seq' : $('.view_seq').val()},
-			success: function(){
-				$('#likeI').attr('class', 'far fa-heart');
-				$('#likeCheck').attr('value', 'unlike');
-				location.reload();
-			},
-			error: function(err){
-				console.log(err);
-			}
-		});
-	}
-	
+		},
+		error: function(err){
+			console.log(err);
+		}
+	});
+});
+
+$('#view_userId').click(function(){
+	var view_userId = $('#view_userId').text();
+	location.href='/morip/myblog/mypage/'+view_userId;
 });
