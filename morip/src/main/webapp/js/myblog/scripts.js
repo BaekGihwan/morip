@@ -3,28 +3,148 @@ var pageEmail = $('#pageEmail').val();
 
 /*팔로우 버튼 클릭*/
 $('.follower').click(function(){
-  $('#followModal').modal();
-  $('.modal-title').text("팔로우");
+	$.ajax({
+		type: 'post',
+		url: '/morip/myblog/followClick',
+		data: {'email' : 'ka28@naver.com'},
+		dataType: 'json',
+		success: function(data){
+			$('#modal_followtable tr:gt(0)').remove();
+			$.each(data.list, function(index, items){
+				$('<tr/>').append($('<td/>', {
+					id : 'modal_userImg'
+					}).append($('<img>', {
+						src : '../image/myblog/paris.jpg',
+						id : 'modal_userImg'
+				}))
+				).append($('<td/>', {
+					id : 'modal_userName',
+					text : items.nickname
+				})).append($('<td/>', {
+					id : 'modal_userFollow'
+					}).append($('<button/>', {
+						class : 'btn btn-outline-dark',
+						id : 'followClickBtn',
+						text : '팔로잉'
+					}))
+				).appendTo($('#modal_followtable'));
+			});
+		}
+	});
+	$('#followModal').modal();
+	$('.modal-title').text("팔로우");
 });
+
 /*팔로잉 버튼 클릭*/
 $('.following').click(function(){
-  $('#followModal').modal();
-  $('.modal-title').text("팔로잉");
+	$.ajax({
+		type: 'post',
+		url: '/morip/myblog/followingClick',
+		data: {'follow_email' : 'ka28@naver.com'},
+		dataType: 'json',
+		success: function(data){
+			//alert(JSON.stringify(data));
+			$('#modal_followingtable tr:gt(0)').remove();
+			$.each(data.list, function(index, items){
+				$('<tr/>').append($('<td/>', {
+					id : 'modal_userImg'
+					}).append($('<img>', {
+						src : '../image/myblog/cake.png',
+						id : 'modal_userImg'
+				}))
+				).append($('<td/>', {
+					id : 'modal_userName',
+					text : items.nickname
+				})).append($('<td/>', {
+					id : 'modal_userFollow'
+					}).append($('<button/>', {
+						class : 'btn btn-outline-dark',
+						id : 'followingClickBtn',
+						text : '팔로잉'
+					}))
+				).appendTo($('#modal_followingtable'));
+			});
+		}
+	});
+	$('#followingModal').modal();
+	$('.modal-title').text("팔로잉");
 });
-//좋아요 클릭
+
+//팔로우 버튼 클릭
+$('#followBtn').click(function(){
+	if($('#followCheck').val() == 'uncheck'){
+		$.ajax({
+			type: 'post',
+			url: '/morip/myblog/follow',
+			data: {'follow_email' : 'ka28@naver.com'},
+			success: function(){
+				$('#followBtn').attr('class', 'btn btn-outline-dark');
+				$('#followBtn').text('팔로잉');
+				$('#followCheck').val('check');
+				location.reload();
+			},
+			error: function(err){
+				console.log(err);
+			}
+
+		});
+	}else if($('#followCheck').val() == 'check'){
+		$.ajax({
+			type: 'post',
+			url: '/morip/myblog/unfollow',
+			data: {'follow_email' : 'ka28@naver.com'},
+			success: function(){
+				$('#followBtn').attr('class', 'btn btn-outline-primary');
+				$('#followBtn').text('팔로우');
+				$('#followCheck').val('uncheck');
+				location.reload();
+			},
+			error: function(err){
+				console.log(err);
+			}
+
+		});
+	}
+});
+/*
 function likeClick(seq){
-	if($('#likeCheck'+seq).val()=='unlike'){
-		$('.like'+seq).html('<i class="fas fa-heart" style="color:red;"></i>');
-		$('#likeCheck'+seq).val('like');
-	} else {
-		$('.like'+seq).html('<i class="far fa-heart"></i>');
-		$('#likeCheck'+seq).val('unlike');
-	}	
+	if($('#likeCheck'+seq).val()=='unlike'){ // likeCheck가 unlike일때
+		$.ajax({
+			type: 'post',
+			url: '/morip/myblog/like',
+			data: {'seq' : seq},
+			success: function(){
+				$('.like'+seq).html('<i class="fas fa-heart" style="color:red;"></i>');
+				$('#likeCheck'+seq).val('like');
+				location.reload();
+			},
+			error: function(){
+				console.log(err);
+			}
+		});
+	} else { // likeCheck가 like일때
+		$.ajax({
+			type: 'post',
+			url: '/morip/myblog/unlike',
+			data: {'seq' : seq},
+			success: function(){
+				$('.like'+seq).html('<i class="far fa-heart"></i>');
+				$('#likeCheck'+seq).val('unlike');
+				location.reload();
+			},
+			error: function(err){
+				console.log(err);
+			}
+		});
+	}
+	
 }
+
 /*회원정보 수정*/
 $('#modifyMemberBtn').click(function(){
 	location.href="/morip/member/memberModifyForm";
 });
+
 /*작성 버튼 클릭 시  OptionModal 창 띄워주기*/
 $('#writeOptionBtn').click(function(){
 	//$('#writeOptionModal').modal();
@@ -38,6 +158,7 @@ $('#writeBlogImg').click(function(){
 $('#travelsWriteImg').click(function(){
 	location.href="/morip/myblog/travlesWrite1";
 });
+
 //날짜 형식 변환
 Date.prototype.format = function (f) {
     if (!this.valueOf()) return " ";
@@ -135,7 +256,7 @@ $(document).ready(function(){
             				list+='<div class="myblog_info"><div class="myblog_subject">'+items.subject+'</div>';
             				list+='<div class="myblog_content">'+items.content+'</div>';
             				list+='<div class="myblog_userFunction"><div class="like'+seq+'" style="cursor:pointer;"onclick="likeClick('+seq+')"><i class="far fa-heart"></i></div>';
-            				list+='<div class="reply"> 34 </div><div class="myblog_travleDay">';
+            				list+='<div class="likeCount'+seq+'"></div><div class="myblog_travleDay">';
             				list+= startdate +'~'+ enddate+'</div></div></div></div>';
             				list+='<input type="hidden" id="likeCheck'+seq+'" value="unlike">';
             				//닫아주는 div
@@ -150,9 +271,34 @@ $(document).ready(function(){
 						list='';
 						loading = false;
 						}
+						likeCheck();
 					}   //success
 				});   //AJAX
     }
+    
+    function likeCheck(){ // 인피니티스크롤 작동후에 좋아요를 체크하여 실행해주는 함수
+		$.ajax({
+			type: 'post',
+			url: '/morip/myblog/likeCheck',
+			dataType: 'json',
+			success: function(data){
+				if(data.list != ''){
+					$.each(data.list, function(index, items){
+						if(items.seq != ''){
+							$('.like'+items.board_seq).html('<i class="fas fa-heart" style="color:red;"></i>');
+							$('#likeCheck'+items.board_seq).val('like');
+						}else{
+							$('.like'+items.board_seq).html('<i class="far fa-heart"></i>');
+							$('#likeCheck'+items.board_seq).val('unlike');
+						}
+					});
+				}
+			},
+			error: function(err){
+				console.log(err);
+			}
+		});
+	}
     
     //뷰 페이지 진입
    	function viewEnter(seq){

@@ -198,6 +198,7 @@ var clicks11;
 var clicks12;
 var clicks13;
 var clicks14;
+
 var $window = $(this);
 	var scrollTop = $window.scrollTop();
 	var windowHeight = $window.height();
@@ -353,6 +354,17 @@ $('#pajuA').click(function(){
 					dataType:'text',
 					success:function(data){
 						$('#pajuReview'+index).text(data);
+						$.ajax({
+							type:'post',
+							url:'../matzip/updateReviewCount',
+							data:'title='+$('#pajuTitle'+index).text()+'&reviewCount='+data,
+							success:function(){
+							},
+							error:function(err){
+								console.log(err);
+							}
+							
+						});
 					},
 					error:function(err){
 						console.log(err);
@@ -396,6 +408,17 @@ $('#chuncheonA').click(function(){
 					dataType:'text',
 					success:function(data){
 						$('#chuncheonReview'+index).text(data);
+						$.ajax({
+							type:'post',
+							url:'../matzip/updateReviewCount',
+							data:'title='+$('#chuncheonTitle'+index).text()+'&reviewCount='+data,
+							success:function(){
+							},
+							error:function(err){
+								console.log(err);
+							}
+							
+						});
 					},
 					error:function(err){
 						console.log(err);
@@ -439,6 +462,17 @@ $('#incheonA').click(function(){
 					dataType:'text',
 					success:function(data){
 						$('#incheonReview'+index).text(data);
+						$.ajax({
+							type:'post',
+							url:'../matzip/updateReviewCount',
+							data:'title='+$('#incheonTitle'+index).text()+'&reviewCount='+data,
+							success:function(){
+							},
+							error:function(err){
+								console.log(err);
+							}
+							
+						});
 					},
 					error:function(err){
 						console.log(err);
@@ -482,6 +516,17 @@ $('#seoulA').click(function(){
 					dataType:'text',
 					success:function(data){
 						$('#seoulReview'+index).text(data);
+						$.ajax({
+							type:'post',
+							url:'../matzip/updateReviewCount',
+							data:'title='+$('#seoulTitle'+index).text()+'&reviewCount='+data,
+							success:function(){
+							},
+							error:function(err){
+								console.log(err);
+							}
+							
+						});
 					},
 					error:function(err){
 						console.log(err);
@@ -525,6 +570,17 @@ $('#gangneungA').click(function(){
 					dataType:'text',
 					success:function(data){
 						$('#gangneungReview'+index).text(data);
+						$.ajax({
+							type:'post',
+							url:'../matzip/updateReviewCount',
+							data:'title='+$('#gangneungTitle'+index).text()+'&reviewCount='+data,
+							success:function(){
+							},
+							error:function(err){
+								console.log(err);
+							}
+							
+						});
 					},
 					error:function(err){
 						console.log(err);
@@ -568,6 +624,17 @@ $('#suwonA').click(function(){
 					dataType:'text',
 					success:function(data){
 						$('#suwonReview'+index).text(data);
+						$.ajax({
+							type:'post',
+							url:'../matzip/updateReviewCount',
+							data:'title='+$('#suwonTitle'+index).text()+'&reviewCount='+data,
+							success:function(){
+							},
+							error:function(err){
+								console.log(err);
+							}
+							
+						});
 					},
 					error:function(err){
 						console.log(err);
@@ -611,6 +678,17 @@ $('#cheonanA').click(function(){
 					dataType:'text',
 					success:function(data){
 						$('#cheonanReview'+index).text(data);
+						$.ajax({
+							type:'post',
+							url:'../matzip/updateReviewCount',
+							data:'title='+$('#cheonanTitle'+index).text()+'&reviewCount='+data,
+							success:function(){
+							},
+							error:function(err){
+								console.log(err);
+							}
+							
+						});
 					},
 					error:function(err){
 						console.log(err);
@@ -654,6 +732,17 @@ $('#andongA').click(function(){
 					dataType:'text',
 					success:function(data){
 						$('#andongReview'+index).text(data);
+						$.ajax({
+							type:'post',
+							url:'../matzip/updateReviewCount',
+							data:'title='+$('#andongTitle'+index).text()+'&reviewCount='+data,
+							success:function(){
+							},
+							error:function(err){
+								console.log(err);
+							}
+							
+						});
 					},
 					error:function(err){
 						console.log(err);
@@ -697,6 +786,17 @@ $('#jeonjuA').click(function(){
 					dataType:'text',
 					success:function(data){
 						$('#jeonjuReview'+index).text(data);
+						$.ajax({
+							type:'post',
+							url:'../matzip/updateReviewCount',
+							data:'title='+$('#jeonjuTitle'+index).text()+'&reviewCount='+data,
+							success:function(){
+							},
+							error:function(err){
+								console.log(err);
+							}
+							
+						});
 					},
 					error:function(err){
 						console.log(err);
@@ -740,6 +840,17 @@ $('#chungjuA').click(function(){
 					dataType:'text',
 					success:function(data){
 						$('#chungjuReview'+index).text(data);
+						$.ajax({
+							type:'post',
+							url:'../matzip/updateReviewCount',
+							data:'title='+$('#chungjuTitle'+index).text()+'&reviewCount='+data,
+							success:function(){
+							},
+							error:function(err){
+								console.log(err);
+							}
+							
+						});
 					},
 					error:function(err){
 						console.log(err);
@@ -783,6 +894,17 @@ $('#gyeongjuA').click(function(){
 					dataType:'text',
 					success:function(data){
 						$('#gyeongjuReview'+index).text(data);
+						$.ajax({
+							type:'post',
+							url:'../matzip/updateReviewCount',
+							data:'title='+$('#gyeongjuTitle'+index).text()+'&reviewCount='+data,
+							success:function(){
+							},
+							error:function(err){
+								console.log(err);
+							}
+							
+						});
 					},
 					error:function(err){
 						console.log(err);
@@ -826,6 +948,17 @@ $('#yeosuA').click(function(){
 					dataType:'text',
 					success:function(data){
 						$('#yeosuReview'+index).text(data);
+						$.ajax({
+							type:'post',
+							url:'../matzip/updateReviewCount',
+							data:'title='+$('#yeosuTitle'+index).text()+'&reviewCount='+data,
+							success:function(){
+							},
+							error:function(err){
+								console.log(err);
+							}
+							
+						});
 					},
 					error:function(err){
 						console.log(err);
@@ -869,6 +1002,17 @@ $('#jejuA').click(function(){
 					dataType:'text',
 					success:function(data){
 						$('#jejuReview'+index).text(data);
+						$.ajax({
+							type:'post',
+							url:'../matzip/updateReviewCount',
+							data:'title='+$('#jejuTitle'+index).text()+'&reviewCount='+data,
+							success:function(){
+							},
+							error:function(err){
+								console.log(err);
+							}
+							
+						});
 					},
 					error:function(err){
 						console.log(err);
@@ -912,6 +1056,17 @@ $('#busanA').click(function(){
 					dataType:'text',
 					success:function(data){
 						$('#busanReview'+index).text(data);
+						$.ajax({
+							type:'post',
+							url:'../matzip/updateReviewCount',
+							data:'title='+$('#busanTitle'+index).text()+'&reviewCount='+data,
+							success:function(){
+							},
+							error:function(err){
+								console.log(err);
+							}
+							
+						});
 					},
 					error:function(err){
 						console.log(err);

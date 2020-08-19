@@ -101,6 +101,7 @@ body, html{
 .view_userId{
 	margin-left:20px;
 	color:white;
+	cursor: pointer;
 }
 .subjectWrapper{
 	font-family: 'Noto Sans KR', sans-serif;
@@ -154,7 +155,13 @@ body, html{
 	margin:0;
 	font-size: 15px;
 }
-#likeBtn, #replyBtn{
+#likeBtn{
+	cursor: pointer;
+	border: 0;
+	outline: 0;
+	background: none;
+} 
+#replyBtn{
 	cursor: pointer;
 }
 /*글하단 설정부분*/
@@ -164,7 +171,7 @@ body, html{
   align-items: center;
   border-top:1px solid gray;
 }
-.view_reply, .view_like{
+.view_reply{
   margin:10px;
   padding:0.3em;
 }

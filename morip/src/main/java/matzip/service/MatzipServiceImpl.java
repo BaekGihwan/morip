@@ -8,7 +8,9 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -382,6 +384,17 @@ public class MatzipServiceImpl implements MatzipService {
 	public String getReviewCount(String keyword) {
 		// TODO Auto-generated method stub
 		return matzipDAO.getReviewCount(keyword);
+	}
+
+	@Override
+	public void updateReviewCount(String title, String reviewCount) {
+		Map<String,String> map = new HashMap<String,String>();
+		map.put("title", title);
+		map.put("reviewCount",reviewCount);
+		
+		matzipDAO.updateReviewCount(map);
+		
+		
 	}
 
 }

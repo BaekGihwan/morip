@@ -2,27 +2,62 @@ package myblog.dao;
 
 import java.util.List;
 import java.util.Map;
-
 import member.bean.MemberDTO;
+import myblog.bean.FollowDTO;
+import myblog.bean.LikeDTO;
 import myblog.bean.MyblogDTO;
 
 public interface MyblogDAO {
-	List <MyblogDTO> infinityScroll(Map<String, Object> map);
+	public List <MyblogDTO> infinityScroll(Map<String, Integer> map);
 
-	void insertWriteBlog(Map<String, String> map);
+	public void insertWriteBlog(Map<String, String> map);
 
-	MyblogDTO getView(int seq);
+	public MyblogDTO getView(int seq);
 
-	void deleteBlogBoard(Map<String, String> map);
+	public void deleteBlogBoard(Map<String, String> map);
 
-	void insertReply(Map<String, String> map);
+	public void insertReply(Map<String, String> map);
 
-	List<MyblogDTO> loadReply(int ref);
+	public List<MyblogDTO> loadReply(int ref);
 
-	void updateReply(Map<String, String> map);
+	public void updateReply(Map<String, String> map);
+	
+	public void like(Map<String, String> map);
 
-	MemberDTO loadMember(String nickname);
+	public void unlike(Map<String, String> map);
 
-	int boardSize(String email);
+	public List<LikeDTO> likeCheck(String email);
+
+	public LikeDTO likeViewCheck(Map<String, String> map);
+
+	public int likeSize(Map<String, String> map);
+
+	public List<MyblogDTO> likeListSize();
+
+	public void follow(Map<String, String> map);
+
+	public void unfollow(Map<String, String> map);
+
+	public FollowDTO followCheck(Map<String, String> map);
+
+	public List<FollowDTO> followClick(String email);
+
+	public List<FollowDTO> followingClick(String follow_email);
+
+	public int followerSize(String follow_email);
+
+	public int followingSize(String email);
+
+	public int boardSize(String email);
+
+	public int replySize(String seq);
+
+	public MyblogDTO boardWriteCheck(Map<String, String> map);
+
+	public void updateReply(Map<String, String> map);
+
+	public MemberDTO loadMember(String nickname);
+
+	public int boardSize(String email);
 
 }
