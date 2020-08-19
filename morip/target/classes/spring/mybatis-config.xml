@@ -16,5 +16,7 @@
      	<typeAlias type="member.bean.MemberDTO" alias="member"/>
      	<!-- board -->
      	<typeAlias type="board.bean.BoardDTO" alias="board"/>
+     	<!-- hashtag -->
+     	<typeAlias type="hashtag.bean.HashtagDTO" alias="hashtag"/>
      </typeAliases>
   </configuration>

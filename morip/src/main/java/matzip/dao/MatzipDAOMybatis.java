@@ -68,4 +68,10 @@ public class MatzipDAOMybatis implements MatzipDAO {
 		// TODO Auto-generated method stub
 		return sqlSession.selectOne("matzipSQL.getReviewCount",keyword);
 	}
+
+	@Override
+	public void updateReviewCount(Map<String, String> map) {
+		sqlSession.update("matzipSQL.updateReviewCount",map);
+		
+	}
 }
