@@ -222,7 +222,7 @@
       </div>
       <div class="food_post">
          <div class="food_post_name" id="food_post_name2"></div>
-        <div class="food_post_image" id="food_post_image2" style="background-image: url('../image/main/foodtest.jpg')"></div>
+        <div class="food_post_image" id="food_post_image2"></div>
         <div class="food_post_contents">
           <div class="content1">
             <i class="fas fa-comment-dots"></i>
@@ -247,7 +247,7 @@
       </div>
       <div class="food_post">
          <div class="food_post_name" id="food_post_name3"></div>
-        <div class="food_post_image" id="food_post_image3" style="background-image: url('../image/foodtest.jpg')"></div>
+        <div class="food_post_image" id="food_post_image3"></div>
         <div class="food_post_contents">
           <div class="content1">
             <i class="fas fa-comment-dots"></i>
