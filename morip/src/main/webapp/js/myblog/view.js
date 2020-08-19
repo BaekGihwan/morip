@@ -359,3 +359,38 @@ $(function(){
         }
     });
 });
+
+//좋아요 클릭
+$('#likeBtn').click(function(){
+	if($('#likeViewCheck').val()=='unlike'){ // likeCheck가 unlike일때
+		$.ajax({
+			type: 'post',
+			url: '/morip/myblog/like',
+			data: {'seq' : $('.view_seq').val()},
+			success: function(){
+				$('#likeI').attr('class', 'fas fa-heart');
+            	$('#likeI').css('color', 'red');
+            	$('#likeCheck').attr('value', 'like');
+            	location.reload();
+			},
+			error: function(){
+				console.log(err);
+			}
+		});
+	} else if($('#likeViewCheck').val()=='like'){ // likeCheck가 like일때
+		$.ajax({
+			type: 'post',
+			url: '/morip/myblog/unlike',
+			data: {'seq' : $('.view_seq').val()},
+			success: function(){
+				$('#likeI').attr('class', 'far fa-heart');
+				$('#likeCheck').attr('value', 'unlike');
+				location.reload();
+			},
+			error: function(err){
+				console.log(err);
+			}
+		});
+	}
+	
+});

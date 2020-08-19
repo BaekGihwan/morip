@@ -48,12 +48,15 @@
     </div>
     <div class="sideBar">
       <div class="likeOption">
-        <i id="likeBtn" class="far fa-heart"></i>
-        <p>23</p>
+        <button id="likeBtn">
+        <i id="likeI" class="far fa-heart"></i>
+      </button>
+        <input type="hidden" id="likeViewCheck" value="">
+        <p id="likeSize"></p>
       </div>
       <div class="replyOption">
         <i id="replyBtn" class="far fa-comment-dots"></i>
-        <p>5</p>
+        <p id="replySize"></p>
       </div>
     </div>
     <article class="contentContainer">
@@ -65,7 +68,7 @@
           <div class="view_boardOption">
             <div class="view_like">
               <div class="view_likeWrapper">
-                <i class="far fa-heart" id="likeBtn" style="margin-right:10px;"></i>
+                <i class="" id="likeBtn" style="margin-right:10px;"></i>
                 <p>공감하기</p>
                 <input type="hidden" id="likeCheck" value="off">
               </div>
@@ -173,6 +176,60 @@
         <i class="fas fa-trash-alt"></i>
       </div>
     </div>
+    <script type="text/javascript">
+    $(document).ready(function(){
+    	console.log($('.view_seq').val());
+    	var seq = $('.view_seq').val();
+      //좋아요 체크
+      $.ajax({
+          type: 'post',
+          url: '/morip/myblog/likeViewCheck',
+          data: 'seq='+$('.view_seq').val(),
+          dataType: 'json',
+          success: function(data){
+        	  if(data.likeDTO == null){
+                  $('#likeI').attr('class', 'far fa-heart');
+                  $('#likeViewCheck').attr('value', 'unlike');
+              }else if(data.likeDTO.board_seq == seq){
+            	  $('#likeI').attr('class', 'fas fa-heart');
+            	  $('#likeI').css('color', 'red');
+            	  $('#likeViewCheck').attr('value', 'like');
+              } 
+          }, // success
+          error: function(err){
+            console.log(err);
+          } // error
+      }); // ajax
+      
+      //좋아요 숫자
+      $.ajax({
+        type: 'post',
+        url: '/morip/myblog/likeSize',
+        data: 'seq='+seq,
+        dataType: 'json',
+        success: function(data){
+          $('#likeSize').text(data.likeSize);
+        },
+        error: function(err){
+          console.log(err);
+        }
+      });
+      
+      //댓글 숫자
+      $.ajax({
+    	  type: 'post',
+    	  url: '/morip/myblog/replySize',
+    	  data: 'seq='+seq,
+    	  dataType: 'json',
+    	  success: function(data){
+    		  $('#replySize').text(data.size);
+    	  },
+    	  error: function(err){
+    		  console.log(err);
+    	  }
+      });
+    });
+    </script>
   </body>
   <!-- sweetAlert -->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
@@ -189,4 +246,4 @@
 
   </Script>
 </html>
-/
+

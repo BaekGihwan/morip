@@ -5,7 +5,11 @@
   <configuration>
      <typeAliases>
      	<!-- myblog -->
-     	<typeAlias type="myblog.bean.MyblogDTO" alias="myblog"/>	
+     	<typeAlias type="myblog.bean.MyblogDTO" alias="myblog"/>
+     	<!-- like -->
+     	<typeAlias type="myblog.bean.LikeDTO" alias="like"/>
+     	<!-- follow -->
+		<typeAlias type="myblog.bean.FollowDTO" alias="follow"/>	
      	<!-- matzip -->
      	<typeAlias type="matzip.bean.MatzipDTO" alias="matzip"/>
      	<!-- member -->

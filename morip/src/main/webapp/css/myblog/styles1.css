@@ -260,6 +260,10 @@ li {
 	text-align: right;
 }
 
+.likeCount{
+  flex-grow: 1;
+}
+
 .reply {
 	flex-grow: 1;
 }
