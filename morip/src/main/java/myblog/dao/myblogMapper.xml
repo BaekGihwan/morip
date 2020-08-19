@@ -4,8 +4,8 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="myblogSQL">
 	<select id="infinityScroll" resultType="myblog" parameterType="java.util.Map">
-		select * from(select rownum rn, tt.*from (select * from blogboardtable where  nickname= #{nickname} and step=0 order by blogboardtable_seq desc)tt)
- 		where nickname= #{nickname} and rn<![CDATA[ >= ]]>#{startNum} and rn<![CDATA[ <= ]]>#{endNum}
+		select * from(select rownum rn, tt.*from (select * from blogboardtable where  email= #{email} and step=0 order by blogboardtable_seq desc)tt)
+ 		where email= #{email} and rn<![CDATA[ >= ]]>#{startNum} and rn<![CDATA[ <= ]]>#{endNum}
 	</select>
 	<insert id="insertWriteBlog" parameterType="java.util.Map">
 	 insert into blogboardtable(blogboardtable_seq, nickname ,email, subject, content, mainimage, logtime, publicoption)  values(blogboardtable_seq.nextval, #{nickname },#{email }, #{subject }, #{content},#{backgroundImg } ,sysdate,#{publicoption })
@@ -29,10 +29,6 @@
 	<select id="loadMember" parameterType="String" resultType="member">
 		select * from membertable where nickname=#{nickname }
 	</select>
-	<select id="boardSize" parameterType="String" resultType="int">
-      select count(*) from blogboardtable where email=#{email}
-   </select>
-
 	
 	<select id="boardWriteCheck" parameterType="java.util.Map" resultType="myblog">
 		select * from blogboardtable where blogboardtable_seq=#{seq}
@@ -107,7 +103,7 @@
 	
 	<!-- 게시판 작성한 숫자 -->
 	<select id="boardSize" parameterType="String" resultType="int">
-		select count(*) from blogboardtable where email=#{email}
+		select count(*) from blogboardtable where email=#{email} and step = 0
 	</select>
 	
 	<select id="replySize" parameterType="String" resultType="int">

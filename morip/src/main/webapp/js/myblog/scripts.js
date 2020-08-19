@@ -194,6 +194,7 @@ Number.prototype.zf = function (len) { return this.toString().zf(len); };
 //페이지 로딩 되자마자 1pg 뜨기
 $(document).ready(function(){
 	loadBoardCount();
+	likeCount();
 	loadingPage();
 	if($('#pageNickname').val()==$('#nickname').val()){  //마이 페이지로 들어왔을 경우
 		$('#writeOptionBtn').show();
@@ -232,7 +233,7 @@ $(document).ready(function(){
     	$.ajax({
 					type: 'post',
 					url: '/morip/myblog/infinityScroll',
-					data: 'pg='+pg+'&nickname='+pageNickname,
+					data: 'pg='+pg+'&email='+pageEmail,
 					dataType: 'json',
 					success: function(data){
 						pg++;
@@ -319,4 +320,21 @@ $(document).ready(function(){
            console.log(err);
          }
        });
+   	}
+   	
+   	function likeCount(){
+   	//좋아요 숫자
+	      $.ajax({
+	        type: 'post',
+	        url: '/morip/myblog/likeListSize',
+	        dataType: 'json',
+	        success: function(data){
+	        	$.each(data.list, function(index, items){
+	          		$('.likeCount'+items.blogboardtable_seq).html('&nbsp;&nbsp;&nbsp;'+items.likecount);
+	        	});
+	        },
+	        error: function(err){
+	          console.log(err);
+	        }
+	      });	
    	}

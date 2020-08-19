@@ -33,7 +33,7 @@ $('.header_loginBtn').click(function(){
 });
 // 마이페이지 버튼
 $('.userPageBtn').click(function(){
-	location.href='../myblog/mypage';
+	location.href='../myblog/mypage?nickname='+$('#nickname').val();
 });
 // 정보수정 버튼
 $('.userSettingBtn').click(function(){

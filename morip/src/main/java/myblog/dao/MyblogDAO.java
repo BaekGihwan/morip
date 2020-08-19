@@ -8,7 +8,7 @@ import myblog.bean.LikeDTO;
 import myblog.bean.MyblogDTO;
 
 public interface MyblogDAO {
-	public List <MyblogDTO> infinityScroll(Map<String, Integer> map);
+	public List <MyblogDTO> infinityScroll(Map<String, Object> map);
 
 	public void insertWriteBlog(Map<String, String> map);
 
@@ -54,10 +54,7 @@ public interface MyblogDAO {
 
 	public MyblogDTO boardWriteCheck(Map<String, String> map);
 
-	public void updateReply(Map<String, String> map);
-
 	public MemberDTO loadMember(String nickname);
 
-	public int boardSize(String email);
 
 }

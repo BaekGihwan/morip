@@ -10,6 +10,7 @@
 <body onLoad="pageStart()">
 <input type="hidden" id="memEmail" value="${memEmail }">
 <input type="hidden" id="checkid" value="${checkid }">
+<input type="hidden" id="nickname" value="${nickname }">
   <header >
     <div class="header">
       <!-- 메인로고 -->

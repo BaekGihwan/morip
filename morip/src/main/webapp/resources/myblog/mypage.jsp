@@ -66,7 +66,7 @@
             팔로잉
           </div>
           <div class="listCount">
-            <div class=" numberDiv" id="blogboardtableDiv"></div>
+            <div class="numberDiv" id="blogboardtableDiv"></div>
             <p>게시물</p>
           </div>
         </div>
@@ -275,34 +275,7 @@
 	      } // error
 	 	}); // ajax
 		
-	 	//좋아요 숫자
-	      $.ajax({
-	        type: 'post',
-	        url: '/morip/myblog/likeListSize',
-	        dataType: 'json',
-	        success: function(data){
-	        	$.each(data.list, function(index, items){
-	          		$('.likeCount'+items.blogboardtable_seq).html('&nbsp;&nbsp;&nbsp;'+items.likecount);
-	        	});
-	        },
-	        error: function(err){
-	          console.log(err);
-	        }
-	      });
-	 	
-	    //게시물 숫자 체크
-	    $.ajax({
-	      type: 'post',
-	      url: '/morip/myblog/boardSize',
-	      data: {'email' : 'ka28@naver.com'},
-	      dataType: 'json',
-	      success: function(data){
-	    	  $('#blogboardtableDiv').text(data.size);
-	      },
-	      error: function(err){
-	        console.log(err);
-	      }
-	    });
+	 	 	
 	});
   </script>
 </html>

@@ -56,8 +56,6 @@ public interface MyblogService {
 
 	public int followingSize(String email);
 
-	public int boardSize(String email);
-
 	public int replySize(String seq);
 
 	public MyblogDTO boardWriteCheck(Map<String, String> map);
