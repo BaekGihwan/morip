@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import member.bean.MemberDTO;
 import myblog.bean.MyblogDTO;
 
 @Repository
@@ -18,7 +19,7 @@ public class MyblogDaoMybatis implements MyblogDAO {
 	private SqlSession sqlSession;
 	
 	@Override
-	public List <MyblogDTO> infinityScroll(Map<String, Integer> map) {
+	public List <MyblogDTO> infinityScroll(Map<String, Object> map) {
 		return sqlSession.selectList("myblogSQL.infinityScroll", map);
 	}
 
@@ -51,5 +52,16 @@ public class MyblogDaoMybatis implements MyblogDAO {
 	public void updateReply(Map<String, String> map) {
 		sqlSession.update("myblogSQL.updateReply",map);
 	}
+
+	@Override
+	public MemberDTO loadMember(String nickname) {
+		return sqlSession.selectOne("myblogSQL.loadMember",nickname);
+	}
+	
+	@Override
+	   public int boardSize(String email) {
+	      
+	      return sqlSession.selectOne("myblogSQL.boardSize", email);
+	   }
 
 }

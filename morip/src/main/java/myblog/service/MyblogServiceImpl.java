@@ -6,7 +6,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-
+import member.bean.MemberDTO;
 import myblog.bean.MyblogDTO;
 import myblog.dao.MyblogDAO;
 
@@ -16,7 +16,7 @@ public class MyblogServiceImpl implements MyblogService {
 	private MyblogDAO myblogDAO;
 	
 	@Override
-	public List <MyblogDTO> infinityScroll(Map<String, Integer> map) {
+	public List <MyblogDTO> infinityScroll(Map<String,Object> map) {
 		
 		return myblogDAO.infinityScroll(map);
 	}
@@ -50,4 +50,15 @@ public class MyblogServiceImpl implements MyblogService {
 	public void updateReply(Map<String, String> map) {
 		myblogDAO.updateReply(map);
 	}
+
+	@Override
+	public MemberDTO loadMember(String nickname) {
+		return myblogDAO.loadMember(nickname);
+	}
+
+	@Override
+	   public int boardSize(String email) {
+	      
+	      return myblogDAO.boardSize(email);
+	   }
 }

@@ -1,3 +1,5 @@
+var pageNickname = $('#pageNickname').val();  //들어온 페이지의 주인
+var pageEmail = $('#pageEmail').val();
 
 /*팔로우 버튼 클릭*/
 $('.follower').click(function(){
@@ -19,9 +21,14 @@ function likeClick(seq){
 		$('#likeCheck'+seq).val('unlike');
 	}	
 }
+/*회원정보 수정*/
+$('#modifyMemberBtn').click(function(){
+	location.href="/morip/member/memberModifyForm";
+});
 /*작성 버튼 클릭 시  OptionModal 창 띄워주기*/
 $('#writeOptionBtn').click(function(){
-	$('#writeOptionModal').modal();
+	//$('#writeOptionModal').modal();
+	location.href="/morip/myblog/writeBlog1";
 });
 /*글 작성 모달에서 에세이 버튼 클릭시 */
 $('#writeBlogImg').click(function(){
@@ -65,13 +72,15 @@ Number.prototype.zf = function (len) { return this.toString().zf(len); };
 /*무한스크롤*/
 //페이지 로딩 되자마자 1pg 뜨기
 $(document).ready(function(){
+	loadBoardCount();
 	loadingPage();
-/*	if($('#pageNickname').val().equals($('#nickname').val())){
+	if($('#pageNickname').val()==$('#nickname').val()){  //마이 페이지로 들어왔을 경우
 		$('#writeOptionBtn').show();
+		$('#modifyMemberBtn').show();
 	} else {
-	
+		$('#writeOptionBtn').hide();
+		$('#modifyMemberBtn').hide();
 	}
-	*/
 	$('.userMenu').css("z-index","90");
 });
 //변수 선언
@@ -102,13 +111,13 @@ $(document).ready(function(){
     	$.ajax({
 					type: 'post',
 					url: '/morip/myblog/infinityScroll',
-					data: 'pg='+pg,
+					data: 'pg='+pg+'&nickname='+pageNickname,
 					dataType: 'json',
 					success: function(data){
 						pg++;
 						count++;			
 						var tempNumber= 0;
-						if(data.list.length!='0'){   //데이터가 존재할 때
+						if(data.list!=null){   //데이터가 존재할 때
 						$.each(data.list, function(index, items){
 							let startdate= new Date(items.startdate).format('yyyy-MM-dd'); 
 							let enddate = new Date(items.enddate).format('yyyy-MM-dd');  
@@ -148,4 +157,20 @@ $(document).ready(function(){
     //뷰 페이지 진입
    	function viewEnter(seq){
    		location.href="view?seq="+seq;
+   	}
+   	
+   	function loadBoardCount(){
+   	console.log("보드개수 카운팅");
+   	$.ajax({
+         type: 'post',
+         url: '/morip/myblog/boardSize',
+         data: 'email='+pageEmail,
+         dataType: 'json',
+         success: function(data){
+            $('#blogboardtableDiv').text(data.size);
+         },
+         error: function(err){
+           console.log(err);
+         }
+       });
    	}

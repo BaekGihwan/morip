@@ -1,10 +1,11 @@
+var stepPg = $('#stepPg').val();
+
 /**************전체 페이지 기능***************/
  //이전과 다음 버튼 기능
 $('#backwardBtn').click(function(){
-  location.href="writeBlog1";
+  location.href="writeBlog"+(Number(stepPg)-1);
 });
 
-var stepPg = $('#stepPg').val();
 
 $('document').ready(function(){
 	//step1
@@ -14,20 +15,35 @@ $('document').ready(function(){
   	$('.switch_infomation').hide();
 
 	//상단 진행바 컨트롤러
-	if(stepPg==1){
+	if(stepPg==0){
    	 $('.step1').css('background-color','#d7ccc8');
    	 $('.step2').css('background-color','#e9eae4');
-  	} else if(stepPg==2){
+   	 $('.step3').css('background-color','#e9eae4');
+  	} else if(stepPg==1){
    	 $('.step1').css('background-color','#e9eae4');
    	 $('.step2').css('background-color','#d7ccc8');
+   	 $('.step3').css('background-color','#e9eae4');
+    } else if(stepPg==2){
+     $('.step1').css('background-color','#e9eae4');
+   	 $('.step2').css('background-color','#e9eae4');
+   	 $('.step3').css('background-color','#d7ccc8');
     }
 });
+//공개 설정
+$('.switch').mouseover(function(){
+  $('.switch_infomation').show();
+});
+$('.switch').mouseout(function(){
+  $('.switch_infomation').hide();
+});
+
 /*******************stpe1*********************/
 //다음 버튼 클릭 시 유효성 검사 및 DB 안에 사진 저장
   $('.stepChoiceContent').click(function(){
-	  console.log($('#backgroundImg')[0].files[0]==undefined);
+  if(stepPg==1){
+  	  console.log($('#backgroundImg')[0].files[0]==undefined);
 	  if($('#subject').val()==''){
-		  alert("여행기 제목을 입력하세요!");
+		 alert("여행기 제목을 입력하세요!");
 	  } else if($('#backgroundImg')[0].files[0]==undefined){
 		  alert("여행기 배경사진을 넣어주세요!");
 	  }  else {
@@ -48,6 +64,8 @@ $('document').ready(function(){
 				}
 			});
 	  }
+  }
+
   });
   
   //사진을 업로드 하였을 때 바로 화면에 뿌려주기
@@ -64,13 +82,5 @@ $('document').ready(function(){
       }
   }
 /*******************stpe2*********************/
-//공개 설정
-$('.switch').mouseover(function(){
-  $('.switch_infomation').show();
-});
-$('.switch').mouseout(function(){
-  $('.switch_infomation').hide();
-});
-
 
 

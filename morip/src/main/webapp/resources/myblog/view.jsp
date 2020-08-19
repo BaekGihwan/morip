@@ -21,9 +21,10 @@
     
   </head>
   <body>
-  
-      <input type="hidden" class="view_seq" value="${seq }">
-    
+    <input type="hidden" id="pageNickname" value="${myblogDTO.nickname }">
+    <input type="hidden" id="nickname" value="${nickname}">
+    <input type="hidden" class="view_seq" value="${seq }">
+    	
     <div id="viewheader">
       <div class="background">
       	<div class="backgroundImg" style="background: url('../storage/${myblogDTO.mainimage}') no-repeat 50% 50%; background-size: cover;">s </div>
@@ -83,7 +84,7 @@
               <div class="view_replyContentInputWrapper">
                 <div class="reply_contentInput">
                     <div class="reply_userID">
-                      ${myblogDTO.nickname}
+                      ${nickname}
                     </div>
                     <textarea id="replyInputBox${seq }" class="form-control" aria-label="With textarea"></textarea>
                     <div class="reply_inputOption">
@@ -121,7 +122,7 @@
                 <div class="view_replyListWrapper">
                   <div class="view_replyList">
                     <div class="view_userImgWrapper">
-                      <img class="view_userImg" src="../image/myblog/game.png">+++++++++++++
+                      <img class="view_userImg" src="../image/myblog/game.png">
                       
                     </div>
                     <div class="view_replyContent">
