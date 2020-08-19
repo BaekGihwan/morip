@@ -55,6 +55,12 @@ public class MyblogDaoMybatis implements MyblogDAO {
 	}
 	
 	@Override
+	public MyblogDTO boardWriteCheck(Map<String, String> map) {
+		
+		return sqlSession.selectOne("myblogSQL.boardWriteCheck", map);
+	}
+	
+	@Override
 	public void like(Map<String, String> map) {
 		
 		sqlSession.insert("myblogSQL.like", map);

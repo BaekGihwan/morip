@@ -22,6 +22,6 @@ public class MyblogDTO {
 	private int pseq;
 	private String publicoption;
 	private int likecount;
+	@JsonFormat(shape=JsonFormat.Shape.STRING,pattern="yyyy.MM.dd")
 	private Date logtime;
-  @JsonFormat(shape=JsonFormat.Shape.STRING,pattern="yyyy.MM.dd")
 }

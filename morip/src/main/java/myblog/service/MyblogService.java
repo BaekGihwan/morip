@@ -53,5 +53,7 @@ public interface MyblogService {
 
 	public int replySize(String seq);
 
+	public MyblogDTO boardWriteCheck(Map<String, String> map);
+
 
 }

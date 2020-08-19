@@ -52,5 +52,7 @@ public interface MyblogDAO {
 
 	public int replySize(String seq);
 
+	public MyblogDTO boardWriteCheck(Map<String, String> map);
+
 
 }
