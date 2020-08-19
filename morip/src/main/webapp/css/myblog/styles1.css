@@ -232,7 +232,7 @@ display: flex;
   flex-grow:5;
   text-align: right;
 }
-.reply{
+.likeCount{
   flex-grow: 1;
 }
 .like{

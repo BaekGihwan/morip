@@ -18,6 +18,7 @@ public class MyblogDTO {
 	private int ref;
 	private int step;
 	private int pseq;
-	private Date logtime;
 	private String publicoption;
+	private int likecount;
+	private Date logtime;
 }

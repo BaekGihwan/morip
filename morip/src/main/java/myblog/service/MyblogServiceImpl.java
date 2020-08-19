@@ -3,10 +3,13 @@ package myblog.service;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-
+import myblog.bean.FollowDTO;
+import myblog.bean.LikeDTO;
 import myblog.bean.MyblogDTO;
 import myblog.dao.MyblogDAO;
 
@@ -14,6 +17,9 @@ import myblog.dao.MyblogDAO;
 public class MyblogServiceImpl implements MyblogService {
 	@Autowired
 	private MyblogDAO myblogDAO;
+	
+	@Autowired
+	private HttpSession session;
 	
 	@Override
 	public List <MyblogDTO> infinityScroll(Map<String, Integer> map) {
@@ -50,4 +56,112 @@ public class MyblogServiceImpl implements MyblogService {
 	public void updateReply(Map<String, String> map) {
 		myblogDAO.updateReply(map);
 	}
+	
+	@Override
+	public void like(Map<String, String> map) {
+		
+		String email = (String) session.getAttribute("memEmail");
+		map.put("email", email);
+		
+		myblogDAO.like(map);
+	}
+	
+	@Override
+	public void unlike(Map<String, String> map) {
+		
+		String email = (String) session.getAttribute("memEmail");
+		map.put("email", email);
+		
+		myblogDAO.unlike(map);
+	}
+	
+	@Override
+	public List<LikeDTO> likeCheck() {
+		
+		String email = (String) session.getAttribute("memEmail");
+		return myblogDAO.likeCheck(email);
+	}
+	
+	@Override
+	public LikeDTO likeViewCheck(Map<String, String> map) {
+		
+		System.out.println("서비스: " + map.get("memEmail"));
+		return myblogDAO.likeViewCheck(map);
+	}
+	
+	@Override
+	public int likeSize(Map<String, String> map) {
+		
+		return myblogDAO.likeSize(map);
+	}
+	
+	@Override
+	public List<MyblogDTO> likeListSize() {
+		
+		return myblogDAO.likeListSize();
+	}
+	
+	@Override
+	public void follow(Map<String, String> map) {
+		
+		String email = (String) session.getAttribute("memEmail");
+		map.put("email", email);
+		
+		myblogDAO.follow(map);
+	}
+	
+	@Override
+	public void unfollow(Map<String, String> map) {
+		
+		String email = (String) session.getAttribute("memEmail");
+		map.put("email", email);
+		
+		myblogDAO.unfollow(map);
+		
+	}
+
+	@Override
+	public FollowDTO followCheck(Map<String, String> map) {
+		
+		String email = (String) session.getAttribute("memEmail");
+		map.put("email", email);
+		return myblogDAO.followCheck(map);
+	}
+	
+	@Override
+	public List<FollowDTO> followClick(String email) {
+		
+		return myblogDAO.followClick(email);
+	}
+	
+	@Override
+	public List<FollowDTO> followingClick(String follow_email) {
+		
+		return myblogDAO.followingClick(follow_email);
+	}
+	
+	@Override
+	public int followerSize(String follow_email) {
+		
+		return myblogDAO.followerSize(follow_email);
+	}
+	
+	@Override
+	public int followingSize(String email) {
+		
+		return myblogDAO.followingSize(email);
+	}
+	
+	@Override
+	public int boardSize(String email) {
+		
+		return myblogDAO.boardSize(email);
+	}
+	
+	@Override
+	public int replySize(String seq) {
+		
+		return myblogDAO.replySize(seq);
+	}
+	
 }
