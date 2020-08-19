@@ -1,8 +1,11 @@
 @charset "UTF-8";
-header, .background{
-	width:100%;
+#viewheader, .background{
+width:100%;
   position: fixed;
   height: 500px;
+}
+header{
+	width:100%;
 }
 .backgroundCover{
 	background-color: black;

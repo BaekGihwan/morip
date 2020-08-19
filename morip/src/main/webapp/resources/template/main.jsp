@@ -201,7 +201,7 @@
         <div class="food_post_contents">
           <div class="content1">
             <i class="fas fa-comment-dots"></i>
-            <p class="food_post_like_count">113</p>
+            <p class="food_post_like_count" id="food_post_like_count1"></p>
             <a id="food_link1"><i class="fas fa-link"></i></a>
           </div>
           <div class="content2">
@@ -226,7 +226,7 @@
         <div class="food_post_contents">
           <div class="content1">
             <i class="fas fa-comment-dots"></i>
-            <p class="food_post_like_count">100</p>
+            <p class="food_post_like_count" id="food_post_like_count2"></p>
             <a id="food_link2"><i class="fas fa-link"></i></a>
           </div>
           <div class="content2">
@@ -251,7 +251,7 @@
         <div class="food_post_contents">
           <div class="content1">
             <i class="fas fa-comment-dots"></i>
-            <p class="food_post_like_count">93</p>
+            <p class="food_post_like_count" id="food_post_like_count3"></p>
             <a id="food_link3"><i class="fas fa-link"></i></a>
           </div>
           <div class="content2">
@@ -283,7 +283,7 @@
 <script type="text/javascript" src="../js/main/main.js" ></script>
 <script type="text/javascript">
 $(document).ready(function(){
-	alert("ddddd");
+	//alert("ddddd");
 	
 	
 	

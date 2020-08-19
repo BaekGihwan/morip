@@ -292,9 +292,12 @@ function loadReply(){
 }	
 	
 	
-
+//화면 좌측 상단 댓글 버튼 클릭 이벤트
 $('.replyOption').click(function(){
-	$('#cmt-modal').modal();
+	//$('#cmt-modal').modal();
+	var offset = $('.view_boardOption').offset();
+  	var winH = $(window).height();
+  	$('html, body').animate({scrollTop : (offset.top - winH/2)}, 700);
 });
 
 $('#x-btn').click(function(){
