@@ -142,6 +142,6 @@ function loadingPage(){
 
 //뷰 페이지 진입
 function viewEnter(seq){
-	location.href="view?seq="+seq;
+	location.href="../myblog/view?seq="+seq;
 }
 
