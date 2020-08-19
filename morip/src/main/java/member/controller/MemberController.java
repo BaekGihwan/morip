@@ -243,7 +243,6 @@ public class MemberController {
 		System.out.println("이메일뭐오냐" + email);	
 		MemberDTO memberDTO = memberService.getMember(email, checkid);
 		ModelAndView mav = new ModelAndView();
-		System.out.println(memberDTO.getImage());
 		mav.addObject("memberDTO", memberDTO);
 		mav.setViewName("jsonView");
 		return mav;

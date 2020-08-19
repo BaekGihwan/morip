@@ -24,6 +24,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import hashtag.service.HashtagService;
+import matzip.service.MatzipService;
 import myblog.bean.MyblogDTO;
 import myblog.service.MyblogService;
 
@@ -31,6 +33,9 @@ import myblog.service.MyblogService;
 public class MyblogController {
 	@Autowired
 	public MyblogService myblogService;
+	
+	@Autowired
+	private HashtagService hashtagService;
 	//mypage 부분
 	/*
 	@RequestMapping(value="/myblog/mypage", method=RequestMethod.GET)
@@ -79,10 +84,10 @@ public class MyblogController {
 	@ResponseBody
 	@RequestMapping(value="/myblog/imageSave", method=RequestMethod.POST)
 	public String imageSave(HttpSession session,@RequestParam(value="backgroundImg") MultipartFile backgroundImg) {
-		String nickname = "뚜르라기";
+		String nickname = (String) session.getAttribute("nickname");
 		UUID uid = UUID.randomUUID();
 		String fileName=uid.toString() + "_" + backgroundImg.getOriginalFilename();
-		String filePath = "D:\\project\\morip\\morip\\src\\main\\webapp\\storage";
+		String filePath = "C:\\project\\morip\\morip\\src\\main\\webapp\\storage";
 		File file = new File(filePath,fileName);
 		try {
 			FileCopyUtils.copy(backgroundImg.getInputStream(), new FileOutputStream(file));
@@ -109,14 +114,15 @@ public class MyblogController {
 	/*작성한 글 저장*/
 	@RequestMapping(value="/myblog/save", method= {RequestMethod.POST})
 	public @ResponseBody void saveWriteBlog(HttpSession session, @RequestParam Map <String , String> map) throws UnsupportedEncodingException {
-		map.put("nickname", "뚜르라기");
-		map.put("email", "ka28@naver.com");
+		map.put("nickname", (String) session.getAttribute("nickname"));
+	    map.put("email", (String)session.getAttribute("memEmail"));
 		String content = URLDecoder.decode(map.get("content"), "UTF-8");
 		map.replace("content", content);
 		System.out.println("작성자"+session.getAttribute("nickname"));
 		System.out.println("해쉬태그:"+map.get("hashtag"));
 		System.out.println(map.get("subject")+","+map.get("content")+","+map.get("nickname"));
 		myblogService.insertWriteBlog(map);
+		hashtagService.insertHashTag(map.get("hashtag"));
 		System.out.println("save 들어와서 저장하는 중...");
 	}
 	
@@ -125,8 +131,8 @@ public class MyblogController {
     public ModelAndView handleFileUpload(@RequestParam("file") MultipartFile file) throws IOException {
 		UUID uid = UUID.randomUUID();
 		String fileName=uid.toString() + "_" + file.getOriginalFilename();
-		String filePath1 = "D:\\project\\morip\\morip\\src\\main\\webapp\\storage";
-		String filePath2 = "D:\\project\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\morip\\storage";
+		String filePath1 = "C:\\project\\morip\\morip\\src\\main\\webapp\\storage";
+		String filePath2 = "C:\\project\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\morip\\storage";
 		File file1 = new File(filePath1,fileName);
 		File file2 = new File(filePath2,fileName);
 		try {
