@@ -14,8 +14,8 @@
   <br><br> 
  
   <div class="blogSearch">
-    <input type="text" name="blogSerchText" class="blogSerchText" >
-  	<input type="submit" class="blogSerchBtn" value="검 색" >  
+    <input type="text" name="hashtagText" class="hashtagText" >
+  	<input type="submit" class="hashtagSearchBtn" value="검 색" >  
   </div>
   <br><br>  
   <div class="morip_banner_slider">

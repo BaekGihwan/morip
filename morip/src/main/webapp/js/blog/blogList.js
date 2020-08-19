@@ -13,16 +13,51 @@ $('#writeBlogImg').click(function(){
 	location.href="/morip/myblog/writeBlog1";
 });
 
-//키워드 없이 검색 버튼 눌렀을때
-$('.blogSerchBtn').click(function(){
-	if($('.blogSerchText').val()==''){
+//해쉬태그 검색 버튼 눌렀을때
+var ar = new Array();
+$('.hashtagSearchBtn').click(function(){
+	if($('.hashtagText').val()==''){
 		//alert('검색어를 입력해주세요!');
 		Swal.fire({
 			icon: 'warning',
 			confirmButtonText: '확인',
 			title: '검색어를<br>입력해주세요!'
 		})
+	}else{
+		$.ajax({
+			type:'post',
+			url:'../blog/hashtagSearch',
+			data:{'hashtagText':$('.hashtagText').val()},
+			dataType:'json',
+			success:function(data){
+				$.each(data.list,function(index,items){
+// 					ar[index]=data.list[index].blogBoardSeq;
+					ar.push(data.list[index].blogBoardTable_Seq);
+				})
+				alert(ar[0]);
+				$.ajax({
+					type:'post',
+					url:'../blog/hashtagBlogList',
+					data:{"ar":ar},
+					dataType:'json',
+					success:function(data){
+						alert(data.list[0].subject);
+					},
+					error:function(err){
+						console.log(err);
+					}
+					
+				});//2.ajax
+				
+				
+			},
+			error:function(err){
+				console.log(err);
+			}
+			
+		});//1.ajax
 	}	
+	
 });
 
 

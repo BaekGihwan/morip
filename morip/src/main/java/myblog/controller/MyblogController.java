@@ -125,7 +125,7 @@ public class MyblogController {
 	public String imageSave(HttpSession session,@RequestParam(value="backgroundImg") MultipartFile backgroundImg) {
 		UUID uid = UUID.randomUUID();
 		String fileName = uid.toString() + "_" + backgroundImg.getOriginalFilename();
-		String filePath = "E:\\spring\\gihwan\\morip\\morip\\src\\main\\webapp\\storage\\";
+		String filePath = "C:\\project\\morip\\morip\\src\\main\\webapp\\storage\\";
 		File file = new File(filePath,fileName);
 		try {
 			FileCopyUtils.copy(backgroundImg.getInputStream(), new FileOutputStream(file));

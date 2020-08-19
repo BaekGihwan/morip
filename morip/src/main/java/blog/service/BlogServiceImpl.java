@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import blog.dao.BlogDAO;
+import hashtag.bean.HashtagDTO;
 import matzip.bean.MatzipDTO;
 import myblog.bean.MyblogDTO;
 
@@ -24,4 +25,6 @@ public class BlogServiceImpl implements BlogService {
 		List<MyblogDTO> list = blogDAO.blogAllList(startNum,endNum);
 		return list;
 	}
+
+	
 }
