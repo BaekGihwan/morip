@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import hashtag.bean.HashtagDTO;
 import myblog.bean.MyblogDTO;
 
 @Repository
@@ -24,4 +25,6 @@ public class BlogDAOMybatis implements BlogDAO {
 	    map.put("endNum", endNum);
 		return sqlSession.selectList("blogSQL.blogAllList",map);
 	}
+
+	
 }

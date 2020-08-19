@@ -4,6 +4,6 @@ import lombok.Data;
 
 @Data
 public class HashtagDTO {
-	private int blogBoardSeq;
+	private int blogBoardTable_Seq;
 	private String hashtag;
 }

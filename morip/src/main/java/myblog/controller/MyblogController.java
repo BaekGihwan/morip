@@ -89,7 +89,7 @@ public class MyblogController {
 		String nickname = (String) session.getAttribute("nickname");
 		UUID uid = UUID.randomUUID();
 		String fileName = uid.toString() + "_" + backgroundImg.getOriginalFilename();
-		String filePath = "E:\\spring\\gihwan\\morip\\morip\\src\\main\\webapp\\storage\\";
+		String filePath = "C:\\project\\morip\\morip\\src\\main\\webapp\\storage\\";
 		File file = new File(filePath,fileName);
 		try {
 			FileCopyUtils.copy(backgroundImg.getInputStream(), new FileOutputStream(file));
@@ -139,7 +139,7 @@ public class MyblogController {
 		UUID uid = UUID.randomUUID();
 		String fileName=uid.toString() + "_" + file.getOriginalFilename();
 
-		String filePath1 = "E:\\spring\\gihwan\\morip\\morip\\src\\main\\webapp\\storage\\";
+		String filePath1 = "C:\\project\\morip\\morip\\src\\main\\webapp\\storage\\";
 		//String filePath2 = "D:\\spring\\MORIP\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\MORIP_myblogTeam\\storage";
 		File file1 = new File(filePath1,fileName);
 		//File file2 = new File(filePath2,fileName);

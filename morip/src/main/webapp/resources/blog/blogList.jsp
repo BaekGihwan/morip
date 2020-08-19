@@ -12,8 +12,8 @@
   <br><br> 
  
   <div class="blogSearch">
-    <input type="text" name="blogSerchText" class="blogSerchText" >
-  	<input type="submit" class="blogSerchBtn" value="검 색" >  
+    <input type="text" name="hashtagText" class="hashtagText" >
+  	<input type="submit" class="hashtagSearchBtn" value="검 색" >  
   </div>
   <br><br>  
   <div class="morip_banner_slider">
@@ -273,3 +273,4 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 <script type="text/javascript" src="../js/main/main.js" ></script>		
 <script type="text/javascript" src="../js/blog/blogList.js" ></script>
+

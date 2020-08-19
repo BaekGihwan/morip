@@ -8,4 +8,5 @@ public interface BlogService {
 
 	List<MyblogDTO> blogAllList(int pg);
 
+	
 }
