@@ -23,6 +23,7 @@ public class MyblogDaoMybatis implements MyblogDAO {
 	
 	@Override
 	public List <MyblogDTO> infinityScroll(Map<String, Object> map) {
+		System.out.println("DAOMyBatis"+map.get("email"));
 		return sqlSession.selectList("myblogSQL.infinityScroll", map);
 	}
 
@@ -185,11 +186,5 @@ public class MyblogDaoMybatis implements MyblogDAO {
 	public MemberDTO loadMember(String nickname) {
 		return sqlSession.selectOne("myblogSQL.loadMember",nickname);
 	}
-	
-	@Override
-	   public int boardSize(String email) {
-	      
-	      return sqlSession.selectOne("myblogSQL.boardSize", email);
-	   }
 
 }

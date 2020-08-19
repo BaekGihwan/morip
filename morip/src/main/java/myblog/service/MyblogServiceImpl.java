@@ -173,12 +173,6 @@ public class MyblogServiceImpl implements MyblogService {
 	}
 	
 	@Override
-	public int boardSize(String email) {
-		
-		return myblogDAO.boardSize(email);
-	}
-	
-	@Override
 	public int replySize(String seq) {
 		
 		return myblogDAO.replySize(seq);

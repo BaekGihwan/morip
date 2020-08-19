@@ -264,9 +264,9 @@ function loadReply(){
 							                     replyNickname+
 							                    '</div>'+
 							                    '<div class="reply_content">'+
-							                     '<p>'+
+							                     '<pre>'+
 							                       items.content+
-							                     '</p>'+
+							                     '</pre>'+
 							                    '</div>'+
 							                '</div>'+
 							              '</div>'+

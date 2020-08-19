@@ -52,9 +52,10 @@ public class MyblogController {
 	/*********************mypage.jsp***********************/
 	@RequestMapping(value="/myblog/mypage", method=RequestMethod.GET)
 	public String mypage(HttpSession session , Model model,  @RequestParam(value="nickname") String nickname) {
-		model.addAttribute("display", "/resources/myblog/mypage.jsp");
+		
 		//DB 에서 해당 유저에 대한 정보 및 작성한 모든 글 호출.
 		MemberDTO memberDTO = myblogService.loadMember(nickname);
+		System.out.println("마이페이지를 누르고나서: " + nickname);
 		System.out.println(memberDTO.getImage());
 		//배경 사진이 등록되지 않았을 경우
 		
@@ -68,18 +69,19 @@ public class MyblogController {
 		 
 		model.addAttribute("memberDTO", memberDTO);
 		model.addAttribute("pageNickname", nickname );
+		model.addAttribute("display", "/resources/myblog/mypage.jsp");
 		return "/resources/main/index";
 	}
 	
 	@RequestMapping(value="/myblog/infinityScroll", method=RequestMethod.POST)
-	public ModelAndView infinityScroll(Model model, @RequestParam(value="pg") String pg,@RequestParam(value="nickname") String nickname) {
-		System.out.println("infinityScroll 실행됨"+pg+nickname);
+	public ModelAndView infinityScroll(Model model, @RequestParam(value="pg") String pg,@RequestParam(value="email") String email) {
+		System.out.println("infinityScroll 실행됨"+pg+email);
 		int endNum = Integer.parseInt(pg) * 9;
 		int startNum = endNum - 8;
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("endNum", endNum);
 		map.put("startNum", startNum);
-		map.put("nickname", nickname);
+		map.put("email", email);
 
 		List <MyblogDTO> list = myblogService.infinityScroll(map);
 		System.out.println(list.size());
@@ -94,9 +96,9 @@ public class MyblogController {
 	@RequestMapping(value="/myblog/boardSize", method = RequestMethod.POST)
     @ResponseBody
     public ModelAndView boardSize(@RequestParam String email) {
-       
+       System.out.println("보더사이즈:" + email);
        int size = myblogService.boardSize(email);
-       
+       System.out.println("디비를 다녀와서 사이즈: " + size);
        ModelAndView mav = new ModelAndView();
        mav.addObject("size", size);
        mav.setViewName("jsonView");
@@ -153,14 +155,16 @@ public class MyblogController {
 	public @ResponseBody void saveWriteBlog(HttpSession session, @RequestParam Map <String , String> map) throws UnsupportedEncodingException {
 		map.put("nickname", (String) session.getAttribute("nickname"));
 		map.put("email", (String)session.getAttribute("memEmail"));
+		System.out.println(map.get("email"));
 		String content = URLDecoder.decode(map.get("content"), "UTF-8");
 		map.replace("content", content);
 		System.out.println("작성자"+session.getAttribute("nickname"));
-		System.out.println("해쉬태그:"+map.get("hashtag"));
-		map.remove("hashtag");
+		System.out.println("해쉬태그:"+map.get("hashtag"));		
+		myblogService.insertWriteBlog(map);		
+		if(map.get("hashtag") != null) {
+			hashtagService.insertHashTag(map.get("hashtag"));	
+		}	
 		System.out.println(map.get("subject")+","+map.get("content")+","+map.get("nickname")+","+map.get("memEmail"));
-		myblogService.insertWriteBlog(map);
-		hashtagService.insertHashTag(map.get("hashtag"));
 		System.out.println("save 들어와서 저장하는 중...");
 	}
 	
@@ -458,19 +462,6 @@ public class MyblogController {
 		public ModelAndView followingSize(@RequestParam String email) {
 			
 			int size = myblogService.followingSize(email);
-			
-			ModelAndView mav = new ModelAndView();
-			mav.addObject("size", size);
-			mav.setViewName("jsonView");
-			
-			return mav;
-		}
-		
-		@RequestMapping(value="/myblog/boardSize", method = RequestMethod.POST)
-		@ResponseBody
-		public ModelAndView boardSize(@RequestParam String email) {
-			
-			int size = myblogService.boardSize(email);
 			
 			ModelAndView mav = new ModelAndView();
 			mav.addObject("size", size);

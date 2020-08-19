@@ -227,9 +227,14 @@ body, html{
 .view_replyContent{
   width:90%;;
 }
-.view_replyContent p{
-  font-size:14px;
-  margin-top:5px;
+.view_replyContent pre{
+	font-family: sans-serif;
+	background-color: white;
+	border-style: none;
+	padding: 0px;
+	margin: 0px;
+  	font-size:14px;
+  	margin-top:5px;
 }
 .reply_userID{
   font-family: 'Noto Sans KR', sans-serif;
