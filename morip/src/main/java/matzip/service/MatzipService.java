@@ -28,4 +28,6 @@ public interface MatzipService {
 
 	public String getReviewCount(String keyword);
 
+	public void updateReviewCount(String title, String reviewCount);
+
 }

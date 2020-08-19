@@ -50,8 +50,8 @@
  	<select id="matzipThreeList" resultMap="matzipMap">
       select * from 
       	(select rownum rn, tt.* from 
-      	(select * from matziptable order by title)tt) 
-      where rn=14 or rn=19 or rn=58 order by title desc
+      	(select * from matziptable order by reviewcount desc, title asc)tt) 
+      where rn &gt;=1 and rn &lt;=3
    </select>
    <select id="matzipAllList" parameterType="map" resultMap="matzipMap">
 		select * from (select rownum rn, tt.* from (select * from matziptable order by title)tt) where rn &gt;= #{startNum} and rn &lt;= #{endNum}
@@ -62,4 +62,7 @@
 	<select id="getReviewCount" parameterType="string" resultType="string">
  		select count(*) from blogboardtable where subject like '%'||#{keyword}||'%' or content like '%'||#{keyword}||'%'
  	</select>
+ 	<update id="updateReviewCount" parameterType="map">
+ 		update matziptable set reviewcount = #{reviewCount} where title=#{title}
+ 	</update>
  </mapper> 

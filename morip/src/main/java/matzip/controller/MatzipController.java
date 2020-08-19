@@ -140,4 +140,10 @@ public class MatzipController {
 		return matzipService.getReviewCount(keyword);
 	}
 	
+	@RequestMapping(value="updateReviewCount",method=RequestMethod.POST)
+	@ResponseBody
+	public void updateReviewCount(@RequestParam String title, @RequestParam String reviewCount) {
+		matzipService.updateReviewCount(title, reviewCount);
+	}
+	
 }
