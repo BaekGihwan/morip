@@ -26,6 +26,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import hashtag.service.HashtagService;
 import matzip.service.MatzipService;
+import myblog.bean.FollowDTO;
+import myblog.bean.LikeDTO;
 import myblog.bean.MyblogDTO;
 import myblog.service.MyblogService;
 
@@ -86,8 +88,8 @@ public class MyblogController {
 	public String imageSave(HttpSession session,@RequestParam(value="backgroundImg") MultipartFile backgroundImg) {
 		String nickname = (String) session.getAttribute("nickname");
 		UUID uid = UUID.randomUUID();
-		String fileName=uid.toString() + "_" + backgroundImg.getOriginalFilename();
-		String filePath = "C:\\project\\morip\\morip\\src\\main\\webapp\\storage";
+		String fileName = uid.toString() + "_" + backgroundImg.getOriginalFilename();
+		String filePath = "E:\\spring\\gihwan\\morip\\morip\\src\\main\\webapp\\storage\\";
 		File file = new File(filePath,fileName);
 		try {
 			FileCopyUtils.copy(backgroundImg.getInputStream(), new FileOutputStream(file));
@@ -114,8 +116,13 @@ public class MyblogController {
 	/*작성한 글 저장*/
 	@RequestMapping(value="/myblog/save", method= {RequestMethod.POST})
 	public @ResponseBody void saveWriteBlog(HttpSession session, @RequestParam Map <String , String> map) throws UnsupportedEncodingException {
-		map.put("nickname", (String) session.getAttribute("nickname"));
-	    map.put("email", (String)session.getAttribute("memEmail"));
+
+		String email = (String) session.getAttribute("memEmail");
+		String nickname = (String) session.getAttribute("nickname");
+		
+		map.put("email", email);
+		map.put("nickname", nickname);
+
 		String content = URLDecoder.decode(map.get("content"), "UTF-8");
 		map.replace("content", content);
 		System.out.println("작성자"+session.getAttribute("nickname"));
@@ -131,13 +138,14 @@ public class MyblogController {
     public ModelAndView handleFileUpload(@RequestParam("file") MultipartFile file) throws IOException {
 		UUID uid = UUID.randomUUID();
 		String fileName=uid.toString() + "_" + file.getOriginalFilename();
-		String filePath1 = "C:\\project\\morip\\morip\\src\\main\\webapp\\storage";
-		String filePath2 = "C:\\project\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\morip\\storage";
+
+		String filePath1 = "E:\\spring\\gihwan\\morip\\morip\\src\\main\\webapp\\storage\\";
+		//String filePath2 = "D:\\spring\\MORIP\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\MORIP_myblogTeam\\storage";
 		File file1 = new File(filePath1,fileName);
-		File file2 = new File(filePath2,fileName);
+		//File file2 = new File(filePath2,fileName);
 		try {
 			FileCopyUtils.copy(file.getInputStream(), new FileOutputStream(file1));
-			FileCopyUtils.copy(file.getInputStream(), new FileOutputStream(file2));
+			//FileCopyUtils.copy(file.getInputStream(), new FileOutputStream(file2));
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
@@ -255,6 +263,189 @@ public class MyblogController {
 		public @ResponseBody void updateReply(HttpSession session, @RequestParam Map <String , String> map) {
 			myblogService.updateReply(map);
 			System.out.println("insertReply 들어와서 저장하는 중...");
+		}
+		
+		@RequestMapping(value="/myblog/like", method = RequestMethod.POST)
+		@ResponseBody
+		public void like(@RequestParam Map<String, String> map) {
+			
+			myblogService.like(map);
+			
+		}
+		
+		@RequestMapping(value="/myblog/unlike", method = RequestMethod.POST)
+		@ResponseBody
+		public void unlike(@RequestParam Map<String, String> map) {
+			
+			myblogService.unlike(map);
+			
+		}
+		
+		@RequestMapping(value="/myblog/likeCheck", method = RequestMethod.POST)
+		@ResponseBody
+		public ModelAndView likeCheck() {
+			
+			List<LikeDTO> list = myblogService.likeCheck();
+			
+			ModelAndView mav = new ModelAndView();
+			mav.addObject("list", list);
+			mav.setViewName("jsonView");
+			
+			return mav;
+		}
+		
+		@RequestMapping(value="/myblog/likeViewCheck", method = RequestMethod.POST)
+		@ResponseBody
+		public ModelAndView likeViewCheck(@RequestParam Map<String, String> map, HttpSession session) {
+			System.out.println("라이크뷰체크");
+			
+			String memEmail = (String) session.getAttribute("memEmail");
+			System.out.println("세션 메일: " + memEmail );
+			map.put("memEmail", memEmail);
+			
+			LikeDTO likeDTO = myblogService.likeViewCheck(map);
+			
+			ModelAndView mav = new ModelAndView();
+			mav.addObject("likeDTO", likeDTO);
+			mav.addObject("memEmail", memEmail);
+			mav.setViewName("jsonView");
+			
+			return mav;
+		}
+		
+		@RequestMapping(value="/myblog/likeSize", method = RequestMethod.POST)
+		@ResponseBody
+		public ModelAndView likeSize(@RequestParam Map<String, String> map) {
+			int likeSize = myblogService.likeSize(map);
+			ModelAndView mav = new ModelAndView();
+			mav.addObject("likeSize", likeSize);
+			mav.setViewName("jsonView");
+			
+			return mav;
+		}
+		
+		@RequestMapping(value="/myblog/likeListSize", method = RequestMethod.POST)
+		@ResponseBody
+		public ModelAndView likeListSize() {
+			
+			List<MyblogDTO> list = myblogService.likeListSize();
+			
+			ModelAndView mav = new ModelAndView();
+			mav.addObject("list", list);
+			mav.setViewName("jsonView");
+			
+			return mav;
+		}
+		
+		@RequestMapping(value="/myblog/follow", method = RequestMethod.POST)
+		@ResponseBody
+		public void follow(@RequestParam Map<String, String> map) {
+			
+			myblogService.follow(map);
+			
+		}
+		
+		@RequestMapping(value="/myblog/unfollow", method = RequestMethod.POST)
+		@ResponseBody
+		public void unfollow(@RequestParam Map<String, String> map) {
+			
+			myblogService.unfollow(map);
+			
+		}
+		
+		@RequestMapping(value="/myblog/followCheck", method = RequestMethod.POST)
+		@ResponseBody
+		public ModelAndView followCheck(@RequestParam Map<String, String> map) {
+			
+			FollowDTO followDTO = myblogService.followCheck(map);
+			//System.out.println(followDTO.getFollow_nickname()+", "+followDTO.getNickname());
+			String email = "hana@naver.com";
+			ModelAndView mav = new ModelAndView();
+			if(followDTO != null) {
+				mav.addObject("getNickname", "");
+			}
+			mav.addObject("email", email);
+			mav.setViewName("jsonView");
+			
+			return mav;
+		}
+		
+		@RequestMapping(value="/myblog/followClick", method = RequestMethod.POST)
+		@ResponseBody
+		public ModelAndView followClick(@RequestParam String email) {
+			
+			List<FollowDTO> list = myblogService.followClick(email);
+			
+			ModelAndView mav = new ModelAndView();
+			mav.addObject("list", list);
+			mav.setViewName("jsonView");
+			
+			return mav;
+		}
+		
+		@RequestMapping(value="/myblog/followingClick", method = RequestMethod.POST)
+		@ResponseBody
+		public ModelAndView followingClick(@RequestParam String follow_email) {
+			
+			List<FollowDTO> list = myblogService.followingClick(follow_email);
+			
+			ModelAndView mav = new ModelAndView();
+			mav.addObject("list", list);
+			mav.setViewName("jsonView");
+			
+			return mav;
+		}
+		
+		@RequestMapping(value="/myblog/followerSize", method = RequestMethod.POST)
+		@ResponseBody
+		public ModelAndView followerSize(@RequestParam String follow_email) {
+			
+			int size = myblogService.followerSize(follow_email);
+			
+			ModelAndView mav = new ModelAndView();
+			mav.addObject("size", size);
+			mav.setViewName("jsonView");
+			
+			return mav;
+		}
+		
+		@RequestMapping(value="/myblog/followingSize", method = RequestMethod.POST)
+		@ResponseBody
+		public ModelAndView followingSize(@RequestParam String email) {
+			
+			int size = myblogService.followingSize(email);
+			
+			ModelAndView mav = new ModelAndView();
+			mav.addObject("size", size);
+			mav.setViewName("jsonView");
+			
+			return mav;
+		}
+		
+		@RequestMapping(value="/myblog/boardSize", method = RequestMethod.POST)
+		@ResponseBody
+		public ModelAndView boardSize(@RequestParam String email) {
+			
+			int size = myblogService.boardSize(email);
+			
+			ModelAndView mav = new ModelAndView();
+			mav.addObject("size", size);
+			mav.setViewName("jsonView");
+			
+			return mav;
+		}
+		
+		@RequestMapping(value="/myblog/replySize", method = RequestMethod.POST)
+		@ResponseBody
+		public ModelAndView replySize(@RequestParam String seq) {
+			
+			int size = myblogService.replySize(seq);
+			
+			ModelAndView mav = new ModelAndView();
+			mav.addObject("size", size);
+			mav.setViewName("jsonView");
+			
+			return mav;
 		}
 		
 }

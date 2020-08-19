@@ -13,7 +13,11 @@
 	<!--  myblog -->
 	<context:component-scan base-package="myblog.service"/>
 	<context:component-scan base-package="myblog.dao"/>
-	<context:component-scan base-package="myblog.bean"/>		
+	<context:component-scan base-package="myblog.bean"/>	
+	<!--  myblog -->
+	<context:component-scan base-package="blog.service"/>
+	<context:component-scan base-package="blog.dao"/>
+	<context:component-scan base-package="blog.bean"/>		
 	<!-- matzip -->
 	<context:component-scan base-package="matzip.service" />
     <context:component-scan base-package="matzip.dao" />
