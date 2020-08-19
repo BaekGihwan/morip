@@ -24,9 +24,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import member.bean.MemberDTO;
 import hashtag.service.HashtagService;
 import myblog.bean.FollowDTO;
 import myblog.bean.LikeDTO;
+
 import myblog.bean.MyblogDTO;
 import myblog.service.MyblogService;
 
@@ -47,33 +49,69 @@ public class MyblogController {
 		return mav;
 	}
 	*/
-	
+	/*********************mypage.jsp***********************/
 	@RequestMapping(value="/myblog/mypage", method=RequestMethod.GET)
-	public String mypage(Model model) {
+	public String mypage(HttpSession session , Model model,  @RequestParam(value="nickname") String nickname) {
 		model.addAttribute("display", "/resources/myblog/mypage.jsp");
+		//DB 에서 해당 유저에 대한 정보 및 작성한 모든 글 호출.
+		MemberDTO memberDTO = myblogService.loadMember(nickname);
+		System.out.println(memberDTO.getImage());
+		//배경 사진이 등록되지 않았을 경우
+		
+		  if(memberDTO.getImage().equals("0")) {
+			//프로필사진이 비어있을 경우
+			  memberDTO.setImage("basicUserImg.png"); 
+		  } //배경사진이 비어있을 경우
+		  if(memberDTO.getBackimage().equals("0")) {
+			  memberDTO.setBackimage("basicBgImg.jpg");
+		  }
+		 
+		model.addAttribute("memberDTO", memberDTO);
+		model.addAttribute("pageNickname", nickname );
 		return "/resources/main/index";
 	}
 	
-	
 	@RequestMapping(value="/myblog/infinityScroll", method=RequestMethod.POST)
-	public ModelAndView infinityScroll(Model model, int pg) {
-		System.out.println("infinityScroll 실행됨"+pg);
-		int endNum = pg * 9;
+	public ModelAndView infinityScroll(Model model, @RequestParam(value="pg") String pg,@RequestParam(value="nickname") String nickname) {
+		System.out.println("infinityScroll 실행됨"+pg+nickname);
+		int endNum = Integer.parseInt(pg) * 9;
 		int startNum = endNum - 8;
-		Map<String, Integer> map = new HashMap<String, Integer>();
+		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("endNum", endNum);
 		map.put("startNum", startNum);
+		map.put("nickname", nickname);
 
 		List <MyblogDTO> list = myblogService.infinityScroll(map);
 		System.out.println(list.size());
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("list", list);
+		System.out.println("리스트 사이즈:"+list.size());
 		mav.addObject("pg", pg);
 		mav.setViewName("jsonView");
-		
 		return mav;
 	}
+	
+	@RequestMapping(value="/myblog/boardSize", method = RequestMethod.POST)
+    @ResponseBody
+    public ModelAndView boardSize(@RequestParam String email) {
+       
+       int size = myblogService.boardSize(email);
+       
+       ModelAndView mav = new ModelAndView();
+       mav.addObject("size", size);
+       mav.setViewName("jsonView");
+       
+       return mav;
+    }
 	/***********************writeBlog 부분(에세이 작성)**********************/
+	@RequestMapping(value="/myblog/writeBlog0", method=RequestMethod.GET)
+	public ModelAndView writeBlog(HttpSession session) {
+		System.out.println("에세이 작성 페이지 들어옴");
+		ModelAndView mav = new ModelAndView(); 
+		mav.setViewName("/resources/main/index"); 
+		mav.addObject("display", "/resources/myblog/writeBlog0.jsp");
+		return mav;
+	}
 	@RequestMapping(value="/myblog/writeBlog1", method=RequestMethod.GET)
 	public ModelAndView writeBlog1(HttpSession session) {
 		System.out.println("writeBlog1 들어옴");
@@ -85,7 +123,6 @@ public class MyblogController {
 	@ResponseBody
 	@RequestMapping(value="/myblog/imageSave", method=RequestMethod.POST)
 	public String imageSave(HttpSession session,@RequestParam(value="backgroundImg") MultipartFile backgroundImg) {
-		String nickname = (String) session.getAttribute("nickname");
 		UUID uid = UUID.randomUUID();
 		String fileName = uid.toString() + "_" + backgroundImg.getOriginalFilename();
 		String filePath = "E:\\spring\\gihwan\\morip\\morip\\src\\main\\webapp\\storage\\";
@@ -98,7 +135,6 @@ public class MyblogController {
 			e.printStackTrace();
 		}
 		fileName = file.getName();
-		System.out.println("save 들어옴: "+nickname+","+fileName);
 		System.out.println("실제폴더:"+filePath);
 		return fileName;
 	}
@@ -115,16 +151,14 @@ public class MyblogController {
 	/*작성한 글 저장*/
 	@RequestMapping(value="/myblog/save", method= {RequestMethod.POST})
 	public @ResponseBody void saveWriteBlog(HttpSession session, @RequestParam Map <String , String> map) throws UnsupportedEncodingException {
-		String email = (String) session.getAttribute("memEmail");
-		String nickname = (String) session.getAttribute("nickname");
-		
-		map.put("email", email);
-		map.put("nickname", nickname);
-
+		map.put("nickname", (String) session.getAttribute("nickname"));
+		map.put("email", (String)session.getAttribute("memEmail"));
 		String content = URLDecoder.decode(map.get("content"), "UTF-8");
 		map.replace("content", content);
 		System.out.println("작성자"+session.getAttribute("nickname"));
-		System.out.println(map.get("subject")+","+map.get("content")+","+map.get("nickname"));
+		System.out.println("해쉬태그:"+map.get("hashtag"));
+		map.remove("hashtag");
+		System.out.println(map.get("subject")+","+map.get("content")+","+map.get("nickname")+","+map.get("memEmail"));
 		myblogService.insertWriteBlog(map);
 		hashtagService.insertHashTag(map.get("hashtag"));
 		System.out.println("save 들어와서 저장하는 중...");
@@ -225,8 +259,8 @@ public class MyblogController {
 		
 		@RequestMapping(value="/myblog/insertReply", method= {RequestMethod.POST})
 		public @ResponseBody void insertReply(HttpSession session, @RequestParam Map <String , String> map) {
-			map.put("email",(String)session.getAttribute("memEmail"));
-			map.put("nickname", (String)session.getAttribute("nickname"));
+			map.put("nickname", (String) session.getAttribute("nickname"));
+			map.put("email", (String)session.getAttribute("memEmail"));
 			System.out.println("작성자"+session.getAttribute("email"));
 			myblogService.insertReply(map);
 			System.out.println("insertReply 들어와서 저장하는 중...");

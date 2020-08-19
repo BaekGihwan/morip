@@ -216,7 +216,7 @@ body, html{
   display: flex;
 }
 .view_userImgWrapper{
-  width:10%;
+  width:5%;
   margin-right:20px;
 }
 .view_userImg{
