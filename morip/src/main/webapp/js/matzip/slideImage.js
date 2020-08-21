@@ -4,7 +4,8 @@ $('#matzipImageSlider').slick({
     infinite:true, 
     autoplay:true,
     autoplaySpeed: 2000,
-    arrow:true,
+    //pauseOnHover:false,
+    arrow:false,
     nextArrow:$('.next'),
     prevArrow:$('.prev'),
     responsive:[

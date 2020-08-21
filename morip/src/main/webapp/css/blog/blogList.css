@@ -1,5 +1,51 @@
 @charset "UTF-8";
+.blogSearch {
+/* 	border: 1px solid red; */
+	
+	width: 800px;
+	height: 60px;
+	display: flex;
+	margin: 0 auto;
+}
 
+.hashtagText {
+	width: 70%;
+	appearance: none;
+    background-color: transparent;
+    border: none;
+    border-radius: 0;
+    border-bottom: solid 1px #c9c9c9;
+    color: inherit;
+    display: block;
+    outline: 0;
+    padding: 0;
+    text-decoration: none;
+}
+
+.hashtagText:focus{
+	border-bottom: solid 1px #b6512e;
+}
+
+.hashtagSearchBtn {
+	width: 20%;
+	height: 100%;
+	margin-left: 40px;
+    text-align: center;
+    padding: 0 17px;
+    background-color: #333333;
+    border-radius: 10px;
+    font-size: 16px;
+    color: #fff;
+    outline: none !important;
+    border: none;
+    cursor: pointer;
+}
+
+.blogSerchBtn:hover {
+	background-color: #b6512e;
+	color: #fff;
+	border: none;
+}
 
 .morip_banner_slider {
 	/* border: 1px solid yellow; */
@@ -155,62 +201,59 @@
 
 /* 리스트 */
 /*무한 스크롤 jsp*/
-.tableHeadder{
-  font-size:s9px;
-  width:100%;
-}
-.myBlog_wrapper{
-  position:relative;
-  top:160px;
-  width:70%;
-  height:300px;
-  padding:40px auto;
-  margin:50px auto;
+.blogList_wrapper{
+	position: relative;
+	/* top:160px; */
+	width: 70%;
+	/* height: 300px; */
+	padding: 40px auto;
+	/* margin: 50px auto; */
+	margin: 0 auto;
 }
 
-.myblogList{
-display: flex;
-
+.blogList{
+	display: flex;
 }
 
-/* #myblog_feed{
+#blog_feed{
   width: 270px;
   margin:10px;
   padding:10px;
   background-color: #dcdcd3;
-  border-radius: 20px;
+  /* border-radius: 20px; */
+  cursor: pointer;
   
 } 
 
 .listImg{
   width:250px;
   height:200px;
-margin-left: 20px; 
-  
-  border-radius: 20px;
 }
 
 .myblog_img{
   overflow: hidden;
 }
-.myblog_img {
- width:250px;
-  height:200px;
-}
+
+
 .myblog_subject{
-  font-size: 18px;
-  font-weight: bold;
-  margin:10px;
-  margin-bottom:10px;
-  text-align: left;
+ font-size: 18px;
+	margin: 10px;
+	text-align: left;
+	font-family: 'Nanum Pen Script', cursive;
+	height: 75px;
+	overflow: hidden;
   
 }
-.myblog_content{
-  font-size: 18px;
-  margin:10px;
-  text-align: left;
-  font-family: 'Nanum Pen Script', cursive;
+
+.myblog_content {
+	font-size: 18px;
+	margin: 10px;
+	text-align: left;
+	font-family: 'Nanum Pen Script', cursive;
+	height: 75px;
+	overflow: hidden;
 }
+
 .myblog_travleDay{
   font-size: 10px;
 }
@@ -222,20 +265,38 @@ margin-left: 20px;
   flex-grow:5;
   text-align: right;
 }
+
+/* 
+.myblog_content{
+  font-size: 18px;
+  margin:10px;
+  text-align: left;
+  font-family: 'Nanum Pen Script', cursive;
+} */
+
+
 .reply{
   flex-grow: 1;
+}
+.reply span {
+	margin-left: 10px;
+	font-size: 20px;
 }
 .like{
   flex-grow: 1;
 }
 
-*/
+
 
 /* 블로그 보여주기 기환 버젼! */
-.blogList_wrapper {
-	width: 1120px;
-	margin: 0 auto;
-	display: flex;
+/* 
+.blogList_wrapper2 {
+	border: 1px solid red;
+	position:relative;
+	width:70%;
+	height:300px;
+	padding:40px auto;
+	margin:0 auto;
 }
 
 #blogList_feed{
@@ -251,7 +312,7 @@ margin-left: 20px;
   height:200px;
   margin-top: 5px;
   margin-left: 5px;
-  /*margin-left: 20px;*/
+  margin-left: 20px;
   border-radius: 20px;
 }
 
@@ -271,7 +332,7 @@ margin-left: 20px;
   text-align: left;
   font-family: 'Nanum Pen Script', cursive;
 }
-/* 
+
 .blogList_userFunction{
   display: flex;
   align-items: center;
@@ -295,31 +356,30 @@ margin-left: 20px;
 
 
 
- */
 
 
 .blogList_userFunction{
-	/* border: 1px solid red; */
+	border: 1px solid red;
 	display: flex;
 	justify-content: space-between
-	/* align-items: center; */
+	align-items: center;
 }
 
 .like{
   	margin-left: 5px;
 }
-/* 
+
 .reply{
   flex-grow: 1;
   margin-left: 10px; 
 }
- */
+
 .blogList_travleDay {
 	margin-right: 5px;
 	margin-top: 4px;
 	font-size: 13px;
 }
-
+ */
 
 /* 
 .blogList_travleDay{
@@ -413,7 +473,6 @@ margin-left: 20px;
 .optionContentWrapper{
 	margin:0 auto;
 
-
 /*글작성BTN 모달창*/
 .modal-body{
 	text-align:center;
@@ -462,5 +521,13 @@ margin-left: 20px;
 }
 .optionContentWrapper{
 	margin:0 auto;
+}
+
+/* 무한스크롤 */
+.aaa {
+	border: 1px solid red;
+	width: 1120px;
+	margin:0 auto;
+}
 
 

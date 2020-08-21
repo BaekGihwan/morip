@@ -3336,29 +3336,6 @@ List
 		}
 	#yo{
 		font-size:20pt;
-		/*
-		position:absolute;
-		left:15%;
-		top:150px;
-		width:200px;
-		  height:100px;
-		  margin-left:-50px;
-		  */
-		
-		animation-name: jaehee2;
-  		animation-duration:1s;
-   		animation-duration: leaner;
-  		/*animation-iteration-count:3;*/
-    	animation-direction:alternate;
-    	animation-fill-mode: forwards;
-	}
-	@-webkit-keyframes jaehee2 {
-	  from {
-	    top:20%;
-	  }
-	  to {
-	    top:15%;
-	  }
 	}
 	#gi{
 		font-size:35pt;
@@ -3389,7 +3366,7 @@ List
 		font-size:70pt;
 	}
 	#smallDiv{
-		width:25%;
+		width:23.5%;
 		height:330px;
 		/*text-align:center;
 		background-color:#dcdcd3;

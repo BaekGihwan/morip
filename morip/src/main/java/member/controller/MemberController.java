@@ -39,10 +39,6 @@ public class MemberController {
 	
 	@RequestMapping(value="/member/loginForm", method=RequestMethod.GET)
 	public String login(HttpSession session, Model model) {
-		/*
-		session.invalidate();
-		return "../member/loginForm";
-		 */
 		session.invalidate();		
 		model.addAttribute("display", "/resources/member/loginForm.jsp");
 		return "/resources/main/index";
@@ -180,6 +176,7 @@ public class MemberController {
 		
 		if(memberDTO != null) {
 			session.setAttribute("memEmail", memberDTO.getEmail());
+			session.setAttribute("nickname", memberDTO.getNickname());
 			session.setAttribute("checkid", memberDTO.getCheckid());
 		}
 		
@@ -202,10 +199,9 @@ public class MemberController {
 		
 		if (memberDTO != null && passMatch == true) {
 			session.setAttribute("memEmail", memberDTO.getEmail());
+			session.setAttribute("nickname", memberDTO.getNickname());
 			session.setAttribute("image", memberDTO.getImage());
 			session.setAttribute("checkid", memberDTO.getCheckid());
-			session.setAttribute("nickname", memberDTO.getNickname());
-			System.out.println(memberDTO.getEmail());
 			mav.addObject("memberDTO", memberDTO);
 		}
 		mav.addObject("passMatch", passMatch);
@@ -240,13 +236,11 @@ public class MemberController {
 	public String pwdFindForm(Model model) {
 		model.addAttribute("display", "/resources/member/pwdFindForm.jsp");
 		return "/resources/main/index";
-	}
-	
+	}	
 	
 	@RequestMapping(value = "/member/checkId")
 	public ModelAndView checkId(@RequestParam String email, String checkid, HttpSession session) {
-		System.out.println("이메일뭐오냐" + email);
-		System.out.println("체크아이디뭐오냐" + checkid);		
+		System.out.println("이메일뭐오냐" + email);	
 		MemberDTO memberDTO = memberService.getMember(email, checkid);
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("memberDTO", memberDTO);
@@ -342,66 +336,42 @@ public class MemberController {
 		model.addAttribute("display", "/resources/member/memberModifyForm.jsp");
 		return "/resources/main/index";
 	}
-	
+		
 	// 회원정보 수정
 	@RequestMapping(value="/member/memberModify", method=RequestMethod.POST)
 	@ResponseBody
 	public void memberModify(@ModelAttribute MemberDTO memberDTO, 
 							 @RequestParam MultipartFile img, HttpSession session) {
-		String filePath = "E:\\spring\\gihwan\\morip\\morip\\src\\main\\webapp\\storage\\";
-		String fileName = img.getOriginalFilename();
-		File file = new File(filePath, fileName);
-		try {
-			FileCopyUtils.copy(img.getInputStream(), new FileOutputStream(file));
-		} catch (IOException e) {
-			e.printStackTrace();
-		}		
-		memberDTO.setImage(fileName);
+		String image =  (String)session.getAttribute("image");
+		String checkid = (String) session.getAttribute("checkid");
+		
+		if(img.getOriginalFilename() == "") {
+			memberDTO.setImage(image);
+		}else {
+			String filePath = "E:\\spring\\gihwan\\morip\\morip\\src\\main\\webapp\\storage\\";
+			String fileName = img.getOriginalFilename();
+			File file = new File(filePath, fileName);
+			try {
+				FileCopyUtils.copy(img.getInputStream(), new FileOutputStream(file));
+			} catch (IOException e) {
+				e.printStackTrace();
+			}		
+			memberDTO.setImage(fileName);		
+			session.setAttribute("nickname", memberDTO.getNickname());
+			session.setAttribute("image", memberDTO.getImage());
+		}					
 		String inputPass = memberDTO.getPwd();
 		String pass = passEncoder.encode(inputPass);
 		memberDTO.setPwd(pass);
-		String checkid = (String) session.getAttribute("checkid");
 		memberDTO.setCheckid(checkid);
-		System.out.println(memberDTO.getEmail());
-		System.out.println(memberDTO.getGender());
-		System.out.println(memberDTO.getImage());
-		System.out.println(memberDTO.getNickname());
 		memberService.memberModify(memberDTO);
+	}	
+	
+	public void aaaa(HttpSession session) {
+		String name = (String) session.getAttribute("nickname");
 	}
 	
-
-	/* 
-	@RequestMapping(value = "/member/profileChange", method = RequestMethod.POST)
-	@ResponseBody
-	public ModelAndView profileChange(HttpSession session, @RequestParam  MultipartFile img){
-		System.out.println("ajax 실행되면 들어온다.");
-		System.out.println(img.getOriginalFilename());
-	
-		String email = (String) session.getAttribute("memEmail");
-		MemberDTO memberDTO = memberService.getMember(email);
-		String filePath = "E:\\spring\\project\\morip\\src\\main\\webapp\\storage";
-		String fileName = img.getOriginalFilename();
-		File file = new File(filePath, fileName);
-		
-		//파일 복사
-		try {
-			FileCopyUtils.copy(img.getInputStream(), new FileOutputStream(file));
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		System.out.println(fileName);
-		memberDTO.setImage(fileName);		
-		ModelAndView mav = new ModelAndView();
-		mav.addObject("memberDTO", memberDTO);
-		mav.setViewName("jsonView");		
-		return mav;
-	}		
-	*/
 	
 	
-	@RequestMapping(value = "/member/del", method = RequestMethod.POST)
-	public void del() {
-		System.out.println("dddd");
-	}
 	
 }

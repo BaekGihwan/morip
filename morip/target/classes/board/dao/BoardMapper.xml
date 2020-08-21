@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="boardSQL">
+
+
+	<!-- 글쓰기 -->
+	<insert id="boardWrite" parameterType="java.util.Map">
+		INSERT INTO boardtable (boardtable_seq,nickname,subject,content,ref) 
+		values(boardtable_seq.nextval
+			 , #{nickname}
+			 , #{subject}
+			 , #{content}
+			 , boardtable_seq.currval)
+	</insert>
+	
+	<!-- 목록 -->
+	<select id="getBoardList" parameterType="java.util.Map" resultType="board">
+		<![CDATA[
+		select * from
+		(select rownum rn, tt.* from
+		(select * from boardtable order by ref desc, step asc)tt
+		)where rn>=#{startNum} and rn<=#{endNum} 
+		]]>
+	</select>
+	
+	<!-- 총글수 -->
+	<select id="getBoardTotalA" resultType="int">
+		select count(*) from boardtable
+	</select>
+	
+		<!-- 작성한 글 확인 -->
+	<select id="getBoard" parameterType="int" resultType="board">
+		select * from boardtable where boardtable_seq=#{boardtable_seq}
+	</select>
+	
+	<!-- 검색 -->
+	<select id="getBoardSearch" parameterType="java.util.Map" resultType="board">
+		<![CDATA[
+		select * from
+		(select rownum rn, tt.* from
+		(select * from boardtable where ${searchOption} like '%'||#{keyword}||'%' 
+							 order by ref desc, step asc)tt
+		)where rn>=#{startNum} and rn<=#{endNum} 
+		]]>
+	</select>
+	
+	<!-- 검색 총글수 -->
+	<select id="getBoardSearchTotalA" resultType="int">
+		select count(*) from boardtable where ${searchOption} like '%'||#{keyword}||'%'
+	</select>
+
+</mapper>	

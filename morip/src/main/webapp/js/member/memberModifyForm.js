@@ -39,13 +39,12 @@ $('#memberModifyFormBtn').click(function(){
 			url: '/morip/member/memberModify',
 			data: new FormData($('#memberModifyProfile')[0]),
 			success: function(){		
-			$('#testBtn').trigger('click', 'continue');
 				Swal.fire({
  					icon: 'success',
  					confirmButtonText: '확인',
   					title: '회원정보 수정완료!'
 				}).then((result) => {
-					if (result.value) {											
+					if (result.value) {
 						location.href='../main/index';
 					}
 				})
@@ -95,6 +94,7 @@ $('#memberModifyFormDropBtn').click(function(){
   		}
 	})
 });
+
 // 비밀번호 조합
 $('#memberModifyFormPwd').focusout(function(){
 	if(!regPwd.test($('#memberModifyFormPwd').val())){

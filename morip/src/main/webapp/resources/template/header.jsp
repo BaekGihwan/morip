@@ -1,8 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <head>
+<!--===============================================================================================-->
   <link rel="stylesheet" href="../css/main/header.css">
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
+<!--===============================================================================================-->
 </head>
 <body>
   <header>
@@ -29,7 +31,7 @@
     </div>
   </header>
 </body>
-
+<!--===============================================================================================-->
 <script type="text/javascript" src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script type="text/javascript" src="../js/main/header.js"></script>
 

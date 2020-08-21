@@ -14,6 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 import matzip.bean.MatzipDTO;
 import matzip.bean.MatzipImageDTO;
 import matzip.service.MatzipService;
+import myblog.bean.MyblogDTO;
 
 @Controller
 @RequestMapping("matzip") /* 매번 /member/login처럼 /member를 붙일 필요가 없어진다 */
@@ -118,4 +119,31 @@ public class MatzipController {
 		mav.setViewName("jsonView");
 		return mav;		
 	}
+	
+	@RequestMapping(value="/getMatzipReview",method=RequestMethod.POST)
+	@ResponseBody
+	public ModelAndView getMatzipReview(@RequestParam String title, @RequestParam String pg) {
+		
+		List<MyblogDTO> list = matzipService.getMatzipReview(title,Integer.parseInt(pg));
+		System.out.println(title);
+		//System.out.println(list.get(0).getSubject());
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("list", list);
+		mav.setViewName("jsonView");
+		//model.addAttribute("display", "/board/boardList.jsp");
+		return mav;
+	}
+	
+	@RequestMapping(value="getReviewCount",method=RequestMethod.POST)
+	@ResponseBody
+	public String getReviewCount(@RequestParam String keyword) {
+		return matzipService.getReviewCount(keyword);
+	}
+	
+	@RequestMapping(value="updateReviewCount",method=RequestMethod.POST)
+	@ResponseBody
+	public void updateReviewCount(@RequestParam String title, @RequestParam String reviewCount) {
+		matzipService.updateReviewCount(title, reviewCount);
+	}
+	
 }

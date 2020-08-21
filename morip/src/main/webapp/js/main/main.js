@@ -44,6 +44,18 @@ $(document).ready(function(){
 	      success: function(data){
 	         $.each(data.list,function(index,items){
 	            $('#food_post_name'+(index+1)).text(data.list[index].title);
+	            $.ajax({
+					type:'post',
+					url:'../matzip/getReviewCount',
+					data:'keyword='+data.list[index].title,
+					dataType:'text',
+					success:function(data){
+						$('#food_post_like_count'+(index+1)).text(data);
+					},
+					error:function(err){
+						console.log(err);
+					}
+				});
 	            $('#food_post_image'+(index+1)).css('background-image','url("../image/matzip/'+data.list[index].image2+'")');
 	            $('#food_link'+(index+1)).prop('href',data.list[index].link);
 	            $('#content2_address'+(index+1)).text(data.list[index].address);
