@@ -8,7 +8,9 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,6 +18,7 @@ import org.springframework.stereotype.Service;
 import matzip.bean.MatzipDTO;
 import matzip.bean.MatzipImageDTO;
 import matzip.dao.MatzipDAO;
+import myblog.bean.MyblogDTO;
 
 @Service("matzipService")
 public class MatzipServiceImpl implements MatzipService {
@@ -74,7 +77,8 @@ public class MatzipServiceImpl implements MatzipService {
 			e.printStackTrace();
 		}
          con.disconnect();
-         //System.out.println(sb);
+         System.out.println("-------------------맛집뷰-------------------");
+         System.out.println(sb);
          String data = sb.toString();
          String[] array;
          array = data.split("\"");
@@ -144,9 +148,11 @@ public class MatzipServiceImpl implements MatzipService {
 	}
 	@Override
     public List<MatzipDTO> matzipSearch(String matzipText){
-       List<MatzipDTO> list = new ArrayList<MatzipDTO>();
+		 System.out.println("-------------------맛집검색-------------------");
+		
+		List<MatzipDTO> list = new ArrayList<MatzipDTO>();
        String matzipText1 = matzipText;
-       
+       System.out.println(matzipText);
        
        try {
           int display= 5;
@@ -182,7 +188,8 @@ public class MatzipServiceImpl implements MatzipService {
          e.printStackTrace();
       }
          con.disconnect();
-         //System.out.println(sb);
+        
+         System.out.println(sb);
          String data = sb.toString();
          String[] array;
          array = data.split("\"");
@@ -283,6 +290,7 @@ public class MatzipServiceImpl implements MatzipService {
 	      try {
 	             
 	             String text = URLEncoder.encode(matzipTitle, "utf-8");
+	             System.out.println(text);
 	              URL url;
 	            url= new URL("https://openapi.naver.com/v1/search/image?query=" + text + "&display=8&start=1&sort=sim");
 	            
@@ -314,6 +322,8 @@ public class MatzipServiceImpl implements MatzipService {
 	            e.printStackTrace();
 	         }
 	            con.disconnect();
+	            System.out.println("-------------------맛집이미지-------------------");
+	            System.out.println("검색내용:"+matzipTitle);
 	            System.out.println(sb);
 	            String data = sb.toString();
 	            String[] array;
@@ -359,5 +369,32 @@ public class MatzipServiceImpl implements MatzipService {
 	          return list;
 
 	   }
+
+	@Override
+	public List<MyblogDTO> getMatzipReview(String title, int pg) {
+		int endNum = pg*2;
+		int startNum = endNum-1;
+		List<MyblogDTO> list = matzipDAO.getMatzipReview(title, startNum,endNum);
+		//System.out.println(list.get(0).getSubject());
+		//session.setAttribute("ar", ar);
+		return list;
+	}
+
+	@Override
+	public String getReviewCount(String keyword) {
+		// TODO Auto-generated method stub
+		return matzipDAO.getReviewCount(keyword);
+	}
+
+	@Override
+	public void updateReviewCount(String title, String reviewCount) {
+		Map<String,String> map = new HashMap<String,String>();
+		map.put("title", title);
+		map.put("reviewCount",reviewCount);
+		
+		matzipDAO.updateReviewCount(map);
+		
+		
+	}
 
 }

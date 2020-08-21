@@ -3,27 +3,66 @@
  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  <mapper namespace="matzipSQL">
+ 	<resultMap id="matzipMap" type="matzip.bean.MatzipDTO">
+ 		<result column="category" property="category"></result>
+ 		<result column="title" property="title"></result>
+ 		<result column="link" property="link"></result>
+ 		<result column="time" property="time"></result>
+ 		<result column="telephone" property="telephone"></result>
+ 		<result column="address" property="address"></result>
+ 		<result column="roadAddress" property="roadAddress"></result>
+ 		<result column="mapx" property="mapx"></result>
+ 		<result column="mapy" property="mapy"></result>
+ 		<result column="image1" property="image1"></result>
+ 		<result column="image2" property="image2"></result>
+ 		<result column="image3" property="image3"></result>
+ 		<result column="image4" property="image4"></result>
+ 	</resultMap>
+ 	<resultMap id="myblogMap" type="myblog.bean.MyblogDTO">
+ 		<result column="blogboardtable_seq" property="blogboardtable_seq"></result>
+ 		<result column="nickname" property="nickname"></result>
+ 		<result column="subject" property="subject"></result>
+ 		<result column="content" property="content"></result>
+ 		<result column="mainimage" property="mainimage"></result>
+ 		<result column="startdate" property="startdate"></result>
+ 		<result column="enddate" property="enddate"></result>
+ 		<result column="hit" property="hit"></result>
+ 		<result column="ref" property="ref"></result>
+ 		<result column="step" property="step"></result>
+ 		<result column="pseq" property="pseq"></result>
+ 		<result column="logtime" property="logtime"></result>
+ 		<result column="publicoption" property="publicoption"></result>
+ 	</resultMap>
  	<insert id="matzipInsert" parameterType="matzip">
  		insert into matziptable values(#{category},#{title},#{link},#{description},
  		#{telephone},#{address},#{roadAddress},#{mapx},#{mapy},#{image1},#{image2},#{image3},#{image4})
  	</insert>
- 	<select id="matzipList" parameterType="string" resultType="matzip">
+ 	<select id="matzipList" parameterType="string" resultMap="matzipMap">
  		select * from matziptable where address like '%'||#{address}||'%' 
  	</select>
- 	<select id="matzipList2" resultType="matzip">
+ 	<select id="matzipList2" resultMap="matzipMap">
  		select * from matziptable 
  	</select>
- 	<select id="getMatzipView" parameterType="string" resultType="matzip">
+ 	<select id="getMatzipView" parameterType="string" resultMap="matzipMap">
  		select * from matziptable where title = #{title}
  	</select>
  	<!-- 메인창에 베스트 3개 뿌려주기 -->
- 	<select id="matzipThreeList" resultType="matzip">
+ 	<select id="matzipThreeList" resultMap="matzipMap">
       select * from 
       	(select rownum rn, tt.* from 
-      	(select * from matziptable order by title)tt) 
-      where rn=14 or rn=19 or rn=58 order by title desc
+      	(select * from matziptable order by reviewcount desc, title asc)tt) 
+      where rn &gt;=1 and rn &lt;=3
    </select>
-   <select id="matzipAllList" parameterType="map" resultType="matzip">
+   <select id="matzipAllList" parameterType="map" resultMap="matzipMap">
 		select * from (select rownum rn, tt.* from (select * from matziptable order by title)tt) where rn &gt;= #{startNum} and rn &lt;= #{endNum}
 	</select>
+	<select id="getMatzipReview" parameterType="java.util.Map" resultMap="myblogMap">
+		select * from (select rownum rn, tt.* from (select * from blogboardtable where subject like '%'||#{keyword}||'%' or content like '%'||#{keyword}||'%' order by subject)tt) where rn &gt;= #{startNum} and rn &lt;= #{endNum}
+	</select>
+	<select id="getReviewCount" parameterType="string" resultType="string">
+ 		select count(*) from blogboardtable where subject like '%'||#{keyword}||'%' or content like '%'||#{keyword}||'%'
+ 	</select>
+ 	<update id="updateReviewCount" parameterType="map">
+ 		update matziptable set reviewcount = #{reviewCount} where title=#{title}
+ 	</update>
  </mapper> 

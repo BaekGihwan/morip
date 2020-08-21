@@ -198,6 +198,7 @@ var clicks11;
 var clicks12;
 var clicks13;
 var clicks14;
+
 var $window = $(this);
 	var scrollTop = $window.scrollTop();
 	var windowHeight = $window.height();
@@ -346,6 +347,29 @@ $('#pajuA').click(function(){
 			$.each(data.list,function(index,items){
 				$('#pajuImg'+index).prop('src','../image/matzip/'+data.list[index].image3);
 				$('#pajuTitle'+index).text(data.list[index].title);
+				$.ajax({
+					type:'post',
+					url:'../matzip/getReviewCount',
+					data:'keyword='+data.list[index].title,
+					dataType:'text',
+					success:function(data){
+						$('#pajuReview'+index).text(data);
+						$.ajax({
+							type:'post',
+							url:'../matzip/updateReviewCount',
+							data:'title='+$('#pajuTitle'+index).text()+'&reviewCount='+data,
+							success:function(){
+							},
+							error:function(err){
+								console.log(err);
+							}
+							
+						});
+					},
+					error:function(err){
+						console.log(err);
+					}
+				});
 				$('#pajuAddr'+index).text(data.list[index].roadAddress);
 				$('#pajuTel'+index).text(data.list[index].telephone);
 			});
@@ -377,6 +401,29 @@ $('#chuncheonA').click(function(){
 			$.each(data.list,function(index,items){
 				$('#chuncheonImg'+index).prop('src','../image/matzip/'+data.list[index].image1);
 				$('#chuncheonTitle'+index).text(data.list[index].title);
+				$.ajax({
+					type:'post',
+					url:'../matzip/getReviewCount',
+					data:'keyword='+data.list[index].title,
+					dataType:'text',
+					success:function(data){
+						$('#chuncheonReview'+index).text(data);
+						$.ajax({
+							type:'post',
+							url:'../matzip/updateReviewCount',
+							data:'title='+$('#chuncheonTitle'+index).text()+'&reviewCount='+data,
+							success:function(){
+							},
+							error:function(err){
+								console.log(err);
+							}
+							
+						});
+					},
+					error:function(err){
+						console.log(err);
+					}
+				});
 				$('#chuncheonAddr'+index).text(data.list[index].roadAddress);
 				$('#chuncheonTel'+index).text(data.list[index].telephone);
 			});
@@ -408,6 +455,29 @@ $('#incheonA').click(function(){
 			$.each(data.list,function(index,items){
 				$('#incheonImg'+index).prop('src','../image/matzip/'+data.list[index].image1);
 				$('#incheonTitle'+index).text(data.list[index].title);
+				$.ajax({
+					type:'post',
+					url:'../matzip/getReviewCount',
+					data:'keyword='+data.list[index].title,
+					dataType:'text',
+					success:function(data){
+						$('#incheonReview'+index).text(data);
+						$.ajax({
+							type:'post',
+							url:'../matzip/updateReviewCount',
+							data:'title='+$('#incheonTitle'+index).text()+'&reviewCount='+data,
+							success:function(){
+							},
+							error:function(err){
+								console.log(err);
+							}
+							
+						});
+					},
+					error:function(err){
+						console.log(err);
+					}
+				});
 				$('#incheonAddr'+index).text(data.list[index].roadAddress);
 				$('#incheonTel'+index).text(data.list[index].telephone);
 			});
@@ -439,6 +509,29 @@ $('#seoulA').click(function(){
 			$.each(data.list,function(index,items){
 				$('#seoulImg'+index).prop('src','../image/matzip/'+data.list[index].image1);
 				$('#seoulTitle'+index).text(data.list[index].title);
+				$.ajax({
+					type:'post',
+					url:'../matzip/getReviewCount',
+					data:'keyword='+data.list[index].title,
+					dataType:'text',
+					success:function(data){
+						$('#seoulReview'+index).text(data);
+						$.ajax({
+							type:'post',
+							url:'../matzip/updateReviewCount',
+							data:'title='+$('#seoulTitle'+index).text()+'&reviewCount='+data,
+							success:function(){
+							},
+							error:function(err){
+								console.log(err);
+							}
+							
+						});
+					},
+					error:function(err){
+						console.log(err);
+					}
+				});
 				$('#seoulAddr'+index).text(data.list[index].roadAddress);
 				$('#seoulTel'+index).text(data.list[index].telephone);
 			});
@@ -470,6 +563,29 @@ $('#gangneungA').click(function(){
 			$.each(data.list,function(index,items){
 				$('#gangneungImg'+index).prop('src','../image/matzip/'+data.list[index].image1);
 				$('#gangneungTitle'+index).text(data.list[index].title);
+				$.ajax({
+					type:'post',
+					url:'../matzip/getReviewCount',
+					data:'keyword='+data.list[index].title,
+					dataType:'text',
+					success:function(data){
+						$('#gangneungReview'+index).text(data);
+						$.ajax({
+							type:'post',
+							url:'../matzip/updateReviewCount',
+							data:'title='+$('#gangneungTitle'+index).text()+'&reviewCount='+data,
+							success:function(){
+							},
+							error:function(err){
+								console.log(err);
+							}
+							
+						});
+					},
+					error:function(err){
+						console.log(err);
+					}
+				});
 				$('#gangneungAddr'+index).text(data.list[index].roadAddress);
 				$('#gangneungTel'+index).text(data.list[index].telephone);
 			});
@@ -501,6 +617,29 @@ $('#suwonA').click(function(){
 			$.each(data.list,function(index,items){
 				$('#suwonImg'+index).prop('src','../image/matzip/'+data.list[index].image1);
 				$('#suwonTitle'+index).text(data.list[index].title);
+				$.ajax({
+					type:'post',
+					url:'../matzip/getReviewCount',
+					data:'keyword='+data.list[index].title,
+					dataType:'text',
+					success:function(data){
+						$('#suwonReview'+index).text(data);
+						$.ajax({
+							type:'post',
+							url:'../matzip/updateReviewCount',
+							data:'title='+$('#suwonTitle'+index).text()+'&reviewCount='+data,
+							success:function(){
+							},
+							error:function(err){
+								console.log(err);
+							}
+							
+						});
+					},
+					error:function(err){
+						console.log(err);
+					}
+				});
 				$('#suwonAddr'+index).text(data.list[index].roadAddress);
 				$('#suwonTel'+index).text(data.list[index].telephone);
 			});
@@ -532,6 +671,29 @@ $('#cheonanA').click(function(){
 			$.each(data.list,function(index,items){
 				$('#cheonanImg'+index).prop('src','../image/matzip/'+data.list[index].image3);
 				$('#cheonanTitle'+index).text(data.list[index].title);
+				$.ajax({
+					type:'post',
+					url:'../matzip/getReviewCount',
+					data:'keyword='+data.list[index].title,
+					dataType:'text',
+					success:function(data){
+						$('#cheonanReview'+index).text(data);
+						$.ajax({
+							type:'post',
+							url:'../matzip/updateReviewCount',
+							data:'title='+$('#cheonanTitle'+index).text()+'&reviewCount='+data,
+							success:function(){
+							},
+							error:function(err){
+								console.log(err);
+							}
+							
+						});
+					},
+					error:function(err){
+						console.log(err);
+					}
+				});
 				$('#cheonanAddr'+index).text(data.list[index].roadAddress);
 				$('#cheonanTel'+index).text(data.list[index].telephone);
 			});
@@ -563,6 +725,29 @@ $('#andongA').click(function(){
 			$.each(data.list,function(index,items){
 				$('#andongImg'+index).prop('src','../image/matzip/'+data.list[index].image1);
 				$('#andongTitle'+index).text(data.list[index].title);
+				$.ajax({
+					type:'post',
+					url:'../matzip/getReviewCount',
+					data:'keyword='+data.list[index].title,
+					dataType:'text',
+					success:function(data){
+						$('#andongReview'+index).text(data);
+						$.ajax({
+							type:'post',
+							url:'../matzip/updateReviewCount',
+							data:'title='+$('#andongTitle'+index).text()+'&reviewCount='+data,
+							success:function(){
+							},
+							error:function(err){
+								console.log(err);
+							}
+							
+						});
+					},
+					error:function(err){
+						console.log(err);
+					}
+				});
 				$('#andongAddr'+index).text(data.list[index].roadAddress);
 				$('#andongTel'+index).text(data.list[index].telephone);
 			});
@@ -594,6 +779,29 @@ $('#jeonjuA').click(function(){
 			$.each(data.list,function(index,items){
 				$('#jeonjuImg'+index).prop('src','../image/matzip/'+data.list[index].image1);
 				$('#jeonjuTitle'+index).text(data.list[index].title);
+				$.ajax({
+					type:'post',
+					url:'../matzip/getReviewCount',
+					data:'keyword='+data.list[index].title,
+					dataType:'text',
+					success:function(data){
+						$('#jeonjuReview'+index).text(data);
+						$.ajax({
+							type:'post',
+							url:'../matzip/updateReviewCount',
+							data:'title='+$('#jeonjuTitle'+index).text()+'&reviewCount='+data,
+							success:function(){
+							},
+							error:function(err){
+								console.log(err);
+							}
+							
+						});
+					},
+					error:function(err){
+						console.log(err);
+					}
+				});
 				$('#jeonjuAddr'+index).text(data.list[index].roadAddress);
 				$('#jeonjuTel'+index).text(data.list[index].telephone);
 			});
@@ -625,6 +833,29 @@ $('#chungjuA').click(function(){
 			$.each(data.list,function(index,items){
 				$('#chungjuImg'+index).prop('src','../image/matzip/'+data.list[index].image1);
 				$('#chungjuTitle'+index).text(data.list[index].title);
+				$.ajax({
+					type:'post',
+					url:'../matzip/getReviewCount',
+					data:'keyword='+data.list[index].title,
+					dataType:'text',
+					success:function(data){
+						$('#chungjuReview'+index).text(data);
+						$.ajax({
+							type:'post',
+							url:'../matzip/updateReviewCount',
+							data:'title='+$('#chungjuTitle'+index).text()+'&reviewCount='+data,
+							success:function(){
+							},
+							error:function(err){
+								console.log(err);
+							}
+							
+						});
+					},
+					error:function(err){
+						console.log(err);
+					}
+				});
 				$('#chungjuAddr'+index).text(data.list[index].roadAddress);
 				$('#chungjuTel'+index).text(data.list[index].telephone);
 			});
@@ -656,6 +887,29 @@ $('#gyeongjuA').click(function(){
 			$.each(data.list,function(index,items){
 				$('#gyeongjuImg'+index).prop('src','../image/matzip/'+data.list[index].image1);
 				$('#gyeongjuTitle'+index).text(data.list[index].title);
+				$.ajax({
+					type:'post',
+					url:'../matzip/getReviewCount',
+					data:'keyword='+data.list[index].title,
+					dataType:'text',
+					success:function(data){
+						$('#gyeongjuReview'+index).text(data);
+						$.ajax({
+							type:'post',
+							url:'../matzip/updateReviewCount',
+							data:'title='+$('#gyeongjuTitle'+index).text()+'&reviewCount='+data,
+							success:function(){
+							},
+							error:function(err){
+								console.log(err);
+							}
+							
+						});
+					},
+					error:function(err){
+						console.log(err);
+					}
+				});
 				$('#gyeongjuAddr'+index).text(data.list[index].roadAddress);
 				$('#gyeongjuTel'+index).text(data.list[index].telephone);
 			});
@@ -687,6 +941,29 @@ $('#yeosuA').click(function(){
 			$.each(data.list,function(index,items){
 				$('#yeosuImg'+index).prop('src','../image/matzip/'+data.list[index].image1);
 				$('#yeosuTitle'+index).text(data.list[index].title);
+				$.ajax({
+					type:'post',
+					url:'../matzip/getReviewCount',
+					data:'keyword='+data.list[index].title,
+					dataType:'text',
+					success:function(data){
+						$('#yeosuReview'+index).text(data);
+						$.ajax({
+							type:'post',
+							url:'../matzip/updateReviewCount',
+							data:'title='+$('#yeosuTitle'+index).text()+'&reviewCount='+data,
+							success:function(){
+							},
+							error:function(err){
+								console.log(err);
+							}
+							
+						});
+					},
+					error:function(err){
+						console.log(err);
+					}
+				});
 				$('#yeosuAddr'+index).text(data.list[index].roadAddress);
 				$('#yeosuTel'+index).text(data.list[index].telephone);
 			});
@@ -718,6 +995,29 @@ $('#jejuA').click(function(){
 			$.each(data.list,function(index,items){
 				$('#jejuImg'+index).prop('src','../image/matzip/'+data.list[index].image1);
 				$('#jejuTitle'+index).text(data.list[index].title);
+				$.ajax({
+					type:'post',
+					url:'../matzip/getReviewCount',
+					data:'keyword='+data.list[index].title,
+					dataType:'text',
+					success:function(data){
+						$('#jejuReview'+index).text(data);
+						$.ajax({
+							type:'post',
+							url:'../matzip/updateReviewCount',
+							data:'title='+$('#jejuTitle'+index).text()+'&reviewCount='+data,
+							success:function(){
+							},
+							error:function(err){
+								console.log(err);
+							}
+							
+						});
+					},
+					error:function(err){
+						console.log(err);
+					}
+				});
 				$('#jejuAddr'+index).text(data.list[index].roadAddress);
 				$('#jejuTel'+index).text(data.list[index].telephone);
 			});
@@ -749,6 +1049,29 @@ $('#busanA').click(function(){
 			$.each(data.list,function(index,items){
 				$('#busanImg'+index).prop('src','../image/matzip/'+data.list[index].image1);
 				$('#busanTitle'+index).text(data.list[index].title);
+				$.ajax({
+					type:'post',
+					url:'../matzip/getReviewCount',
+					data:'keyword='+data.list[index].title,
+					dataType:'text',
+					success:function(data){
+						$('#busanReview'+index).text(data);
+						$.ajax({
+							type:'post',
+							url:'../matzip/updateReviewCount',
+							data:'title='+$('#busanTitle'+index).text()+'&reviewCount='+data,
+							success:function(){
+							},
+							error:function(err){
+								console.log(err);
+							}
+							
+						});
+					},
+					error:function(err){
+						console.log(err);
+					}
+				});
 				$('#busanAddr'+index).text(data.list[index].roadAddress);
 				$('#busanTel'+index).text(data.list[index].telephone);
 			});

@@ -26,13 +26,6 @@
     <title></title>
   </head>
   <body>
-    <!-- <header>
-      <div class="header">
-        <nav class="navBar">
-            네비게이션 바
-        </nav>
-      </div>
-    </header> -->
     <!--content-->
     <article class="contentWrapper">
       <div class="content">
