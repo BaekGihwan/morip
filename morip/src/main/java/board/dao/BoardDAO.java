@@ -19,5 +19,23 @@ public interface BoardDAO {
 
 	public int getBoardSearchTotalA(Map<String, String> map);
 
+	public void boardModify(Map<String, String> map);
+
+	public void boardDelete(String boardtable_seq);
+
+	public void boardHit(String boardtable_seq);
+	
+	public void insertReply(Map<String, String> map);
+	
+	public List<BoardDTO> loadReply(int parseInt);
+
+	public void deleteReplyBoard(Map<String, String> map);
+
+	public BoardDTO viewPage(int parseInt);
+
+	public void updateReply(Map<String, String> map);
+
+
+
 
 }

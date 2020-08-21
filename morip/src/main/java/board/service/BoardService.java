@@ -20,5 +20,21 @@ public interface BoardService {
 
 	public BoardPaging boardPaging(Map<String, String> map);
 
+	public void boardModify(Map<String, String> map);
+
+	public void boardDelete(String boardtable_seq);
+
+	public void boardHit(String boardtable_seq);
+
+	public List<BoardDTO> loadReply(int parseInt);//댓글 전부 불러오기
+
+	public void insertReply(Map<String, String> map);//댓글 입력 controller
+
+	public void deleteReplyBoard(Map<String, String> map);
+
+	public BoardDTO viewPage(int parseInt);
+
+	public void updateReply(Map<String, String> map);
+
 
 }
