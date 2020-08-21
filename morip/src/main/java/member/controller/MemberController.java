@@ -181,6 +181,7 @@ public class MemberController {
 		if(memberDTO != null) {
 			session.setAttribute("memEmail", memberDTO.getEmail());
 			session.setAttribute("checkid", memberDTO.getCheckid());
+			session.setAttribute("nickname", memberDTO.getNickname());
 		}
 		
 		ModelAndView mav = new ModelAndView();
@@ -202,9 +203,8 @@ public class MemberController {
 		
 		if (memberDTO != null && passMatch == true) {
 			session.setAttribute("memEmail", memberDTO.getEmail());
-			session.setAttribute("userPhoto", memberDTO.getImage());
 			session.setAttribute("checkid", memberDTO.getCheckid());
-			System.out.println(memberDTO.getEmail());
+			session.setAttribute("nickname", memberDTO.getNickname());
 			mav.addObject("memberDTO", memberDTO);
 		}
 		mav.addObject("passMatch", passMatch);
