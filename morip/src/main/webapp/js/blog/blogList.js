@@ -65,3 +65,20 @@
 					}   //success
 				});   //AJAX
     }
+
+
+/*작성 버튼 클릭 시  OptionModal 창 띄워주기*/
+$('#writeOptionBtn').click(function(){
+	$('#writeOptionModal').modal();
+});
+/*글 작성 모달에서 에세이 버튼 클릭시 */
+$('#writeBlogImg').click(function(){
+	location.href="/morip/myblog/writeBlog1";
+});
+/*글 작성 모달에서 여행기 버튼 클릭시 */
+$('#travelsWriteImg').click(function(){
+	location.href="/morip/myblog/travlesWrite1";
+});
+
+
+    

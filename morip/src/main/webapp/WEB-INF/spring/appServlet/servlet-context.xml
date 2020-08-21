@@ -45,5 +45,7 @@
 	<context:component-scan base-package="myblog.controller" />
 	<context:component-scan base-package="matzip.controller" />
 	<context:component-scan base-package="member.controller"/>
-	
+	<context:component-scan base-package="board.controller"/>
+	<context:component-scan base-package="serviceCenter.controller"/>
+
 </beans:beans>

@@ -203,6 +203,10 @@ public class MemberController {
 		
 		if (memberDTO != null && passMatch == true) {
 			session.setAttribute("memEmail", memberDTO.getEmail());
+<<<<<<< HEAD
+=======
+			session.setAttribute("image", memberDTO.getImage());
+>>>>>>> a31d7dd04c832f18a03b9c8d6aeb3496f795deb4
 			session.setAttribute("checkid", memberDTO.getCheckid());
 			session.setAttribute("nickname", memberDTO.getNickname());
 			mav.addObject("memberDTO", memberDTO);
@@ -243,10 +247,11 @@ public class MemberController {
 	
 	
 	@RequestMapping(value = "/member/checkId")
-	public ModelAndView checkId(@RequestParam String email, String checkid) {
+	public ModelAndView checkId(@RequestParam String email, String checkid, HttpSession session) {
 		System.out.println("이메일뭐오냐" + email);
+		System.out.println("체크아이디뭐오냐" + checkid);		
 		MemberDTO memberDTO = memberService.getMember(email, checkid);
-		
+		session.setAttribute("image", memberDTO.getImage());
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("memberDTO", memberDTO);
 		mav.setViewName("jsonView");
@@ -347,7 +352,7 @@ public class MemberController {
 	@ResponseBody
 	public void memberModify(@ModelAttribute MemberDTO memberDTO, 
 							 @RequestParam MultipartFile img, HttpSession session) {
-		String filePath = "C:\\00bitcamp\\GitHub\\Project\\morip\\morip\\src\\main\\webapp\\storage\\";
+		String filePath = "E:\\spring\\gihwan\\morip\\morip\\src\\main\\webapp\\storage\\";
 		String fileName = img.getOriginalFilename();
 		File file = new File(filePath, fileName);
 		try {
@@ -396,4 +401,11 @@ public class MemberController {
 		return mav;
 	}		
 	*/
+	
+	
+	@RequestMapping(value = "/member/del", method = RequestMethod.POST)
+	public void del() {
+		System.out.println("dddd");
+	}
+	
 }

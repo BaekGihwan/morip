@@ -24,7 +24,8 @@ section, summary, time, mark, audio, video {
 	border: 0;
 	font-size: 100%;
 	font: inherit;
-	vertical-align: baseline;}
+	/* vertical-align: baseline; */
+}
 
 article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
@@ -120,7 +121,7 @@ input, select, textarea {
 
 	body, input, select, textarea {
 		color: #585858;
-		font-family: "Source Sans Pro", Helvetica, sans-serif;
+		/* font-family: "Source Sans Pro", Helvetica, sans-serif; */
 		font-size: 16pt;
 		font-weight: 300;
 		line-height: 1.75;
@@ -2712,27 +2713,27 @@ List
 					}
 
 			.tiles article.style1 > .image:before {
-				background-color: #f2849e;
+				background-color: rgba(0, 0, 0, 0.6);
 			}
 
 			.tiles article.style2 > .image:before {
-				background-color: #7ecaf6;
+				background-color: rgba(0, 0, 0, 0.6);
 			}
 
 			.tiles article.style3 > .image:before {
-				background-color: #7bd0c1;
+				background-color: rgba(0, 0, 0, 0.6);
 			}
 
 			.tiles article.style4 > .image:before {
-				background-color: #c75b9b;
+				background-color: rgba(0, 0, 0, 0.6);
 			}
 
 			.tiles article.style5 > .image:before {
-				background-color: #ae85ca;
+				background-color: rgba(0, 0, 0, 0.6);
 			}
 
 			.tiles article.style6 > .image:before {
-				background-color: #8499e7;
+				background-color: rgba(0, 0, 0, 0.6);
 			}
 
 			body:not(.is-touch) .tiles article:hover > .image {
@@ -3335,7 +3336,29 @@ List
 		}
 	#yo{
 		font-size:20pt;
+		/*
+		position:absolute;
+		left:15%;
+		top:150px;
+		width:200px;
+		  height:100px;
+		  margin-left:-50px;
+		  */
 		
+		animation-name: jaehee2;
+  		animation-duration:1s;
+   		animation-duration: leaner;
+  		/*animation-iteration-count:3;*/
+    	animation-direction:alternate;
+    	animation-fill-mode: forwards;
+	}
+	@-webkit-keyframes jaehee2 {
+	  from {
+	    top:20%;
+	  }
+	  to {
+	    top:15%;
+	  }
 	}
 	#gi{
 		font-size:35pt;
@@ -3358,7 +3381,10 @@ List
 	}
 	#divYo{
 		height:100;
+		
+		
 	}
+	
 	#question{
 		font-size:70pt;
 	}

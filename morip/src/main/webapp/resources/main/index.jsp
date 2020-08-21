@@ -11,7 +11,7 @@
   <table id="mainTable">
     <!-- header부분 -->
     <tr>
-      <td id="header">   
+      <td id="header" style="height: 86px; width: 1120px;">   
         <jsp:include page="../template/top.jsp" />   
       </td>
     </tr>
@@ -31,8 +31,11 @@
     </tr>
   </table>
 </body>
+<<<<<<< HEAD
 <!-- JQuery  -->
 <script type="text/javascript" src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
 <!-- Chatbot -->
 <script id="embeddedChatbot" data-botId="B170q4" src="https://www.closer.ai/js/webchat.min.js"> </script>
+=======
+>>>>>>> a31d7dd04c832f18a03b9c8d6aeb3496f795deb4
 </html>

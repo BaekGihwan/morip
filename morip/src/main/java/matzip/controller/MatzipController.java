@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import matzip.bean.MatzipDTO;
+import matzip.bean.MatzipImageDTO;
 import matzip.service.MatzipService;
 
 @Controller
@@ -81,6 +82,30 @@ public class MatzipController {
 		mav.setViewName("jsonView");
 		return mav;
 	   }
+	
+	@RequestMapping(value="infinityScroll",method=RequestMethod.POST)
+	@ResponseBody
+	public ModelAndView infinityScroll(@RequestParam String pg) {
+		
+		List<MatzipDTO> list = matzipService.matzipAllList(Integer.parseInt(pg));
+		
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("list", list);
+		mav.setViewName("jsonView");
+		//model.addAttribute("display", "/board/boardList.jsp");
+		return mav;
+	}
+	
+	@RequestMapping(value="/matzipImage",method=RequestMethod.POST)
+    @ResponseBody
+    public ModelAndView matzipImage(@RequestParam(value="matzipTitle") String matzipTitle) { 
+    List<MatzipImageDTO> list = matzipService.matzipImage(matzipTitle);
+    
+    ModelAndView mav = new ModelAndView();
+    mav.addObject("list",list);
+    mav.setViewName("jsonView");
+    return mav;
+ }
 	
 	// 메인창에 맛집 3개 뿌려주기
 	@RequestMapping(value="matzipThreeList", method=RequestMethod.POST)
