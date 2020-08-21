@@ -31,8 +31,8 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public List<BoardDTO> getBoardList(String pg) {
 		//1페이지당 5개씩
-		int endNum = Integer.parseInt(pg)*5;
-		int startNum = endNum-4;
+		int endNum = Integer.parseInt(pg)*15;
+		int startNum = endNum-14;
 		
 		Map<String,Integer> map = new HashMap<String,Integer>();
 		map.put("startNum", startNum);
@@ -46,8 +46,8 @@ public class BoardServiceImpl implements BoardService {
 		int totalA = boardDAO.getBoardTotalA();//총글수
 		
 		boardPaging.setCurrentPage(Integer.parseInt(pg));
-		boardPaging.setPageBlock(3);
-		boardPaging.setPageSize(5);
+		boardPaging.setPageBlock(5);
+		boardPaging.setPageSize(15);
 		boardPaging.setTotalA(totalA);
 		boardPaging.makePagingHTML();
 		return boardPaging;
@@ -62,8 +62,8 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public List<BoardDTO> getBoardSearch(Map<String, String> map) {
 		//1페이지당 5개씩
-		int endNum = Integer.parseInt(map.get("pg"))*5;
-		int startNum = endNum-4;
+		int endNum = Integer.parseInt(map.get("pg"))*15;
+		int startNum = endNum-14;
 		
 		map.put("startNum", startNum+"");
 		map.put("endNum", endNum+"");
@@ -76,11 +76,56 @@ public class BoardServiceImpl implements BoardService {
 		int totalA = boardDAO.getBoardSearchTotalA(map);//총글수
 		
 		boardPaging.setCurrentPage(Integer.parseInt(map.get("pg")));
-		boardPaging.setPageBlock(3);
-		boardPaging.setPageSize(5);
+		boardPaging.setPageBlock(5);
+		boardPaging.setPageSize(15);
 		boardPaging.setTotalA(totalA);
 		boardPaging.makePagingHTML();
 		return boardPaging;
 	}
 
+	@Override
+	public void boardModify(Map<String, String> map) {
+		boardDAO.boardModify(map);
+		
+	}
+
+	@Override
+	public void boardDelete(String boardtable_seq) {
+		boardDAO.boardDelete(boardtable_seq);
+		
+	}
+	
+	@Override
+	public void boardHit(String boardtable_seq) {
+		boardDAO.boardHit(boardtable_seq);
+		
+	}
+
+	@Override
+	public void insertReply(Map<String, String> map) {//댓글 입력 controller
+		boardDAO.insertReply(map);
+		
+	}
+	@Override
+	public List<BoardDTO> loadReply(int parseInt) {//댓글 전부 불러오기
+		return boardDAO.loadReply(parseInt);
+	}
+
+	@Override
+	public void deleteReplyBoard(Map<String, String> map) {
+		boardDAO.deleteReplyBoard(map);
+		
+	}
+
+	@Override
+	public BoardDTO viewPage(int parseInt) {
+		return boardDAO.viewPage(parseInt);
+	}
+
+	@Override
+	public void updateReply(Map<String, String> map) {
+		boardDAO.updateReply(map);
+	}
+
+	
 }

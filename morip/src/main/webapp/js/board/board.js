@@ -46,7 +46,8 @@ $('#boardWriteBtn').click(function(){
 			$('#testBtn').trigger('click', 'continue');
 					Swal.fire({
  					icon: 'success',
-  					title: '글작성 완료!'
+  					title: '글작성 완료!',
+  					confirmButtonText: '확인'
 				}).then((result) => {
 					if (result.value) {											
 					location.href = '/morip/board/boardList';
@@ -60,6 +61,11 @@ $('#boardWriteBtn').click(function(){
 		
 	}
 });
+
+$('.resetBtn').click(function(){
+	$('#summernote').summernote('reset');
+});
+
 
 
 
