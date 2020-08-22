@@ -160,10 +160,10 @@ function deleteBtnClick(boardtable_seq){
 	            '<div class="reply_userID">'+
 	             nickname+
 	            '</div>'+
-	            '<textarea id="replyInputBox'+boardtable_seq+'" class="form-control" style="resize: none; white-space:pre-line" aria-label="With textarea"></textarea>'+
+	            '<textarea id="replyInputBox'+boardtable_seq+'" class="form-control" style="resize: none;" aria-label="With textarea"></textarea>'+
 	            '<div class="reply_inputOption">'+
-	              '<button id="resetBtn" class="btn btn-light" onclick="resetBtn()">취소</button>'+
-	              '<button id="insertBtn" class="btn btn-light" onclick="insertReplyBtn('+boardtable_seq+')">등록</button>'+
+	              '<button type="button" id="resetBtn" class="btn btn-light" onclick="resetBtn()">취소</button>'+
+	              '<button type="button" id="insertBtn" class="btn btn-light" onclick="insertReplyBtn('+boardtable_seq+')">등록</button>'+
 	            '</div>'+
 	        '</div>'+
 	      '</div>'+
@@ -194,10 +194,10 @@ function deleteBtnClick(boardtable_seq){
 	            '<div class="reply_userID">'+
 	             '댓글 수정'+
 	            '</div>'+
-	            '<textarea id="replyInputBox'+boardtable_seq+'" class="form-control" style="resize: none; white-space:pre-line " aria-label="With textarea"></textarea>'+
+	            '<textarea id="replyInputBox'+boardtable_seq+'" class="form-control" style="resize: none;" aria-label="With textarea"></textarea>'+
 	            '<div class="reply_inputOption">'+
-	              '<button id="resetBtn" class="btn btn-light" onclick="resetBtn()">취소</button>'+
-	              '<button id="modifyBtn" class="btn btn-light" onclick="modify('+boardtable_seq+')" style="margin: 10px; width: 100px; font-size: 13px;">수정</button>'+
+	              '<button type="button" id="resetBtn" class="btn btn-light" onclick="resetBtn()">취소</button>'+
+	              '<button type="button" id="modifyBtn" class="btn btn-light" onclick="modify('+boardtable_seq+')" style="margin: 10px; width: 100px; font-size: 13px;">수정</button>'+
 	            '</div>'+
 	        '</div>'+
 	      '</div>'+
@@ -217,7 +217,7 @@ function deleteBtnClick(boardtable_seq){
 
 	/*글 수정 버튼 클릭했을 경우*/
 	function modify(boardtable_seq){
-		let content = $('#replyInputBox'+boardtable_seq).val().replace(/\n/g, "<br>");
+		let content = $('#replyInputBox'+boardtable_seq).val().replace(/(?:\r\n|\r|\n)/g,'<br/>');
 		$.ajax({
 			type: 'get',
 			url: '/morip/board/updateReply',
@@ -244,7 +244,7 @@ function deleteBtnClick(boardtable_seq){
 			data: 'boardtable_seq='+boardtable_seq,
 			dataType:'json',
 			success: function(data){
-				 $('#replyInputBox'+boardtable_seq).val(data.boardDTO.content);
+				 $('#replyInputBox'+boardtable_seq).val(data.boardDTO.content.replace(/(<br>|<br\/>|<br \/>)/g, '\r\n'));
 			}   //success
 		});   //AJAX
 	}
@@ -317,7 +317,7 @@ function loadReply(){
 							                     replyNickname+
 							                    '</div>'+
 							                    '<div class="reply_content">'+
-							                     '<pre>'+
+							                     '<pre style="overflow:auto; white-space:pre-wrap; word-break:break-all;">'+
 							                       items.content+
 							                     '</pre>'+
 							                    '</div>'+

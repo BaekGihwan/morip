@@ -35,7 +35,4 @@ public interface BoardDAO {
 
 	public void updateReply(Map<String, String> map);
 
-
-
-
 }

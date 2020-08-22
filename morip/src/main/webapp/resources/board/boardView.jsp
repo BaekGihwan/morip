@@ -25,9 +25,8 @@
     <title></title>
   </head>
   <body>
-      <input type="hidden" id="pageNickname" value="${boardDTO.nickname }">
     <input type="hidden" id="nickname" value="${nickname}">  
-        <input type="hidden" class="view_seq" value="${boardtable_seq }">
+   	<input type="hidden" class="view_seq" value="${boardtable_seq }">
     <form name="boardViewForm">
     
     <input type="hidden" id="boardtable_seq" name="boardtable_seq"value="${boardtable_seq }">
@@ -47,7 +46,7 @@
             </div>
             <div class="view_subjectInfo3" >
               <div class="view_userInfo">
-                <img class="view_userImg" src="../storage/${image }">
+                <img class="view_userImg" src="../storage/${boardDTO.image }">
                 <div class="view_userId">
               	<span id="nickNameSpan"></span>
                 </div>
@@ -103,7 +102,7 @@
                     </div>
                     <textarea id="replyInputBox${boardtable_seq }" class="form-control" aria-label="With textarea" style="resize: none;" ></textarea>
                     <div class="reply_inputOption">
-                      <button id="insertBtn" class="btn btn-light" onclick="insertReplyBtn(${boardtable_seq})">등록</button>
+                      <button type="button" id="insertBtn" class="btn btn-light" onclick="insertReplyBtn(${boardtable_seq})">등록</button>
                     </div>
                 </div>
               </div>
@@ -118,18 +117,7 @@
       </div>
       <br><br>
     </article>
-
-
-
-
-
-
-
-
-
-
-
-
+    
   </body>
   <!-- Bootstrap core JS-->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
