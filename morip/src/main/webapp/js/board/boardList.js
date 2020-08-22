@@ -138,19 +138,20 @@ $('#boardSearchBtn').click(function(event, str){
 });
 
 $('#boardWriteBtn').click(function(){
-				if($('#email').val()=='') {
- 		   			
- 		   			$('#testBtn').trigger('click', 'continue');
-				Swal.fire({
- 					icon: 'info',
- 					confirmButtonText: '확인',
-  					title: '로그인을 먼저 하세요.',
-  					text: '로그인 화면으로 넘어갑니다.',
-				}).then((result) => {
-					if (result.value) {											
-					location.href="../member/loginForm";
-					}
-				}) 
-		}
+	if($('#email').val()=='') {   			
+		$('#testBtn').trigger('click', 'continue');
+	Swal.fire({
+			icon: 'info',
+			confirmButtonText: '확인',
+			title: '로그인을 먼저 하세요.',
+			text: '로그인 화면으로 넘어갑니다.',
+		}).then((result) => {
+			if (result.value) {											
+			location.href="../member/loginForm";
+			}
+		}) 
+	}else {
+		location.href="../board/boardWriteForm"
+	}
 });
 

@@ -3,6 +3,21 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="memberSQL">
+<resultMap id="myblogMap" type="myblog.bean.MyblogDTO">
+ 		<result column="blogboardtable_seq" property="blogboardtable_seq"></result>
+ 		<result column="nickname" property="nickname"></result>
+ 		<result column="subject" property="subject"></result>
+ 		<result column="content" property="content"></result>
+ 		<result column="mainimage" property="mainimage"></result>
+ 		<result column="startdate" property="startdate"></result>
+ 		<result column="enddate" property="enddate"></result>
+ 		<result column="hit" property="hit"></result>
+ 		<result column="ref" property="ref"></result>
+ 		<result column="step" property="step"></result>
+ 		<result column="pseq" property="pseq"></result>
+ 		<result column="logtime" property="logtime"></result>
+ 		<result column="publicoption" property="publicoption"></result>
+ 	</resultMap>
 	<!-- 로그인 -->
 	<select id="snsLogin" parameterType="java.util.Map" resultType="member">
 		select * from membertable where email=#{email} and checkid=#{checkid}
@@ -34,14 +49,32 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select * from membertable where name=#{name} and idcardnumber1=#{idCard1} and idcardnumber2=#{idCard2} and checkid=#{checkid}
 	</select>
 	
-	<!-- 회원정보 수정 -->
-	<update id="memberModify" parameterType="member">
-		update membertable set pwd=#{pwd}, nickname=#{nickname}, gender=#{gender}, image=#{image}
-		where email=#{email} and checkid=#{checkid}
-	</update>
-	
 	<!-- 회원탈퇴 -->
 	<update id="dropMorip" parameterType="java.util.Map">
 		delete membertable where email=#{email} and checkid=#{checkid}
+	</update>
+	
+	<!-- 회원정보 수정(email) -->
+	<update id="memberModify" parameterType="java.util.Map">
+	begin
+		update membertable set pwd=#{pwd}, nickname=#{nickname}, gender=#{gender}, image=#{image}
+		where email=#{email} and checkid=#{checkid};
+	
+		update boardtable set nickname = #{nickname} where nickname = #{beforeNickname};
+		
+		update blogboardtable set nickname = #{nickname} where nickname = #{beforeNickname};
+	end;
+	</update>
+	
+	<!-- 회원정보 수정(sns) -->
+	<update id="memberModify2" parameterType="java.util.Map">
+	begin
+		update membertable set nickname=#{nickname}, gender=#{gender}, image=#{image}
+		where email=#{email} and checkid=#{checkid};
+	
+		update boardtable set nickname = #{nickname} where nickname = #{beforeNickname};
+		
+		update blogboardtable set nickname = #{nickname} where nickname = #{beforeNickname};
+	end;
 	</update>
 </mapper>

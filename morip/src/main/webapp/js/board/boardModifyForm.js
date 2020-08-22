@@ -57,9 +57,8 @@ $('#boardModifyBtn').click(function(){
 
 
 $('.resetBtn').click(function(){
+	$('#subject').val('');
 	$('#summernote').summernote('reset');
 });
-
-
 
 
