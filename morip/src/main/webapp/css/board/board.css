@@ -327,7 +327,11 @@ footer{
 }
 .reply_userID{
   font-family: 'Noto Sans KR', sans-serif;
-  margin-bottom: 3px;
+}
+.reply_logtime{
+	font-size: 13px;
+	
+	 color: gray;
 }
 .optionBtn{
   width:10%;
@@ -355,6 +359,7 @@ footer{
   border-radius: 5px;
   display: flex;
   margin-bottom:10px;
+  margin-top: 15px;
 }
 .view_replyInputWrapper{
   padding-left:20px;
@@ -385,4 +390,5 @@ footer{
 .writeOptionDiv{
 	display: none;
 }
+
 /***************************boardList.jsp**********************************/

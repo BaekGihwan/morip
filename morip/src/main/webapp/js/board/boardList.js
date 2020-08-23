@@ -151,6 +151,9 @@ $('#boardWriteBtn').click(function(){
 					location.href="../member/loginForm";
 					}
 				}) 
+		}else {
+			location.href="../board/boardWriteForm";
 		}
+		
 });
 

@@ -33,11 +33,7 @@
 <link href="../../css/board/hover.css" rel="stylesheet" />
 <!-- Core theme CSS (includes Bootstrap)-->
 <link href="../css/board/board.css" rel="stylesheet" />
-<!-- CSS only -->
-<link rel="stylesheet"
-	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
-	integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
-	crossorigin="anonymous">
+
 
 <!-- 썸머노트부분 -->
 <!-- include libraries(jQuery, bootstrap) -->
@@ -53,12 +49,6 @@
 <script src="/js/board/summernote-ko-KR.js"></script>
 </head>
 <body>
-	<header>
-		<div class="header">
-			<nav class="navBar">네비게이션 바(나중에 합칠 떄 저 위에 header 태그 부분만 지워주시면
-				됩니다~^0^)</nav>
-		</div>
-	</header>
 	<article class="contentWrapper">
 
 

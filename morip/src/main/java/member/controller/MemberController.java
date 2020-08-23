@@ -177,7 +177,9 @@ public class MemberController {
 		if(memberDTO != null) {
 			session.setAttribute("memEmail", memberDTO.getEmail());
 			session.setAttribute("nickname", memberDTO.getNickname());
+			session.setAttribute("image", memberDTO.getImage());
 			session.setAttribute("checkid", memberDTO.getCheckid());
+			
 		}
 		
 		ModelAndView mav = new ModelAndView();
