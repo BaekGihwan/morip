@@ -84,11 +84,11 @@
 	</select>
 	
 	<select id="followClick" parameterType="String" resultType="follow">
-		select m.nickname as nickname, f.email, f.follow_email from membertable m, followtable f where m.email=f.email and f.follow_email=#{follow_email}
+		select m.nickname as nickname, m.image as image, membertable_seq, f.email, f.follow_email from membertable m, followtable f where m.email=f.email and f.follow_email=#{follow_email}
 	</select>
 	
 	<select id="followingClick" parameterType="String" resultType="follow">
-		select m.nickname as nickname, f.email, f.follow_email from membertable m, followtable f where m.email=f.follow_email and f.email=#{email}
+		select m.nickname as nickname, m.image as image, membertable_seq, f.email, f.follow_email from membertable m, followtable f where m.email=f.follow_email and f.email=#{email}
 	</select>
 	
 	<!-- 팔로워 숫자 -->

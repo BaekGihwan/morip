@@ -69,6 +69,7 @@ public class MyblogController {
 		 
 		model.addAttribute("memberDTO", memberDTO);
 		model.addAttribute("pageNickname", nickname );
+		model.addAttribute("memEmail", (String) session.getAttribute("memEamil"));
 		model.addAttribute("display", "/resources/myblog/mypage.jsp");
 		return "/resources/main/index";
 	}
@@ -403,16 +404,18 @@ public class MyblogController {
 		
 		@RequestMapping(value="/myblog/followCheck", method = RequestMethod.POST)
 		@ResponseBody
-		public ModelAndView followCheck(@RequestParam Map<String, String> map) {
+		public ModelAndView followCheck(@RequestParam Map<String, String> map, HttpSession session) {
 			
 			FollowDTO followDTO = myblogService.followCheck(map);
-			//System.out.println(followDTO.getFollow_nickname()+", "+followDTO.getNickname());
-			String email = "hana@naver.com";
+			//System.out.println(followDTO.getEmail()+", "+followDTO.getFollow_email());
 			ModelAndView mav = new ModelAndView();
-			if(followDTO != null) {
-				mav.addObject("getNickname", "");
-			}
-			mav.addObject("email", email);
+			/*if(followDTO != null) {
+				mav.addObject("followDTO", followDTO);
+			}else {
+				mav.addObject("followDTO", "");
+			}*/
+			mav.addObject("followDTO", followDTO);
+			mav.addObject("email", (String) session.getAttribute("memEmail"));
 			mav.setViewName("jsonView");
 			
 			return mav;
