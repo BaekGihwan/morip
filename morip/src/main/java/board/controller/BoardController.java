@@ -60,12 +60,12 @@ public class BoardController {
       mav.setViewName("jsonView");
       return mav;
    }
-   
-   @RequestMapping(value = "boardWriteForm", method = RequestMethod.GET)
-   public String boardWriteForm(Model model) {
-      model.addAttribute("display", "/resources/board/boardWriteForm.jsp");
-      return "/resources/main/index";
-   }
+	// 글작성 폼으로가기
+	@RequestMapping(value = "boardWriteForm", method = RequestMethod.GET)
+	public String boardWriteForm(Model model) {
+    model.addAttribute("display", "/resources/board/boardWriteForm.jsp");
+    return "/resources/main/index";
+  }
    
    
    @RequestMapping(value = "boardWrite", method = RequestMethod.POST)
@@ -76,15 +76,16 @@ public class BoardController {
       map.put("nickname", nickname);
       map.put("image", image);
       boardService.boardWrite(map);
-
    }
 
    @RequestMapping(value = "boardView", method = RequestMethod.GET)
    public String boardView(@RequestParam String boardtable_seq, @RequestParam String pg, Model model) {
 	   BoardDTO boardDTO = boardService.viewPage(Integer.parseInt(boardtable_seq));
+
       model.addAttribute("boardtable_seq", boardtable_seq);
       model.addAttribute("boardDTO", boardDTO);
       model.addAttribute("pg", pg);
+      model.addAttribute("boardDTO", boardDTO);
       model.addAttribute("display", "/resources/board/boardView.jsp");
       return "/resources/main/index";
    }

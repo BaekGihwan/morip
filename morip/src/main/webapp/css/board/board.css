@@ -9,11 +9,11 @@ body, html{
 article{
   height:100%;
 }
-footer{
+/* footer{
   width:100%;
   height:300px;
   background-color: #c4c4bb;
-}
+} */
 /*header------나중에 속성 지워주기*/
 .navBar{
   width:100%;

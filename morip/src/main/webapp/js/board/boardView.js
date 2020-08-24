@@ -163,10 +163,10 @@ function deleteBtnClick(boardtable_seq){
 	            '<div class="reply_userID">'+
 	             nickname+
 	            '</div>'+
-	            '<textarea id="replyInputBox'+boardtable_seq+'" word-break:break-all; class="form-control" style="resize: none;" aria-label="With textarea"></textarea>'+
+	            '<textarea id="replyInputBox'+boardtable_seq+'" class="form-control" style="resize: none;" aria-label="With textarea"></textarea>'+
 	            '<div class="reply_inputOption">'+
-	              '<button id="resetBtn" class="btn btn-light" onclick="resetBtn()">취소</button>'+
-	              '<button id="insertBtn" class="btn btn-light" onclick="insertReplyBtn('+boardtable_seq+')">등록</button>'+
+	              '<button type="button" id="resetBtn" class="btn btn-light" onclick="resetBtn()">취소</button>'+
+	              '<button type="button" id="insertBtn" class="btn btn-light" onclick="insertReplyBtn('+boardtable_seq+')">등록</button>'+
 	            '</div>'+
 	        '</div>'+
 	      '</div>'+
@@ -198,7 +198,7 @@ function deleteBtnClick(boardtable_seq){
 	            '</div>'+
 	            '<textarea id="replyInputBox'+boardtable_seq+'" word-break:break-all; class="form-control" style="resize: none; white-space:pre;" aria-label="With textarea"></textarea>'+
 	            '<div class="reply_inputOption">'+
-	              '<button id="resetBtn" class="btn btn-light" onclick="resetBtn()">취소</button>'+
+	              '<button type="button" id="resetBtn" class="btn btn-light" onclick="resetBtn()">취소</button>'+
 	              '<button type="button" id="modifyBtn" class="btn btn-light" onclick="modify('+boardtable_seq+')" style="margin: 10px; width: 100px; font-size: 13px;">수정</button>'+
 	            '</div>'+
 	        '</div>'+
@@ -215,16 +215,15 @@ function deleteBtnClick(boardtable_seq){
 		//추가된 수정 폼에 값 넣어주기
 		loadReplyOne(boardtable_seq);
 	  }
-
-/*글 수정 버튼 클릭했을 경우*/
-   function modify(boardtable_seq){
-      let content = $('#replyInputBox'+boardtable_seq).val().replace(/(?:\r\n|\r|\n)/g,'<br/>');
-      $.ajax({
-         type: 'get',
-         url: '/morip/board/updateReply',
-         data: 'boardtable_seq='+boardtable_seq+'&content='+content,
-         success: function(){
-         Swal.fire({
+	/*글 수정 버튼 클릭했을 경우*/
+	function modify(boardtable_seq){
+		let content = $('#replyInputBox'+boardtable_seq).val().replace(/(?:\r\n|\r|\n)/g,'<br/>');
+		$.ajax({
+			type: 'get',
+			url: '/morip/board/updateReply',
+			data: 'boardtable_seq='+boardtable_seq+'&content='+content,
+			success: function(){
+			Swal.fire({
                 icon: 'success',
                 confirmButtonText: '확인',
                  title: '댓글이 수정되었습니다.'
@@ -249,7 +248,6 @@ function deleteBtnClick(boardtable_seq){
          }   //success
       });   //AJAX
    }
-
 
 /*제일 상단의 본문 댓글 달기*/	
 	function insertReplyBtn(pseq){

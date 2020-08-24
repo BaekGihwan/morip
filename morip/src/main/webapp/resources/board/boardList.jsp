@@ -66,14 +66,12 @@
 			document.getElementById("searchOption").value = "${searchOption}";
 		}
 	}
-
 	function boardPaging(pg) {
 		var keyword = document.getElementById("keyword").value;
 		if (keyword == "") {
 			location.href = "boardList?pg=" + pg;
 		} else {
 			//location.href="getBoardSearch?pg="+pg+"&searchOption=${searchOption}&keyword="+encodeURIComponent("${keyword}");
-
 			$('input[name=pg]').val(pg);
 			$('#boardSearchBtn').trigger('click', 'continue');
 		}

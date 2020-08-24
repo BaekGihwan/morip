@@ -7,7 +7,7 @@
 <script src="https://kit.fontawesome.com/75c3f69c14.js" crossorigin="anonymous" ></script>
 <!--===============================================================================================-->
 </head>
-<body onLoad="pageStart()">
+<body>
 <input type="hidden" id="memEmail" value="${memEmail }">
 <input type="hidden" id="checkid" value="${checkid }">
 <input type="hidden" id="nickname" value="${nickname }">
@@ -31,7 +31,7 @@
       <!-- 로그인후 버튼 -->
       <div class="header_login header_afterLogin">
         <button type="button"><i class="fas fa-home fa-2x"></i></button>&emsp;
-        <button type="button"><i class="fas fa-envelope fa-2x"></i></button>&emsp;
+        <!-- <button type="button"><i class="fas fa-envelope fa-2x"></i></button>&emsp; -->
 	    <button type="button"><i class="fas fa-heart fa-2x"></i></button>&emsp;
 		<img class="userPhoto" alt="" src="../storage/${image }">
 		

@@ -43,8 +43,8 @@
  $(document).ready(function() {
 	  $('#summernote').summernote({
  	    	placeholder: 'content',
-	        minHeight: 400, //최소높이
-	        maxHeight: null, //최대높이
+	        minHeight: 700, //최소높이
+	        maxHeight: 700, //최대높이
 	        focus: true,  //에디터 로딩 후 초커스를 맞출지 여부
 	        lang : 'ko-KR' // 한글 설정
 	  });
@@ -88,6 +88,7 @@
       </div>
     </article>
   </body>
+  <br>
 <!--    <!-- Bootstrap core JS-->
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
   
