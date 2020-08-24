@@ -1,5 +1,3 @@
-
-
 $(document).ready(function(){
 	$.ajax({
 		type : 'post',
@@ -137,6 +135,7 @@ $('#boardSearchBtn').click(function(event, str){
 	}
 });
 
+$('#boardWriteBtn').click(function(){
 if($('#email').val()=='') {   			
 		$('#testBtn').trigger('click', 'continue');
 	Swal.fire({
