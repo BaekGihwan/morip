@@ -1,6 +1,9 @@
 var view_seq = $('.view_seq').val();  // 원글 ref값
 var nickname = $('#nickname').val();
-var pageNickname = $('#pageNickname').val();
+
+var hours = (new Date()).getHours();//시간
+var minutes = (new Date()).getMinutes();//분
+
 
 /***************************boardView.jsp*********************************/
 /*글 옵션 버튼 눌렀을 때 div 띄워주기
@@ -45,7 +48,7 @@ $('.view_replyWrapper').click(function(){
 /*답글 버튼 클릭시*/
 function replyBtnClick(seq){
   if($('.checkReplyInput').val()=='off'){
-    let replyInputDiv =
+    let replyInputDiv = 
     '<div class="view_replyInputWrapper">'+
       '<div class="view_replyContentInputWrapper">'+
         '<div class="reply_contentInput">'+
@@ -153,7 +156,7 @@ function deleteBtnClick(boardtable_seq){
 	/*답글 버튼 클릭시*/
 	function replyBtnClick(boardtable_seq){
 	  if($('.checkReplyInput').val()=='off'){
-	    let replyInputDiv =
+	    let replyInputDiv = 
 	    '<div class="view_replyInputWrapper">'+
 	      '<div class="view_replyContentInputWrapper">'+
 	        '<div class="reply_contentInput">'+
@@ -186,15 +189,14 @@ function deleteBtnClick(boardtable_seq){
 	$('#view_replyContentInputWrapper'+boardtable_seq).empty();
 		//폼 로딩
 	  if($('.checkReplyInput').val()=='off'){
-
-	    let replyInputDiv99 = '	  <br>'+
+	    let replyInputDiv99 = 
 	    '<div class="view_replyInputWrapper">'+
 	      '<div class="view_replyContentInputWrapper">'+
 	        '<div class="reply_contentInput">'+
 	            '<div class="reply_userID">'+
 	             '댓글 수정'+
 	            '</div>'+
-	            '<textarea id="replyInputBox'+boardtable_seq+'" class="form-control" style="resize: none;" aria-label="With textarea"></textarea>'+
+	            '<textarea id="replyInputBox'+boardtable_seq+'" word-break:break-all; class="form-control" style="resize: none; white-space:pre;" aria-label="With textarea"></textarea>'+
 	            '<div class="reply_inputOption">'+
 	              '<button type="button" id="resetBtn" class="btn btn-light" onclick="resetBtn()">취소</button>'+
 	              '<button type="button" id="modifyBtn" class="btn btn-light" onclick="modify('+boardtable_seq+')" style="margin: 10px; width: 100px; font-size: 13px;">수정</button>'+
@@ -213,8 +215,6 @@ function deleteBtnClick(boardtable_seq){
 		//추가된 수정 폼에 값 넣어주기
 		loadReplyOne(boardtable_seq);
 	  }
-
-
 	/*글 수정 버튼 클릭했을 경우*/
 	function modify(boardtable_seq){
 		let content = $('#replyInputBox'+boardtable_seq).val().replace(/(?:\r\n|\r|\n)/g,'<br/>');
@@ -228,28 +228,26 @@ function deleteBtnClick(boardtable_seq){
                 confirmButtonText: '확인',
                  title: '댓글이 수정되었습니다.'
             }).then((result) => {
-				if (result.value) {                                 
-		      		loadReply();
-		               }
-			        })
-			}   //success
-		});   //AJAX
-	}
+            if (result.value) {                                 
+                  loadReply();
+                     }
+                 })
+         }   //success
+      });   //AJAX
+   }
 
-	/*댓글을 하나 불러와서 그 댓글의 아래 텍스트박스 안에 content를 뿌려주는 함수*/
-	function loadReplyOne(boardtable_seq){
-		$.ajax({
-			type: 'get',
-			url: '/morip/board/selectReply',
-			data: 'boardtable_seq='+boardtable_seq,
-			dataType:'json',
-			success: function(data){
-				 $('#replyInputBox'+boardtable_seq).val(data.boardDTO.content.replace(/(<br>|<br\/>|<br \/>)/g, '\r\n'));
-			}   //success
-		});   //AJAX
-	}
-
-
+   /*댓글을 하나 불러와서 그 댓글의 아래 텍스트박스 안에 content를 뿌려주는 함수*/
+   function loadReplyOne(boardtable_seq){
+      $.ajax({
+         type: 'get',
+         url: '/morip/board/selectReply',
+         data: 'boardtable_seq='+boardtable_seq,
+         dataType:'json',
+         success: function(data){
+             $('#replyInputBox'+boardtable_seq).val(data.boardDTO.content.replace(/(<br>|<br\/>|<br \/>)/g, '\r\n'));
+         }   //success
+      });   //AJAX
+   }
 
 /*제일 상단의 본문 댓글 달기*/	
 	function insertReplyBtn(pseq){
@@ -258,6 +256,7 @@ function deleteBtnClick(boardtable_seq){
 	 	console.log(content);
 		if(pseq == view_seq){
 		 	//본문글의 답글
+		 	alert("11");
 	 		step = 1; 
 	 	} else {
 	 	 	 //본문의 댓글의 답글
@@ -271,10 +270,10 @@ function deleteBtnClick(boardtable_seq){
 			success: function(){
 				loadReply();   //화면에 댓글 로딩해주는 ajax 실행
 				Swal.fire({
-				      title: '저장 완료!.',
+				      title: '저장 완료!',
 				      text: '댓글이 저장되었습니다.',
 					  icon: 'success',
-					  confirmButtonText: '확인'
+					  confirmButtonText: '확인',
 						}).then((result) => {
 					if (result.value) {                                 
 	      				loadReply();
@@ -291,6 +290,7 @@ function deleteBtnClick(boardtable_seq){
 
 /***************************************핵심코드!!! DB 에서 댓글 가져다가 화면에 뿌려주는 함수*********************************************/
 function loadReply(){
+
 	$('.replyInsertDiv').empty();
     	$.ajax({
 				type: 'post',
@@ -313,25 +313,31 @@ function loadReply(){
 							                  '<img class="view_userImg" src="../storage/'+items.image+'">'+
 							                '</div>'+
 							                '<div class="view_replyContent">'+
+							                
 							                    '<div class="reply_userID">'+
 							                     replyNickname+
 							                    '</div>'+
+							                     '<div class="reply_logtime">'+
+							                      items.logtime+'&nbsp&nbsp'+ hours + ':' + minutes+
+							                    '</div>'+
+							                    
 							                    '<div class="reply_content">'+
 							                     '<pre style="overflow:auto; white-space:pre-wrap; word-break:break-all;">'+
 							                       items.content+
 							                     '</pre>'+
 							                    '</div>'+
+	
 							                '</div>'+
 							              '</div>'+
 							              '<div class="view_replyBtnWrapper">';
 							              if(items.step!=2){
-							              	replyForm += '<div id="replyBtn1" class="hvr-grow" onclick="replyBtnClick('+seq+')">'+ '답글'+ '</div>';
+							              	replyForm += '<div  type="button"  id="replyBtn1" class="hvr-grow" onclick="replyBtnClick('+seq+')">'+ '답글'+ '</div>';
 							              }
 							              	
 							                //댓글의 삭제와 수정기능은 작성자 만이 할 수 있음
 							                if(nickname==replyNickname){
-							              		replyForm += '<div id="deleteBtn" class="hvr-grow" onclick="deleteBtnClick('+seq+')">'+'삭제'+'</div>'+
-							                				'<div id="modifyBtn" class="hvr-grow" onclick="modifyBtnClick('+seq+')">'+ '수정'+ '</div>'
+							              		replyForm += '<div  type="button"  id="deleteBtn" class="hvr-grow" onclick="deleteBtnClick('+seq+')">'+'삭제'+'</div>'+
+							                				'<div  type="button"  id="modifyBtn" class="hvr-grow" onclick="modifyBtnClick('+seq+')">'+ '수정'+ '</div>'
 							              	}
 							         		replyForm += '</div>'+'</div>'+'</div>';
 							  if(items.step==1){  //본문글의 댓글일 때

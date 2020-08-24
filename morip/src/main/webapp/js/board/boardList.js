@@ -137,8 +137,7 @@ $('#boardSearchBtn').click(function(event, str){
 	}
 });
 
-$('#boardWriteBtn').click(function(){
-	if($('#email').val()=='') {   			
+if($('#email').val()=='') {   			
 		$('#testBtn').trigger('click', 'continue');
 	Swal.fire({
 			icon: 'info',
