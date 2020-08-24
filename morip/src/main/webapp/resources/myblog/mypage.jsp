@@ -49,6 +49,7 @@
     </div>
     <input type="hidden" id="pageNickname" value="${pageNickname }">
     <input type="hidden" id="pageEmail" value="${memberDTO.email}">
+    <input type="hidden" id="sessionEmail" value="${memEmail }">
     <input type="hidden" id="nickname" value="${nickname}">
   <!--content -->
   <input type="hidden" id="pg" value="1">
@@ -72,7 +73,9 @@
         </div>
         <button type="button" class="btn btn-outline-secondary" id="writeOptionBtn" style="font-size:9px; border-radius:20px; width:100px;">글 작성</button>
         <button type="button" class="btn btn-outline-secondary" id="modifyMemberBtn" style="font-size:9px; border-radius:20px; width:100px;">회원정보수정</button>
+        <c:if test="${memberDTO.email != memEmail }">
         <button type="button" class="btn btn-outline-primary" id="followBtn"style="font-size: 9px; border-radius: 20px; width: 100px;">팔로우</button>
+        </c:if>
 		<input type="hidden" id="followCheck" value="uncheck">
       </div>
 
@@ -102,31 +105,6 @@
         </div>
         <div class="modal-body">
           <table class="modal_table" id="modal_followtable">
-            <tr>
-              <td style="width:70px;"><img id="modal_userImg"src="../image/myblog/paris.jpg"></td>
-              <td id="modal_userID">USER_ID</td>
-              <td id="modal_userFollow"><button class="btn btn-outline-primary">팔로우</button></td>
-            </tr>
-            <tr>
-              <td style="width:70px;"><img id="modal_userImg"src="../image/myblog/circus.png"></td>
-              <t2d id="modal_userID">USER_ID</td>
-              <td id="modal_userFollow"><buttton class="btn btn-outline-primary">팔로우</button></td>
-            </tr>
-            <tr>
-              <td style="width:70px;"><img id="modal_userImg"src="../image/myblog/safe.png"></td>
-              <td id="modal_userID">USER_ID</td>
-              <td id="modal_userFollow"><buttton class="btn btn-outline-primary">팔로우</button></td>
-            </tr>
-            <tr>
-              <td style="width:70px;"><img id="modal_userImg"src="../image/myblog/user.png"></td>
-              <td id="modal_userID">USER_ID</td>
-              <td id="modal_userFollow"><buttton class="btn btn-outline-primary">팔로우</button></td>
-            </tr>
-            <tr>
-              <td style="width:70px;"><img id="modal_userImg"src="../image/myblog/cake.png"></td>
-              <td id="modal_userID">USER_ID</td>
-              <td id="modal_userFollow"><buttton class="btn btn-outline-primary">팔로우</button></td>
-            </tr>
           </table>
         </div>
         <div id="count" value="1"></div>
@@ -146,11 +124,6 @@
         </div>
         <div class="modal-body">
           <table class="modal_table" id="modal_followingtable">
-            <tr>
-              <td style="width:70px;"><img id="modal_userImg"src="../image/myblog/paris.jpg"></td>
-              <td id="modal_userID">USER_ID</td>
-              <td id="modal_userFollow"><button class="btn btn-outline-primary">팔로잉</button></td>
-            </tr>
           </table>
         </div>
         <div id="count" value="1"></div>
@@ -209,10 +182,10 @@
 		$.ajax({
 			type: 'post',
 			url: '/morip/myblog/followCheck',
-			data: {'follow_email' : 'ka28@naver.com'},
+			data: {'follow_email' : $('#pageEmail').val()},
 			dataType: 'json',
 			success: function(data){
-				if(data.getNickname == data.nickname){
+				if(data.followDTO == null){
 					$('#followBtn').attr('class', 'btn btn-outline-primary');
 					$('#followBtn').text('팔로우');
 					$('#followCheck').val('uncheck');
@@ -230,7 +203,7 @@
 		$.ajax({
 	        type: 'post',
 	        url: '/morip/myblog/followerSize',
-	        data: {'follow_email' : 'ka28@naver.com'},
+	        data: {'follow_email' : $('#pageEmail').val()},
 	        dataType: 'json',
 	        success: function(data){
 				$('#followerCountDiv').text(data.size);
@@ -244,7 +217,7 @@
 		$.ajax({
 	        type: 'post',
 	        url: '/morip/myblog/followingSize',
-	        data: {'email' : 'ka28@naver.com'},
+	        data: {'email' : $('#pageEmail').val()},
 	        dataType: 'json',
 	        success: function(data){
 				$('#followingCountDiv').text(data.size);
