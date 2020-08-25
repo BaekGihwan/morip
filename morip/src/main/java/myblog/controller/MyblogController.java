@@ -107,8 +107,8 @@ public class MyblogController {
 		UUID uid = UUID.randomUUID();
 		String fileName = uid.toString() + "_" + backgroundImg.getOriginalFilename();
 		System.out.println("bgImagesave 접속:"+fileName+session.getAttribute("memEmail"));
-		String filePath = "D:\\project\\morip\\morip\\src\\main\\webapp\\storage";
-		String filePath2 = "D:\\project\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\morip\\storage";
+		String filePath = "E:\\spring\\gihwan\\morip\\morip\\src\\main\\webapp\\storage";
+		String filePath2 = "E:\\spring\\gihwan\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\morip\\storage";
 		File file = new File(filePath,fileName);
 		File file2 = new File(filePath2,fileName);
 		try {
@@ -155,8 +155,8 @@ public class MyblogController {
 		UUID uid = UUID.randomUUID();
 		String fileName = uid.toString() + "_" + backgroundImg.getOriginalFilename();
 		System.out.println("imagesave 접속:"+fileName);
-		String filePath = "D:\\project\\morip\\morip\\src\\main\\webapp\\storage";
-		String filePath2 = "D:\\project\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\morip\\storage";
+		String filePath = "E:\\spring\\gihwan\\morip\\morip\\src\\main\\webapp\\storage";
+		String filePath2 = "E:\\spring\\gihwan\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\morip\\storage";
 		File file = new File(filePath,fileName);
 		File file2 = new File(filePath2,fileName);
 		try {
@@ -210,9 +210,9 @@ public class MyblogController {
 		System.out.println(file.getOriginalFilename());
 		UUID uid = UUID.randomUUID();
 		String fileName=uid.toString() + "_" + file.getOriginalFilename();
-		String filePath1 = "D:\\project\\morip\\morip\\src\\main\\webapp\\storage";
-		String filePath2 = "D:\\project\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\morip\\storage";
-		File file1 = new File(filePath1,fileName);
+		String filePath = "E:\\spring\\gihwan\\morip\\morip\\src\\main\\webapp\\storage";
+		String filePath2 = "E:\\spring\\gihwan\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\morip\\storage";
+		File file1 = new File(filePath,fileName);
 		File file2 = new File(filePath2,fileName);
 		try {
 			FileCopyUtils.copy(file.getInputStream(), new FileOutputStream(file1));

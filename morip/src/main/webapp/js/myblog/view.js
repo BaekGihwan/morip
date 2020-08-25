@@ -110,8 +110,8 @@ var minutes = (new Date()).getMinutes();//분
 	            '</div>'+
 	            '<textarea id="replyInputBox'+seq+'" class="form-control" style="resize: none;" aria-label="With textarea"></textarea>'+
 	            '<div class="reply_inputOption">'+
-	              '<button id="resetBtn" class="btn btn-light" onclick="resetBtn()">취소</button>'+
-	              '<button id="insertBtn" class="btn btn-light" onclick="insertBtn('+seq+')">등록</button>'+
+	              '<button type="button" id="resetBtn" class="btn btn-light" onclick="resetBtn()">취소</button>'+
+	              '<button type="button" id="insertBtn" class="btn btn-light" onclick="insertBtn('+seq+')">등록</button>'+
 	            '</div>'+
 	        '</div>'+
 	      '</div>'+
@@ -140,8 +140,8 @@ var minutes = (new Date()).getMinutes();//분
 	            '</div>'+
 	            '<textarea id="replyInputBox'+seq+'" class="form-control" style="resize: none;" aria-label="With textarea"></textarea>'+
 	            '<div class="reply_inputOption">'+
-	              '<button id="resetBtn" class="btn btn-light" onclick="resetBtn()">취소</button>'+
-	              '<button id="modifyBtn" class="btn btn-light" style="margin: 10px; width: 100px; font-size: 13px;" onclick="modifyBtn('+seq+')">수정</button>'+
+	              '<button type="button" id="resetBtn" class="btn btn-light" onclick="resetBtn()">취소</button>'+
+	              '<button type="button" id="modifyBtn" class="btn btn-light" style="margin: 10px; width: 100px; font-size: 13px;" onclick="modifyBtn('+seq+')">수정</button>'+
 	            '</div>'+
 	        '</div>'+
 	      '</div>'+
@@ -161,7 +161,7 @@ var minutes = (new Date()).getMinutes();//분
 	
 	/*글 수정 버튼 클릭했을 경우*/
 	function modifyBtn(seq){
-		let content = $('#replyInputBox'+seq).val().replace(/\n/g, "<br>");
+		let content = $('#replyInputBox'+boardtable_seq).val().replace(/(?:\r\n|\r|\n)/g,'<br/>');
 		$.ajax({
 			type: 'get',
 			url: '/morip/myblog/updateReply',
@@ -196,7 +196,7 @@ var minutes = (new Date()).getMinutes();//분
 			data: 'seq='+seq,
 			dataType:'json',
 			success: function(data){
-				 $('#replyInputBox'+seq).val(data.myblogDTO.content);
+				 $('#replyInputBox'+seq).val(data.myblogDTO.content.replace(/(<br>|<br\/>|<br \/>)/g, '\r\n'));
 			}   //success
 		});   //AJAX
 	}
@@ -269,7 +269,7 @@ function loadReply(){
 							            '<div class="view_replyListWrapper">'+
 							              '<div class="view_replyList">'+
 							                '<div class="view_userImgWrapper">'+
-							                  '<img class="view_userImg" src="../image/myblog/game.png">'+
+							                  '<img class="view_userImg" src="../storage/'+items.image+'">'+
 							                '</div>'+
 							                '<div class="view_replyContent">'+
 							                    '<div class="reply_userID">'+
