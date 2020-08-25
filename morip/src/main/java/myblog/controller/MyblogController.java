@@ -6,6 +6,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
+import java.text.ParseException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -17,6 +18,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.FileCopyUtils;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -25,30 +27,23 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import member.bean.MemberDTO;
+import member.service.MemberService;
 import hashtag.service.HashtagService;
+import member.bean.MemberDTO;
 import myblog.bean.FollowDTO;
 import myblog.bean.LikeDTO;
-
 import myblog.bean.MyblogDTO;
 import myblog.service.MyblogService;
 
 @Controller
 public class MyblogController {
 	@Autowired
-	public MyblogService myblogService;
-	
+	private MyblogService myblogService;
 	@Autowired
 	private HashtagService hashtagService;
-	//mypage 부분
-	/*
-	@RequestMapping(value="/myblog/mypage", method=RequestMethod.GET)
-	public ModelAndView mypage() {
-		System.out.println("mypage 들어옴");
-		ModelAndView mav = new ModelAndView();
-		mav.setViewName("/myblog/mypage"); 
-		return mav;
-	}
-	*/
+	@Autowired
+	private MemberService memberService;
+
 	/*********************mypage.jsp***********************/
 	@RequestMapping(value="/myblog/mypage", method=RequestMethod.GET)
 	public String mypage(HttpSession session , Model model,  @RequestParam(value="nickname") String nickname) {
@@ -69,6 +64,7 @@ public class MyblogController {
 		 
 		model.addAttribute("memberDTO", memberDTO);
 		model.addAttribute("pageNickname", nickname );
+		model.addAttribute("memEmail", (String) session.getAttribute("memEamil"));
 		model.addAttribute("display", "/resources/myblog/mypage.jsp");
 		return "/resources/main/index";
 	}
@@ -105,6 +101,32 @@ public class MyblogController {
        
        return mav;
     }
+	@ResponseBody
+	@RequestMapping(value="/myblog/bgImageSave", method=RequestMethod.POST, produces = "application/text; charset=utf8")
+	public String bgImageSave(HttpSession session,@RequestParam MultipartFile backgroundImg) {
+		UUID uid = UUID.randomUUID();
+		String fileName = uid.toString() + "_" + backgroundImg.getOriginalFilename();
+		System.out.println("bgImagesave 접속:"+fileName+session.getAttribute("memEmail"));
+		String filePath = "D:\\project\\morip\\morip\\src\\main\\webapp\\storage";
+		String filePath2 = "D:\\project\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\morip\\storage";
+		File file = new File(filePath,fileName);
+		File file2 = new File(filePath2,fileName);
+		try {
+			FileCopyUtils.copy(backgroundImg.getInputStream(), new FileOutputStream(file));
+			FileCopyUtils.copy(backgroundImg.getInputStream(), new FileOutputStream(file2));
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		fileName = file.getName();
+		//memberTable 안에 베경 이미지 이름 저장
+		Map <String, String> map = new HashMap<String, String>();
+		map.put("email", (String)session.getAttribute("memEmail"));
+		map.put("backimage", fileName);
+		myblogService.updateBgImg(map);
+		return fileName;
+	}
 	/***********************writeBlog 부분(에세이 작성)**********************/
 	@RequestMapping(value="/myblog/writeBlog0", method=RequestMethod.GET)
 	public ModelAndView writeBlog(HttpSession session) {
@@ -115,22 +137,31 @@ public class MyblogController {
 		return mav;
 	}
 	@RequestMapping(value="/myblog/writeBlog1", method=RequestMethod.GET)
-	public ModelAndView writeBlog1(HttpSession session) {
+	public ModelAndView writeBlog1(HttpSession session,@RequestParam(value="startdate") String startdate, @RequestParam(value="enddate") String enddate) throws ParseException {
 		System.out.println("writeBlog1 들어옴");
 		ModelAndView mav = new ModelAndView(); 
+		System.out.println(startdate);
+		System.out.println(enddate);
+
 		mav.setViewName("/resources/main/index"); 
+		mav.addObject("startdate",startdate);
+		mav.addObject("enddate",enddate);
 		mav.addObject("display", "/resources/myblog/writeBlog1.jsp");
 		return mav;
 	}
 	@ResponseBody
-	@RequestMapping(value="/myblog/imageSave", method=RequestMethod.POST)
+	@RequestMapping(value="/myblog/imageSave", method=RequestMethod.POST, produces = "application/text; charset=utf8")
 	public String imageSave(HttpSession session,@RequestParam(value="backgroundImg") MultipartFile backgroundImg) {
 		UUID uid = UUID.randomUUID();
 		String fileName = uid.toString() + "_" + backgroundImg.getOriginalFilename();
-		String filePath = "C:\\project\\morip\\morip\\src\\main\\webapp\\storage\\";
+		System.out.println("imagesave 접속:"+fileName);
+		String filePath = "D:\\project\\morip\\morip\\src\\main\\webapp\\storage";
+		String filePath2 = "D:\\project\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\morip\\storage";
 		File file = new File(filePath,fileName);
+		File file2 = new File(filePath2,fileName);
 		try {
 			FileCopyUtils.copy(backgroundImg.getInputStream(), new FileOutputStream(file));
+			FileCopyUtils.copy(backgroundImg.getInputStream(), new FileOutputStream(file2));
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
@@ -146,17 +177,22 @@ public class MyblogController {
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("subject", map.get("subject"));
 		mav.addObject("fileName", map.get("fileName"));
+		mav.addObject("startdate",map.get("startdate"));
+		mav.addObject("enddate",map.get("enddate"));
 		mav.setViewName("/resources/main/index"); 
 		mav.addObject("display", "/resources/myblog/writeBlog2.jsp");
 		return mav;
 	}
 	/*작성한 글 저장*/
+	@ResponseBody
 	@RequestMapping(value="/myblog/save", method= {RequestMethod.POST})
-	public @ResponseBody void saveWriteBlog(HttpSession session, @RequestParam Map <String , String> map) throws UnsupportedEncodingException {
+	public void saveWriteBlog(HttpSession session, @RequestBody HashMap <String , String> map) {
+		System.out.println(map);
 		map.put("nickname", (String) session.getAttribute("nickname"));
 		map.put("email", (String)session.getAttribute("memEmail"));
-		System.out.println(map.get("email"));
-		String content = URLDecoder.decode(map.get("content"), "UTF-8");
+		String content = map.get("content");
+		System.out.println(map.get("subject")+","+map.get("content")+","+map.get("nickname")+","+map.get("memEmail"));
+		System.out.println(content);
 		map.replace("content", content);
 		System.out.println("작성자"+session.getAttribute("nickname"));
 		System.out.println("해쉬태그:"+map.get("hashtag"));		
@@ -164,22 +200,23 @@ public class MyblogController {
 		if(map.get("hashtag") != null) {
 			hashtagService.insertHashTag(map.get("hashtag"));	
 		}	
-		System.out.println(map.get("subject")+","+map.get("content")+","+map.get("nickname")+","+map.get("memEmail"));
+		
 		System.out.println("save 들어와서 저장하는 중...");
 	}
 	
 	@RequestMapping(value="/myblog/imageUpload", method= {RequestMethod.POST})
     @ResponseBody
     public ModelAndView handleFileUpload(@RequestParam("file") MultipartFile file) throws IOException {
+		System.out.println(file.getOriginalFilename());
 		UUID uid = UUID.randomUUID();
 		String fileName=uid.toString() + "_" + file.getOriginalFilename();
-		String filePath1 = "C:\\project\\morip\\morip\\src\\main\\webapp\\storage\\";
-		//String filePath2 = "D:\\spring\\MORIP\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\MORIP_myblogTeam\\storage";
+		String filePath1 = "D:\\project\\morip\\morip\\src\\main\\webapp\\storage";
+		String filePath2 = "D:\\project\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\morip\\storage";
 		File file1 = new File(filePath1,fileName);
-		//File file2 = new File(filePath2,fileName);
+		File file2 = new File(filePath2,fileName);
 		try {
 			FileCopyUtils.copy(file.getInputStream(), new FileOutputStream(file1));
-			//FileCopyUtils.copy(file.getInputStream(), new FileOutputStream(file2));
+			FileCopyUtils.copy(file.getInputStream(), new FileOutputStream(file2));
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
@@ -244,8 +281,11 @@ public class MyblogController {
 			System.out.println("view 들어옴");
 			System.out.println(seq);
 			MyblogDTO myblogDTO= myblogService.viewPage(Integer.parseInt(seq));
+			MemberDTO memberDTO = memberService.checkNickname(myblogDTO.getNickname());
+			
 			ModelAndView mav = new ModelAndView();
 			mav.addObject("myblogDTO", myblogDTO);
+			mav.addObject("memberDTO", memberDTO);
 			System.out.println(myblogDTO.getStartdate());
 			mav.addObject("nickname", (String) session.getAttribute("nickcname"));
 			mav.addObject("seq", seq);
@@ -403,16 +443,18 @@ public class MyblogController {
 		
 		@RequestMapping(value="/myblog/followCheck", method = RequestMethod.POST)
 		@ResponseBody
-		public ModelAndView followCheck(@RequestParam Map<String, String> map) {
+		public ModelAndView followCheck(@RequestParam Map<String, String> map, HttpSession session) {
 			
 			FollowDTO followDTO = myblogService.followCheck(map);
-			//System.out.println(followDTO.getFollow_nickname()+", "+followDTO.getNickname());
-			String email = "hana@naver.com";
+			//System.out.println(followDTO.getEmail()+", "+followDTO.getFollow_email());
 			ModelAndView mav = new ModelAndView();
-			if(followDTO != null) {
-				mav.addObject("getNickname", "");
-			}
-			mav.addObject("email", email);
+			/*if(followDTO != null) {
+				mav.addObject("followDTO", followDTO);
+			}else {
+				mav.addObject("followDTO", "");
+			}*/
+			mav.addObject("followDTO", followDTO);
+			mav.addObject("email", (String) session.getAttribute("memEmail"));
 			mav.setViewName("jsonView");
 			
 			return mav;
@@ -481,6 +523,33 @@ public class MyblogController {
 			mav.setViewName("jsonView");
 			
 			return mav;
+		}
+		/**********************************modifyForm.jsp**************************************/
+		@RequestMapping(value="/myblog/modifyForm", method=RequestMethod.GET)
+		public ModelAndView modifyForm(@RequestParam(value="seq") String seq, HttpSession session) {
+			System.out.println("modifyForm 들어옴");
+			System.out.println(seq);
+			MyblogDTO myblogDTO= myblogService.viewPage(Integer.parseInt(seq));
+			ModelAndView mav = new ModelAndView();
+			mav.addObject("myblogDTO", myblogDTO);
+			System.out.println(myblogDTO.getStartdate());
+			mav.addObject("nickname", (String) session.getAttribute("nickcname"));
+			mav.addObject("seq", seq);
+			mav.setViewName("/resources/main/index"); 
+			mav.addObject("display", "/resources/myblog/modifyForm.jsp");
+			return mav;
+		}
+		/*작성한 글 저장*/
+		@RequestMapping(value="/myblog/modify", method= {RequestMethod.POST})
+		public @ResponseBody void modify(HttpSession session, @RequestParam Map <String , String> map) throws UnsupportedEncodingException {
+			map.put("nickname", (String) session.getAttribute("nickname"));
+			map.put("email", (String)session.getAttribute("memEmail"));
+			String content = URLDecoder.decode(map.get("content"), "UTF-8");
+			map.replace("content", content);
+			System.out.println("작성자"+session.getAttribute("nickname"));	
+			myblogService.modifyBoard(map);		
+			System.out.println(map.get("subject")+","+map.get("content")+","+map.get("nickname")+","+map.get("memEmail"));
+			System.out.println("modify 들어와서 저장하는 중...");
 		}
 		
 }

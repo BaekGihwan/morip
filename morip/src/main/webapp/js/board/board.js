@@ -1,15 +1,4 @@
 /***************************boardWrite.jsp**********************************/
- $(document).ready(function() {
- 
-	  $('#summernote').summernote({
- 	    	placeholder: 'content',
-	        minHeight: 400, //최소높이
-	        maxHeight: null, //최대높이
-	        focus: true,  //에디터 로딩 후 초커스를 맞출지 여부
-	        lang : 'ko-KR' // 한글 설정
-	  });
-	}); 
-
 
 $('document').ready(function(){
   $('.switch_infomation').hide();
@@ -29,13 +18,11 @@ $('.switch').mouseout(function(){
 
 $('#boardWriteBtn').click(function(){
 	$('#subjectDiv').empty();
-	$('#contentDiv').empty();
-	
+	$('#contentDiv').empty();	
 	if($('#subject').val() ==''){
 		alert("제목을 입력하세요");
 	}else if($('#summernote').val() ==''){
-		alert("내용을 입력하세요");
-         
+		alert("내용을 입력하세요");         
 	}else{
 		$.ajax({
 			type: 'post',
@@ -46,7 +33,9 @@ $('#boardWriteBtn').click(function(){
 			$('#testBtn').trigger('click', 'continue');
 					Swal.fire({
  					icon: 'success',
-  					title: '글작성 완료!'
+  					title: '글작성 완료!',
+  					text: '작성하신글이 저장 되었습니다.',
+  					confirmButtonText: '확인'
 				}).then((result) => {
 					if (result.value) {											
 					location.href = '/morip/board/boardList';
@@ -56,10 +45,15 @@ $('#boardWriteBtn').click(function(){
 			error: function(err){
 				console.log(err);
 			}
-		});
-		
+		});		
 	}
 });
+
+$('.resetBtn').click(function(){
+	$('#subject').val('');
+	$('#summernote').summernote('reset');
+});
+
 
 
 

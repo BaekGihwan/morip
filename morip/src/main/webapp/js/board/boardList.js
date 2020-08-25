@@ -37,9 +37,27 @@ $(document).ready(function(){
 			
 			//작성한 글 확인
 			$('#boardListTable').on('click', '#subjectA', function(){
-					let boardtable_seq = $(this).attr('class');
-					let pg = data.pg;
+				let boardtable_seq = $(this).attr('class');
+				let pg = data.pg;
+					
+				if($('#email').val()=='') {
+ 		   			
+ 		   			$('#testBtn').trigger('click', 'continue');
+				Swal.fire({
+ 					icon: 'info',
+ 					confirmButtonText: '확인',
+  					title: '로그인을 먼저 하세요.',
+  					text: '로그인 화면으로 넘어갑니다.',
+				}).then((result) => {
+					if (result.value) {											
+					location.href="../member/loginForm";
+					}
+				}) 
+ 		   			
+ 		   			
+ 	  	 		}else {
 					location.href = '/morip/board/boardView?boardtable_seq='+boardtable_seq+'&pg='+pg;
+				}
 			});
 		},
 		error: function(err){
@@ -50,13 +68,23 @@ $(document).ready(function(){
 
 
 
-
 //검색
 $('#boardSearchBtn').click(function(event, str){
 	if(str != 'continue') $('input[name=pg]').val(1);
 	
 	if($('#keyword').val() == ''){
-		alert('검색어를 입력하세요');
+		$('#testBtn').trigger('click', 'continue');
+				Swal.fire({
+ 					icon: 'success',
+ 					confirmButtonText: '확인',
+  					title: '검색어를 입력하세요!'
+  					
+				}).then((result) => {
+					if (result.value) {											
+					location.href = '/morip/board/boardList';
+					}
+				}) 
+		
 	}else{
 		$.ajax({
 			type : 'get',
@@ -71,23 +99,30 @@ $('#boardSearchBtn').click(function(event, str){
 				$('#boardListTable tr:gt(0)').remove();
 					
 				$.each(data.list, function(index, items){
-					$('<tr/>').append($('<td/>',{
-						align: 'center',
-						text: items.boardtable_seq
-					})).append($('<td/>',{
-						align: 'center',
-						text: items.subject
-					})).append($('<td/>',{
-						align: 'center',
-						text: items.nickname
-					})).append($('<td/>',{
-						align: 'center',
-						text: items.logtime
-					})).append($('<td/>',{
-						align: 'center',
-						text: items.hit
-					})).appendTo($('#boardListTable'));         
-				}); //each
+				$('<tr/>').append($('<td/>',{
+					align: 'center',
+					text: items.boardtable_seq
+				})).append($('<td/>',{
+					align: 'center'
+					}).append($('<a/>',{
+						id: 'subjectA',
+						href: '#',
+						text: items.subject,
+						class: items.boardtable_seq+''
+					}))
+				).append($('<td/>',{
+					align: 'center',
+					text: items.nickname
+				})).append($('<td/>',{
+					align: 'center',
+					text: items.logtime
+				})).append($('<td/>',{
+					align: 'center',
+					text: items.hit
+				})).appendTo($('#boardListTable'));
+				      
+			}); //each
+			
 				
 				//페이징 처리
 				$('#boardPagingDiv').html(data.boardPaging.pagingHTML);
@@ -100,7 +135,21 @@ $('#boardSearchBtn').click(function(event, str){
 	}
 });
 
+$('#boardWriteBtn').click(function(){
+if($('#email').val()=='') {   			
+		$('#testBtn').trigger('click', 'continue');
+	Swal.fire({
+			icon: 'info',
+			confirmButtonText: '확인',
+			title: '로그인을 먼저 하세요.',
+			text: '로그인 화면으로 넘어갑니다.',
+		}).then((result) => {
+			if (result.value) {											
+			location.href="../member/loginForm";
+			}
+		}) 
+	}else {
+		location.href="../board/boardWriteForm"
+	}
+});
 
-
-
-			

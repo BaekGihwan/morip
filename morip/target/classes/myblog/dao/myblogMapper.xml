@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="myblogSQL">
+	<select id="infinityScroll" resultType="myblog" parameterType="java.util.Map">
+		select * from(select rownum rn, tt.*from (select * from blogboardtable where  email= #{email} and step=0 order by blogboardtable_seq desc)tt)
+ 		where email= #{email} and rn<![CDATA[ >= ]]>#{startNum} and rn<![CDATA[ <= ]]>#{endNum}
+	</select>
+	<insert id="insertWriteBlog" parameterType="java.util.Map">
+	 insert into blogboardtable(blogboardtable_seq, nickname ,email, subject, content, mainimage, logtime, publicoption)  values(blogboardtable_seq.nextval, #{nickname },#{email }, #{subject }, #{content},#{backgroundImg } ,sysdate,#{publicoption })
+	</insert>
+	<select id="getView" resultType="myblog" parameterType="Integer">
+		select * from blogboardtable where blogboardtable_seq=#{seq}
+	</select>
+	<delete id="deleteBlogBoard" parameterType="java.util.Map">
+		delete blogboardtable where blogboardtable_seq=#{seq} or pseq=#{seq}
+	</delete>
+	<!-- 댓글달기 -->
+	<insert id="insertReply" parameterType="java.util.Map">
+	 insert into blogboardtable(blogboardtable_seq, nickname,email, content, logtime, ref, step, pseq)  values(blogboardtable_seq.nextval, #{nickname },#{email }, #{content}, sysdate, #{ref}, #{step}, #{pseq})
+	</insert>
+	<!-- 댓글뿌려주기 -->
+	<select id="loadReply" resultType="myblog" parameterType="Integer">
+		select * from blogboardtable where ref=#{ref} and step!=0 order by step, blogboardtable_seq desc
+	</select>
+	<!-- 댓글수정 -->
+	<update id="updateReply" parameterType="java.util.Map">
+		update blogboardtable set content = #{content}, logtime = sysdate where blogboardtable_seq = #{seq}
+	</update>
+
+	<select id="loadMember" parameterType="String" resultType="member">
+		select * from membertable where nickname=#{nickname }
+	</select>
+	
+	<select id="boardWriteCheck" parameterType="java.util.Map" resultType="myblog">
+		select * from blogboardtable where blogboardtable_seq=#{seq}
+	</select>
+	
+	<!-- 좋아요 클릭시 -->
+	<insert id="like" parameterType="java.util.Map">
+		begin
+			insert into liketable (board_seq, member_email) values(#{seq}, #{email});
+			
+			update blogboardtable set likecount=likecount+1 where blogboardtable_seq=#{seq};
+		end;
+	</insert>
+	
+	<!-- 좋아요 해제 클릭시 -->
+	<delete id="unlike" parameterType="java.util.Map">
+		begin
+			delete liketable where member_email=#{email} and board_seq=#{seq};
+			
+			update blogboardtable set likecount=likecount-1 where blogboardtable_seq=#{seq};
+		end;
+	</delete>
+	
+	<!-- 좋아요 수 체크하기 -->
+	<select id="likeCheck" parameterType="String" resultType="like">
+		select * from liketable where member_email=#{email}
+	</select>
+	
+	<select id="likeViewCheck" parameterType="java.util.Map" resultType="like">
+		select * from liketable where member_email=#{memEmail} and board_seq=#{seq}
+	</select>
+	
+	<select id="likeSize" parameterType="java.util.Map" resultType="int">
+		select likecount from blogboardtable where BLOGBOARDTABLE_SEQ=#{seq}
+	</select>
+	
+	<select id="likeListSize" resultType="myblog">
+		select * from blogboardtable
+	</select>
+	
+	<!-- 팔로우 눌렀을때 -->
+	<insert id="follow" parameterType="java.util.Map">
+		insert into followtable (email, follow_email) values(#{email}, #{follow_email})
+	</insert>
+	
+	<!-- 언팔로우 눌렀을때 -->
+	<delete id="unfollow" parameterType="java.util.Map">
+		delete followtable where email=#{email} and follow_email=#{follow_email}
+	</delete>
+	
+	<select id="followCheck" parameterType="java.util.Map" resultType="follow">
+		select * from followtable where email=#{email} and follow_email=#{follow_email}
+	</select>
+	
+	<select id="followClick" parameterType="String" resultType="follow">
+		select m.nickname as nickname, m.image as image, membertable_seq, f.email, f.follow_email from membertable m, followtable f where m.email=f.email and f.follow_email=#{follow_email}
+	</select>
+	
+	<select id="followingClick" parameterType="String" resultType="follow">
+		select m.nickname as nickname, m.image as image, membertable_seq, f.email, f.follow_email from membertable m, followtable f where m.email=f.follow_email and f.email=#{email}
+	</select>
+	
+	<!-- 팔로워 숫자 -->
+	<select id="followerSize" parameterType="String" resultType="int">
+		select count(*) from followtable where follow_email=#{follow_email}
+	</select>
+	
+	<!-- 팔로잉 숫자 -->
+	<select id="followingSize" parameterType="String" resultType="int">
+		select count(*) from followtable where email=#{email}
+	</select>
+	
+	<!-- 게시판 작성한 숫자 -->
+	<select id="boardSize" parameterType="String" resultType="int">
+		select count(*) from blogboardtable where email=#{email} and step = 0
+	</select>
+	
+	<select id="replySize" parameterType="String" resultType="int">
+		select count(*) from blogboardtable where ref=#{seq} and step<![CDATA[ > ]]>0
+	</select>
+
+</mapper>

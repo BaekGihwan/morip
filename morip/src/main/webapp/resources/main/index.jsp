@@ -32,7 +32,7 @@
   </table>
 </body>
 <!-- JQuery  -->
-<script type="text/javascript" src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
+<!-- <script type="text/javascript" src="http://code.jquery.com/jquery-3.5.1.min.js"></script> -->
 <!-- Chatbot -->
 <script id="embeddedChatbot" data-botId="B170q4" src="https://www.closer.ai/js/webchat.min.js"> </script>
 </html>

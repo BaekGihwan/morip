@@ -19,7 +19,7 @@ public class BoardDAOMybatis implements BoardDAO {
 	@Override
 	public void boardWrite(Map<String, String> map) {
 		sqlSession.insert("boardSQL.boardWrite", map);
-		
+
 	}
 
 	@Override
@@ -34,9 +34,9 @@ public class BoardDAOMybatis implements BoardDAO {
 
 	@Override
 	public BoardDTO getBoard(String boardtable_seq) {
-		return sqlSession.selectOne("boardSQL.getBoard", Integer.parseInt(boardtable_seq)); 
+		return sqlSession.selectOne("boardSQL.getBoard", Integer.parseInt(boardtable_seq));
 	}
-	
+
 	@Override
 	public List<BoardDTO> getBoardSearch(Map<String, String> map) {
 		return sqlSession.selectList("boardSQL.getBoardSearch", map);
@@ -45,6 +45,52 @@ public class BoardDAOMybatis implements BoardDAO {
 	@Override
 	public int getBoardSearchTotalA(Map<String, String> map) {
 		return sqlSession.selectOne("boardSQL.getBoardSearchTotalA", map);
+	}
+
+	@Override
+	public void boardModify(Map<String, String> map) {
+		sqlSession.update("boardSQL.boardModify", map);
+
+	}
+
+	@Override
+	public void boardDelete(String boardtable_seq) {
+		sqlSession.delete("boardSQL.boardDelete", Integer.parseInt(boardtable_seq));
+
+	}
+
+	@Override
+	public void boardHit(String boardtable_seq) {
+		sqlSession.update("boardSQL.boardHit", Integer.parseInt(boardtable_seq));
+
+	}
+
+	@Override
+	public void insertReply(Map<String, String> map) {
+		sqlSession.insert("boardSQL.insertReply", map);
+
+	}
+
+	@Override
+	public List<BoardDTO> loadReply(int parseInt) {
+		return sqlSession.selectList("boardSQL.loadReply", parseInt);
+	}
+
+	@Override
+	public void deleteReplyBoard(Map<String, String> map) {
+		sqlSession.delete("boardSQL.deleteReplyBoard", map);
+
+	}
+
+	@Override
+	public BoardDTO viewPage(int parseInt) {
+		return sqlSession.selectOne("boardSQL.viewPage", parseInt);
+	}
+
+	@Override
+	public void updateReply(Map<String, String> map) {
+		sqlSession.update("boardSQL.updateReply", map);
+
 	}
 
 }

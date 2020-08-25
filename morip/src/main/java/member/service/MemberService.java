@@ -18,8 +18,10 @@ public interface MemberService {
 
 	public MemberDTO checkNickname(String nickname);
 
-	public void memberModify(MemberDTO memberDTO);
-
 	public void dropMorip(String email, String checkid);
+
+	public void memberModify(Map<String, String> map);
+
+	public void memberModify2(Map<String, String> map);
 
 }
