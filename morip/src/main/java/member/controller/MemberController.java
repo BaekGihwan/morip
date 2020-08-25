@@ -179,7 +179,6 @@ public class MemberController {
 			session.setAttribute("nickname", memberDTO.getNickname());
 			session.setAttribute("image", memberDTO.getImage());
 			session.setAttribute("checkid", memberDTO.getCheckid());
-			
 		}
 		
 		ModelAndView mav = new ModelAndView();
