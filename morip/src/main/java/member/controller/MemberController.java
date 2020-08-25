@@ -345,6 +345,8 @@ public class MemberController {
 	@ResponseBody
 	public void memberModify(@ModelAttribute MemberDTO memberDTO, 
 							 @RequestParam MultipartFile img, HttpSession session) {
+		System.out.println(memberDTO.getPwd());
+		
 		String image =  (String) session.getAttribute("image");
 		String checkid = (String) session.getAttribute("checkid");
 		String beforeNickname = (String) session.getAttribute("beforeNickname");
@@ -367,11 +369,18 @@ public class MemberController {
 			session.setAttribute("image", memberDTO.getImage());
 		}		
 		if(checkid.equals("1")) {
+			System.out.println("dddddd");
 			String inputPass = memberDTO.getPwd();
 			String pass = passEncoder.encode(inputPass);
 			memberDTO.setPwd(pass);
+			boolean passMatch = false;
+			
+			passMatch = passEncoder.matches(inputPass, memberDTO.getPwd());
+			
+			System.out.println(passMatch);
 		}
 		memberDTO.setCheckid(checkid);
+		
 		
 		Map<String, String> map = new HashMap<String, String>();
 		map.put("email", memberDTO.getEmail());

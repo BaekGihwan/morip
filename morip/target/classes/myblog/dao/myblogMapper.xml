@@ -8,7 +8,7 @@
  		where email= #{email} and rn<![CDATA[ >= ]]>#{startNum} and rn<![CDATA[ <= ]]>#{endNum}
 	</select>
 	<insert id="insertWriteBlog" parameterType="java.util.Map">
-	 insert into blogboardtable(blogboardtable_seq, nickname ,email, subject, content, mainimage, startdate, enddate, logtime, publicoption)  values(blogboardtable_seq.nextval, #{nickname },#{email }, #{subject }, #{content},#{backgroundImg }, #{startdate}, #{enddate}, sysdate,#{publicoption })
+	 	insert into blogboardtable(blogboardtable_seq, nickname ,email, subject, content, mainimage, startdate, enddate, logtime, publicoption)  values(blogboardtable_seq.nextval, #{nickname },#{email }, #{subject }, #{content},#{backgroundImg }, #{startdate}, #{enddate}, sysdate,#{publicoption })
 	</insert>
 	<select id="getView" resultType="myblog" parameterType="Integer">
 		select * from blogboardtable where blogboardtable_seq=#{seq}
@@ -18,11 +18,29 @@
 	</delete>
 	<!-- 댓글달기 -->
 	<insert id="insertReply" parameterType="java.util.Map">
-	 insert into blogboardtable(blogboardtable_seq, nickname,email, content, logtime, ref, step, pseq)  values(blogboardtable_seq.nextval, #{nickname },#{email }, #{content}, sysdate, #{ref}, #{step}, #{pseq})
+	 	insert into blogboardtable(blogboardtable_seq, nickname,email, content, logtime, ref, step, pseq)  values(blogboardtable_seq.nextval, #{nickname },#{email }, #{content}, sysdate, #{ref}, #{step}, #{pseq})
 	</insert>
 	<!-- 댓글뿌려주기 -->
 	<select id="loadReply" resultType="myblog" parameterType="Integer">
-		select * from blogboardtable where ref=#{ref} and step!=0 order by step, blogboardtable_seq desc
+		select a.blogboardtable_seq
+     		 , a.nickname
+    		 , a.email
+    		 , a.subject
+     		 , a.content
+    		 , a.mainimage
+    		 , a.startdate
+    		 , a.enddate
+   		  	 , a.hit
+    		 , a.ref
+   			 , a.step
+   		  	 , a.pseq
+     		 , a.publicoption
+     		 , a.likecount
+     		 , a.logtime
+     		 , b.image as image
+		from blogboardtable a
+		   , membertable b
+		where a.email = b.email and ref=#{ref} and step!=0 order by step, blogboardtable_seq desc
 	</select>
 	<!-- 댓글수정 -->
 	<update id="updateReply" parameterType="java.util.Map">

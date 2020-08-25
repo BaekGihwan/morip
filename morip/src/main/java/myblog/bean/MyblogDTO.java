@@ -24,4 +24,5 @@ public class MyblogDTO {
 	private int likecount;
 	@JsonFormat(shape=JsonFormat.Shape.STRING,pattern="yyyy.MM.dd")
 	private Date logtime; 
+	private String image;
 }
