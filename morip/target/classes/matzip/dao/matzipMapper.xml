@@ -37,8 +37,8 @@
  		insert into matziptable values(#{category},#{title},#{link},#{description},
  		#{telephone},#{address},#{roadAddress},#{mapx},#{mapy},#{image1},#{image2},#{image3},#{image4})
  	</insert>
- 	<select id="matzipList" parameterType="string" resultMap="matzipMap">
- 		select * from matziptable where address like '%'||#{address}||'%' 
+ 	<select id="matzipList" parameterType="map" resultMap="matzipMap">
+ 		select * from (select rownum rn, tt.* from (select * from matziptable where address like '%'||#{address}||'%' order by title)tt) where rn &gt;= #{startNum} and rn &lt;= #{endNum}
  	</select>
  	<select id="matzipList2" resultMap="matzipMap">
  		select * from matziptable 
