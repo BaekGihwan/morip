@@ -39,7 +39,7 @@ var pageNickname = $('#pageNickname').val();
 	    });
 	});
 	$('#modifyBoard').click(function(){
-	  alert("수정 버튼 클릭");
+	  location.href='modifyForm?seq='+ view_seq;
 	});
 	$('#deleteBoard').click(function(){
 		deleteBoard(view_seq);
@@ -63,12 +63,12 @@ var pageNickname = $('#pageNickname').val();
 					success: function(){
 						Swal.fire(
 						      'Deleted!',
-						      '파일이 삭제되었습니다!',
+						      '글이 삭제되었습니다!(메인으로 돌아갑니다.)',
 						      'success'
 						 ).then((result) => {
 							if (result.value) {                                 
 			      				if(seq==view_seq){
-									location.href="mypage";
+									location.href="../main/index";
 								} else {
 									location.reload(true);
 								}
@@ -155,7 +155,8 @@ var pageNickname = $('#pageNickname').val();
 	
 	/*글 수정 버튼 클릭했을 경우*/
 	function modifyBtn(seq){
-		let content = $('#replyInputBox'+seq).val();
+		let content = $('#replyInputBox'+seq).val().replace(/\n/g, "<br>");
+		console.log(content);
 		$.ajax({
 			type: 'get',
 			url: '/morip/myblog/updateReply',

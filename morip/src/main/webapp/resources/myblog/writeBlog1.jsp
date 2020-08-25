@@ -26,6 +26,8 @@
   </head>
   <body>
   <form method="post" id="writeBlogForm" name="writeBlogForm"  enctype="multipart/form-data" action="">    
+  	<input type="hidden" id="startdate" value="${startdate }">
+  	<input type="hidden" id="enddate" value="${enddate }">
     <article class="contentWrapper">
       <div class="content">
         <div class="writeEditor">
@@ -55,26 +57,25 @@
             </div>
           </div>
           <!--본격적인 에디터 본문-->
-          
-	          <div class="editorContentWrapper">
-	            <div class="editorContent">
-	              <div class="inputWrapper">
-	                <div class="input">
-	                  <div class="subjectInput">
-	                    <h6>여행기 제목</h6><br>
-	                    <input type="text" name="subject" id="subject" placeholder="여행기 제목을 입력하세요!" onfocus="this.placeholder = ''" onblur="this.placeholder = 'First Name'" required class="single-input">
-	                  </div>
-	                  <div class="imgInput">
-	                    <h6>배경 사진 선택</h6><br>
-	                    <div class="userChoiceImg">
-	                    	<img id="bgImg" src="#" style="width:100%; height:100%;"/>
-	                    </div>
-	                    <input name="backgroundImg" id="backgroundImg" class="backgroungImgChoice" type="file">
-	                  </div>
-	                </div>
-	              </div>
-	            </div>
-	          </div>
+          <div class="editorContentWrapper">
+            <div class="editorContent">
+              <div class="inputWrapper">
+                <div class="input">
+                  <div class="subjectInput">
+                    <h6>여행기 제목</h6><br>
+                    <input type="text" name="subject" id="subject" placeholder="여행기 제목을 입력하세요!" onfocus="this.placeholder = ''" onblur="this.placeholder = 'First Name'" required class="single-input">
+                  </div>
+                  <div class="imgInput">
+                    <h6>배경 사진 선택</h6><br>
+                    <div class="userChoiceImg">
+                    	<img id="bgImg" src="../storage/basicUserImage.png" style="width:100%; height:100%;"/>
+                    </div>
+                    <input name="backgroundImg" id="backgroundImg" class="backgroungImgChoice" type="file">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
         <div class="writeOption">
           <div class="stepChoiceWrapper">
@@ -104,4 +105,3 @@
   <!-- Core theme JS-->
   <script src="../js/myblog/writeBlog.js"></script>
 </html>
->

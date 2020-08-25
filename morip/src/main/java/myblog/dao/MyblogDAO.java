@@ -56,5 +56,8 @@ public interface MyblogDAO {
 
 	public MemberDTO loadMember(String nickname);
 
+	public void updateBgImg(Map <String, String> map);
+
+	public void modifyBoard(Map<String, String> map);
 
 }
