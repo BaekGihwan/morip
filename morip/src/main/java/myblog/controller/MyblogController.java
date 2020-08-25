@@ -26,6 +26,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import member.bean.MemberDTO;
+import member.service.MemberService;
 import hashtag.service.HashtagService;
 import member.bean.MemberDTO;
 import myblog.bean.FollowDTO;
@@ -36,20 +38,12 @@ import myblog.service.MyblogService;
 @Controller
 public class MyblogController {
 	@Autowired
-	public MyblogService myblogService;
-	
+	private MyblogService myblogService;
 	@Autowired
 	private HashtagService hashtagService;
-	//mypage 부분
-	/*
-	@RequestMapping(value="/myblog/mypage", method=RequestMethod.GET)
-	public ModelAndView mypage() {
-		System.out.println("mypage 들어옴");
-		ModelAndView mav = new ModelAndView();
-		mav.setViewName("/myblog/mypage"); 
-		return mav;
-	}
-	*/
+	@Autowired
+	private MemberService memberService;
+
 	/*********************mypage.jsp***********************/
 	@RequestMapping(value="/myblog/mypage", method=RequestMethod.GET)
 	public String mypage(HttpSession session , Model model,  @RequestParam(value="nickname") String nickname) {
@@ -70,6 +64,7 @@ public class MyblogController {
 		 
 		model.addAttribute("memberDTO", memberDTO);
 		model.addAttribute("pageNickname", nickname );
+		model.addAttribute("memEmail", (String) session.getAttribute("memEamil"));
 		model.addAttribute("display", "/resources/myblog/mypage.jsp");
 		return "/resources/main/index";
 	}
@@ -286,8 +281,11 @@ public class MyblogController {
 			System.out.println("view 들어옴");
 			System.out.println(seq);
 			MyblogDTO myblogDTO= myblogService.viewPage(Integer.parseInt(seq));
+			MemberDTO memberDTO = memberService.checkNickname(myblogDTO.getNickname());
+			
 			ModelAndView mav = new ModelAndView();
 			mav.addObject("myblogDTO", myblogDTO);
+			mav.addObject("memberDTO", memberDTO);
 			System.out.println(myblogDTO.getStartdate());
 			mav.addObject("nickname", (String) session.getAttribute("nickcname"));
 			mav.addObject("seq", seq);
@@ -445,16 +443,18 @@ public class MyblogController {
 		
 		@RequestMapping(value="/myblog/followCheck", method = RequestMethod.POST)
 		@ResponseBody
-		public ModelAndView followCheck(@RequestParam Map<String, String> map) {
+		public ModelAndView followCheck(@RequestParam Map<String, String> map, HttpSession session) {
 			
 			FollowDTO followDTO = myblogService.followCheck(map);
-			//System.out.println(followDTO.getFollow_nickname()+", "+followDTO.getNickname());
-			String email = "hana@naver.com";
+			//System.out.println(followDTO.getEmail()+", "+followDTO.getFollow_email());
 			ModelAndView mav = new ModelAndView();
-			if(followDTO != null) {
-				mav.addObject("getNickname", "");
-			}
-			mav.addObject("email", email);
+			/*if(followDTO != null) {
+				mav.addObject("followDTO", followDTO);
+			}else {
+				mav.addObject("followDTO", "");
+			}*/
+			mav.addObject("followDTO", followDTO);
+			mav.addObject("email", (String) session.getAttribute("memEmail"));
 			mav.setViewName("jsonView");
 			
 			return mav;

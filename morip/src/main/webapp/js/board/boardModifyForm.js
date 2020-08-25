@@ -1,13 +1,4 @@
- $(document).ready(function() {
- 
-	  $('#summernote').summernote({
- 	    	placeholder: 'content',
-	        minHeight: 400, //최소높이
-	        maxHeight: null, //최대높이
-	        focus: true,  //에디터 로딩 후 초커스를 맞출지 여부
-	        lang : 'ko-KR' // 한글 설정
-	  });
-	}); 
+
 
 
 $('document').ready(function(){
@@ -25,7 +16,9 @@ $('.switch').mouseout(function(){
 });
 
 
-/*
+
+
+
 $('#boardModifyBtn').click(function(){
 	$('#subjectDiv').empty();
 	$('#contentDiv').empty();
@@ -40,11 +33,13 @@ $('#boardModifyBtn').click(function(){
 			type: 'post',
 			url: '/morip/board/boardModify',
 			data: {'subject': $('#subject').val(),
-				   'content': $('#summernote').val()},
+				   'content': $('#summernote').val(),
+				   'boardtable_seq': $('#boardtable_seq').val()},
 			success: function(){
 			$('#testBtn').trigger('click', 'continue');
 					Swal.fire({
  					icon: 'success',
+ 					confirmButtonText: '확인',
   					title: '글수정 완료!'
 				}).then((result) => {
 					if (result.value) {											
@@ -60,6 +55,10 @@ $('#boardModifyBtn').click(function(){
 	}
 });
 
-*/
+
+$('.resetBtn').click(function(){
+	$('#subject').val('');
+	$('#summernote').summernote('reset');
+});
 
 
