@@ -187,4 +187,14 @@ public class MyblogDaoMybatis implements MyblogDAO {
 		return sqlSession.selectOne("myblogSQL.loadMember",nickname);
 	}
 
+	@Override
+	public void updateBgImg(Map <String, String> map) {
+		sqlSession.update("myblogSQL.updateBgImg",map);
+	}
+
+	@Override
+	public void modifyBoard(Map<String, String> map) {
+		sqlSession.update("myblogSQL.modifyBoard", map);
+	}
+
 }

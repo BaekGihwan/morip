@@ -38,7 +38,7 @@ var minutes = (new Date()).getMinutes();//분
 	    });
 	});
 	$('#modifyBoard').click(function(){
-	 	 alert("수정 버튼 클릭");
+	  location.href='modifyForm?seq='+ view_seq;
 	});
 	$('#deleteBoard').click(function(){
 		deleteBoard(view_seq);
@@ -62,14 +62,14 @@ var minutes = (new Date()).getMinutes();//분
 					success: function(){
 						Swal.fire({
 						      title: 'Deleted!',
-						      text: '파일이 삭제되었습니다?',
+						      text: '글이 삭제되었습니다!(메인으로 돌아갑니다.)',
 						      icon: 'success',
 						      confirmButtonText: '확인',
 						      confirmButtonColor: '#3085d6',
 						 }).then((result) => {
 							if (result.value) {                                 
 			      				if(seq==view_seq){
-									location.href="mypage";
+									location.href="../main/index";
 								} else {
 									location.reload(true);
 								}

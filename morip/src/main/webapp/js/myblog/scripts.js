@@ -265,7 +265,7 @@ $('#modifyMemberBtn').click(function(){
 /*작성 버튼 클릭 시  OptionModal 창 띄워주기*/
 $('#writeOptionBtn').click(function(){
 	//$('#writeOptionModal').modal();
-	location.href="/morip/myblog/writeBlog1";
+	location.href="/morip/myblog/writeBlog0";
 });
 /*글 작성 모달에서 에세이 버튼 클릭시 */
 $('#writeBlogImg').click(function(){
@@ -316,9 +316,11 @@ $(document).ready(function(){
 	if($('#pageNickname').val()==$('#nickname').val()){  //마이 페이지로 들어왔을 경우
 		$('#writeOptionBtn').show();
 		$('#modifyMemberBtn').show();
+		$('#bgChangeOption').show();
 	} else {
 		$('#writeOptionBtn').hide();
 		$('#modifyMemberBtn').hide();
+		$('#bgChangeOption').hide();
 	}
 	$('.userMenu').css("z-index","90");
 });
@@ -454,4 +456,9 @@ $(document).ready(function(){
 	          console.log(err);
 	        }
 	      });	
+   	}
+   	
+   	// 옵션 버튼을 클릭했을 때
+   	function backgroundImgChange(){
+   		$('#bgImgChange').modal();
    	}

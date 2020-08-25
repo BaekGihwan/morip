@@ -32,11 +32,18 @@
     <script type="text/javascript" src="../js/myblog/summernote-map-plugin-master/summernote-map-plugin.js"></script>
 	
     <title></title>
+    <style>
+    iframe{
+    	height:100%;
+    }
+    </style>
   </head>
   <body>
-  <input type="hidden" id="nickname" value="${nickname }">
+  	<input type="hidden" id="nickname" value="${nickname }">
     <input type="hidden" id="subject" value="${subject }">
     <input type="hidden" id="backgroundImg" value="${fileName }">
+   	<input type="hidden" id="startdate" value="${startdate }">
+  	<input type="hidden" id="enddate" value="${enddate }">
     <article class="contentWrapper">
       <div class="content">
         <div class="writeEditor">
@@ -93,9 +100,10 @@
                   </div>
                   <div class="switch_infomation">
                     <p>
-                    공개 여부를 설정합니다.<br>
-                    활성화 시 다른 사용자에게 공개되며,<br>
-                    비활성화시 다른유저에게 보이지 않습니다.</p>
+		                    공개 여부를 설정합니다.<br>
+		                    활성화 시 다른 사용자에게 공개되며,<br>
+		                    비활성화시 다른유저에게 보이지 않습니다.
+                    </p>
                   </div>
               </div>
             </div>
@@ -104,13 +112,14 @@
 	            	 해쉬태그
 	            	</div>
 	            	<div class="hashtagInput">
-	            		<textarea id="hashtagInputText" placeholder="#해쉬태그 #입력하세요" ></textarea>
+	            		<textarea id="hashtagInputText" style="resize:none;" placeholder="#해쉬태그 #입력하세요" ></textarea>
 	            	</div>
 	            </div>
           </div>
         </div>
       </div>
     </article>
+
   </body>
   <!--AOS 라이브러리-->
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
@@ -126,18 +135,34 @@
 	  } else {
 		  publicOption = '1';
 	  }
-
+	
 	  var markupStr = $('#summernote').summernote('code');
+	  let startdate = $('#startdate').val();
+	  let enddate = $('#enddate').val();
+	  let subject = $('#subject').val();
+	  let backgroundImg = $('#backgroundImg').val();
 	  let content = markupStr.replace(/&nbsp;/g, " ");
 	  let hashtag = $('#hashtagInputText').val();
+	  console.log("hashtag:"+hashtag);
+	  let jsonData = {
+				"startdate" : startdate,
+				"enddate" : enddate,
+				"content" : content,
+				"subject" : subject,
+				"backgroundImg" : backgroundImg,
+				"publicoption" : publicOption,
+				"hashtag" : hashtag
+		};
 	  console.log(content);
 	  if(markupStr.trim()==''){
 		  alert("내용을 입력해주세요");
 	  } else {
 	    	$.ajax({
-	    		type : 'post',
+	    		type: "post",
 	    		url : '/morip/myblog/save',
-	    		data : 'content='+content+"&subject="+$('#subject').val()+"&backgroundImg="+$('#backgroundImg').val()+"&publicoption="+publicOption+"&hashtag="+hashtag,
+	    		//data : 'startdate='+$('#startdate').val()+'&enddate='+$('#enddate').val()+'&content='+content+"&subject="+$('#subject').val()+"&backgroundImg="+$('#backgroundImg').val()+"&publicoption="+publicOption+"&hashtag="+hashtag,
+	    		data: JSON.stringify(jsonData),
+	    		contentType: "application/json",
 	    		success : function(){
 	    			alert("여행기 작성이 완료되었습니다!"+nickname);
     				location.href="mypage?nickname="+nickname;
@@ -148,49 +173,6 @@
 	    	});
 	  }
   });
-  $('#summernote').summernote({
-	  height:500,
-      focus: true,
-      lang: 'en-EN',
-      map: {
-          apiKey: 'AIzaSyC4wQxb6hFjF1nrDEg6ePZcTbmswq89hAE',
-          zoom: 13
-      },
-      lang: 'en-US',
-      toolbar: [
-          ['style', ['bold', 'italic', 'underline', 'clear']],
-          ['fontsize', ['fontsize']],
-          ['color', ['color']],
-          ['para', ['ul', 'ol', 'paragraph']],
-          ['insert', ['link', 'picture', 'map', 'table']]
-      ],
-		callbacks: {
-			onImageUpload: function(files, editor, welEditable) {
-	            for (var i = files.length - 1; i >= 0; i--) {
-	            	sendFile(files[i], this);
-	            }
-	        }
-		}
-  });
-  function sendFile(file, el) {
-      var form_data = new FormData();
-      form_data.append('file', file);
-  	//let filePath = file.value;
-	//alert(path);
-      $.ajax({
-        data: form_data,
-        type: "POST",
-        url: '/morip/myblog/imageUpload',
-        cache: false,
-        contentType: false,
-        enctype: 'multipart/form-data',
-        processData: false,
-        dataType:"json",
-        success: function(data) {
-          	$('#summernote').summernote('insertImage', data.url, data.fileName);
-        }
-      });
-    }
 </script>
 
 </html>

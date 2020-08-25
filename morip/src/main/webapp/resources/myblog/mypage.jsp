@@ -6,7 +6,11 @@
   <head>
     <meta charset="utf-8">
     <title>mypage</title>
-    <!-- Font Awesome icons (free version)-->
+    
+  	<!-- sweetAlert -->
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+	
+	<!-- Font Awesome icons (free version)-->
     <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" crossorigin="anonymous"></script>
     
     <!-- Google fonts-->
@@ -28,7 +32,22 @@
 	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
-  
+  <style>
+  	.imgInput{
+  		width:50%;
+  		height:350px;
+  		margin:0 auto;
+  	}
+  	.userChoiceImg{
+  		height:200px;
+  		width:90%;
+  		margin:10px auto;
+  	
+  	}
+  	.bgImg{
+  		height:200px;
+  	}
+  </style>
   </head>
   <body>
     <div id="mypageHeadder">
@@ -54,17 +73,21 @@
   <!--content -->
   <input type="hidden" id="pg" value="1">
   <div class="content">
+  	<div id="bgChangeOption" style="font-size: 15px; margin-left:50px; cursor:pointer; width:20px;">
+  	<i class="fas fa-cog"  onclick="backgroundImgChange()" ></i>
+  	</div>
+  	
     <div class="content_wrapper">
       <div class="myInfo_wrapper">
 
         <div class="follow_wrapper">
           <div class="follower">
             <div class=" numberDiv" id="followerCountDiv"></div>
-            팔로우
+           		팔로우
           </div>
           <div class="following" >
             <div class=" numberDiv" id="followingCountDiv"></div>
-            팔로잉
+            	팔로잉
           </div>
           <div class="listCount">
             <div class="numberDiv" id="blogboardtableDiv"></div>
@@ -159,6 +182,37 @@
       </div>
     </div>
   </div>
+  
+  <form id="mypageForm" action="#" >
+  <!-- 배경사진 변경 -->
+    <div class="modal fade" id="bgImgChange" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title"></h4>
+          <button type="button" class="close" data-dismiss="modal">×</button>
+
+        </div>
+        <div class="modal-body">
+				     <div class="imgInput">
+	                    <h6>배경 사진 선택</h6><br>
+	                    <div class="userChoiceImg">
+	                    	<img id="bgImg" src="../storage/basicUserImage.png" style="width:100%; height:100%;"/>
+	                    </div>
+	                    <input name="backgroundImg" id="backgroundImg" class="backgroungImgChoice" type="file" style="margin-top:20px;">
+	                 </div>
+        </div>
+        			<div class="modal-footer">
+		         <button type="button" class="btn btn-default" data-dismiss="modal">취소</button>
+		         <button type="button" id="bgImageSave" class="btn btn-default" data-dismiss="modal">저장</button>
+		    </div>
+        <div id="count" value="1"></div>
+      </div>
+    </div>
+  </div>
+  </form>
   <!-- Bootstrap core JS-->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
@@ -177,6 +231,45 @@
       easing: 'ease-out-back',
       duration: 1000
   });
+  //사진을 업로드 하였을 때 바로 화면에 뿌려주기
+  $('#backgroundImg').change(function() {
+      readURL(this);
+  });
+  function readURL(input) {
+      if (input.files && input.files[0]) {
+          var reader = new FileReader();
+          reader.onload = function(e) {
+              $('#bgImg').attr('src', e.target.result);
+          }
+          reader.readAsDataURL(input.files[0]);
+      }
+  }
+  $('#bgImageSave').click(function(){
+      $.ajax({
+          type: 'post',
+          enctype: 'multipart/form-data',
+          processData: false, //문자열이 아닌 파일 형식으로 보내준다
+          contentType: false,
+          url: "/morip/myblog/bgImageSave",
+          //data: sendingData, //imageboardWriteForm안의 0번째 방에있는 data들을 모두 가져간다
+          data: new FormData($('#mypageForm')[0]),
+          dataType:"text",
+          success: function(fileName){
+				Swal.fire({
+ 					icon: 'success',
+ 					confirmButtonText: '확인',
+  					title: '배경사진이 수정되었습니다!'
+				}).then((result) => {
+					if (result.value) {
+						location.reload(true);
+					}
+				})
+          },error: function(err){
+             console.log(err);
+          }
+       });
+  });
+  //페이지 로딩되자마자 작업 진행
   $(document).ready(function(){
 		//팔로우 체크
 		$.ajax({
@@ -247,8 +340,6 @@
 	        console.log(err);
 	      } // error
 	 	}); // ajax
-		
-	 	 	
 	});
   </script>
 </html>

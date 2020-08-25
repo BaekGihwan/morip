@@ -178,4 +178,15 @@ public class MyblogServiceImpl implements MyblogService {
 		return myblogDAO.replySize(seq);
 	}
 
+	@Override
+	public void updateBgImg(Map <String, String> map) {
+		myblogDAO.updateBgImg(map);
+		
+	}
+
+	@Override
+	public void modifyBoard(Map<String, String> map) {
+		myblogDAO.modifyBoard(map);
+	}
+
 }
