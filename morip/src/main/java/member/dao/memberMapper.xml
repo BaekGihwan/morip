@@ -57,24 +57,28 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- 회원정보 수정(email) -->
 	<update id="memberModify" parameterType="java.util.Map">
 	begin
-		update membertable set pwd=#{pwd}, nickname=#{nickname}, gender=#{gender}, image=#{image}
-		where email=#{email} and checkid=#{checkid};
+		update membertable set nickname = #{nickname}, gender = #{gender}, image = #{image}
+		where email = #{email} and checkid = #{checkid};
 	
-		update boardtable set nickname = #{nickname} where nickname = #{beforeNickname};
+		update boardtable set nickname = #{nickname}, image = #{image} 
+		where email = #{email};
 		
-		update blogboardtable set nickname = #{nickname} where nickname = #{beforeNickname};
+		update blogboardtable set nickname = #{nickname} 
+		where email = #{email};
 	end;
 	</update>
 	
 	<!-- 회원정보 수정(sns) -->
 	<update id="memberModify2" parameterType="java.util.Map">
 	begin
-		update membertable set nickname=#{nickname}, gender=#{gender}, image=#{image}
-		where email=#{email} and checkid=#{checkid};
+		update membertable set nickname = #{nickname}, gender = #{gender}, image = #{image}
+		where email = #{email} and checkid = #{checkid};
 	
-		update boardtable set nickname = #{nickname} where nickname = #{beforeNickname};
+		update boardtable set nickname = #{nickname}, image = #{image} 
+		where email = #{email};
 		
-		update blogboardtable set nickname = #{nickname} where nickname = #{beforeNickname};
+		update blogboardtable set nickname = #{nickname} 
+		where email = #{email};
 	end;
 	</update>
 </mapper>

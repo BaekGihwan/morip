@@ -1,6 +1,8 @@
 var view_seq = $('.view_seq').val();  // 원글 ref값
 var nickname = $('#nickname').val();
-var pageNickname = $('#pageNickname').val();
+
+var hours = (new Date()).getHours();//시간
+var minutes = (new Date()).getMinutes();//분
 
 	$(window).scroll(function () {
 				var height = $(document).scrollTop();
@@ -246,6 +248,8 @@ var pageNickname = $('#pageNickname').val();
 	 	$(".view_replyInputWrapper").remove();
 		$('.checkReplyInput').val('off');
 	}
+
+/***************************************핵심코드!!! DB 에서 댓글 가져다가 화면에 뿌려주는 함수*********************************************/	
 function loadReply(){
 	$('.replyInsertDiv').empty();
     	$.ajax({
@@ -270,6 +274,9 @@ function loadReply(){
 							                '<div class="view_replyContent">'+
 							                    '<div class="reply_userID">'+
 							                     replyNickname+
+							                    '</div>'+
+							                    '<div class="reply_logtime">'+
+							                      items.logtime+'&nbsp&nbsp'+ hours + ':' + minutes+
 							                    '</div>'+
 							                    '<div class="reply_content">'+
 							                     '<pre style="white-space: pre-wrap;" >'+
@@ -417,5 +424,5 @@ $('#likeBtn').click(function(){
 
 $('#view_userId').click(function(){
 	var view_userId = $('#view_userId').text();
-	location.href='/morip/myblog/mypage/'+view_userId;
+	location.href='/morip/myblog/mypage?nickname='+view_userId;
 });
