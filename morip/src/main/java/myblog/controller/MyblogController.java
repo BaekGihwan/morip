@@ -173,7 +173,7 @@ public class MyblogController {
     public ModelAndView handleFileUpload(@RequestParam("file") MultipartFile file) throws IOException {
 		UUID uid = UUID.randomUUID();
 		String fileName=uid.toString() + "_" + file.getOriginalFilename();
-		String filePath1 = "E:\\spring\\gihwan\\morip\\morip\\src\\main\\webapp\\storage\\";
+		String filePath1 = "C:\\project\\morip\\morip\\src\\main\\webapp\\storage\\";
 		//String filePath2 = "D:\\spring\\MORIP\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\MORIP_myblogTeam\\storage";
 		File file1 = new File(filePath1,fileName);
 		//File file2 = new File(filePath2,fileName);

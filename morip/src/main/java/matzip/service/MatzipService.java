@@ -8,7 +8,7 @@ import myblog.bean.MyblogDTO;
 
 public interface MatzipService {
 
-	public List<MatzipDTO> matzipList(String address);
+	public List<MatzipDTO> matzipList(int pg, String address);
 
 	public List<MatzipDTO> matzipList();
 

@@ -29,12 +29,11 @@ public class MatzipController {
 		return "/resources/main/index";
 	}
 	
-	@RequestMapping(value="matzipList",method=RequestMethod.GET)
+	@RequestMapping(value="matzipList",method=RequestMethod.POST)
 	@ResponseBody
-	public ModelAndView matzipList(@RequestParam String address) {
-		//System.out.println(address);
-		List<MatzipDTO> list =matzipService.matzipList(address);
-		list.remove(4);
+	public ModelAndView matzipList(@RequestParam String pg, @RequestParam String address) {
+		System.out.println(pg);
+		List<MatzipDTO> list =matzipService.matzipList(Integer.parseInt(pg), address);
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("list", list);
 		mav.setViewName("jsonView");
