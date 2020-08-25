@@ -30,9 +30,19 @@ $('#boardWriteBtn').click(function(){
 	$('#contentDiv').empty();
 	
 	if($('#subject').val() ==''){
-		alert("제목을 입력하세요");
+		Swal.fire({
+			icon: 'success',
+			title: '제목을 입력하세요.',
+			confirmButtonText: '확인'
+			}).then((result) => {
+		})
 	}else if($('#summernote').val() ==''){
-		alert("내용을 입력하세요");
+		Swal.fire({
+			icon: 'success',
+			title: '내용을 입력하세요.',
+			confirmButtonText: '확인'
+			}).then((result) => {
+		})
          
 	}else{
 		$.ajax({

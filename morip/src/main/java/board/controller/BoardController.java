@@ -72,8 +72,10 @@ public class BoardController {
    @ResponseBody
    public void boardWrite(@RequestParam Map<String, String> map, HttpSession session) {
       String nickname = (String) session.getAttribute("nickname");
+      String email = (String) session.getAttribute("memEmail");
       String image = (String) session.getAttribute("image");
       map.put("nickname", nickname);
+      map.put("email", email);
       map.put("image", image);
       boardService.boardWrite(map);
    }
@@ -168,9 +170,11 @@ public class BoardController {
    @RequestMapping(value = "insertReply", method = { RequestMethod.POST })
    public @ResponseBody void insertReply(HttpSession session, @RequestParam Map<String, String> map) {
       String nickname = (String) session.getAttribute("nickname");
+      String email = (String) session.getAttribute("memEmail");
       String image = (String) session.getAttribute("image");
 
       map.put("nickname", nickname);
+      map.put("email", email);
       map.put("image", image);
       boardService.insertReply(map);
    }
