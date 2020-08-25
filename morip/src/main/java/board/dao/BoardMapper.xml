@@ -5,9 +5,10 @@
 <mapper namespace="boardSQL">
    <!-- 글쓰기 -->
    <insert id="boardWrite" parameterType="java.util.Map">
-      INSERT INTO boardtable (boardtable_seq,nickname,subject,content,image,ref,step) 
+      INSERT INTO boardtable (boardtable_seq, nickname, email, subject, content, image, ref, step) 
       values(boardtable_seq.nextval
           , #{nickname}
+          , #{email}
           , #{subject}
           , #{content}
           , #{image}
@@ -71,7 +72,16 @@
    
    <!-- 댓글 입력 -->
    <insert id="insertReply" parameterType="java.util.Map">
-    insert into boardtable(boardtable_seq, nickname, content, logtime, ref, step, pseq, image)  values(boardtable_seq.nextval, #{nickname }, #{content}, sysdate, #{ref}, #{step}, #{pseq}, #{image})
+    insert into boardtable(boardtable_seq, nickname, email, content, logtime, ref, step, pseq, image) 
+    	values(boardtable_seq.nextval
+    	     , #{nickname }
+    	     , #{email}
+    	     , #{content}
+    	     , sysdate
+    	     , #{ref}
+    	     , #{step}
+    	     , #{pseq}
+    	     , #{image})
    </insert>
    
    <!-- 댓글 전부 불러오기 -->

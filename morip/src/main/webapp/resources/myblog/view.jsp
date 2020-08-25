@@ -39,7 +39,7 @@
               ${myblogDTO.subject}
             </div>
             <div class="userinfowrapper">
-              <img class="view_userImg"src="../image/myblog/pic01.jpg">
+              <img class="view_userImg"src="../storage/${memberDTO.image }">
               <div class="view_userId" id="view_userId">${myblogDTO.nickname}</div>
             </div>
           </div>

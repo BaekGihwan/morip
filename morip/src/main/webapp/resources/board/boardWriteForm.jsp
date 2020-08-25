@@ -88,5 +88,16 @@
 	crossorigin="anonymous"></script>
 
 <!-- Core theme JS-->
-<script src="../../js/board/board.js"></script>
+<script src="../js/board/board.js"></script>
+    <script>
+ $(document).ready(function() {
+	  $('#summernote').summernote({
+ 	    	placeholder: 'content',
+	        minHeight: 700, //최소높이
+	        maxHeight: 700, //최대높이
+	        focus: true,  //에디터 로딩 후 초커스를 맞출지 여부
+	        lang : 'ko-KR' // 한글 설정
+	  });
+	}); 
+</script> 
 </html>
