@@ -192,7 +192,7 @@
             $div.css({
                 'position': 'relative',
                 'padding-top': '25px',
-                'padding-bottom': '56.25%',
+                'padding-bottom': '30%',
                 'height': '0'
             });
 
@@ -206,7 +206,7 @@
                 'top': '0',
                 'left': '0',
                 'width': '60%',
-                'height': '60%'
+                'height': '100%'
             });
 
             $div.html($iframe)

@@ -1,10 +1,12 @@
 package blog.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -35,9 +37,9 @@ public class BlogController {
 	// 블로그 인피니티스크롤
 	@RequestMapping(value="infinityScroll", method=RequestMethod.POST)
 	@ResponseBody
-	public ModelAndView infinityScroll(@RequestParam String pg) {
+	public ModelAndView infinityScroll(@RequestParam String pg, @RequestParam String content) {
 		
-		List<MyblogDTO> list = blogService.blogAllList(Integer.parseInt(pg));
+		List<MyblogDTO> list = blogService.blogAllList(Integer.parseInt(pg), content);
 		
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("list", list);
@@ -63,11 +65,15 @@ public class BlogController {
 	@RequestMapping(value="hashtagBlogList",method=RequestMethod.POST)
 	@ResponseBody
 	public ModelAndView blogBoardSearchList(@RequestParam(value="ar[]") String[] ar) {
-		
-		List<MyblogDTO> list = hashtagService.hastagBlogList(ar);
+		List<MyblogDTO> list = new ArrayList<MyblogDTO>();
+		list = hashtagService.hastagBlogList(ar);
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("list", list);
 		mav.setViewName("jsonView");
+		System.out.println("리스트 사이즈");
+		System.out.println(list.size());
+		System.out.println("ar 크기");
+		System.out.println(ar.length);
 		return mav;
 	}
 	

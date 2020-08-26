@@ -1,14 +1,5 @@
 /***************************boardWrite.jsp**********************************/
- $(document).ready(function() { 
-	  $('#summernote').summernote({
- 	    	placeholder: 'content',
-	        minHeight: 700, //최소높이
-	        maxHeight: 700, //최대높이
-	        focus: true,  //에디터 로딩 후 초커스를 맞출지 여부
-	        lang : 'ko-KR' // 한글 설정
-	  });
-	}); 
-	
+
 $('document').ready(function(){
   $('.switch_infomation').hide();
   $('.writeOptionDiv').hide();
@@ -27,8 +18,7 @@ $('.switch').mouseout(function(){
 
 $('#boardWriteBtn').click(function(){
 	$('#subjectDiv').empty();
-	$('#contentDiv').empty();
-	
+	$('#contentDiv').empty();	
 	if($('#subject').val() ==''){
 		Swal.fire({
 			icon: 'success',
@@ -43,7 +33,6 @@ $('#boardWriteBtn').click(function(){
 			confirmButtonText: '확인'
 			}).then((result) => {
 		})
-         
 	}else{
 		$.ajax({
 			type: 'post',
@@ -66,8 +55,7 @@ $('#boardWriteBtn').click(function(){
 			error: function(err){
 				console.log(err);
 			}
-		});
-		
+		});		
 	}
 });
 

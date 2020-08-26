@@ -1,6 +1,8 @@
 var view_seq = $('.view_seq').val();  // 원글 ref값
 var nickname = $('#nickname').val();
-var pageNickname = $('#pageNickname').val();
+
+var hours = (new Date()).getHours();//시간
+var minutes = (new Date()).getMinutes();//분
 
 	$(window).scroll(function () {
 				var height = $(document).scrollTop();
@@ -36,7 +38,7 @@ var pageNickname = $('#pageNickname').val();
 	    });
 	});
 	$('#modifyBoard').click(function(){
-	 	 alert("수정 버튼 클릭");
+	  location.href='modifyForm?seq='+ view_seq;
 	});
 	$('#deleteBoard').click(function(){
 		deleteBoard(view_seq);
@@ -60,14 +62,14 @@ var pageNickname = $('#pageNickname').val();
 					success: function(){
 						Swal.fire({
 						      title: 'Deleted!',
-						      text: '파일이 삭제되었습니다?',
+						      text: '글이 삭제되었습니다!(메인으로 돌아갑니다.)',
 						      icon: 'success',
 						      confirmButtonText: '확인',
 						      confirmButtonColor: '#3085d6',
 						 }).then((result) => {
 							if (result.value) {                                 
 			      				if(seq==view_seq){
-									location.href="mypage";
+									location.href="../main/index";
 								} else {
 									location.reload(true);
 								}
@@ -108,8 +110,8 @@ var pageNickname = $('#pageNickname').val();
 	            '</div>'+
 	            '<textarea id="replyInputBox'+seq+'" class="form-control" style="resize: none;" aria-label="With textarea"></textarea>'+
 	            '<div class="reply_inputOption">'+
-	              '<button id="resetBtn" class="btn btn-light" onclick="resetBtn()">취소</button>'+
-	              '<button id="insertBtn" class="btn btn-light" onclick="insertBtn('+seq+')">등록</button>'+
+	              '<button type="button" id="resetBtn" class="btn btn-light" onclick="resetBtn()">취소</button>'+
+	              '<button type="button" id="insertBtn" class="btn btn-light" onclick="insertBtn('+seq+')">등록</button>'+
 	            '</div>'+
 	        '</div>'+
 	      '</div>'+
@@ -138,8 +140,8 @@ var pageNickname = $('#pageNickname').val();
 	            '</div>'+
 	            '<textarea id="replyInputBox'+seq+'" class="form-control" style="resize: none;" aria-label="With textarea"></textarea>'+
 	            '<div class="reply_inputOption">'+
-	              '<button id="resetBtn" class="btn btn-light" onclick="resetBtn()">취소</button>'+
-	              '<button id="modifyBtn" class="btn btn-light" style="margin: 10px; width: 100px; font-size: 13px;" onclick="modifyBtn('+seq+')">수정</button>'+
+	              '<button type="button" id="resetBtn" class="btn btn-light" onclick="resetBtn()">취소</button>'+
+	              '<button type="button" id="modifyBtn" class="btn btn-light" style="margin: 10px; width: 100px; font-size: 13px;" onclick="modifyBtn('+seq+')">수정</button>'+
 	            '</div>'+
 	        '</div>'+
 	      '</div>'+
@@ -159,7 +161,7 @@ var pageNickname = $('#pageNickname').val();
 	
 	/*글 수정 버튼 클릭했을 경우*/
 	function modifyBtn(seq){
-		let content = $('#replyInputBox'+seq).val().replace(/\n/g, "<br>");
+		let content = $('#replyInputBox'+boardtable_seq).val().replace(/(?:\r\n|\r|\n)/g,'<br/>');
 		$.ajax({
 			type: 'get',
 			url: '/morip/myblog/updateReply',
@@ -194,7 +196,7 @@ var pageNickname = $('#pageNickname').val();
 			data: 'seq='+seq,
 			dataType:'json',
 			success: function(data){
-				 $('#replyInputBox'+seq).val(data.myblogDTO.content);
+				 $('#replyInputBox'+seq).val(data.myblogDTO.content.replace(/(<br>|<br\/>|<br \/>)/g, '\r\n'));
 			}   //success
 		});   //AJAX
 	}
@@ -246,6 +248,8 @@ var pageNickname = $('#pageNickname').val();
 	 	$(".view_replyInputWrapper").remove();
 		$('.checkReplyInput').val('off');
 	}
+
+/***************************************핵심코드!!! DB 에서 댓글 가져다가 화면에 뿌려주는 함수*********************************************/	
 function loadReply(){
 	$('.replyInsertDiv').empty();
     	$.ajax({
@@ -265,11 +269,14 @@ function loadReply(){
 							            '<div class="view_replyListWrapper">'+
 							              '<div class="view_replyList">'+
 							                '<div class="view_userImgWrapper">'+
-							                  '<img class="view_userImg" src="../image/myblog/game.png">'+
+							                  '<img class="view_userImg" src="../storage/'+items.image+'">'+
 							                '</div>'+
 							                '<div class="view_replyContent">'+
 							                    '<div class="reply_userID">'+
 							                     replyNickname+
+							                    '</div>'+
+							                    '<div class="reply_logtime">'+
+							                      items.logtime+'&nbsp&nbsp'+ hours + ':' + minutes+
 							                    '</div>'+
 							                    '<div class="reply_content">'+
 							                     '<pre style="white-space: pre-wrap;" >'+
@@ -417,5 +424,5 @@ $('#likeBtn').click(function(){
 
 $('#view_userId').click(function(){
 	var view_userId = $('#view_userId').text();
-	location.href='/morip/myblog/mypage/'+view_userId;
+	location.href='/morip/myblog/mypage?nickname='+view_userId;
 });

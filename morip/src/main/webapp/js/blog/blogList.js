@@ -14,8 +14,11 @@ $('#writeBlogImg').click(function(){
 });
 
 //해쉬태그 검색 버튼 눌렀을때
-var ar = new Array();
+
 $('.hashtagSearchBtn').click(function(){
+var ar = new Array();
+$('.blogList_wrapper').empty();
+console.log($('.blogList_wrapper').html());
 	if($('.hashtagText').val()==''){
 		//alert('검색어를 입력해주세요!');
 		Swal.fire({
@@ -24,7 +27,9 @@ $('.hashtagSearchBtn').click(function(){
 			title: '검색어를<br>입력해주세요!'
 		})
 	}else{
-		$.ajax({
+		$('.blogList_wrapper').empty();
+		list='';
+		$.ajax({//1.ajax
 			type:'post',
 			url:'../blog/hashtagSearch',
 			data:{'hashtagText':$('.hashtagText').val()},
@@ -35,13 +40,45 @@ $('.hashtagSearchBtn').click(function(){
 					ar.push(data.list[index].blogBoardTable_Seq);
 				})
 				alert(ar[0]);
-				$.ajax({
+				$.ajax({//2.ajax
 					type:'post',
 					url:'../blog/hashtagBlogList',
 					data:{"ar":ar},
 					dataType:'json',
 					success:function(data){
 						alert(data.list[0].subject);
+				var tempNumber= 0;
+				if(data.list.length!='0'){   //데이터가 존재할 때
+				$('.blogList_wrapper').empty();
+				$.each(data.list, function(index, items){
+					let startdate= new Date(items.startdate).format('yyyy-MM-dd'); 
+					let enddate = new Date(items.enddate).format('yyyy-MM-dd');  
+					let seq = items.blogboardtable_seq;
+					//처음 시작을 여는 div
+					if(tempNumber%4==0){
+						height+=230;
+						$('.blogList_wrapper').css('height',height+'px');
+						list += '<div class="blogList" id="blogList" data-aos="fade-up" data-aos-duration="3000">';
+					}
+					list+='<div id="blog_feed" class="hvr-grow-shadow" onclick="viewEnter('+seq+')">';
+					list+='<div class="myblog_img">';
+					list+='<img class="listImg" src="../storage/'+items.mainimage+'"></div>';
+        			list+='<div class="myblog_info"><div class="myblog_subject">'+items.subject+'</div>';
+        			list+='<div class="myblog_content">'+items.content+'</div>';
+        			list+='<div class="myblog_userFunction"><div class="like'+seq+'" style="cursor:pointer;"onclick="likeClick('+seq+')"><i class="far fa-heart"></i></div>';
+        			list+='<div class="reply"><span>34</span> </div><div class="myblog_travleDay">';
+        			list+= startdate +'~'+ enddate+'</div></div></div></div>';
+        			list+='<input type="hidden" id="likeCheck'+seq+'" value="unlike">';
+        			//닫아주는 div
+					if(tempNumber%4==3){
+					console.log(tempNumber);
+						list+='</div>';
+					}
+					tempNumber++;
+				});
+				$('.blogList_wrapper').append(list);
+				list='';
+				}
 					},
 					error:function(err){
 						console.log(err);
@@ -116,10 +153,11 @@ var count = $('#count').val();
 var list = "";
 var loading = false;    //중복실행여부 확인 변수
 var page = 1;   //불러올 페이지
+var content = "";
 
 $(window).scroll(function(){
-console.log("documentHeight:" + documentHeight + " | scrollTop:" + $window.scrollTop() + " | windowHeight: " + windowHeight );
-    if($(window).scrollTop()+1000>=$(document).height() - $(window).height())
+console.log("documentHeight:" + documentHeight + " | scrollTop:" + scrollTop + " | windowHeight: " + windowHeight );
+    if($(window).scrollTop()+200>=$(document).height() - $(window).height())
     {
         if(!loading)    //실행 가능 상태라면?
         {
@@ -134,7 +172,7 @@ function loadingPage(){
 	$.ajax({
 		type: 'post',
 		url: '/morip/blog/infinityScroll',
-		data: 'pg='+pg,
+		data: {'pg' : pg, 'content' : content},
 		dataType: 'json',
 		success: function(data){
 			pg++;
@@ -146,7 +184,9 @@ function loadingPage(){
 					let seq = items.blogboardtable_seq;
 					//처음 시작을 여는 div
 					if(tempNumber%4==0){
-						height+=300;
+						//height+=300;
+						//$('.blogList_wrapper').css('height',height+'px');
+						height+=230;
 						$('.blogList_wrapper').css('height',height+'px');
 						list += '<div class="blogList" id="blogList" data-aos="fade-up" data-aos-duration="3000">';
 					}
@@ -156,7 +196,7 @@ function loadingPage(){
         			list+='<div class="myblog_info"><div class="myblog_subject">'+items.subject+'</div>';
         			list+='<div class="myblog_content">'+items.content+'</div>';
         			list+='<div class="myblog_userFunction"><div class="like'+seq+'" style="cursor:pointer;"onclick="likeClick('+seq+')"><i class="far fa-heart"></i></div>';
-        			list+='<div class="reply"><span>34</span> </div><div class="myblog_travleDay">';
+        			list+='<div class="reply"><span>'+items.likecount+'</span> </div><div class="myblog_travleDay">';
         			list+= startdate +'~'+ enddate+'</div></div></div></div>';
         			list+='<input type="hidden" id="likeCheck'+seq+'" value="unlike">';
         			//닫아주는 div
@@ -177,6 +217,143 @@ function loadingPage(){
 
 //뷰 페이지 진입
 function viewEnter(seq){
-	location.href="../myblog/view?seq="+seq;
+	location.href="view?seq="+seq;
 }
 
+
+
+$('.img1').click(function(){
+	content = $('#content1').text();
+	$('#pg').val(1);
+	pg = $('#pg').val();
+	$('.blogList_wrapper').empty();
+	loadingPage();
+});
+
+$('.img2').click(function(){
+	content = $('#content2').text();
+	$('#pg').val(1);
+	pg = $('#pg').val();
+	$('.blogList_wrapper').empty();
+	loadingPage();
+});
+
+$('.img3').click(function(){
+	content = $('#content3').text();
+	$('#pg').val(1);
+	pg = $('#pg').val();
+	$('.blogList_wrapper').empty();
+	loadingPage();
+});
+
+$('.img4').click(function(){
+	content = $('#content4').text();
+	$('#pg').val(1);
+	pg = $('#pg').val();
+	$('.blogList_wrapper').empty();
+	loadingPage();
+});
+
+$('.img5').click(function(){
+	content = $('#content5').text();
+	$('#pg').val(1);
+	pg = $('#pg').val();
+	$('.blogList_wrapper').empty();
+	loadingPage();
+});
+
+$('.img6').click(function(){
+	content = $('#content6').text();
+	$('#pg').val(1);
+	pg = $('#pg').val();
+	$('.blogList_wrapper').empty();
+	loadingPage();
+});
+
+$('.img7').click(function(){
+	content = $('#content7').text();
+	$('#pg').val(1);
+	pg = $('#pg').val();
+	$('.blogList_wrapper').empty();
+	loadingPage();
+});
+
+$('.img8').click(function(){
+	content = $('#content8').text();
+	$('#pg').val(1);
+	pg = $('#pg').val();
+	$('.blogList_wrapper').empty();
+	loadingPage();
+});
+
+$('.img9').click(function(){
+	content = $('#content9').text();
+	$('#pg').val(1);
+	pg = $('#pg').val();
+	$('.blogList_wrapper').empty();
+	loadingPage();
+});
+
+$('.img10').click(function(){
+	content = $('#content10').text();
+	$('#pg').val(1);
+	pg = $('#pg').val();
+	$('.blogList_wrapper').empty();
+	loadingPage();
+});
+
+$('.img11').click(function(){
+	content = $('#content11').text();
+	$('#pg').val(1);
+	pg = $('#pg').val();
+	$('.blogList_wrapper').empty();
+	loadingPage();
+});
+
+$('.img12').click(function(){
+	content = $('#content12').text();
+	$('#pg').val(1);
+	pg = $('#pg').val();
+	$('.blogList_wrapper').empty();
+	loadingPage();
+});
+
+$('.img13').click(function(){
+	content = $('#content13').text();
+	$('#pg').val(1);
+	pg = $('#pg').val();
+	$('.blogList_wrapper').empty();
+	loadingPage();
+});
+
+$('.img14').click(function(){
+	content = $('#content14').text();
+	$('#pg').val(1);
+	pg = $('#pg').val();
+	$('.blogList_wrapper').empty();
+	loadingPage();
+});
+
+$('.img15').click(function(){
+	content = $('#content15').text();
+	$('#pg').val(1);
+	pg = $('#pg').val();
+	$('.blogList_wrapper').empty();
+	loadingPage();
+});
+
+$('.img16').click(function(){
+	content = $('#content16').text();
+	$('#pg').val(1);
+	pg = $('#pg').val();
+	$('.blogList_wrapper').empty();
+	loadingPage();
+});
+
+$('.img0').click(function(){
+	content = "";
+	$('#pg').val(1);
+	pg = $('#pg').val();
+	$('.blogList_wrapper').empty();
+	loadingPage();
+});
