@@ -2,8 +2,7 @@
     pageEncoding="UTF-8"%>
     
 <!--===============================================================================================-->	
-<link rel="stylesheet" type="text/css" href="../css/board/boardWriteForm.css">
-<link rel="stylesheet" type="text/css" href="../../css/board/board.css">
+<link rel="stylesheet" type="text/css" href="../css/board/boardModifyForm.css">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500&display=swap" rel="stylesheet">
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 <!--===============================================================================================-->
@@ -11,8 +10,6 @@
 <html lang="en" dir="ltr">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <!-- Favicon-->
-    <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" />
     <!-- Font Awesome icons (free version)-->
     <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" crossorigin="anonymous"></script>
     <!-- Google fonts-->
@@ -22,7 +19,7 @@
     <!--AOS 라이브러리-->
      <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
      <!--hover.css-->
-     <link href="../css/board/hover.css" rel="stylesheet" />
+     <link href="../../css/board/hover.css" rel="stylesheet" />
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="../css/board/board.css" rel="stylesheet" />
     <!-- CSS only -->
@@ -41,35 +38,40 @@
     
 
     <title></title>
+     
+    <script>
+ $(document).ready(function() {
+	  $('#summernote').summernote({
+ 	    	placeholder: 'content',
+	        minHeight: 700, //최소높이
+	        maxHeight: 700, //최대높이
+	        focus: true,  //에디터 로딩 후 초커스를 맞출지 여부
+	        lang : 'ko-KR' // 한글 설정
+	  });
+	}); 
+</script> 
+<style>
+
+</style>
 
   </head>
   <body>
-    <header>
-      <div class="header">
-        <nav class="navBar">
-            네비게이션 바(나중에 합칠 떄 저 위에 header 태그 부분만 지워주시면 됩니다~^0^)
-        </nav>
-      </div>
-    </header>
+
     <article class="contentWrapper">
     
-    	
-	<input type="hidden" name="boardtable_seq" value="${boardtable_seq}">
-	<input type="hidden" name="pg" value="${pg }">
-
-	<table border="1" cellspacing="0" cellpadding="3">
-    
+  	<input type="hidden" name="boardtable_seq" value="${boardtable_seq }" id="boardtable_seq">
+	<input type="hidden" name="pg" value="${pg }">  
+     <br><br>
       <div class="writeContent">
         <div class="writeEditor">
         	<br><br>
 			<div style="width: 95%; margin: auto;">
 				<form method="post" action="/write">
-				<input type="text" id="subject" name="subject" placeholder="제  목">
-				 <div id="sujectDiv"></div>
+				<input type="text" id="subject" name="subject" placeholder="제  목" value="${boardDTO.subject }">
+				 <div id="sujectDiv" ></div>
 				<hr align="center" width="100%" size="15" color="black">
-					<textarea id="summernote" name="content"></textarea>
-					<div id="contentDiv"></div>	<!-- 이거맞는건가 -->
-				</form>
+					<textarea id="summernote" name="content">${boardDTO.content }</textarea>
+					<div id="contentDiv" ></div>	
 			</div>
 			
 			
@@ -77,31 +79,17 @@
         </div>
         <div class="writeOption">
           <div class="saveOptionWrapper">
-            <button type="button" class="btn-" id="boardWriteBtn-" style="font-size:13px; border-radius:20px; border: 1px solid #343a40; outline: none !important; margin:5px; height:40px;" >미리보기</button><br>
-            <button type="button" class="btn-" id="boardModifyBtn"style="font-size:13px; border-radius:20px; border: 1px solid #343a40; outline: none !important; margin:5px; height:40px;">글 수정하기</button>
-            <!--switch-->
-            <div class="saveOption">
-              <div class="switch">
-                  <p>공개 설정</p>
-                  <div class="primary-switch">
-                    <input type="checkbox" id="primary-switch" checked>
-                    <label for="primary-switch"></label>
-                  </div>
-                  <div class="switch_infomation">
-                    <p>
-                    공개 여부를 설정합니다.<br>
-                    활성화 시 다른 사용자에게 공개되며,<br>
-                    비활성화시 다른유저에게 보이지 않습니다.</p>
-                  </div>
-              </div>
-            </div>
+            <button type="reset" class="btn- resetBtn" id="boardWriteBtn-" style="font-size:13px; border-radius:20px; border: 1px solid #343a40; outline: none !important; margin:5px; height:40px;" >다시작성</button><br>
+            <button type="button" class="btn-" id="boardModifyBtn"style="font-size:13px; border-radius:20px; border: 1px solid #343a40; outline: none !important; margin:5px; height:40px;">수정하기</button>
+            
           </div>
         </div>
+				</form>
       </div>
     </article>
   </body>
+  <br>
 <!--    <!-- Bootstrap core JS-->
-  
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
   
 	<!-- Third party plugin JS-->
@@ -115,5 +103,6 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
   
   <!-- Core theme JS-->
- <script src="../js/board/board.js"></script>
+
+ <script src="../js/board/boardModifyForm.js"></script>
 </html>

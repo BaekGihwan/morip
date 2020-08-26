@@ -27,8 +27,10 @@ public class HashtagServiceImpl implements HashtagService {
 	//해쉬태그 검색
 		@Override
 		public List<HashtagDTO> hashtagSearch(String hashtagText) {
-			List<HashtagDTO> list = hashtagDAO.hashtagSearch(hashtagText);
-			
+			List<HashtagDTO> list = new ArrayList<HashtagDTO>();
+			list = hashtagDAO.hashtagSearch(hashtagText);
+			System.out.println("해쉬태그서비스 리스트사이즈");
+			System.out.println(list.size());
 			return list;
 		}
 

@@ -177,6 +177,7 @@ public class MemberController {
 		if(memberDTO != null) {
 			session.setAttribute("memEmail", memberDTO.getEmail());
 			session.setAttribute("nickname", memberDTO.getNickname());
+			session.setAttribute("image", memberDTO.getImage());
 			session.setAttribute("checkid", memberDTO.getCheckid());
 		}
 		
@@ -202,6 +203,7 @@ public class MemberController {
 			session.setAttribute("nickname", memberDTO.getNickname());
 			session.setAttribute("image", memberDTO.getImage());
 			session.setAttribute("checkid", memberDTO.getCheckid());
+			
 			mav.addObject("memberDTO", memberDTO);
 		}
 		mav.addObject("passMatch", passMatch);
@@ -332,18 +334,22 @@ public class MemberController {
 		String email = (String) session.getAttribute("memEmail");
 		String checkid = (String) session.getAttribute("checkid");
 		MemberDTO memberDTO = memberService.getMember(email, checkid);
+		session.setAttribute("beforeNickname", memberDTO.getNickname());
 		model.addAttribute("memberDTO", memberDTO);
 		model.addAttribute("display", "/resources/member/memberModifyForm.jsp");
 		return "/resources/main/index";
 	}
-		
+	
 	// 회원정보 수정
 	@RequestMapping(value="/member/memberModify", method=RequestMethod.POST)
 	@ResponseBody
 	public void memberModify(@ModelAttribute MemberDTO memberDTO, 
 							 @RequestParam MultipartFile img, HttpSession session) {
-		String image =  (String)session.getAttribute("image");
+		System.out.println(memberDTO.getPwd());
+		
+		String image =  (String) session.getAttribute("image");
 		String checkid = (String) session.getAttribute("checkid");
+		String beforeNickname = (String) session.getAttribute("beforeNickname");
 		
 		if(img.getOriginalFilename() == "") {
 			memberDTO.setImage(image);
@@ -358,20 +364,37 @@ public class MemberController {
 			}		
 			memberDTO.setImage(fileName);		
 			session.setAttribute("nickname", memberDTO.getNickname());
+			session.setAttribute("beforeNickname", memberDTO.getNickname());
+			beforeNickname = (String) session.getAttribute("beforeNickname");
 			session.setAttribute("image", memberDTO.getImage());
-		}					
-		String inputPass = memberDTO.getPwd();
-		String pass = passEncoder.encode(inputPass);
-		memberDTO.setPwd(pass);
+		}		
+		if(checkid.equals("1")) {
+			System.out.println("dddddd");
+			String inputPass = memberDTO.getPwd();
+			String pass = passEncoder.encode(inputPass);
+			memberDTO.setPwd(pass);
+			boolean passMatch = false;
+			
+			passMatch = passEncoder.matches(inputPass, memberDTO.getPwd());
+			
+			System.out.println(passMatch);
+		}
 		memberDTO.setCheckid(checkid);
-		memberService.memberModify(memberDTO);
-	}	
-	
-	public void aaaa(HttpSession session) {
-		String name = (String) session.getAttribute("nickname");
+		
+		
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("email", memberDTO.getEmail());
+		map.put("checkid", memberDTO.getCheckid());
+		map.put("nickname", memberDTO.getNickname());
+		map.put("pwd", memberDTO.getPwd());
+		map.put("gender", memberDTO.getGender());
+		map.put("image", memberDTO.getImage());
+		map.put("beforeNickname", beforeNickname);
+		if(checkid.equals("1")) {
+			memberService.memberModify(map);
+		}else {
+			memberService.memberModify2(map);
+		}
+		
 	}
-	
-	
-	
-	
 }

@@ -31,7 +31,6 @@ $('#memberModifyFormBtn').click(function(){
         $('#nickNameDiv').css('font-weight', 'bold');
         $('#memberModifyFormNickName').focus();    
     }else {
-   		alert("ddddd");
 		$.ajax({
 			type: 'post',
 			enctype: 'multipart/form-data',

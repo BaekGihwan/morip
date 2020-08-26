@@ -60,6 +60,10 @@ public interface MyblogService {
 
 	public MyblogDTO boardWriteCheck(Map<String, String> map);
 
+	public void updateBgImg(Map <String, String> map);
+
+	public void modifyBoard(Map<String, String> map);
+
 
 
 }

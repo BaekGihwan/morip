@@ -1,5 +1,6 @@
 package blog.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -64,11 +65,15 @@ public class BlogController {
 	@RequestMapping(value="hashtagBlogList",method=RequestMethod.POST)
 	@ResponseBody
 	public ModelAndView blogBoardSearchList(@RequestParam(value="ar[]") String[] ar) {
-		
-		List<MyblogDTO> list = hashtagService.hastagBlogList(ar);
+		List<MyblogDTO> list = new ArrayList<MyblogDTO>();
+		list = hashtagService.hastagBlogList(ar);
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("list", list);
 		mav.setViewName("jsonView");
+		System.out.println("리스트 사이즈");
+		System.out.println(list.size());
+		System.out.println("ar 크기");
+		System.out.println(ar.length);
 		return mav;
 	}
 	

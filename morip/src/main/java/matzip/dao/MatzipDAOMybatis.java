@@ -21,9 +21,13 @@ public class MatzipDAOMybatis implements MatzipDAO {
 	private SqlSession sqlSession;
 
 	@Override
-	public List<MatzipDTO> matzipList(String address) {
+	public List<MatzipDTO> matzipList(int startNum, int endNum, String address) {
 		// TODO Auto-generated method stub
-		return sqlSession.selectList("matzipSQL.matzipList",address);
+		Map<String,Object> map = new HashMap<String, Object>();
+		map.put("startNum", startNum);
+		map.put("endNum", endNum);
+		map.put("address", address);
+		return sqlSession.selectList("matzipSQL.matzipList",map);
 	}
 
 	@Override

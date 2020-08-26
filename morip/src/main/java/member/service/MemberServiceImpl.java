@@ -5,6 +5,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import board.dao.BoardDAO;
 import member.bean.MemberDTO;
 import member.dao.MemberDAO;
 
@@ -12,6 +13,8 @@ import member.dao.MemberDAO;
 public class MemberServiceImpl implements MemberService {
 	@Autowired
 	private MemberDAO memberDAO;
+	@Autowired
+	private BoardDAO boardDAO;
 	
 	@Override
 	public MemberDTO snsLogin(String email, String pwd) {
@@ -43,15 +46,18 @@ public class MemberServiceImpl implements MemberService {
 	public MemberDTO checkNickname(String nickname) {
 		return memberDAO.checkNickname(nickname);
 	}
-	
-	@Override
-	public void memberModify(MemberDTO memberDTO) {
-		memberDAO.memberModify(memberDTO);
-		
-	}
 
 	@Override
 	public void dropMorip(String email, String checkid) {
 		memberDAO.dropMorip(email, checkid);
+	}
+	
+	@Override
+	public void memberModify(Map<String, String> map) {
+		memberDAO.memberModify(map);
+	}
+	@Override
+	public void memberModify2(Map<String, String> map) {
+		memberDAO.memberModify2(map);		
 	}
 }
