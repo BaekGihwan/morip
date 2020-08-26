@@ -315,7 +315,8 @@ $(document).ready(function(){
 						//$('.content').css('height',height+'px');
 						list += '<div class="middleDiv" data-aos="fade-up" data-aos-duration="3000" style="width:100%; height:380px;display:flex;padding:10px;">';
 					} */
-					list+='<div id="reviewInDiv" class="hvr-grow" style="width:100%;height:200px;display:flex;position:relative;">';
+					list+='<div id="reviewInDiv" class="hvr-grow" style="width:100%;height:200px;display:flex;position:relative;cursor:pointer;">';
+					list+='<input type="hidden" id="seq" value='+items.blogboardtable_seq+'>';
 					list+='<div style="width:17%;height:130px;margin:35px;background-size:100% 130px;'+'background-image:url(../storage/'+items.mainimage+');"></div>';
 					list+='<div style="width:55%;height:40px;margin:25px;position:relative;left:5px;top:0px;font-weight:bold;font-size:20pt;overflow:hidden;">'+items.subject+'</div>';
 					list+='<div style="width:65%;height:60px;position:absolute;left:235px;top:75px;margin-left:5%;overflow:hidden;">'+items.content+'</div>';
@@ -339,6 +340,11 @@ $(document).ready(function(){
 		   }
 	   });
    }
+   
+   $('#reviewOutDiv').on('click','#reviewInDiv', function(){
+	  	location.href='../myblog/view?seq='+$(this).children().first().val();
+	 	//alert($(this).children().first().text());
+	 });
 });
 </script>
 <script type="text/javascript" src="../js/matzip/slideImage.js"></script>
