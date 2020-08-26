@@ -153,6 +153,7 @@ var count = $('#count').val();
 var list = "";
 var loading = false;    //중복실행여부 확인 변수
 var page = 1;   //불러올 페이지
+var content = "";
 
 $(window).scroll(function(){
 console.log("documentHeight:" + documentHeight + " | scrollTop:" + scrollTop + " | windowHeight: " + windowHeight );
@@ -171,7 +172,7 @@ function loadingPage(){
 	$.ajax({
 		type: 'post',
 		url: '/morip/blog/infinityScroll',
-		data: 'pg='+pg,
+		data: {'pg' : pg, 'content' : content},
 		dataType: 'json',
 		success: function(data){
 			pg++;
@@ -183,6 +184,8 @@ function loadingPage(){
 					let seq = items.blogboardtable_seq;
 					//처음 시작을 여는 div
 					if(tempNumber%4==0){
+						//height+=300;
+						//$('.blogList_wrapper').css('height',height+'px');
 						height+=230;
 						$('.blogList_wrapper').css('height',height+'px');
 						list += '<div class="blogList" id="blogList" data-aos="fade-up" data-aos-duration="3000">';
@@ -217,3 +220,140 @@ function viewEnter(seq){
 	location.href="view?seq="+seq;
 }
 
+
+
+$('.img1').click(function(){
+	content = $('#content1').text();
+	$('#pg').val(1);
+	pg = $('#pg').val();
+	$('.blogList_wrapper').empty();
+	loadingPage();
+});
+
+$('.img2').click(function(){
+	content = $('#content2').text();
+	$('#pg').val(1);
+	pg = $('#pg').val();
+	$('.blogList_wrapper').empty();
+	loadingPage();
+});
+
+$('.img3').click(function(){
+	content = $('#content3').text();
+	$('#pg').val(1);
+	pg = $('#pg').val();
+	$('.blogList_wrapper').empty();
+	loadingPage();
+});
+
+$('.img4').click(function(){
+	content = $('#content4').text();
+	$('#pg').val(1);
+	pg = $('#pg').val();
+	$('.blogList_wrapper').empty();
+	loadingPage();
+});
+
+$('.img5').click(function(){
+	content = $('#content5').text();
+	$('#pg').val(1);
+	pg = $('#pg').val();
+	$('.blogList_wrapper').empty();
+	loadingPage();
+});
+
+$('.img6').click(function(){
+	content = $('#content6').text();
+	$('#pg').val(1);
+	pg = $('#pg').val();
+	$('.blogList_wrapper').empty();
+	loadingPage();
+});
+
+$('.img7').click(function(){
+	content = $('#content7').text();
+	$('#pg').val(1);
+	pg = $('#pg').val();
+	$('.blogList_wrapper').empty();
+	loadingPage();
+});
+
+$('.img8').click(function(){
+	content = $('#content8').text();
+	$('#pg').val(1);
+	pg = $('#pg').val();
+	$('.blogList_wrapper').empty();
+	loadingPage();
+});
+
+$('.img9').click(function(){
+	content = $('#content9').text();
+	$('#pg').val(1);
+	pg = $('#pg').val();
+	$('.blogList_wrapper').empty();
+	loadingPage();
+});
+
+$('.img10').click(function(){
+	content = $('#content10').text();
+	$('#pg').val(1);
+	pg = $('#pg').val();
+	$('.blogList_wrapper').empty();
+	loadingPage();
+});
+
+$('.img11').click(function(){
+	content = $('#content11').text();
+	$('#pg').val(1);
+	pg = $('#pg').val();
+	$('.blogList_wrapper').empty();
+	loadingPage();
+});
+
+$('.img12').click(function(){
+	content = $('#content12').text();
+	$('#pg').val(1);
+	pg = $('#pg').val();
+	$('.blogList_wrapper').empty();
+	loadingPage();
+});
+
+$('.img13').click(function(){
+	content = $('#content13').text();
+	$('#pg').val(1);
+	pg = $('#pg').val();
+	$('.blogList_wrapper').empty();
+	loadingPage();
+});
+
+$('.img14').click(function(){
+	content = $('#content14').text();
+	$('#pg').val(1);
+	pg = $('#pg').val();
+	$('.blogList_wrapper').empty();
+	loadingPage();
+});
+
+$('.img15').click(function(){
+	content = $('#content15').text();
+	$('#pg').val(1);
+	pg = $('#pg').val();
+	$('.blogList_wrapper').empty();
+	loadingPage();
+});
+
+$('.img16').click(function(){
+	content = $('#content16').text();
+	$('#pg').val(1);
+	pg = $('#pg').val();
+	$('.blogList_wrapper').empty();
+	loadingPage();
+});
+
+$('.img0').click(function(){
+	content = "";
+	$('#pg').val(1);
+	pg = $('#pg').val();
+	$('.blogList_wrapper').empty();
+	loadingPage();
+});

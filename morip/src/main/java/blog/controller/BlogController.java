@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -36,9 +37,9 @@ public class BlogController {
 	// 블로그 인피니티스크롤
 	@RequestMapping(value="infinityScroll", method=RequestMethod.POST)
 	@ResponseBody
-	public ModelAndView infinityScroll(@RequestParam String pg) {
+	public ModelAndView infinityScroll(@RequestParam String pg, @RequestParam String content) {
 		
-		List<MyblogDTO> list = blogService.blogAllList(Integer.parseInt(pg));
+		List<MyblogDTO> list = blogService.blogAllList(Integer.parseInt(pg), content);
 		
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("list", list);

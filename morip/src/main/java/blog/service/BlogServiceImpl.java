@@ -17,14 +17,13 @@ public class BlogServiceImpl implements BlogService {
 	
 	// 전체 인피니티스크롤
 	@Override
-	public List<MyblogDTO> blogAllList(int pg) {
+	public List<MyblogDTO> blogAllList(int pg, String content) {
 		int endNum = pg*8;
 		int startNum = endNum-7;
 		System.out.println(startNum);
 		System.out.println(endNum);
-		List<MyblogDTO> list = blogDAO.blogAllList(startNum,endNum);
+		List<MyblogDTO> list = blogDAO.blogAllList(startNum,endNum,content);
 		return list;
 	}
 
-	
 }
