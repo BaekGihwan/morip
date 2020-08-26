@@ -18,10 +18,11 @@
    
    <!-- 목록 -->
    <select id="getBoardList" parameterType="java.util.Map" resultType="board">
+     
       <![CDATA[
       select * from
       (select rownum rn, tt.* from
-      (select * from boardtable where step=0 order by boardtable_seq desc)tt 
+      (select * from boardtable where step=0 order by CASE WHEN nickname IN ('지지지') THEN 0 ELSE 1 END, boardtable_seq desc)tt 
       )where rn>=#{startNum} and rn<=#{endNum}
       ]]>
    </select>
@@ -41,8 +42,8 @@
       <![CDATA[
       select * from
       (select rownum rn, tt.* from
-      (select * from boardtable where ${searchOption} like '%'||#{keyword}||'%' and step = 0
-                      order by ref desc, step asc)tt
+      	(select * from boardtable where nickname = '지지지' or (${searchOption} like '%'||#{keyword}||'%' and step = 0)
+      	order by CASE WHEN nickname IN ('지지지') THEN 0 ELSE 1 END, ref desc, step asc)tt
       )where rn>=#{startNum} and rn<=#{endNum} 
       ]]>
    </select>
@@ -73,15 +74,15 @@
    <!-- 댓글 입력 -->
    <insert id="insertReply" parameterType="java.util.Map">
     insert into boardtable(boardtable_seq, nickname, email, content, logtime, ref, step, pseq, image) 
-    	values(boardtable_seq.nextval
-    	     , #{nickname }
-    	     , #{email}
-    	     , #{content}
-    	     , sysdate
-    	     , #{ref}
-    	     , #{step}
-    	     , #{pseq}
-    	     , #{image})
+       values(boardtable_seq.nextval
+            , #{nickname }
+            , #{email}
+            , #{content}
+            , sysdate
+            , #{ref}
+            , #{step}
+            , #{pseq}
+            , #{image})
    </insert>
    
    <!-- 댓글 전부 불러오기 -->
@@ -103,4 +104,9 @@
    <select id="viewPage"  parameterType="Integer" resultType="board">
       select * from boardtable where boardtable_seq=#{boardtable_seq}
    </select>
+   
+   <!-- 운영자 글쓰기 select *, case when 작성자 = '운영자' then '1' else '0' end new_order from 테이블명 order by new_order desc, 나머지정렬기준 desc;-->
+   <select id="adminWrite">
+   		select *, case when admin = 'admin' then '1' else '0' end new_order from boardtable order by new_order desc;
+	</select>
 </mapper>   

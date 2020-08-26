@@ -256,7 +256,6 @@ function deleteBtnClick(boardtable_seq){
 	 	console.log(content);
 		if(pseq == view_seq){
 		 	//본문글의 답글
-		 	alert("11");
 	 		step = 1; 
 	 	} else {
 	 	 	 //본문의 댓글의 답글
