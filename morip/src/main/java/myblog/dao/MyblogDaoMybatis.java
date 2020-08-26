@@ -197,4 +197,16 @@ public class MyblogDaoMybatis implements MyblogDAO {
 		sqlSession.update("myblogSQL.modifyBoard", map);
 	}
 
+	@Override
+	public List<String> bestWriter() {
+		return sqlSession.selectList("myblogSQL.bestWriter");
+	}
+
+	@Override
+	public List<MyblogDTO> bestTrip(Map<String, String> map) {
+		return sqlSession.selectList("myblogSQL.bestTrip", map);
+	}
+
+
+
 }

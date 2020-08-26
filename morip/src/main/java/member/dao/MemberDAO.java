@@ -24,4 +24,6 @@ public interface MemberDAO {
 
 	public void memberModify2(Map<String, String> map);
 
+	public MemberDTO getMember2(String email);
+
 }

@@ -394,7 +394,8 @@ public class MemberController {
 			memberService.memberModify(map);
 		}else {
 			memberService.memberModify2(map);
-		}
-		
+		}		
 	}
+	
+
 }

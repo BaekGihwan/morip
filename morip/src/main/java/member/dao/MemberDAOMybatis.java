@@ -70,4 +70,9 @@ public class MemberDAOMybatis implements MemberDAO {
 	public void memberModify2(Map<String, String> map) {
 		sqlSession.update("memberSQL.memberModify2", map);		
 	}
+
+	@Override
+	public MemberDTO getMember2(String email) {
+		return sqlSession.selectOne("memberSQL.getMember2", email);
+	}
 }

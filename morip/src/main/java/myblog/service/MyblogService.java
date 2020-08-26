@@ -64,6 +64,10 @@ public interface MyblogService {
 
 	public void modifyBoard(Map<String, String> map);
 
+	public List<String> bestWriter();
+
+	public List<MyblogDTO> bestTrip(Map<String, String> map);
+
 
 
 }

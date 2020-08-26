@@ -552,4 +552,40 @@ public class MyblogController {
 			System.out.println("modify 들어와서 저장하는 중...");
 		}
 		
+		// 베스트작가 가져오기
+		@RequestMapping(value="/myblog/bestWriter", method=RequestMethod.POST)
+		@ResponseBody
+		public ModelAndView bestWriter() {
+			//베스트작가 가져오기
+			List<String> list = myblogService.bestWriter();
+			//베스트작가의 정보 불러오기
+			System.out.println(list.get(0));
+			MemberDTO memberDTO = memberService.getMember2(list.get(0));
+			
+			ModelAndView mav = new ModelAndView();		
+			mav.addObject("memberDTO", memberDTO);
+			mav.setViewName("jsonView");
+			return mav;
+		}
+		
+		// 베스트작가의 베스트글 3개 가져오기
+		@RequestMapping(value="/myblog/bestTrip", method=RequestMethod.POST)
+		@ResponseBody
+		public ModelAndView bestTrip(@RequestParam String nickname) {
+			
+			Map<String, String> map = new HashMap<String, String>();
+			map.put("nickname", nickname);			
+			map.put("startNum", "1");
+			map.put("endNum", "3");			
+			//베스트글 3개 가져오기
+			List<MyblogDTO> list2 = myblogService.bestTrip(map);
+			
+			System.out.println("리스트 라이크 카운드" + list2.get(0).getSubject());
+			ModelAndView mav = new ModelAndView();		
+			mav.addObject("list2", list2);
+			mav.setViewName("jsonView");
+			return mav;
+		}
+		
+		
 }

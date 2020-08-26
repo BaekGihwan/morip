@@ -189,4 +189,16 @@ public class MyblogServiceImpl implements MyblogService {
 		myblogDAO.modifyBoard(map);
 	}
 
+	@Override
+	public List<String> bestWriter() {
+		return myblogDAO.bestWriter();
+	}
+
+	@Override
+	public List<MyblogDTO> bestTrip(Map<String, String> map) {
+		return myblogDAO.bestTrip(map);
+	}
+
+
+
 }
