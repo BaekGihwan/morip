@@ -40,11 +40,12 @@ public class HashtagServiceImpl implements HashtagService {
 			
 			List<MyblogDTO> list = new ArrayList<MyblogDTO>();
 			for(int i=0;i<ar.length;i++) {
+				System.out.println(ar[i]);
 				MyblogDTO myblogDTO = new MyblogDTO();
-				myblogDTO=hashtagDAO.hashtagBlogList(ar[i]);
+				myblogDTO = hashtagDAO.hashtagBlogList(ar[i]);
 				list.add(myblogDTO);
-				System.out.println("----------------------");
-				System.out.println(myblogDTO.getBlogboardtable_seq());
+				System.out.println("----------------------1");
+				System.out.println(myblogDTO.getBlogboardtable_seq());	
 				System.out.println(myblogDTO.getNickname());
 				System.out.println(myblogDTO.getSubject());
 				System.out.println("-----------------------");

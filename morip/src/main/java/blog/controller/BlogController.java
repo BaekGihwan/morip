@@ -66,7 +66,9 @@ public class BlogController {
 	@ResponseBody
 	public ModelAndView blogBoardSearchList(@RequestParam(value="ar[]") String[] ar) {
 		List<MyblogDTO> list = new ArrayList<MyblogDTO>();
+		System.out.println("리스가져오기전");
 		list = hashtagService.hastagBlogList(ar);
+		System.out.println("리스가져오기후");
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("list", list);
 		mav.setViewName("jsonView");

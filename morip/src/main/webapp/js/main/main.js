@@ -35,6 +35,38 @@ $('.morip_banner_slider').slick({
     // instead of a settings object
   ]
 });
+
+// 베트스작가 뽑기.
+$(document).ready(function(){
+$.ajax({
+		type: 'post',
+		url: '../myblog/bestWriter',
+		dataType: 'json',
+		success: function(data){
+			$('.profile_image').attr("src","../storage/"+data.memberDTO.image);
+			$('.profile_name').text(data.memberDTO.nickname);
+			$('.blog_link').attr("href", "/morip/myblog/mypage?nickname="+data.memberDTO.nickname);		
+			//베스트작가의 베스트 글 3개 뿌려주기
+			$.ajax({
+				type: 'post',
+				url: '../myblog/bestTrip',
+				data: 'nickname='+data.memberDTO.nickname,
+				dateType: 'json',
+				success: function(data2){
+					console.log(data2.list2.nickname);
+				},
+				error: function(err){
+					console.log(err);
+				}
+			});
+		},
+		error: function(err){
+			console.log(err);
+		}		
+	});
+});
+
+
 // 맛집 best3개 뿌려주기 
 $(document).ready(function(){
 	$.ajax({
@@ -66,5 +98,8 @@ $(document).ready(function(){
 	      error:function(err){
 	         console.log(err);
 	      }
-	});
+	});	
 });
+
+
+
