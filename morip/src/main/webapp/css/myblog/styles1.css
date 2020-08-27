@@ -124,6 +124,8 @@ li {
 	top: 200px;
 	text-align: center;
 	z-index:5;
+	display: flex;
+    justify-content: space-between;
 }
 
 .profileMessage {
@@ -221,7 +223,7 @@ li {
 	margin: 10px;
 	margin-bottom: 10px;
 	text-align: left;
-	height: 50px;
+	height: 30px;
 	overflow: hidden;
 }
 

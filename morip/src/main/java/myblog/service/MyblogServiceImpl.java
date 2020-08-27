@@ -1,5 +1,6 @@
 package myblog.service;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -8,6 +9,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import hashtag.bean.HashtagDTO;
 import member.bean.MemberDTO;
 import myblog.bean.FollowDTO;
 import myblog.bean.LikeDTO;
@@ -104,8 +106,6 @@ public class MyblogServiceImpl implements MyblogService {
 	
 	@Override
 	public LikeDTO likeViewCheck(Map<String, String> map) {
-		
-		System.out.println("서비스: " + map.get("memEmail"));
 		return myblogDAO.likeViewCheck(map);
 	}
 	
@@ -187,6 +187,25 @@ public class MyblogServiceImpl implements MyblogService {
 	@Override
 	public void modifyBoard(Map<String, String> map) {
 		myblogDAO.modifyBoard(map);
+	}
+
+	@Override
+	public void boardHit(String seq) {
+		myblogDAO.boardHit(seq);
+	}
+
+	@Override
+	public List<HashtagDTO> loadHashtag(String seq) {
+		return myblogDAO.loadHashtag(Integer.parseInt(seq));
+	}
+
+	@Override
+	public void modifyHashtag(int seq, String hashtag) {
+		String [] ar = hashtag.split(" ");
+		Map <String, Object> map = new HashMap<String, Object>();
+		map.put("seq", seq);
+		map.put("ar", ar);
+		myblogDAO.modifyHashtag(map);
 	}
 
 }

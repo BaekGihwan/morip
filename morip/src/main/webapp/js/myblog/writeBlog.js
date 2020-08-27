@@ -3,7 +3,7 @@ var stepPg = $('#stepPg').val();
 /**************전체 페이지 기능***************/
  //이전과 다음 버튼 기능
 $('#backwardBtn').click(function(){
-  location.href="writeBlog"+(Number(stepPg)-1);
+	history.back();
 });
 
 
@@ -36,13 +36,18 @@ $('.switch').mouseout(function(){
 
 /*******************stpe1*********************/
 //다음 버튼 클릭 시 유효성 검사 및 DB 안에 사진 저장
-  $('.stepChoiceContent').click(function(){
+  $('#forwardBtn').click(function(){
   if(stepPg==1){
-       console.log($('#backgroundImg')[0].files[0]==undefined);
      if($('#subject').val()==''){
-       alert("여행기 제목을 입력하세요!");
+   		Swal.fire({
+		  icon: 'warning',
+		  text: '여행기 제목을 입력해주세요!',
+		})
      } else if($('#backgroundImg')[0].files[0]==undefined){
-        alert("여행기 배경사진을 넣어주세요!");
+    	Swal.fire({
+		  icon: 'warning',
+		  text: '여행기 배경사진을 입력해 주세요!',
+		})
      }  else {
         let sendingData = 'startdate='+$('#startdate').val()+'&enddate='+$('#enddate').val()+'&subject='+$('#subject').val()+'&fileName='+encodeURI($('#backgroundImg')[0].files[0].name);
          $.ajax({
@@ -61,8 +66,10 @@ $('.switch').mouseout(function(){
             }
          });
      }
+  } 
+  if(stepPg ==0){
+  	checkBlank();
   }
-
   });
   
   //사진을 업로드 하였을 때 바로 화면에 뿌려주기
@@ -115,6 +122,8 @@ Number.prototype.zf = function (len) { return this.toString().zf(len); };
 /*******************stpe2*********************/
  $('#summernote').summernote({
 	  height:500,
+	  maxHeight:560,
+	  minHeight:560,
       focus: true,
       lang: 'en-EN',
       map: {
@@ -141,11 +150,11 @@ Number.prototype.zf = function (len) { return this.toString().zf(len); };
 	        }
 		}
   });
+  
   function sendFile(file, el) {
       var form_data = new FormData();
       form_data.append('file', file);
   	//let filePath = file.value;
-	//alert(path);
       $.ajax({
         data: form_data,
         type: "POST",
