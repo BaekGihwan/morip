@@ -137,6 +137,7 @@
       <div class="writer_post">
       	<!-- 1번! -->
       	<div class="post">
+      	  <input type="hidden" id="post_seq1">
       	  <div class="post_image" id="post_image1" style="">
       	    <div class="post_image_like">
       	      <span class="post_image_like_text" id="post_image_like_text1">115</span>
@@ -171,6 +172,7 @@
         </div>        
         <!-- 2번! -->
         <div class="post">
+          <input type="hidden" id="post_seq2">
       	  <div class="post_image" id="post_image2" style="">
       	    <div class="post_image_like">
       	      <span class="post_image_like_text" id="post_image_like_text2"></span>
@@ -188,17 +190,18 @@
         </div>
         <!-- 3번! -->
         <div class="post">
-      	  <div class="post_image" id="post_image2" style="">
+          <input type="hidden" id="post_seq3">
+      	  <div class="post_image" id="post_image3" style="">
       	    <div class="post_image_like">
-      	      <span class="post_image_like_text" id="post_image_like_text2"></span>
+      	      <span class="post_image_like_text" id="post_image_like_text3"></span>
       	    </div>
       	  </div>
       	  <div class="post_text"> 
 	        <div class="post_title">
-	          <p class="post_title_p" id="post_title_p2"></p>
+	          <p class="post_title_p" id="post_title_p3"></p>
 	        </div>	          
 	      	<div class="post_content">
-			  <p class="post_content_p" id="post_content_p2">
+			  <p class="post_content_p" id="post_content_p3">
 	      	  </p>
 	      	</div>
       	  </div>

@@ -66,7 +66,7 @@ console.log($('.blogList_wrapper').html());
         			list+='<div class="myblog_info"><div class="myblog_subject">'+items.subject+'</div>';
         			list+='<div class="myblog_content">'+items.content+'</div>';
         			list+='<div class="myblog_userFunction"><div class="like'+seq+'" style="cursor:pointer;"onclick="likeClick('+seq+')"><i class="far fa-heart"></i></div>';
-        			list+='<div class="reply"><span>34</span> </div><div class="myblog_travleDay">';
+        			list+='<div class="reply"><span>'+items.likecount+'</span> </div><div class="myblog_travleDay">';
         			list+= startdate +'~'+ enddate+'</div></div></div></div>';
         			list+='<input type="hidden" id="likeCheck'+seq+'" value="unlike">';
         			//닫아주는 div
