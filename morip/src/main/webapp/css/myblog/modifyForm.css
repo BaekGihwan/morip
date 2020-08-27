@@ -1,0 +1,63 @@
+@charset "UTF-8";
+input {
+	color: black;
+}
+
+.imgInput {
+	width: 50%;
+	height: 350px;
+	margin: 0 auto;
+	padding-top: 30px;
+}
+
+.userChoiceImg {
+	height: 150px;
+	width: 90%;
+	margin: 10px auto;
+}
+
+.bgImg {
+	height: 200px;
+}
+
+#modifyBtnWrapper {
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	height: 100px;
+	display: flex;
+}
+
+#modifyBtn, #returnBtn {
+	width: 100px;
+	height: 50px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border: 1px solid #bdbdbd;
+	cursor: pointer;
+}
+#modifyBtn{ margin-right:20px; }
+#returnBtn{ margin-left:20px; }
+
+#hashtagInputWrapper {
+	margin-top: 50px;
+	width: 100%;
+	height: 100px;
+}
+
+#hashtagInput {
+	width: 100%;
+	height: 100%;
+}
+
+#hashtagInputText {
+	width: 100%;
+	height: 60px;
+	resize: none;
+}
+
+#hashtagInput h5 {
+	letter-spacing: 10px;
+	margin-bottom: 20px;
+}

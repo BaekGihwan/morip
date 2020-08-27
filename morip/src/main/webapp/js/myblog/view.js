@@ -146,7 +146,6 @@ var minutes = (new Date()).getMinutes();//분
 	        '</div>'+
 	      '</div>'+
 	    '</div>';
-	    alert(replyInputDiv);
 	   $('#view_replyBoard'+seq).append(replyInputDiv);
 		 $('#view_replyBoardModal'+seq).append(replyInputDiv);
 	   $('.checkReplyInput').val('on');
@@ -213,7 +212,6 @@ var minutes = (new Date()).getMinutes();//분
 	function insertBtn(pseq){
 	 	let step = 0;
 	 	let content= $('#replyInputBox'+pseq).val();
-	 	console.log(content);
 		if(pseq == view_seq){
 		 	//본문글의 답글
 	 		step = 1; 
@@ -260,7 +258,6 @@ function loadReply(){
 				success: function(data){
 					if(data.list.length!='0'){   //데이터가 존재할 때
 						$.each(data.list, function(index, items){
-							//console.log(items.content);
 							let replyNickname = items.nickname;
 							let seq = items.blogboardtable_seq;
 							let pseq = items.pseq;
@@ -327,7 +324,6 @@ $(document).ready(function(){
 	
 	var windowWidth = $(window).innerWidth();
     var windowWidth1 = $(window).outerWidth();
-    console.log(windowWidth+", "+windowWidth1);
     if(windowWidth1 < 768){
 		$('.cmt-content').css("width", "100%");
     }else if(windowWidth1 < 992){
@@ -353,7 +349,6 @@ $(function(){
     $(window).resize(function(){
         var windowWidth = $(window).innerWidth();
         var windowWidth1 = $(window).outerWidth();
-        console.log(windowWidth+", "+windowWidth1);
         if(windowWidth1 < 768){
     		$('.cmt-content').css("width", "100%");
 	    }else if(windowWidth1 < 992){
@@ -426,3 +421,111 @@ $('#view_userId').click(function(){
 	var view_userId = $('#view_userId').text();
 	location.href='/morip/myblog/mypage?nickname='+view_userId;
 });
+
+//footer 하단에 넣어주기
+  	$(document).ready(function(){
+  		let divheight= $('.contentWrapper').height();
+  		$('#footer').css("z-index", "90");
+  		let footer = $('#footer');
+  		$('.contentWrapper').append(footer);
+  		footer.css("width", $('.contentWrapper').width());
+  		$('.userMenu').css("z-index","90");
+  	});
+  	
+ //좋아요 및 팔로우 작업
+     $(document).ready(function(){
+      var seq = $('.view_seq').val();
+      
+      $.ajax({
+    	  type: 'post',
+    	  url: '/morip/myblog/boardWriteCheck',
+    	  data: 'seq='+seq,
+    	  dataType: 'json',
+    	  success: function(data){
+    		  if(data.myblogDTO.email != data.memEmail){
+    			  $('.view_controlOption').css('display', 'none');
+    		  }
+    	  },
+    	  error: function(err){
+    		  console.log(err);
+    	  }
+      });
+      
+      //좋아요 체크
+      $.ajax({
+          type: 'post',
+          url: '/morip/myblog/likeViewCheck',
+          data: 'seq='+$('.view_seq').val(),
+          dataType: 'json',
+          success: function(data){
+        	  if(data.likeDTO == null){
+                  $('#likeI').attr('class', 'far fa-heart');
+                  $('#likeViewCheck').attr('value', 'unlike');
+              }else if(data.likeDTO.board_seq == seq){
+            	  $('#likeI').attr('class', 'fas fa-heart');
+            	  $('#likeI').css('color', 'red');
+            	  $('#likeViewCheck').attr('value', 'like');
+              } 
+          }, // success
+          error: function(err){
+            console.log(err);
+          } // error
+      }); // ajax
+      
+      //좋아요 숫자
+      $.ajax({
+        type: 'post',
+        url: '/morip/myblog/likeSize',
+        data: 'seq='+seq,
+        dataType: 'json',
+        success: function(data){
+          $('#likeSize').text(data.likeSize);
+        },
+        error: function(err){
+          console.log(err);
+        }
+      });
+      
+      //댓글 숫자
+      $.ajax({
+    	  type: 'post',
+    	  url: '/morip/myblog/replySize',
+    	  data: 'seq='+seq,
+    	  dataType: 'json',
+    	  success: function(data){
+    		  $('#replySize').text(data.size);
+    	  },
+    	  error: function(err){
+    		  console.log(err);
+    	  }
+      });
+
+      
+    });//$(document).ready
+    
+$(document).ready(function() {
+	//해쉬태그 로드
+   	
+	loadHashtag();
+});
+function loadHashtag(){
+	var hashtagText="";
+    $.ajax({
+        type:'post',
+        url:"/morip/myblog/loadHashtagList",
+        data:{'seq':$('.view_seq').val()},
+        dataType:'json',
+        success:function(data){
+           $.each(data.list,function(index,items){
+              hashtagText+= items.hashtag+' ';
+           })
+           if(hashtagText!='null '){  //null이 아닐 때
+           		$('#hashtagDiv').text(hashtagText);
+           		$('#hashtagDiv').css("color","blue");
+           }
+        },
+        error:function(err){
+           console.log(err);
+        }
+     });
+}

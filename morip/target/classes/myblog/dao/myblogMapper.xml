@@ -137,11 +137,29 @@
 	<update id="modifyBoard" parameterType="java.util.Map">
 		update blogboardtable set subject = #{subject}, content = #{content}, startdate = #{startdate}, enddate = #{enddate}, mainimage = #{backgroundImg}, publicoption = #{publicoption}, logtime = sysdate where blogboardtable_seq = #{seq}
 	</update>
+	
+	<!-- 조회수 -->
+	<update id="boardHit" parameterType="int">
+      UPDATE blogboardtable SET hit=hit+1 WHERE blogboardtable_seq=#{seq}
+   	</update>
+   	
+   	<!--  해쉬태그 호출 -->
+   	<select id="loadHashtag" resultType="hashtag" parameterType="int">
+		select * from hashtagtable where blogboardtable_seq = #{seq}
+	</select>
+	<!-- 해쉬태그 삭제 -->
+	<delete id="deleteHashtag" parameterType="int">
+		delete hashtagtable where blogboardtable_seq = #{seq}
+   	</delete>
+   	<insert id="modifyHashtag" parameterType="java.util.Map">
+		insert into hashtagtable values(#{seq},#{hashtag})
+	</insert>
 
 	<!-- 베스트작가 뽑아오기 -->
 	<select id="bestWriter" resultType="string">
 		select email from followtable group by email order by count(*) desc
 	</select>
+    
 	<!-- 베스트작가의 탑3개 뽑아오기 -->
 	<select id="bestTrip" parameterType="java.util.Map" resultType="myblog">
 		select * from(select rownum rn, tt.*from 

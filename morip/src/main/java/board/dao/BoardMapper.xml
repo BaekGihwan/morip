@@ -67,7 +67,7 @@
    </delete>
    
    <!-- 조회수 -->
-   <update id="boardHit" parameterType="int">
+   <update id="boardHit" parameterType="String">
       UPDATE boardtable SET hit=hit+1 WHERE boardtable_seq=#{boardtable_seq}
    </update>
    
