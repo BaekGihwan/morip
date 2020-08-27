@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.text.ParseException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -578,11 +579,12 @@ public class MyblogController {
 			map.put("startNum", "1");
 			map.put("endNum", "3");			
 			//베스트글 3개 가져오기
-			List<MyblogDTO> list2 = myblogService.bestTrip(map);
+			List<MyblogDTO> list = myblogService.bestTrip(map);
 			
-			System.out.println("리스트 라이크 카운드" + list2.get(0).getSubject());
-			ModelAndView mav = new ModelAndView();		
-			mav.addObject("list2", list2);
+			System.out.println("리스트 라이크 카운드" + list.get(0).getSubject());
+			ModelAndView mav = new ModelAndView();	
+			
+			mav.addObject("list", list);
 			mav.setViewName("jsonView");
 			return mav;
 		}

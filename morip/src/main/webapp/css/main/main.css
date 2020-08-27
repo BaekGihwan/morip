@@ -467,6 +467,10 @@ span {
 
  
  /* food_post */
+ .food_post{
+ 	cursor: pointer;
+ }
+ 
 .food_post_bg_image{	
 	width: 1120px;
 	height: 600px;	

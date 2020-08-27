@@ -51,9 +51,16 @@ $.ajax({
 				type: 'post',
 				url: '../myblog/bestTrip',
 				data: 'nickname='+data.memberDTO.nickname,
-				dateType: 'json',
-				success: function(data2){
-					console.log(data2.list2.nickname);
+				dataType: 'json',
+				success: function(data){
+					//alert(data.blogboard1.nickname);
+					$.each(data.list,function(index,items){
+						$('#post_seq'+(index+1)).val(data.list[index].blogboardtable_seq);
+						$('#post_image'+(index+1)).css('background-image','url("../storage/'+data.list[index].mainimage+'")');
+	            		$('#post_image_like_text'+(index+1)).text(data.list[index].likecount);
+	            		$('#post_title_p'+(index+1)).text(data.list[index].subject);
+	            		$('#post_content_p'+(index+1)).html(data.list[index].content);
+					});
 				},
 				error: function(err){
 					console.log(err);
@@ -65,7 +72,6 @@ $.ajax({
 		}		
 	});
 });
-
 
 // 맛집 best3개 뿌려주기 
 $(document).ready(function(){
@@ -101,5 +107,13 @@ $(document).ready(function(){
 	});	
 });
 
-
+ $('.writer_post').on('click','.post', function(){
+	  	location.href='../myblog/view?seq='+$(this).children().first().val();
+	 	//alert($(this).children().first().text());
+	 });
+	 
+ $('.bestFood_post').on('click','.food_post', function(){
+	  	location.href='../matzip/matzipView?title='+$(this).children().first().text();
+	 	//alert($(this).children().first().text());
+	 });
 
