@@ -220,5 +220,12 @@ public class MyblogDaoMybatis implements MyblogDAO {
 		}
 		
 	}
+	public List<String> bestWriter() {
+		return sqlSession.selectList("myblogSQL.bestWriter");
+	}
 
+	@Override
+	public List<MyblogDTO> bestTrip(Map<String, String> map) {
+		return sqlSession.selectList("myblogSQL.bestTrip", map);
+	}
 }

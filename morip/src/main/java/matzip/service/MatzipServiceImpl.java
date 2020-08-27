@@ -28,10 +28,12 @@ public class MatzipServiceImpl implements MatzipService {
     private static String clientSecret = "b8tHKB6IFb";
     public static StringBuilder sb;
 	
-	@Override
-	public List<MatzipDTO> matzipList(String address) {
+    @Override
+	public List<MatzipDTO> matzipList(int pg, String address) {
 		// TODO Auto-generated method stub
-		return matzipDAO.matzipList(address);
+		int endNum = pg*8;
+		int startNum = endNum-7;
+		return matzipDAO.matzipList(startNum, endNum, address);
 	}
 
 	@Override

@@ -8,6 +8,7 @@ $(document).ready(function(){
 			//alert(JSON.stringify(data));
 			
 			$.each(data.list, function(index, items){
+			if(items.nickname == "지지지") {
 				$('<tr/>').append($('<td/>',{
 					align: 'center',
 					text: items.boardtable_seq
@@ -29,14 +30,48 @@ $(document).ready(function(){
 					align: 'center',
 					text: items.hit
 				})).appendTo($('#boardListTable'));
-				      
+				}
+				
+				else {
+					$('<tr/>').append($('<td/>',{
+					align: 'center',
+					text: items.boardtable_seq
+				})).append($('<td/>',{
+					align: 'center'
+					}).append($('<a/>',{
+						id: 'subjectB',
+						href: '#',
+						text: items.subject,
+						class: items.boardtable_seq+''
+					}))
+				).append($('<td/>',{
+					align: 'center',
+					text: items.nickname
+				})).append($('<td/>',{
+					align: 'center',
+					text: items.logtime
+				})).append($('<td/>',{
+					align: 'center',
+					text: items.hit
+				})).appendTo($('#boardListTable'));
+				}      
 			}); //each
 			
 			//페이징 처리
 			$('#boardPagingDiv').html(data.boardPaging.pagingHTML);
 			
-			//작성한 글 확인
+			//공지작성한 글 확인
 			$('#boardListTable').on('click', '#subjectA', function(){
+				let boardtable_seq = $(this).attr('class');
+				let pg = data.pg;
+
+				location.href = '/morip/board/boardView?boardtable_seq='+boardtable_seq+'&pg='+pg;
+		
+			});
+			
+			
+			//작성한 글 확인
+			$('#boardListTable').on('click', '#subjectB', function(){
 				let boardtable_seq = $(this).attr('class');
 				let pg = data.pg;
 					
@@ -99,6 +134,7 @@ $('#boardSearchBtn').click(function(event, str){
 				$('#boardListTable tr:gt(0)').remove();
 					
 				$.each(data.list, function(index, items){
+			if(items.nickname == "지지지") {
 				$('<tr/>').append($('<td/>',{
 					align: 'center',
 					text: items.boardtable_seq
@@ -120,8 +156,33 @@ $('#boardSearchBtn').click(function(event, str){
 					align: 'center',
 					text: items.hit
 				})).appendTo($('#boardListTable'));
-				      
+				}
+				
+				else {
+					$('<tr/>').append($('<td/>',{
+					align: 'center',
+					text: items.boardtable_seq
+				})).append($('<td/>',{
+					align: 'center'
+					}).append($('<a/>',{
+						id: 'subjectB',
+						href: '#',
+						text: items.subject,
+						class: items.boardtable_seq+''
+					}))
+				).append($('<td/>',{
+					align: 'center',
+					text: items.nickname
+				})).append($('<td/>',{
+					align: 'center',
+					text: items.logtime
+				})).append($('<td/>',{
+					align: 'center',
+					text: items.hit
+				})).appendTo($('#boardListTable'));
+				}      
 			}); //each
+			
 			
 				
 				//페이징 처리

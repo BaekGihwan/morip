@@ -57,7 +57,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- 회원정보 수정(email) -->
 	<update id="memberModify" parameterType="java.util.Map">
 	begin
-		update membertable set nickname = #{nickname}, gender = #{gender}, image = #{image}
+		update membertable set nickname = #{nickname}, pwd=#{pwd}, gender = #{gender}, image = #{image}
 		where email = #{email} and checkid = #{checkid};
 	
 		update boardtable set nickname = #{nickname}, image = #{image} 
@@ -81,4 +81,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where email = #{email};
 	end;
 	</update>
+	
+	<!-- 이메일을 가지고 한명분의 데이터 가져오기 -->
+	<select id="getMember2" parameterType="string" resultType="member">
+		select * from membertable where email=#{email}
+	</select>
 </mapper>

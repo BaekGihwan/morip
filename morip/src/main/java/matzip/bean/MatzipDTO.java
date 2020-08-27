@@ -16,4 +16,5 @@ public class MatzipDTO {
 	private String mapx;
 	private String mapy;
 	private String image1,image2,image3,image4;
+	private int reviewCount;
 }

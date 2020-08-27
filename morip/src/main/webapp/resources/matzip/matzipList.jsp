@@ -75,13 +75,15 @@
 										</div>
 									</a>
 								</article>
-								<div id="allDiv" style="width:100%;">
+								<div id="allDiv2" style="width:100%;">
 								<img id="infinity" src="../image/matzip/backTop.png" style="margin-top:10px;margin-left:10px;width:100%;">
+								<div id="allDiv" style="width:100%;">
+								</div>
 								</div>
 								<div id="pajuDiv" style="width:100%;">
 								<img src="../image/matzip/backTop.png" style="margin-top:10px;margin-left:10px;width:100%;">
-								<div style="width:100%; height:380px;display:flex;padding:10px;">
-									&emsp;<div class="hvr-grow" id="smallDiv"><div id="pajuTitle0" style="font-size:15pt;font-weight:bold;margin-left:10px;"></div><div style="width:100%;height:160px;"><img id="pajuImg0" src="" width="100%" height="180px"></div><br><div style="display:flex;padding:5px;border-bottom:3px solid #4C4C4C;"><i class="fas fa-comment-dots" style="margin:5px;"></i>
+								<div id="pajuMiddleDiv" style="width:100%;/*  height:380px;display:flex;padding:10px; */">
+									<!-- &emsp;<div class="hvr-grow" id="smallDiv"><div id="pajuTitle0" style="font-size:15pt;font-weight:bold;margin-left:10px;"></div><div style="width:100%;height:160px;"><img id="pajuImg0" src="" width="100%" height="180px"></div><br><div style="display:flex;padding:5px;border-bottom:3px solid #4C4C4C;"><i class="fas fa-comment-dots" style="margin:5px;"></i>
             						<div id="pajuReview0" class="food_post_like_count" style="width:100px;font-size:10pt;font-weight:bold;"></div></div>
             						<div style="display:flex;padding:5px;"><i class="fas fa-map-marker-alt" style="margin:5px;"></i><div id="pajuAddr0" style="font-size:10pt;font-weight:bold;height:30px;"></div></div><div style="display:flex;margin:5px;"><i class="fas fa-phone-alt" style="margin:5px;"></i><div id="pajuTel0" style="font-size:10pt;font-weight:bold;"></div></div></div>
             						&emsp;<div class="hvr-grow" id="smallDiv"><div id="pajuTitle1" style="font-size:15pt;font-weight:bold;margin-left:10px;"></div><div style="width:100%;height:160px;"><img id="pajuImg1" src="" width="100%" height="180px"></div><br><div style="display:flex;padding:5px;border-bottom:3px solid #4C4C4C;"><i class="fas fa-comment-dots" style="margin:5px;"></i>
@@ -92,14 +94,14 @@
             						<div style="display:flex;padding:5px;"><i class="fas fa-map-marker-alt" style="margin:5px;"></i><div id="pajuAddr2" style="font-size:10pt;font-weight:bold;height:30px;"></div></div><div style="display:flex;margin:5px;"><i class="fas fa-phone-alt" style="margin:5px;"></i><div id="pajuTel2" style="font-size:10pt;font-weight:bold;"></div></div></div>
             						&emsp;<div class="hvr-grow" id="smallDiv"><div id="pajuTitle3" style="font-size:15pt;font-weight:bold;margin-left:10px;"></div><div style="width:100%;height:160px;"><img id="pajuImg3" src="" width="100%" height="180px"></div><br><div style="display:flex;padding:5px;border-bottom:3px solid #4C4C4C;"><i class="fas fa-comment-dots" style="margin:5px;"></i>
             						<div id="pajuReview3" class="food_post_like_count" style="width:100px;font-size:10pt;font-weight:bold;"></div></div>
-            						<div style="display:flex;padding:5px;"><i class="fas fa-map-marker-alt" style="margin:5px;"></i><div id="pajuAddr3" style="font-size:10pt;font-weight:bold;height:30px;"></div></div><div style="display:flex;margin:5px;"><i class="fas fa-phone-alt" style="margin:5px;"></i><div id="pajuTel3" style="font-size:10pt;font-weight:bold;"></div></div></div>
+            						<div style="display:flex;padding:5px;"><i class="fas fa-map-marker-alt" style="margin:5px;"></i><div id="pajuAddr3" style="font-size:10pt;font-weight:bold;height:30px;"></div></div><div style="display:flex;margin:5px;"><i class="fas fa-phone-alt" style="margin:5px;"></i><div id="pajuTel3" style="font-size:10pt;font-weight:bold;"></div></div></div> -->
 								</div>
 								<img src="../image/matzip/backBottom.png" style="margin-top:10px;margin-left:10px;width:100%;">
 								</div>
 								<div id="chuncheonDiv" style="width:100%;">
 								<img src="../image/matzip/backTop.png" style="margin-top:10px;margin-left:10px;width:100%;">
-								<div style="width:100%; height:380px;display:flex;padding:10px;">
-									&emsp;<div class="hvr-grow" id="smallDiv"><div id="chuncheonTitle0" style="font-size:15pt;font-weight:bold;margin-left:10px;"></div><div style="width:100%;height:160px;"><img id="chuncheonImg0" src="" width="100%" height="180px"></div><br><div style="display:flex;padding:5px;border-bottom:3px solid #4C4C4C;"><i class="fas fa-comment-dots" style="margin:5px;"></i>
+								<div id="chuncheonMiddleDiv" style="width:100%;/*  height:380px;display:flex;padding:10px; */">
+									<!-- &emsp;<div class="hvr-grow" id="smallDiv"><div id="chuncheonTitle0" style="font-size:15pt;font-weight:bold;margin-left:10px;"></div><div style="width:100%;height:160px;"><img id="chuncheonImg0" src="" width="100%" height="180px"></div><br><div style="display:flex;padding:5px;border-bottom:3px solid #4C4C4C;"><i class="fas fa-comment-dots" style="margin:5px;"></i>
             						<div id="chuncheonReview0" class="food_post_like_count" style="width:100px;font-size:10pt;font-weight:bold;"></div></div>
             						<div style="display:flex;padding:5px;"><i class="fas fa-map-marker-alt" style="margin:5px;"></i><div id="chuncheonAddr0" style="font-size:10pt;font-weight:bold;height:30px;"></div></div><div style="display:flex;margin:5px;"><i class="fas fa-phone-alt" style="margin:5px;"></i><div id="chuncheonTel0" style="font-size:10pt;font-weight:bold;"></div></div></div>
             						&emsp;<div class="hvr-grow" id="smallDiv"><div id="chuncheonTitle1" style="font-size:15pt;font-weight:bold;margin-left:10px;"></div><div style="width:100%;height:160px;"><img id="chuncheonImg1" src="" width="100%" height="180px"></div><br><div style="display:flex;padding:5px;border-bottom:3px solid #4C4C4C;"><i class="fas fa-comment-dots" style="margin:5px;"></i>
@@ -110,7 +112,7 @@
             						<div style="display:flex;padding:5px;"><i class="fas fa-map-marker-alt" style="margin:5px;"></i><div id="chuncheonAddr2" style="font-size:10pt;font-weight:bold;height:30px;"></div></div><div style="display:flex;margin:5px;"><i class="fas fa-phone-alt" style="margin:5px;"></i><div id="chuncheonTel2" style="font-size:10pt;font-weight:bold;"></div></div></div>
             						&emsp;<div class="hvr-grow" id="smallDiv"><div id="chuncheonTitle3" style="font-size:15pt;font-weight:bold;margin-left:10px;"></div><div style="width:100%;height:160px;"><img id="chuncheonImg3" src="" width="100%" height="180px"></div><br><div style="display:flex;padding:5px;border-bottom:3px solid #4C4C4C;"><i class="fas fa-comment-dots" style="margin:5px;"></i>
             						<div id="chuncheonReview3" class="food_post_like_count" style="width:100px;font-size:10pt;font-weight:bold;"></div></div>
-            						<div style="display:flex;padding:5px;"><i class="fas fa-map-marker-alt" style="margin:5px;"></i><div id="chuncheonAddr3" style="font-size:10pt;font-weight:bold;height:30px;"></div></div><div style="display:flex;margin:5px;"><i class="fas fa-phone-alt" style="margin:5px;"></i><div id="chuncheonTel3" style="font-size:10pt;font-weight:bold;"></div></div></div>
+            						<div style="display:flex;padding:5px;"><i class="fas fa-map-marker-alt" style="margin:5px;"></i><div id="chuncheonAddr3" style="font-size:10pt;font-weight:bold;height:30px;"></div></div><div style="display:flex;margin:5px;"><i class="fas fa-phone-alt" style="margin:5px;"></i><div id="chuncheonTel3" style="font-size:10pt;font-weight:bold;"></div></div></div> -->
 								</div>
 								<img src="../image/matzip/backBottom.png" style="margin-top:10px;margin-left:10px;width:100%;">
 								</div>
@@ -149,8 +151,8 @@
 								</article>
 								<div id="incheonDiv" style="width:100%;">
 								<img src="../image/matzip/backTop.png" style="margin-top:10px;margin-left:10px;width:100%;">
-								<div style="width:100%; height:380px;display:flex;padding:10px;">
-									&emsp;<div class="hvr-grow" id="smallDiv"><div id="incheonTitle0" style="font-size:15pt;font-weight:bold;margin-left:10px;"></div><div style="width:100%;height:160px;"><img id="incheonImg0" src="" width="100%" height="180px"></div><br><div style="display:flex;padding:5px;border-bottom:3px solid #4C4C4C;"><i class="fas fa-comment-dots" style="margin:5px;"></i>
+								<div id="incheonMiddleDiv" style="width:100%;/*  height:380px;display:flex;padding:10px; */">
+									<!-- &emsp;<div class="hvr-grow" id="smallDiv"><div id="incheonTitle0" style="font-size:15pt;font-weight:bold;margin-left:10px;"></div><div style="width:100%;height:160px;"><img id="incheonImg0" src="" width="100%" height="180px"></div><br><div style="display:flex;padding:5px;border-bottom:3px solid #4C4C4C;"><i class="fas fa-comment-dots" style="margin:5px;"></i>
             						<div id="incheonReview0" class="food_post_like_count" style="width:100px;font-size:10pt;font-weight:bold;"></div></div>
             						<div style="display:flex;padding:5px;"><i class="fas fa-map-marker-alt" style="margin:5px;"></i><div id="incheonAddr0" style="font-size:10pt;font-weight:bold;height:30px;"></div></div><div style="display:flex;margin:5px;"><i class="fas fa-phone-alt" style="margin:5px;"></i><div id="incheonTel0" style="font-size:10pt;font-weight:bold;"></div></div></div>
             						&emsp;<div class="hvr-grow" id="smallDiv"><div id="incheonTitle1" style="font-size:15pt;font-weight:bold;margin-left:10px;"></div><div style="width:100%;height:160px;"><img id="incheonImg1" src="" width="100%" height="180px"></div><br><div style="display:flex;padding:5px;border-bottom:3px solid #4C4C4C;"><i class="fas fa-comment-dots" style="margin:5px;"></i>
@@ -161,14 +163,14 @@
             						<div style="display:flex;padding:5px;"><i class="fas fa-map-marker-alt" style="margin:5px;"></i><div id="incheonAddr2" style="font-size:10pt;font-weight:bold;height:30px;"></div></div><div style="display:flex;margin:5px;"><i class="fas fa-phone-alt" style="margin:5px;"></i><div id="incheonTel2" style="font-size:10pt;font-weight:bold;"></div></div></div>
             						&emsp;<div class="hvr-grow" id="smallDiv"><div id="incheonTitle3" style="font-size:15pt;font-weight:bold;margin-left:10px;"></div><div style="width:100%;height:160px;"><img id="incheonImg3" src="" width="100%" height="180px"></div><br><div style="display:flex;padding:5px;border-bottom:3px solid #4C4C4C;"><i class="fas fa-comment-dots" style="margin:5px;"></i>
             						<div id="incheonReview3" class="food_post_like_count" style="width:100px;font-size:10pt;font-weight:bold;"></div></div>
-            						<div style="display:flex;padding:5px;"><i class="fas fa-map-marker-alt" style="margin:5px;"></i><div id="incheonAddr3" style="font-size:10pt;font-weight:bold;height:30px;"></div></div><div style="display:flex;margin:5px;"><i class="fas fa-phone-alt" style="margin:5px;"></i><div id="incheonTel3" style="font-size:10pt;font-weight:bold;"></div></div></div>
+            						<div style="display:flex;padding:5px;"><i class="fas fa-map-marker-alt" style="margin:5px;"></i><div id="incheonAddr3" style="font-size:10pt;font-weight:bold;height:30px;"></div></div><div style="display:flex;margin:5px;"><i class="fas fa-phone-alt" style="margin:5px;"></i><div id="incheonTel3" style="font-size:10pt;font-weight:bold;"></div></div></div> -->
 								</div>
 								<img src="../image/matzip/backBottom.png" style="margin-top:10px;margin-left:10px;width:100%;">
 								</div>
 								<div id="seoulDiv" style="width:100%;">
 								<img src="../image/matzip/backTop.png" style="margin-top:10px;margin-left:10px;width:100%;">
-								<div style="width:100%; height:380px;display:flex;padding:10px;">
-									&emsp;<div class="hvr-grow" id="smallDiv"><div id="seoulTitle0" style="font-size:15pt;font-weight:bold;margin-left:10px;"></div><div style="width:100%;height:160px;"><img id="seoulImg0" src="" width="100%" height="180px"></div><br><div style="display:flex;padding:5px;border-bottom:3px solid #4C4C4C;"><i class="fas fa-comment-dots" style="margin:5px;"></i>
+								<div id="seoulMiddleDiv" style="width:100%;/*  height:380px;display:flex;padding:10px; */">
+									<!-- &emsp;<div class="hvr-grow" id="smallDiv"><div id="seoulTitle0" style="font-size:15pt;font-weight:bold;margin-left:10px;"></div><div style="width:100%;height:160px;"><img id="seoulImg0" src="" width="100%" height="180px"></div><br><div style="display:flex;padding:5px;border-bottom:3px solid #4C4C4C;"><i class="fas fa-comment-dots" style="margin:5px;"></i>
             						<div id="seoulReview0" class="food_post_like_count" style="width:100px;font-size:10pt;font-weight:bold;"></div></div>
             						<div style="display:flex;padding:5px;"><i class="fas fa-map-marker-alt" style="margin:5px;"></i><div id="seoulAddr0" style="font-size:10pt;font-weight:bold;height:30px;"></div></div><div style="display:flex;margin:5px;"><i class="fas fa-phone-alt" style="margin:5px;"></i><div id="seoulTel0" style="font-size:10pt;font-weight:bold;"></div></div></div>
             						&emsp;<div class="hvr-grow" id="smallDiv"><div id="seoulTitle1" style="font-size:15pt;font-weight:bold;margin-left:10px;"></div><div style="width:100%;height:160px;"><img id="seoulImg1" src="" width="100%" height="180px"></div><br><div style="display:flex;padding:5px;border-bottom:3px solid #4C4C4C;"><i class="fas fa-comment-dots" style="margin:5px;"></i>
@@ -179,14 +181,14 @@
             						<div style="display:flex;padding:5px;"><i class="fas fa-map-marker-alt" style="margin:5px;"></i><div id="seoulAddr2" style="font-size:10pt;font-weight:bold;height:30px;"></div></div><div style="display:flex;margin:5px;"><i class="fas fa-phone-alt" style="margin:5px;"></i><div id="seoulTel2" style="font-size:10pt;font-weight:bold;"></div></div></div>
             						&emsp;<div class="hvr-grow" id="smallDiv"><div id="seoulTitle3" style="font-size:15pt;font-weight:bold;margin-left:10px;"></div><div style="width:100%;height:160px;"><img id="seoulImg3" src="" width="100%" height="180px"></div><br><div style="display:flex;padding:5px;border-bottom:3px solid #4C4C4C;"><i class="fas fa-comment-dots" style="margin:5px;"></i>
             						<div id="seoulReview3" class="food_post_like_count" style="width:100px;font-size:10pt;font-weight:bold;"></div></div>
-            						<div style="display:flex;padding:5px;"><i class="fas fa-map-marker-alt" style="margin:5px;"></i><div id="seoulAddr3" style="font-size:10pt;font-weight:bold;height:30px;"></div></div><div style="display:flex;margin:5px;"><i class="fas fa-phone-alt" style="margin:5px;"></i><div id="seoulTel3" style="font-size:10pt;font-weight:bold;"></div></div></div>
+            						<div style="display:flex;padding:5px;"><i class="fas fa-map-marker-alt" style="margin:5px;"></i><div id="seoulAddr3" style="font-size:10pt;font-weight:bold;height:30px;"></div></div><div style="display:flex;margin:5px;"><i class="fas fa-phone-alt" style="margin:5px;"></i><div id="seoulTel3" style="font-size:10pt;font-weight:bold;"></div></div></div> -->
 								</div>
 								<img src="../image/matzip/backBottom.png" style="margin-top:10px;margin-left:10px;width:100%;">
 								</div>
 								<div id="gangneungDiv" style="width:100%;">
 								<img src="../image/matzip/backTop.png" style="margin-top:10px;margin-left:10px;width:100%;">
-								<div style="width:100%; height:380px;display:flex;padding:10px;">
-									&emsp;<div class="hvr-grow" id="smallDiv"><div id="gangneungTitle0" style="font-size:11pt;font-weight:bold;margin-left:10px;margin-top:7px;margin-bottom:7px;"></div><div style="width:100%;height:160px;"><img id="gangneungImg0" src="" width="100%" height="180px"></div><br><div style="display:flex;padding:5px;border-bottom:3px solid #4C4C4C;"><i class="fas fa-comment-dots" style="margin:5px;"></i>
+								<div id="gangneungMiddleDiv" style="width:100%;/*  height:380px;display:flex;padding:10px; */">
+									<!-- &emsp;<div class="hvr-grow" id="smallDiv"><div id="gangneungTitle0" style="font-size:11pt;font-weight:bold;margin-left:10px;margin-top:7px;margin-bottom:7px;"></div><div style="width:100%;height:160px;"><img id="gangneungImg0" src="" width="100%" height="180px"></div><br><div style="display:flex;padding:5px;border-bottom:3px solid #4C4C4C;"><i class="fas fa-comment-dots" style="margin:5px;"></i>
             						<div id="gangneungReview0" class="food_post_like_count" style="width:100px;font-size:10pt;font-weight:bold;"></div></div>
             						<div style="display:flex;padding:5px;"><i class="fas fa-map-marker-alt" style="margin:5px;"></i><div id="gangneungAddr0" style="font-size:10pt;font-weight:bold;height:30px;"></div></div><div style="display:flex;margin:5px;"><i class="fas fa-phone-alt" style="margin:5px;"></i><div id="gangneungTel0" style="font-size:10pt;font-weight:bold;"></div></div></div>
             						&emsp;<div class="hvr-grow" id="smallDiv"><div id="gangneungTitle1" style="font-size:15pt;font-weight:bold;margin-left:10px;"></div><div style="width:100%;height:160px;"><img id="gangneungImg1" src="" width="100%" height="180px"></div><br><div style="display:flex;padding:5px;border-bottom:3px solid #4C4C4C;"><i class="fas fa-comment-dots" style="margin:5px;"></i>
@@ -197,7 +199,7 @@
             						<div style="display:flex;padding:5px;"><i class="fas fa-map-marker-alt" style="margin:5px;"></i><div id="gangneungAddr2" style="font-size:10pt;font-weight:bold;height:30px;"></div></div><div style="display:flex;margin:5px;"><i class="fas fa-phone-alt" style="margin:5px;"></i><div id="gangneungTel2" style="font-size:10pt;font-weight:bold;"></div></div></div>
             						&emsp;<div class="hvr-grow" id="smallDiv"><div id="gangneungTitle3" style="font-size:15pt;font-weight:bold;margin-left:10px;"></div><div style="width:100%;height:160px;"><img id="gangneungImg3" src="" width="100%" height="180px"></div><br><div style="display:flex;padding:5px;border-bottom:3px solid #4C4C4C;"><i class="fas fa-comment-dots" style="margin:5px;"></i>
             						<div id="gangneungReview3" class="food_post_like_count" style="width:100px;font-size:10pt;font-weight:bold;"></div></div>
-            						<div style="display:flex;padding:5px;"><i class="fas fa-map-marker-alt" style="margin:5px;"></i><div id="gangneungAddr3" style="font-size:10pt;font-weight:bold;height:30px;"></div></div><div style="display:flex;margin:5px;"><i class="fas fa-phone-alt" style="margin:5px;"></i><div id="gangneungTel3" style="font-size:10pt;font-weight:bold;"></div></div></div>
+            						<div style="display:flex;padding:5px;"><i class="fas fa-map-marker-alt" style="margin:5px;"></i><div id="gangneungAddr3" style="font-size:10pt;font-weight:bold;height:30px;"></div></div><div style="display:flex;margin:5px;"><i class="fas fa-phone-alt" style="margin:5px;"></i><div id="gangneungTel3" style="font-size:10pt;font-weight:bold;"></div></div></div> -->
 								</div>
 								<img src="../image/matzip/backBottom.png" style="margin-top:10px;margin-left:10px;width:100%;">
 								</div>
@@ -236,8 +238,8 @@
 								</article>
 								<div id="suwonDiv" style="width:100%;">
 								<img src="../image/matzip/backTop.png" style="margin-top:10px;margin-left:10px;width:100%;">
-								<div style="width:100%; height:380px;display:flex;padding:10px;">
-									&emsp;<div class="hvr-grow" id="smallDiv"><div id="suwonTitle0" style="font-size:15pt;font-weight:bold;margin-left:10px;"></div><div style="width:100%;height:160px;"><img id="suwonImg0" src="" width="100%" height="180px"></div><br><div style="display:flex;padding:5px;border-bottom:3px solid #4C4C4C;"><i class="fas fa-comment-dots" style="margin:5px;"></i>
+								<div id="suwonMiddleDiv" style="width:100%;/*  height:380px;display:flex;padding:10px; */">
+									<!-- &emsp;<div class="hvr-grow" id="smallDiv"><div id="suwonTitle0" style="font-size:15pt;font-weight:bold;margin-left:10px;"></div><div style="width:100%;height:160px;"><img id="suwonImg0" src="" width="100%" height="180px"></div><br><div style="display:flex;padding:5px;border-bottom:3px solid #4C4C4C;"><i class="fas fa-comment-dots" style="margin:5px;"></i>
             						<div id="suwonReview0" class="food_post_like_count" style="width:100px;font-size:10pt;font-weight:bold;"></div></div>
             						<div style="display:flex;padding:5px;"><i class="fas fa-map-marker-alt" style="margin:5px;"></i><div id="suwonAddr0" style="font-size:10pt;font-weight:bold;height:30px;"></div></div><div style="display:flex;margin:5px;"><i class="fas fa-phone-alt" style="margin:5px;"></i><div id="suwonTel0" style="font-size:10pt;font-weight:bold;"></div></div></div>
             						&emsp;<div class="hvr-grow" id="smallDiv"><div id="suwonTitle1" style="font-size:15pt;font-weight:bold;margin-left:10px;"></div><div style="width:100%;height:160px;"><img id="suwonImg1" src="" width="100%" height="180px"></div><br><div style="display:flex;padding:5px;border-bottom:3px solid #4C4C4C;"><i class="fas fa-comment-dots" style="margin:5px;"></i>
@@ -248,14 +250,14 @@
             						<div style="display:flex;padding:5px;"><i class="fas fa-map-marker-alt" style="margin:5px;"></i><div id="suwonAddr2" style="font-size:10pt;font-weight:bold;height:30px;"></div></div><div style="display:flex;margin:5px;"><i class="fas fa-phone-alt" style="margin:5px;"></i><div id="suwonTel2" style="font-size:10pt;font-weight:bold;"></div></div></div>
             						&emsp;<div class="hvr-grow" id="smallDiv"><div id="suwonTitle3" style="font-size:15pt;font-weight:bold;margin-left:10px;"></div><div style="width:100%;height:160px;"><img id="suwonImg3" src="" width="100%" height="180px"></div><br><div style="display:flex;padding:5px;border-bottom:3px solid #4C4C4C;"><i class="fas fa-comment-dots" style="margin:5px;"></i>
             						<div id="suwonReview3" class="food_post_like_count" style="width:100px;font-size:10pt;font-weight:bold;"></div></div>
-            						<div style="display:flex;padding:5px;"><i class="fas fa-map-marker-alt" style="margin:5px;"></i><div id="suwonAddr3" style="font-size:10pt;font-weight:bold;height:30px;"></div></div><div style="display:flex;margin:5px;"><i class="fas fa-phone-alt" style="margin:5px;"></i><div id="suwonTel3" style="font-size:10pt;font-weight:bold;"></div></div></div>
+            						<div style="display:flex;padding:5px;"><i class="fas fa-map-marker-alt" style="margin:5px;"></i><div id="suwonAddr3" style="font-size:10pt;font-weight:bold;height:30px;"></div></div><div style="display:flex;margin:5px;"><i class="fas fa-phone-alt" style="margin:5px;"></i><div id="suwonTel3" style="font-size:10pt;font-weight:bold;"></div></div></div> -->
 								</div>
 								<img src="../image/matzip/backBottom.png" style="margin-top:10px;margin-left:10px;width:100%;">
 								</div>
 								<div id="cheonanDiv" style="width:100%;">
 								<img src="../image/matzip/backTop.png" style="margin-top:10px;margin-left:10px;width:100%;">
-								<div style="width:100%; height:380px;display:flex;padding:10px;">
-									&emsp;<div class="hvr-grow" id="smallDiv"><div id="cheonanTitle0" style="font-size:15pt;font-weight:bold;margin-left:10px;"></div><div style="width:100%;height:160px;"><img id="cheonanImg0" src="" width="100%" height="180px"></div><br><div style="display:flex;padding:5px;border-bottom:3px solid #4C4C4C;"><i class="fas fa-comment-dots" style="margin:5px;"></i>
+								<div id="cheonanMiddleDiv" style="width:100%;/*  height:380px;display:flex;padding:10px; */">
+									<!-- &emsp;<div class="hvr-grow" id="smallDiv"><div id="cheonanTitle0" style="font-size:15pt;font-weight:bold;margin-left:10px;"></div><div style="width:100%;height:160px;"><img id="cheonanImg0" src="" width="100%" height="180px"></div><br><div style="display:flex;padding:5px;border-bottom:3px solid #4C4C4C;"><i class="fas fa-comment-dots" style="margin:5px;"></i>
             						<div id="cheonanReview0" class="food_post_like_count" style="width:100px;font-size:10pt;font-weight:bold;"></div></div>
             						<div style="display:flex;padding:5px;"><i class="fas fa-map-marker-alt" style="margin:5px;"></i><div id="cheonanAddr0" style="font-size:10pt;font-weight:bold;height:30px;"></div></div><div style="display:flex;margin:5px;"><i class="fas fa-phone-alt" style="margin:5px;"></i><div id="cheonanTel0" style="font-size:10pt;font-weight:bold;"></div></div></div>
             						&emsp;<div class="hvr-grow" id="smallDiv"><div id="cheonanTitle1" style="font-size:15pt;font-weight:bold;margin-left:10px;"></div><div style="width:100%;height:160px;"><img id="cheonanImg1" src="" width="100%" height="180px"></div><br><div style="display:flex;padding:5px;border-bottom:3px solid #4C4C4C;"><i class="fas fa-comment-dots" style="margin:5px;"></i>
@@ -266,14 +268,14 @@
             						<div style="display:flex;padding:5px;"><i class="fas fa-map-marker-alt" style="margin:5px;"></i><div id="cheonanAddr2" style="font-size:10pt;font-weight:bold;height:30px;"></div></div><div style="display:flex;margin:5px;"><i class="fas fa-phone-alt" style="margin:5px;"></i><div id="cheonanTel2" style="font-size:10pt;font-weight:bold;"></div></div></div>
             						&emsp;<div class="hvr-grow" id="smallDiv"><div id="cheonanTitle3" style="font-size:13pt;font-weight:bold;margin-left:10px;margin-top:3px;margin-bottom:3px;"></div><div style="width:100%;height:160px;"><img id="cheonanImg3" src="" width="100%" height="180px"></div><br><div style="display:flex;padding:5px;border-bottom:3px solid #4C4C4C;"><i class="fas fa-comment-dots" style="margin:5px;"></i>
             						<div id="cheonanReview3" class="food_post_like_count" style="width:100px;font-size:10pt;font-weight:bold;"></div></div>
-            						<div style="display:flex;padding:5px;"><i class="fas fa-map-marker-alt" style="margin:5px;"></i><div id="cheonanAddr3" style="font-size:10pt;font-weight:bold;height:30px;"></div></div><div style="display:flex;margin:5px;"><i class="fas fa-phone-alt" style="margin:5px;"></i><div id="cheonanTel3" style="font-size:10pt;font-weight:bold;"></div></div></div>
+            						<div style="display:flex;padding:5px;"><i class="fas fa-map-marker-alt" style="margin:5px;"></i><div id="cheonanAddr3" style="font-size:10pt;font-weight:bold;height:30px;"></div></div><div style="display:flex;margin:5px;"><i class="fas fa-phone-alt" style="margin:5px;"></i><div id="cheonanTel3" style="font-size:10pt;font-weight:bold;"></div></div></div> -->
 								</div>
 								<img src="../image/matzip/backBottom.png" style="margin-top:10px;margin-left:10px;width:100%;">
 								</div>
 								<div id="andongDiv" style="width:100%;">
 								<img src="../image/matzip/backTop.png" style="margin-top:10px;margin-left:10px;width:100%;">
-								<div style="width:100%; height:380px;display:flex;padding:10px;">
-									&emsp;<div class="hvr-grow" id="smallDiv"><div id="andongTitle0" style="font-size:15pt;font-weight:bold;margin-left:10px;"></div><div style="width:100%;height:160px;"><img id="andongImg0" src="" width="100%" height="180px"></div><br><div style="display:flex;padding:5px;border-bottom:3px solid #4C4C4C;"><i class="fas fa-comment-dots" style="margin:5px;"></i>
+								<div id="andongMiddleDiv" style="width:100%;/*  height:380px;display:flex;padding:10px; */">
+									<!-- &emsp;<div class="hvr-grow" id="smallDiv"><div id="andongTitle0" style="font-size:15pt;font-weight:bold;margin-left:10px;"></div><div style="width:100%;height:160px;"><img id="andongImg0" src="" width="100%" height="180px"></div><br><div style="display:flex;padding:5px;border-bottom:3px solid #4C4C4C;"><i class="fas fa-comment-dots" style="margin:5px;"></i>
             						<div id="andongReview0" class="food_post_like_count" style="width:100px;font-size:10pt;font-weight:bold;"></div></div>
             						<div style="display:flex;padding:5px;"><i class="fas fa-map-marker-alt" style="margin:5px;"></i><div id="andongAddr0" style="font-size:10pt;font-weight:bold;height:30px;"></div></div><div style="display:flex;margin:5px;"><i class="fas fa-phone-alt" style="margin:5px;"></i><div id="andongTel0" style="font-size:10pt;font-weight:bold;"></div></div></div>
             						&emsp;<div class="hvr-grow" id="smallDiv"><div id="andongTitle1" style="font-size:15pt;font-weight:bold;margin-left:10px;"></div><div style="width:100%;height:160px;"><img id="andongImg1" src="" width="100%" height="180px"></div><br><div style="display:flex;padding:5px;border-bottom:3px solid #4C4C4C;"><i class="fas fa-comment-dots" style="margin:5px;"></i>
@@ -284,7 +286,7 @@
             						<div style="display:flex;padding:5px;"><i class="fas fa-map-marker-alt" style="margin:5px;"></i><div id="andongAddr2" style="font-size:10pt;font-weight:bold;height:30px;"></div></div><div style="display:flex;margin:5px;"><i class="fas fa-phone-alt" style="margin:5px;"></i><div id="andongTel2" style="font-size:10pt;font-weight:bold;"></div></div></div>
             						&emsp;<div class="hvr-grow" id="smallDiv"><div id="andongTitle3" style="font-size:15pt;font-weight:bold;margin-left:10px;"></div><div style="width:100%;height:160px;"><img id="andongImg3" src="" width="100%" height="180px"></div><br><div style="display:flex;padding:5px;border-bottom:3px solid #4C4C4C;"><i class="fas fa-comment-dots" style="margin:5px;"></i>
             						<div id="andongReview3" class="food_post_like_count" style="width:100px;font-size:10pt;font-weight:bold;"></div></div>
-            						<div style="display:flex;padding:5px;"><i class="fas fa-map-marker-alt" style="margin:5px;"></i><div id="andongAddr3" style="font-size:10pt;font-weight:bold;height:30px;"></div></div><div style="display:flex;margin:5px;"><i class="fas fa-phone-alt" style="margin:5px;"></i><div id="andongTel3" style="font-size:10pt;font-weight:bold;"></div></div></div>
+            						<div style="display:flex;padding:5px;"><i class="fas fa-map-marker-alt" style="margin:5px;"></i><div id="andongAddr3" style="font-size:10pt;font-weight:bold;height:30px;"></div></div><div style="display:flex;margin:5px;"><i class="fas fa-phone-alt" style="margin:5px;"></i><div id="andongTel3" style="font-size:10pt;font-weight:bold;"></div></div></div> -->
 								</div>
 								<img src="../image/matzip/backBottom.png" style="margin-top:10px;margin-left:10px;width:100%;">
 								</div>
@@ -323,8 +325,8 @@
 								</article>
 								<div id="jeonjuDiv" style="width:100%;">
 								<img src="../image/matzip/backTop.png" style="margin-top:10px;margin-left:10px;width:100%;">
-								<div style="width:100%; height:380px;display:flex;padding:10px;">
-									&emsp;<div class="hvr-grow" id="smallDiv"><div id="jeonjuTitle0" style="font-size:15pt;font-weight:bold;margin-left:10px;"></div><div style="width:100%;height:160px;"><img id="jeonjuImg0" src="" width="100%" height="180px"></div><br><div style="display:flex;padding:5px;border-bottom:3px solid #4C4C4C;"><i class="fas fa-comment-dots" style="margin:5px;"></i>
+								<div id="jeonjuMiddleDiv" style="width:100%;/*  height:380px;display:flex;padding:10px; */">
+									<!-- &emsp;<div class="hvr-grow" id="smallDiv"><div id="jeonjuTitle0" style="font-size:15pt;font-weight:bold;margin-left:10px;"></div><div style="width:100%;height:160px;"><img id="jeonjuImg0" src="" width="100%" height="180px"></div><br><div style="display:flex;padding:5px;border-bottom:3px solid #4C4C4C;"><i class="fas fa-comment-dots" style="margin:5px;"></i>
             						<div id="jeonjuReview0" class="food_post_like_count" style="width:100px;font-size:10pt;font-weight:bold;"></div></div>
             						<div style="display:flex;padding:5px;"><i class="fas fa-map-marker-alt" style="margin:5px;"></i><div id="jeonjuAddr0" style="font-size:10pt;font-weight:bold;height:30px;"></div></div><div style="display:flex;margin:5px;"><i class="fas fa-phone-alt" style="margin:5px;"></i><div id="jeonjuTel0" style="font-size:10pt;font-weight:bold;"></div></div></div>
             						&emsp;<div class="hvr-grow" id="smallDiv"><div id="jeonjuTitle1" style="font-size:15pt;font-weight:bold;margin-left:10px;"></div><div style="width:100%;height:160px;"><img id="jeonjuImg1" src="" width="100%" height="180px"></div><br><div style="display:flex;padding:5px;border-bottom:3px solid #4C4C4C;"><i class="fas fa-comment-dots" style="margin:5px;"></i>
@@ -335,14 +337,14 @@
             						<div style="display:flex;padding:5px;"><i class="fas fa-map-marker-alt" style="margin:5px;"></i><div id="jeonjuAddr2" style="font-size:10pt;font-weight:bold;height:30px;"></div></div><div style="display:flex;margin:5px;"><i class="fas fa-phone-alt" style="margin:5px;"></i><div id="jeonjuTel2" style="font-size:10pt;font-weight:bold;"></div></div></div>
             						&emsp;<div class="hvr-grow" id="smallDiv"><div id="jeonjuTitle3" style="font-size:15pt;font-weight:bold;margin-left:10px;"></div><div style="width:100%;height:160px;"><img id="jeonjuImg3" src="" width="100%" height="180px"></div><br><div style="display:flex;padding:5px;border-bottom:3px solid #4C4C4C;"><i class="fas fa-comment-dots" style="margin:5px;"></i>
             						<div id="jeonjuReview3" class="food_post_like_count" style="width:100px;font-size:10pt;font-weight:bold;"></div></div>
-            						<div style="display:flex;padding:5px;"><i class="fas fa-map-marker-alt" style="margin:5px;"></i><div id="jeonjuAddr3" style="font-size:10pt;font-weight:bold;height:30px;"></div></div><div style="display:flex;margin:5px;"><i class="fas fa-phone-alt" style="margin:5px;"></i><div id="jeonjuTel3" style="font-size:10pt;font-weight:bold;"></div></div></div>
+            						<div style="display:flex;padding:5px;"><i class="fas fa-map-marker-alt" style="margin:5px;"></i><div id="jeonjuAddr3" style="font-size:10pt;font-weight:bold;height:30px;"></div></div><div style="display:flex;margin:5px;"><i class="fas fa-phone-alt" style="margin:5px;"></i><div id="jeonjuTel3" style="font-size:10pt;font-weight:bold;"></div></div></div> -->
 								</div>
 								<img src="../image/matzip/backBottom.png" style="margin-top:10px;margin-left:10px;width:100%;">
 								</div>
 								<div id="chungjuDiv" style="width:100%;">
 								<img src="../image/matzip/backTop.png" style="margin-top:10px;margin-left:10px;width:100%;">
-								<div style="width:100%; height:380px;display:flex;padding:10px;">
-									&emsp;<div class="hvr-grow" id="smallDiv"><div id="chungjuTitle0" style="font-size:15pt;font-weight:bold;margin-left:10px;"></div><div style="width:100%;height:160px;"><img id="chungjuImg0" src="" width="100%" height="180px"></div><br><div style="display:flex;padding:5px;border-bottom:3px solid #4C4C4C;"><i class="fas fa-comment-dots" style="margin:5px;"></i>
+								<div id="chungjuMiddleDiv" style="width:100%;/*  height:380px;display:flex;padding:10px; */">
+									<!-- &emsp;<div class="hvr-grow" id="smallDiv"><div id="chungjuTitle0" style="font-size:15pt;font-weight:bold;margin-left:10px;"></div><div style="width:100%;height:160px;"><img id="chungjuImg0" src="" width="100%" height="180px"></div><br><div style="display:flex;padding:5px;border-bottom:3px solid #4C4C4C;"><i class="fas fa-comment-dots" style="margin:5px;"></i>
             						<div id="chungjuReview0" class="food_post_like_count" style="width:100px;font-size:10pt;font-weight:bold;"></div></div>
             						<div style="display:flex;padding:5px;"><i class="fas fa-map-marker-alt" style="margin:5px;"></i><div id="chungjuAddr0" style="font-size:10pt;font-weight:bold;height:30px;"></div></div><div style="display:flex;margin:5px;"><i class="fas fa-phone-alt" style="margin:5px;"></i><div id="chungjuTel0" style="font-size:10pt;font-weight:bold;"></div></div></div>
             						&emsp;<div class="hvr-grow" id="smallDiv"><div id="chungjuTitle1" style="font-size:15pt;font-weight:bold;margin-left:10px;"></div><div style="width:100%;height:160px;"><img id="chungjuImg1" src="" width="100%" height="180px"></div><br><div style="display:flex;padding:5px;border-bottom:3px solid #4C4C4C;"><i class="fas fa-comment-dots" style="margin:5px;"></i>
@@ -353,14 +355,14 @@
             						<div style="display:flex;padding:5px;"><i class="fas fa-map-marker-alt" style="margin:5px;"></i><div id="chungjuAddr2" style="font-size:10pt;font-weight:bold;height:30px;"></div></div><div style="display:flex;margin:5px;"><i class="fas fa-phone-alt" style="margin:5px;"></i><div id="chungjuTel2" style="font-size:10pt;font-weight:bold;"></div></div></div>
             						&emsp;<div class="hvr-grow" id="smallDiv"><div id="chungjuTitle3" style="font-size:15pt;font-weight:bold;margin-left:10px;"></div><div style="width:100%;height:160px;"><img id="chungjuImg3" src="" width="100%" height="180px"></div><br><div style="display:flex;padding:5px;border-bottom:3px solid #4C4C4C;"><i class="fas fa-comment-dots" style="margin:5px;"></i>
             						<div id="chungjuReview3" class="food_post_like_count" style="width:100px;font-size:10pt;font-weight:bold;"></div></div>
-            						<div style="display:flex;padding:5px;"><i class="fas fa-map-marker-alt" style="margin:5px;"></i><div id="chungjuAddr3" style="font-size:10pt;font-weight:bold;height:30px;"></div></div><div style="display:flex;margin:5px;"><i class="fas fa-phone-alt" style="margin:5px;"></i><div id="chungjuTel3" style="font-size:10pt;font-weight:bold;"></div></div></div>
+            						<div style="display:flex;padding:5px;"><i class="fas fa-map-marker-alt" style="margin:5px;"></i><div id="chungjuAddr3" style="font-size:10pt;font-weight:bold;height:30px;"></div></div><div style="display:flex;margin:5px;"><i class="fas fa-phone-alt" style="margin:5px;"></i><div id="chungjuTel3" style="font-size:10pt;font-weight:bold;"></div></div></div> -->
 								</div>
 								<img src="../image/matzip/backBottom.png" style="margin-top:10px;margin-left:10px;width:100%;">
 								</div>
 								<div id="gyeongjuDiv" style="width:100%;">
 								<img src="../image/matzip/backTop.png" style="margin-top:10px;margin-left:10px;width:100%;">
-								<div style="width:100%; height:380px;display:flex;padding:10px;">
-									&emsp;<div class="hvr-grow" id="smallDiv"><div id="gyeongjuTitle0" style="font-size:15pt;font-weight:bold;margin-left:10px;"></div><div style="width:100%;height:160px;"><img id="gyeongjuImg0" src="" width="100%" height="180px"></div><br><div style="display:flex;padding:5px;border-bottom:3px solid #4C4C4C;"><i class="fas fa-comment-dots" style="margin:5px;"></i>
+								<div id="gyeongjuMiddleDiv" style="width:100%;/*  height:380px;display:flex;padding:10px; */">
+									<!-- &emsp;<div class="hvr-grow" id="smallDiv"><div id="gyeongjuTitle0" style="font-size:15pt;font-weight:bold;margin-left:10px;"></div><div style="width:100%;height:160px;"><img id="gyeongjuImg0" src="" width="100%" height="180px"></div><br><div style="display:flex;padding:5px;border-bottom:3px solid #4C4C4C;"><i class="fas fa-comment-dots" style="margin:5px;"></i>
             						<div id="gyeongjuReview0" class="food_post_like_count" style="width:100px;font-size:10pt;font-weight:bold;"></div></div>
             						<div style="display:flex;padding:5px;"><i class="fas fa-map-marker-alt" style="margin:5px;"></i><div id="gyeongjuAddr0" style="font-size:10pt;font-weight:bold;height:30px;"></div></div><div style="display:flex;margin:5px;"><i class="fas fa-phone-alt" style="margin:5px;"></i><div id="gyeongjuTel0" style="font-size:10pt;font-weight:bold;"></div></div></div>
             						&emsp;<div class="hvr-grow" id="smallDiv"><div id="gyeongjuTitle1" style="font-size:15pt;font-weight:bold;margin-left:10px;"></div><div style="width:100%;height:160px;"><img id="gyeongjuImg1" src="" width="100%" height="180px"></div><br><div style="display:flex;padding:5px;border-bottom:3px solid #4C4C4C;"><i class="fas fa-comment-dots" style="margin:5px;"></i>
@@ -371,7 +373,7 @@
             						<div style="display:flex;padding:5px;"><i class="fas fa-map-marker-alt" style="margin:5px;"></i><div id="gyeongjuAddr2" style="font-size:10pt;font-weight:bold;height:30px;"></div></div><div style="display:flex;margin:5px;"><i class="fas fa-phone-alt" style="margin:5px;"></i><div id="gyeongjuTel2" style="font-size:10pt;font-weight:bold;"></div></div></div>
             						&emsp;<div class="hvr-grow" id="smallDiv"><div id="gyeongjuTitle3" style="font-size:15pt;font-weight:bold;margin-left:10px;"></div><div style="width:100%;height:160px;"><img id="gyeongjuImg3" src="" width="100%" height="180px"></div><br><div style="display:flex;padding:5px;border-bottom:3px solid #4C4C4C;"><i class="fas fa-comment-dots" style="margin:5px;"></i>
             						<div id="gyeongjuReview3" class="food_post_like_count" style="width:100px;font-size:10pt;font-weight:bold;"></div></div>
-            						<div style="display:flex;padding:5px;"><i class="fas fa-map-marker-alt" style="margin:5px;"></i><div id="gyeongjuAddr3" style="font-size:10pt;font-weight:bold;height:30px;"></div></div><div style="display:flex;margin:5px;"><i class="fas fa-phone-alt" style="margin:5px;"></i><div id="gyeongjuTel3" style="font-size:10pt;font-weight:bold;"></div></div></div>
+            						<div style="display:flex;padding:5px;"><i class="fas fa-map-marker-alt" style="margin:5px;"></i><div id="gyeongjuAddr3" style="font-size:10pt;font-weight:bold;height:30px;"></div></div><div style="display:flex;margin:5px;"><i class="fas fa-phone-alt" style="margin:5px;"></i><div id="gyeongjuTel3" style="font-size:10pt;font-weight:bold;"></div></div></div> -->
 								</div>
 								<img src="../image/matzip/backBottom.png" style="margin-top:10px;margin-left:10px;width:100%;">
 								</div>
@@ -410,8 +412,8 @@
 								</article>
 								<div id="yeosuDiv" style="width:100%;">
 								<img src="../image/matzip/backTop.png" style="margin-top:10px;margin-left:10px;width:100%;">
-								<div style="width:100%; height:380px;display:flex;padding:10px;">
-									&emsp;<div class="hvr-grow" id="smallDiv"><div id="yeosuTitle0" style="font-size:15pt;font-weight:bold;margin-left:10px;"></div><div style="width:100%;height:160px;"><img id="yeosuImg0" src="" width="100%" height="180px"></div><br><div style="display:flex;padding:5px;border-bottom:3px solid #4C4C4C;"><i class="fas fa-comment-dots" style="margin:5px;"></i>
+								<div id="yeosuMiddleDiv" style="width:100%;/*  height:380px;display:flex;padding:10px; */">
+									<!-- &emsp;<div class="hvr-grow" id="smallDiv"><div id="yeosuTitle0" style="font-size:15pt;font-weight:bold;margin-left:10px;"></div><div style="width:100%;height:160px;"><img id="yeosuImg0" src="" width="100%" height="180px"></div><br><div style="display:flex;padding:5px;border-bottom:3px solid #4C4C4C;"><i class="fas fa-comment-dots" style="margin:5px;"></i>
             						<div id="yeosuReview0" class="food_post_like_count" style="width:100px;font-size:10pt;font-weight:bold;"></div></div>
             						<div style="display:flex;padding:5px;"><i class="fas fa-map-marker-alt" style="margin:5px;"></i><div id="yeosuAddr0" style="font-size:10pt;font-weight:bold;height:30px;"></div></div><div style="display:flex;margin:5px;"><i class="fas fa-phone-alt" style="margin:5px;"></i><div id="yeosuTel0" style="font-size:10pt;font-weight:bold;"></div></div></div>
             						&emsp;<div class="hvr-grow" id="smallDiv"><div id="yeosuTitle1" style="font-size:15pt;font-weight:bold;margin-left:10px;"></div><div style="width:100%;height:160px;"><img id="yeosuImg1" src="" width="100%" height="180px"></div><br><div style="display:flex;padding:5px;border-bottom:3px solid #4C4C4C;"><i class="fas fa-comment-dots" style="margin:5px;"></i>
@@ -422,14 +424,14 @@
             						<div style="display:flex;padding:5px;"><i class="fas fa-map-marker-alt" style="margin:5px;"></i><div id="yeosuAddr2" style="font-size:10pt;font-weight:bold;height:30px;"></div></div><div style="display:flex;margin:5px;"><i class="fas fa-phone-alt" style="margin:5px;"></i><div id="yeosuTel2" style="font-size:10pt;font-weight:bold;"></div></div></div>
             						&emsp;<div class="hvr-grow" id="smallDiv"><div id="yeosuTitle3" style="font-size:15pt;font-weight:bold;margin-left:10px;"></div><div style="width:100%;height:160px;"><img id="yeosuImg3" src="" width="100%" height="180px"></div><br><div style="display:flex;padding:5px;border-bottom:3px solid #4C4C4C;"><i class="fas fa-comment-dots" style="margin:5px;"></i>
             						<div id="yeosuReview3" class="food_post_like_count" style="width:100px;font-size:10pt;font-weight:bold;"></div></div>
-            						<div style="display:flex;padding:5px;"><i class="fas fa-map-marker-alt" style="margin:5px;"></i><div id="yeosuAddr3" style="font-size:10pt;font-weight:bold;height:30px;"></div></div><div style="display:flex;margin:5px;"><i class="fas fa-phone-alt" style="margin:5px;"></i><div id="yeosuTel3" style="font-size:10pt;font-weight:bold;"></div></div></div>
+            						<div style="display:flex;padding:5px;"><i class="fas fa-map-marker-alt" style="margin:5px;"></i><div id="yeosuAddr3" style="font-size:10pt;font-weight:bold;height:30px;"></div></div><div style="display:flex;margin:5px;"><i class="fas fa-phone-alt" style="margin:5px;"></i><div id="yeosuTel3" style="font-size:10pt;font-weight:bold;"></div></div></div> -->
 								</div>
 								<img src="../image/matzip/backBottom.png" style="margin-top:10px;margin-left:10px;width:100%;">
 								</div>
 								<div id="jejuDiv" style="width:100%;">
 								<img src="../image/matzip/backTop.png" style="margin-top:10px;margin-left:10px;width:100%;">
-								<div style="width:100%; height:380px;display:flex;padding:10px;">
-									&emsp;<div class="hvr-grow" id="smallDiv"><div id="jejuTitle0" style="font-size:15pt;font-weight:bold;margin-left:10px;"></div><div style="width:100%;height:160px;"><img id="jejuImg0" src="" width="100%" height="180px"></div><br><div style="display:flex;padding:5px;border-bottom:3px solid #4C4C4C;"><i class="fas fa-comment-dots" style="margin:5px;"></i>
+								<div id="jejuMiddleDiv" style="width:100%;/*  height:380px;display:flex;padding:10px; */">
+									<!-- &emsp;<div class="hvr-grow" id="smallDiv"><div id="jejuTitle0" style="font-size:15pt;font-weight:bold;margin-left:10px;"></div><div style="width:100%;height:160px;"><img id="jejuImg0" src="" width="100%" height="180px"></div><br><div style="display:flex;padding:5px;border-bottom:3px solid #4C4C4C;"><i class="fas fa-comment-dots" style="margin:5px;"></i>
             						<div id="jejuReview0" class="food_post_like_count" style="width:100px;font-size:10pt;font-weight:bold;"></div></div>
             						<div style="display:flex;padding:5px;"><i class="fas fa-map-marker-alt" style="margin:5px;"></i><div id="jejuAddr0" style="font-size:10pt;font-weight:bold;height:30px;"></div></div><div style="display:flex;margin:5px;"><i class="fas fa-phone-alt" style="margin:5px;"></i><div id="jejuTel0" style="font-size:10pt;font-weight:bold;"></div></div></div>
             						&emsp;<div class="hvr-grow" id="smallDiv"><div id="jejuTitle1" style="font-size:15pt;font-weight:bold;margin-left:10px;"></div><div style="width:100%;height:160px;"><img id="jejuImg1" src="" width="100%" height="180px"></div><br><div style="display:flex;padding:5px;border-bottom:3px solid #4C4C4C;"><i class="fas fa-comment-dots" style="margin:5px;"></i>
@@ -440,14 +442,14 @@
             						<div style="display:flex;padding:5px;"><i class="fas fa-map-marker-alt" style="margin:5px;"></i><div id="jejuAddr2" style="font-size:10pt;font-weight:bold;height:30px;"></div></div><div style="display:flex;margin:5px;"><i class="fas fa-phone-alt" style="margin:5px;"></i><div id="jejuTel2" style="font-size:10pt;font-weight:bold;"></div></div></div>
             						&emsp;<div class="hvr-grow" id="smallDiv"><div id="jejuTitle3" style="font-size:15pt;font-weight:bold;margin-left:10px;"></div><div style="width:100%;height:160px;"><img id="jejuImg3" src="" width="100%" height="180px"></div><br><div style="display:flex;padding:5px;border-bottom:3px solid #4C4C4C;"><i class="fas fa-comment-dots" style="margin:5px;"></i>
             						<div id="jejuReview3" class="food_post_like_count" style="width:100px;font-size:10pt;font-weight:bold;"></div></div>
-            						<div style="display:flex;padding:5px;"><i class="fas fa-map-marker-alt" style="margin:5px;"></i><div id="jejuAddr3" style="font-size:10pt;font-weight:bold;height:30px;"></div></div><div style="display:flex;margin:5px;"><i class="fas fa-phone-alt" style="margin:5px;"></i><div id="jejuTel3" style="font-size:10pt;font-weight:bold;"></div></div></div>
+            						<div style="display:flex;padding:5px;"><i class="fas fa-map-marker-alt" style="margin:5px;"></i><div id="jejuAddr3" style="font-size:10pt;font-weight:bold;height:30px;"></div></div><div style="display:flex;margin:5px;"><i class="fas fa-phone-alt" style="margin:5px;"></i><div id="jejuTel3" style="font-size:10pt;font-weight:bold;"></div></div></div> -->
 								</div>
 								<img src="../image/matzip/backBottom.png" style="margin-top:10px;margin-left:10px;width:100%;">
 								</div>
 								<div id="busanDiv" style="width:100%;">
 								<img src="../image/matzip/backTop.png" style="margin-top:10px;margin-left:10px;width:100%;">
-								<div style="width:100%; height:380px;display:flex;padding:10px;">
-									&emsp;<div class="hvr-grow" id="smallDiv"><div id="busanTitle0" style="font-size:15pt;font-weight:bold;margin-left:10px;"></div><div style="width:100%;height:160px;"><img id="busanImg0" src="" width="100%" height="180px"></div><br><div style="display:flex;padding:5px;border-bottom:3px solid #4C4C4C;"><i class="fas fa-comment-dots" style="margin:5px;"></i>
+								<div id="busanMiddleDiv" style="width:100%;/*  height:380px;display:flex;padding:10px; */">
+									<!-- &emsp;<div class="hvr-grow" id="smallDiv"><div id="busanTitle0" style="font-size:15pt;font-weight:bold;margin-left:10px;"></div><div style="width:100%;height:160px;"><img id="busanImg0" src="" width="100%" height="180px"></div><br><div style="display:flex;padding:5px;border-bottom:3px solid #4C4C4C;"><i class="fas fa-comment-dots" style="margin:5px;"></i>
             						<div id="busanReview0" class="food_post_like_count" style="width:100px;font-size:10pt;font-weight:bold;"></div></div>
             						<div style="display:flex;padding:5px;"><i class="fas fa-map-marker-alt" style="margin:5px;"></i><div id="busanAddr0" style="font-size:10pt;font-weight:bold;height:30px;"></div></div><div style="display:flex;margin:5px;"><i class="fas fa-phone-alt" style="margin:5px;"></i><div id="busanTel0" style="font-size:10pt;font-weight:bold;"></div></div></div>
             						&emsp;<div class="hvr-grow" id="smallDiv"><div id="busanTitle1" style="font-size:15pt;font-weight:bold;margin-left:10px;"></div><div style="width:100%;height:160px;"><img id="busanImg1" src="" width="100%" height="180px"></div><br><div style="display:flex;padding:5px;border-bottom:3px solid #4C4C4C;"><i class="fas fa-comment-dots" style="margin:5px;"></i>
@@ -458,7 +460,7 @@
             						<div style="display:flex;padding:5px;"><i class="fas fa-map-marker-alt" style="margin:5px;"></i><div id="busanAddr2" style="font-size:10pt;font-weight:bold;height:30px;"></div></div><div style="display:flex;margin:5px;"><i class="fas fa-phone-alt" style="margin:5px;"></i><div id="busanTel2" style="font-size:10pt;font-weight:bold;"></div></div></div>
             						&emsp;<div class="hvr-grow" id="smallDiv"><div id="busanTitle3" style="font-size:15pt;font-weight:bold;margin-left:10px;"></div><div style="width:100%;height:160px;"><img id="busanImg3" src="" width="100%" height="180px"></div><br><div style="display:flex;padding:5px;border-bottom:3px solid #4C4C4C;"><i class="fas fa-comment-dots" style="margin:5px;"></i>
             						<div id="busanReview3" class="food_post_like_count" style="width:100px;font-size:10pt;font-weight:bold;"></div></div>
-            						<div style="display:flex;padding:5px;"><i class="fas fa-map-marker-alt" style="margin:5px;"></i><div id="busanAddr3" style="font-size:10pt;font-weight:bold;height:30px;"></div></div><div style="display:flex;margin:5px;"><i class="fas fa-phone-alt" style="margin:5px;"></i><div id="busanTel3" style="font-size:10pt;font-weight:bold;"></div></div></div>
+            						<div style="display:flex;padding:5px;"><i class="fas fa-map-marker-alt" style="margin:5px;"></i><div id="busanAddr3" style="font-size:10pt;font-weight:bold;height:30px;"></div></div><div style="display:flex;margin:5px;"><i class="fas fa-phone-alt" style="margin:5px;"></i><div id="busanTel3" style="font-size:10pt;font-weight:bold;"></div></div></div> -->
 								</div>
 								<img src="../image/matzip/backBottom.png" style="margin-top:10px;margin-left:10px;width:100%;">
 								</div>

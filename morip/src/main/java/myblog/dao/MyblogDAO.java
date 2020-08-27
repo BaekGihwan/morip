@@ -67,5 +67,8 @@ public interface MyblogDAO {
 	public List<HashtagDTO> loadHashtag(int seq);
 
 	public void modifyHashtag(Map<String, Object> map);
+  
+	public List<String> bestWriter();
 
+	public List<MyblogDTO> bestTrip(Map<String, String> map);
 }

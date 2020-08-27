@@ -75,7 +75,7 @@
   <input type="hidden" id="pg" value="1">
   <div class="content">
   	<div id="bgChangeOption" style="font-size: 15px; margin-left:50px; cursor:pointer; width:20px;">
-  	<i class="fas fa-cog"  onclick="backgroundImgChange()" ></i>
+  	<button class="fas fa-cog"  onclick="backgroundImgChange()" ></button>
   	</div>
   	
     <div class="content_wrapper">

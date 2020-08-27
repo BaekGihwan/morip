@@ -110,10 +110,11 @@ public class MyblogController {
 	public String bgImageSave(HttpSession session, @RequestParam MultipartFile backgroundImg) {
 		UUID uid = UUID.randomUUID();
 		String fileName = uid.toString() + "_" + backgroundImg.getOriginalFilename();
-		String filePath = "D:\\project\\morip\\morip\\src\\main\\webapp\\storage";
-		String filePath2 = "D:\\project\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\morip\\storage";
-		File file = new File(filePath, fileName);
-		File file2 = new File(filePath2, fileName);
+		System.out.println("bgImagesave 접속:"+fileName+session.getAttribute("memEmail"));
+		String filePath = "E:\\spring\\gihwan\\morip\\morip\\src\\main\\webapp\\storage";
+		String filePath2 = "E:\\spring\\gihwan\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\morip\\storage";
+		File file = new File(filePath,fileName);
+		File file2 = new File(filePath2,fileName);
 		try {
 			FileCopyUtils.copy(backgroundImg.getInputStream(), new FileOutputStream(file));
 			FileCopyUtils.copy(backgroundImg.getInputStream(), new FileOutputStream(file2));
@@ -156,10 +157,11 @@ public class MyblogController {
 	public String imageSave(HttpSession session, @RequestParam(value = "backgroundImg") MultipartFile backgroundImg) {
 		UUID uid = UUID.randomUUID();
 		String fileName = uid.toString() + "_" + backgroundImg.getOriginalFilename();
-		String filePath = "D:\\project\\morip\\morip\\src\\main\\webapp\\storage";
-		String filePath2 = "D:\\project\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\morip\\storage";
-		File file = new File(filePath, fileName);
-		File file2 = new File(filePath2, fileName);
+		System.out.println("imagesave 접속:"+fileName);
+		String filePath = "E:\\spring\\gihwan\\morip\\morip\\src\\main\\webapp\\storage";
+		String filePath2 = "E:\\spring\\gihwan\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\morip\\storage";
+		File file = new File(filePath,fileName);
+		File file2 = new File(filePath2,fileName);
 		try {
 			FileCopyUtils.copy(backgroundImg.getInputStream(), new FileOutputStream(file));
 			FileCopyUtils.copy(backgroundImg.getInputStream(), new FileOutputStream(file2));
@@ -202,11 +204,11 @@ public class MyblogController {
 	@ResponseBody
 	public ModelAndView handleFileUpload(@RequestParam("file") MultipartFile file) throws IOException {
 		UUID uid = UUID.randomUUID();
-		String fileName = uid.toString() + "_" + file.getOriginalFilename();
-		String filePath1 = "D:\\project\\morip\\morip\\src\\main\\webapp\\storage";
-		String filePath2 = "D:\\project\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\morip\\storage";
-		File file1 = new File(filePath1, fileName);
-		File file2 = new File(filePath2, fileName);
+		String fileName=uid.toString() + "_" + file.getOriginalFilename();
+		String filePath = "E:\\spring\\gihwan\\morip\\morip\\src\\main\\webapp\\storage";
+		String filePath2 = "E:\\spring\\gihwan\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\morip\\storage";
+		File file1 = new File(filePath,fileName);
+		File file2 = new File(filePath2,fileName);
 		try {
 			FileCopyUtils.copy(file.getInputStream(), new FileOutputStream(file1));
 			FileCopyUtils.copy(file.getInputStream(), new FileOutputStream(file2));
@@ -471,7 +473,6 @@ public class MyblogController {
 			throws UnsupportedEncodingException {
 		map.put("nickname", (String) session.getAttribute("nickname"));
 		map.put("email", (String) session.getAttribute("memEmail"));
-		
 		String content = map.get("content");
 		myblogService.modifyBoard(map);
 		//해쉬태그 저장
@@ -493,4 +494,38 @@ public class MyblogController {
 		return mav;
 	}
 
+		// 베스트작가 가져오기
+		@RequestMapping(value="/myblog/bestWriter", method=RequestMethod.POST)
+		@ResponseBody
+		public ModelAndView bestWriter() {
+			//베스트작가 가져오기
+			List<String> list = myblogService.bestWriter();
+			//베스트작가의 정보 불러오기
+			System.out.println(list.get(0));
+			MemberDTO memberDTO = memberService.getMember2(list.get(0));
+			
+			ModelAndView mav = new ModelAndView();		
+			mav.addObject("memberDTO", memberDTO);
+			mav.setViewName("jsonView");
+			return mav;
+		}
+		
+		// 베스트작가의 베스트글 3개 가져오기
+		@RequestMapping(value="/myblog/bestTrip", method=RequestMethod.POST)
+		@ResponseBody
+		public ModelAndView bestTrip(@RequestParam String nickname) {
+			
+			Map<String, String> map = new HashMap<String, String>();
+			map.put("nickname", nickname);			
+			map.put("startNum", "1");
+			map.put("endNum", "3");			
+			//베스트글 3개 가져오기
+			List<MyblogDTO> list2 = myblogService.bestTrip(map);
+			
+			System.out.println("리스트 라이크 카운드" + list2.get(0).getSubject());
+			ModelAndView mav = new ModelAndView();		
+			mav.addObject("list2", list2);
+			mav.setViewName("jsonView");
+			return mav;
+		}
 }

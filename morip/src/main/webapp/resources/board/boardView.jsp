@@ -59,7 +59,7 @@
 							<div class="view_userInfo">
 								<img class="view_userImg" src="../storage/${boardDTO.image }">
 								<div class="view_userId">
-									<span id="nickNameSpan"></span>
+									<pre id="nickNameSpan"></pre>
 								</div>
 							</div>
 							<div class="view_controlOption">

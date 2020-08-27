@@ -6,7 +6,6 @@ import myblog.bean.MyblogDTO;
 
 public interface BlogService {
 
-	List<MyblogDTO> blogAllList(int pg);
+	List<MyblogDTO> blogAllList(int pg, String content);
 
-	
 }

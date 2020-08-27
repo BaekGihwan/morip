@@ -69,6 +69,7 @@ public interface MyblogService {
 
 	public void modifyHashtag(int seq, String hashtag);
 
+	public List<String> bestWriter();
 
-
+	public List<MyblogDTO> bestTrip(Map<String, String> map);
 }

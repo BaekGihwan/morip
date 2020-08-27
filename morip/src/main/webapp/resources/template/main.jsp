@@ -116,18 +116,18 @@
     <div class="morip_bestBlogWriter">    
       <div class="writer_info">  
       	<div class="profile_bg">
-      	  <img class="profile_image" alt="" src="../storage/${image }">
+      	  <img class="profile_image" alt="" src="">
       	  <!-- <div class="profile_image" style="background-image: url('../image/test.jpg')"></div> -->
       	</div>
       	<div class="profile_detail">
-      	  <p class="profile_name">순수쟁이 기환</p>
+      	  <p class="profile_name"></p>
       	  <p class="description"></p>
       	  <div>
-      	    <div>
+<!--       	    <div>
       	      <button class="follow_button">
       	      	<span>+ 팔로우</span>
       	      </button>
-      	    </div>
+      	    </div> -->
       	  </div>
       	  <div class="link_wrapper">
       	    <a href="" class="blog_link">더 많은 여행기 보기 ></a>
@@ -135,18 +135,19 @@
       	</div>    	
       </div>      
       <div class="writer_post">
+      	<!-- 1번! -->
       	<div class="post">
-      	  <div class="post_image" style="background-image: url('../image/main/testimg.png')">
+      	  <div class="post_image" id="post_image1" style="">
       	    <div class="post_image_like">
-      	      <span class="post_image_like_text">115</span>
+      	      <span class="post_image_like_text" id="post_image_like_text1">115</span>
       	    </div>
       	  </div>
       	  <div class="post_text"> 
 	        <div class="post_title">
-	          <p class="post_title_p">제주도 5박6일정도만 여유 있게 즐기기~ 오똔데?</p>
+	          <p class="post_title_p" id="post_title_p1">제주도 5박6일정도만 여유 있게 즐기기~ 오똔데?</p>
 	        </div>	          
 	      	<div class="post_content">
-			  <p class="post_content_p">
+			  <p class="post_content_p" id="post_content_p1">
 				왜 이렇게 사는게 힘들기만 한지
 				누가 인생이 아름답다고 말한건지
 				태어났을 떄부터 삶이 내게 준건
@@ -167,21 +168,41 @@
 	      	  </p>
 	      	</div>
       	  </div>
-        </div>
-        <div class="post">
-          <div class="post_image"></div>
-      	  <div class="post_text">
-	        <div class="post_title"></div>
-	      	<div class="post_content"></div>
-      	  </div>
-        </div>
-        <div class="post">
-          <div class="post_image"></div>
-      	  <div class="post_text">
-	        <div class="post_title"></div>
-	      	<div class="post_content"></div>
-      	  </div>
         </div>        
+        <!-- 2번! -->
+        <div class="post">
+      	  <div class="post_image" id="post_image2" style="">
+      	    <div class="post_image_like">
+      	      <span class="post_image_like_text" id="post_image_like_text2"></span>
+      	    </div>
+      	  </div>
+      	  <div class="post_text"> 
+	        <div class="post_title">
+	          <p class="post_title_p" id="post_title_p2"></p>
+	        </div>	          
+	      	<div class="post_content">
+			  <p class="post_content_p" id="post_content_p2">
+	      	  </p>
+	      	</div>
+      	  </div>
+        </div>
+        <!-- 3번! -->
+        <div class="post">
+      	  <div class="post_image" id="post_image2" style="">
+      	    <div class="post_image_like">
+      	      <span class="post_image_like_text" id="post_image_like_text2"></span>
+      	    </div>
+      	  </div>
+      	  <div class="post_text"> 
+	        <div class="post_title">
+	          <p class="post_title_p" id="post_title_p2"></p>
+	        </div>	          
+	      	<div class="post_content">
+			  <p class="post_content_p" id="post_content_p2">
+	      	  </p>
+	      	</div>
+      	  </div>
+        </div> <!-- 3번끝! --> 		          
       </div>
     </div>
   </div> 

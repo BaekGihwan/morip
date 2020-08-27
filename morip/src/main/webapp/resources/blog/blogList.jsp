@@ -20,87 +20,87 @@
   <br><br>  
   <div class="morip_banner_slider">
   	<div class="img img0">
-  	  <div class="content">전체</div>
+  	  <div class="content" id="content0">전체</div>
       <div class="img-cover"></div>
   	</div>
   
 	<div class="img img1">
-  	  <div class="content">서울</div>
+  	  <div class="content" id="content1">서울</div>
       <div class="img-cover"></div>
   	</div>
   
   	<div class="img img2">
-  	  <div class="content">부산</div>
+  	  <div class="content" id="content2">부산</div>
   	  <div class="img-cover"></div>
   	</div>
   	
   	<div class="img img3">
-  	  <div class="content">대구</div>
+  	  <div class="content" id="content3">대구</div>
   	  <div class="img-cover"></div>
   	</div>
   	
   	<div class="img img4">
-  	  <div class="content">인천</div>
+  	  <div class="content" id="content4">인천</div>
   	  <div class="img-cover"></div>
   	</div>
   	
   	<div class="img img5">
-  	  <div class="content">광주</div>
+  	  <div class="content" id="content5">광주</div>
       <div class="img-cover"></div>
   	</div>
   
   	<div class="img img6">
-  	  <div class="content">대전</div>
+  	  <div class="content" id="content6">대전</div>
   	  <div class="img-cover"></div>
   	</div>
   	
   	<div class="img img7">
-  	  <div class="content">울산</div>
+  	  <div class="content" id="content7">울산</div>
   	  <div class="img-cover"></div>
   	</div>
   	
   	<div class="img img8">
-  	  <div class="content">강원도</div>
+  	  <div class="content" id="content8">강원도</div>
   	  <div class="img-cover"></div>
   	</div>
   	
   	<div class="img img9">
-  	  <div class="content">경기도</div>
+  	  <div class="content" id="content9">경기도</div>
       <div class="img-cover"></div>
   	</div>
   
   	<div class="img img10">
-  	  <div class="content">충북</div>
+  	  <div class="content" id="content10">충북</div>
   	  <div class="img-cover"></div>
   	</div>
   	
   	<div class="img img11">
-  	  <div class="content">충남</div>
+  	  <div class="content" id="content11">충남</div>
   	  <div class="img-cover"></div>
   	</div>
   	
   	<div class="img img12">
-  	  <div class="content">전북</div>
+  	  <div class="content" id="content12">전북</div>
   	  <div class="img-cover"></div>
   	</div>
   	
   	<div class="img img13">
-  	  <div class="content">전남</div>
+  	  <div class="content" id="content13">전남</div>
       <div class="img-cover"></div>
   	</div>
   
   	<div class="img img14">
-  	  <div class="content">경북</div>
+  	  <div class="content" id="content14">경북</div>
   	  <div class="img-cover"></div>
   	</div>
   	
   	<div class="img img15">
-  	  <div class="content">경남</div>
+  	  <div class="content" id="content15">경남</div>
   	  <div class="img-cover"></div>
   	</div>
   	
   	<div class="img img16">
-  	  <div class="content">제주도</div>
+  	  <div class="content" id="content16">제주도</div>
   	  <div class="img-cover"></div>
   	</div>
   </div>  

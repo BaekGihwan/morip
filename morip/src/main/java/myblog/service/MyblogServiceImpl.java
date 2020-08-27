@@ -208,4 +208,12 @@ public class MyblogServiceImpl implements MyblogService {
 		myblogDAO.modifyHashtag(map);
 	}
 
+  public List<String> bestWriter() {
+		return myblogDAO.bestWriter();
+	}
+
+	@Override
+	public List<MyblogDTO> bestTrip(Map<String, String> map) {
+		return myblogDAO.bestTrip(map);
+	}
 }
