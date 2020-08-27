@@ -4,7 +4,7 @@
 	let start;
 	let end;
 	let count = 0;
-	
+	let current = new Date();
 	
 	document.addEventListener('DOMContentLoaded', function() {
 		var calendarEl = document.getElementById('calendar');
@@ -16,7 +16,7 @@
 				center : 'title',
 				right : 'dayGridMonth,timeGridWeek,timeGridDay'
 			},
-			defaultDate : '2020-02-12',
+			defaultDate : current,
 			navLinks : true, // can click day/week names to navigate views
 			selectable : true,
 			selectMirror : true,

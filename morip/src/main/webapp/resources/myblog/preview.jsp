@@ -5,6 +5,8 @@
 <head>
 <meta charset="utf-8">
 <title>view</title>
+<!--hover.css-->
+<link href="../css/hover.css" rel="stylesheet" />
 <!-- jQuery -->
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
@@ -60,7 +62,7 @@
 				<div class="subjectWrapper">${subject}</div>
 				<div class="userinfowrapper">
 					<img class="view_userImg" src="../storage/${memberDTO.image }">
-					<div class="view_userId" id="view_userId">${memberDTO.nickname}</div>
+					<div class="view_userId" style="cursor:default;" id="view_userId">${memberDTO.nickname}</div>
 				</div>
 			</div>
 		</div>
@@ -74,14 +76,13 @@
 				<div class="view_boardOption">
 					<div class="view_reply">
 						<div class="view_replyWrapper">
-							<i class="far fa-comment-dots"
-								style="margin-right: 10px; margin-bottom: 0px;"></i>
-							<p style="margin-bottom: 0px;">댓글쓰기</p>
+
 						</div>
 					</div>
 				</div>
 				<div id="backBtnWrapper">
-					<button id="previousBtn">확인</button>
+					<button id="previousBtn" class="btn btn-outline-secondary"
+						style="font-size: 13px; border-radius: 20px; border: 1px solid gray; margin: 5px; width: 30%; height: 40px; outline:none;">확인</button>
 				</div>
 			</div>
 		</div>
