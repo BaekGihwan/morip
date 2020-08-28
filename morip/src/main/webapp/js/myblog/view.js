@@ -52,7 +52,8 @@ var minutes = (new Date()).getMinutes();//분
 		  showCancelButton: true,
 		  confirmButtonColor: '#3085d6',
 		  cancelButtonColor: '#d33',
-		  confirmButtonText: 'delete'
+		  confirmButtonText: '삭제',
+		  cancelButtonText: '취소'
 		}).then((result) => {
 		  if (result.value) {
 				  	$.ajax({
@@ -61,7 +62,7 @@ var minutes = (new Date()).getMinutes();//분
 					data: 'seq='+seq,
 					success: function(){
 						Swal.fire({
-						      title: 'Deleted!',
+						      title: '삭제완료!',
 						      text: '글이 삭제되었습니다!(메인으로 돌아갑니다.)',
 						      icon: 'success',
 						      confirmButtonText: '확인',
