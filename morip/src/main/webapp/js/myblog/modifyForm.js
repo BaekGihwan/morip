@@ -2,7 +2,8 @@ var bgImgName;
 	var nickname = $('#nickname').val();
 	var seq = $('.view_seq').val();
 	let modifyFormCheck=true;
-
+	let hashtagText="";
+	
 	$(document).ready(function() {
 		bgImgName = $('.bgImgName').val();
 		var seq = $('.view_seq').val();
@@ -16,8 +17,6 @@ var bgImgName;
 		
 		//해쉬태그 로드
 		var ar = new Array();
-       	let hashtagText="";
-		loadHashtag();
 	});
 
 	//flatpicker
@@ -128,6 +127,7 @@ var bgImgName;
         success:function(data){
            $.each(data.list,function(index,items){
               hashtagText+= items.hashtag+' ';
+              console.log(hashtagText);
            })
            if(hashtagText!='null '){  //null이 아닐 때
            	$('#hashtagInputText').val(hashtagText);

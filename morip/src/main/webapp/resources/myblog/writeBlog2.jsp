@@ -89,11 +89,11 @@ iframe {
 				</div>
 				<div class="saveOptionWrapper">
 					<button type="button" id="previewBtn"class="btn btn-outline-secondary"
-						style="font-size: 13px; border-radius: 20px; border: 1px solid gray; margin: 5px; width: 70%; height: 40px;">미리보기</button>
+						style="font-size: 13px; border-radius: 20px; border: 1px solid gray; margin: 5px; width: 70%; height: 40px; outline:none;">미리보기</button>
 					<br>
 					<button type="button" id="saveBtn"
 						class="btn btn-outline-secondary"
-						style="font-size: 13px; border-radius: 20px; border: 1px solid gray; margin: 5px; width: 70%; height: 40px;">저장하기</button>
+						style="font-size: 13px; border-radius: 20px; border: 1px solid gray; margin: 5px; width: 70%; height: 40px; outline:none;">저장하기</button>
 					<!--switch-->
 <!-- 					<div class="saveOption">
 						<div class="switch">

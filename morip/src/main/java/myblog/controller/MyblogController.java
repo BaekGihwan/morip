@@ -449,6 +449,7 @@ public class MyblogController {
 		ModelAndView mav = new ModelAndView();
 		List<HashtagDTO> list = myblogService.loadHashtag(seq);
 		mav.addObject("list", list);
+		System.out.println(list.size());
 		mav.setViewName("jsonView");
 		return mav;
 	}
