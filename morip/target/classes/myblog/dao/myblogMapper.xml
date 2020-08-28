@@ -159,7 +159,6 @@
 	<select id="bestWriter" resultType="string">
 		select follow_email from followtable group by follow_email order by count(*) desc
 	</select>
-    
 	<!-- 베스트작가의 탑3개 뽑아오기 -->
 	<select id="bestTrip" parameterType="java.util.Map" resultType="myblog">
 		select * from(select rownum rn, tt.*from 

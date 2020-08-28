@@ -109,7 +109,7 @@
       <div class="myBlog_wrapper">
         <table id="tableHeadder">
           <tr>
-            <td style="font-size:9px; border-top:2px solid; font-weight:bold; width:8%; height:30px;">여행기</td>
+            <td style="font-size:12px; border-top:2px solid; font-weight:bold; width:8%; height:30px;">여행기</td>
             <td style="border-top: 1px solid; width:92%;"></td>
           </tr>
         </table>

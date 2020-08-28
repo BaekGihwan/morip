@@ -186,8 +186,8 @@ function loadingPage(){
 					if(tempNumber%4==0){
 						//height+=300;
 						//$('.blogList_wrapper').css('height',height+'px');
-						height+=230;
-						$('.blogList_wrapper').css('height',height+'px');
+						//height+=230;
+						//$('.blogList_wrapper').css('height',height+'px');
 						list += '<div class="blogList" id="blogList" data-aos="fade-up" data-aos-duration="3000">';
 					}
 					list+='<div id="blog_feed" class="hvr-grow-shadow" onclick="viewEnter('+seq+')">';
