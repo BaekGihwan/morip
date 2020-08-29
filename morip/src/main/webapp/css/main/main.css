@@ -209,6 +209,14 @@
 }
 
 /* 베스트여행작가 */
+.blog_link{
+	background: none;
+	color: red;
+	outline: none;
+	border: none;
+	cursor: pointer;
+}
+
 .morip_bestBlog {
 	/* border: 1px solid green; */	
 	width: 1120px;

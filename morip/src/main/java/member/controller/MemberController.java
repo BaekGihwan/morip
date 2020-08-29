@@ -110,7 +110,6 @@ public class MemberController {
 	@RequestMapping( value = "/member/sendMail" , method=RequestMethod.POST )
     @ResponseBody
     public String sendMail(@RequestParam String email){
-		System.out.println(email);
         Random r = new Random();
         int dice = r.nextInt(4589362) + 49311; //이메일로 받는 비밀번호
     
@@ -242,7 +241,6 @@ public class MemberController {
 	
 	@RequestMapping(value = "/member/checkId")
 	public ModelAndView checkId(@RequestParam String email, String checkid, HttpSession session) {
-		System.out.println("이메일뭐오냐" + email);	
 		MemberDTO memberDTO = memberService.getMember(email, checkid);
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("memberDTO", memberDTO);
@@ -345,8 +343,6 @@ public class MemberController {
 	@ResponseBody
 	public void memberModify(@ModelAttribute MemberDTO memberDTO, 
 							 @RequestParam MultipartFile img, HttpSession session) {
-		System.out.println(memberDTO.getPwd());
-		
 		String image =  (String) session.getAttribute("image");
 		String checkid = (String) session.getAttribute("checkid");
 		String beforeNickname = (String) session.getAttribute("beforeNickname");
@@ -355,10 +351,13 @@ public class MemberController {
 			memberDTO.setImage(image);
 		}else {
 			String filePath = "E:\\spring\\gihwan\\morip\\morip\\src\\main\\webapp\\storage\\";
+			String filePath2 = "E:\\spring\\gihwan\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\morip\\storage";
 			String fileName = img.getOriginalFilename();
 			File file = new File(filePath, fileName);
+			File file2 = new File(filePath2,fileName);
 			try {
 				FileCopyUtils.copy(img.getInputStream(), new FileOutputStream(file));
+				FileCopyUtils.copy(img.getInputStream(), new FileOutputStream(file2));
 			} catch (IOException e) {
 				e.printStackTrace();
 			}		
@@ -369,15 +368,11 @@ public class MemberController {
 			session.setAttribute("image", memberDTO.getImage());
 		}		
 		if(checkid.equals("1")) {
-			System.out.println("dddddd");
 			String inputPass = memberDTO.getPwd();
 			String pass = passEncoder.encode(inputPass);
 			memberDTO.setPwd(pass);
-			boolean passMatch = false;
-			
+			boolean passMatch = false;			
 			passMatch = passEncoder.matches(inputPass, memberDTO.getPwd());
-			
-			System.out.println(passMatch);
 		}
 		memberDTO.setCheckid(checkid);
 		

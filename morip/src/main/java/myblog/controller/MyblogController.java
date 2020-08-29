@@ -6,7 +6,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.text.ParseException;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -111,7 +110,6 @@ public class MyblogController {
 	public String bgImageSave(HttpSession session, @RequestParam MultipartFile backgroundImg) {
 		UUID uid = UUID.randomUUID();
 		String fileName = uid.toString() + "_" + backgroundImg.getOriginalFilename();
-		System.out.println("bgImagesave 접속:"+fileName+session.getAttribute("memEmail"));
 		String filePath = "E:\\spring\\gihwan\\morip\\morip\\src\\main\\webapp\\storage";
 		String filePath2 = "E:\\spring\\gihwan\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\morip\\storage";
 		File file = new File(filePath,fileName);
@@ -158,7 +156,6 @@ public class MyblogController {
 	public String imageSave(HttpSession session, @RequestParam(value = "backgroundImg") MultipartFile backgroundImg) {
 		UUID uid = UUID.randomUUID();
 		String fileName = uid.toString() + "_" + backgroundImg.getOriginalFilename();
-		System.out.println("imagesave 접속:"+fileName);
 		String filePath = "E:\\spring\\gihwan\\morip\\morip\\src\\main\\webapp\\storage";
 		String filePath2 = "E:\\spring\\gihwan\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\morip\\storage";
 		File file = new File(filePath,fileName);
@@ -244,7 +241,6 @@ public class MyblogController {
 		}
 		MyblogDTO myblogDTO = myblogService.viewPage(Integer.parseInt(seq));
 		MemberDTO memberDTO = memberService.checkNickname(myblogDTO.getNickname());
-
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("myblogDTO", myblogDTO);
 		mav.addObject("memberDTO", memberDTO);
@@ -344,37 +340,29 @@ public class MyblogController {
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("likeSize", likeSize);
 		mav.setViewName("jsonView");
-
 		return mav;
 	}
 
 	@RequestMapping(value = "/myblog/likeListSize", method = RequestMethod.POST)
 	@ResponseBody
 	public ModelAndView likeListSize() {
-
 		List<MyblogDTO> list = myblogService.likeListSize();
-
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("list", list);
 		mav.setViewName("jsonView");
-
 		return mav;
 	}
 
 	@RequestMapping(value = "/myblog/follow", method = RequestMethod.POST)
 	@ResponseBody
 	public void follow(@RequestParam Map<String, String> map) {
-
 		myblogService.follow(map);
-
 	}
 
 	@RequestMapping(value = "/myblog/unfollow", method = RequestMethod.POST)
 	@ResponseBody
 	public void unfollow(@RequestParam Map<String, String> map) {
-
 		myblogService.unfollow(map);
-
 	}
 
 	@RequestMapping(value = "/myblog/followCheck", method = RequestMethod.POST)
@@ -382,14 +370,9 @@ public class MyblogController {
 	public ModelAndView followCheck(@RequestParam Map<String, String> map, HttpSession session) {
 		FollowDTO followDTO = myblogService.followCheck(map);
 		ModelAndView mav = new ModelAndView();
-		/*
-		 * if(followDTO != null) { mav.addObject("followDTO", followDTO); }else {
-		 * mav.addObject("followDTO", ""); }
-		 */
 		mav.addObject("followDTO", followDTO);
 		mav.addObject("email", (String) session.getAttribute("memEmail"));
 		mav.setViewName("jsonView");
-
 		return mav;
 	}
 
@@ -400,7 +383,6 @@ public class MyblogController {
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("list", list);
 		mav.setViewName("jsonView");
-
 		return mav;
 	}
 
@@ -449,7 +431,6 @@ public class MyblogController {
 		ModelAndView mav = new ModelAndView();
 		List<HashtagDTO> list = myblogService.loadHashtag(seq);
 		mav.addObject("list", list);
-		System.out.println(list.size());
 		mav.setViewName("jsonView");
 		return mav;
 	}
@@ -496,39 +477,33 @@ public class MyblogController {
 		return mav;
 	}
 
-		// 베스트작가 가져오기
-		@RequestMapping(value="/myblog/bestWriter", method=RequestMethod.POST)
-		@ResponseBody
-		public ModelAndView bestWriter() {
-			//베스트작가 가져오기
-			List<String> list = myblogService.bestWriter();
-			//베스트작가의 정보 불러오기
-			System.out.println(list.get(0));
-			MemberDTO memberDTO = memberService.getMember2(list.get(0));
-			
-			ModelAndView mav = new ModelAndView();		
-			mav.addObject("memberDTO", memberDTO);
-			mav.setViewName("jsonView");
-			return mav;
-		}
-		
-		// 베스트작가의 베스트글 3개 가져오기
-		@RequestMapping(value="/myblog/bestTrip", method=RequestMethod.POST)
-		@ResponseBody
-		public ModelAndView bestTrip(@RequestParam String nickname) {
-			
-			Map<String, String> map = new HashMap<String, String>();
-			map.put("nickname", nickname);			
-			map.put("startNum", "1");
-			map.put("endNum", "3");			
-			//베스트글 3개 가져오기
-			List<MyblogDTO> list = myblogService.bestTrip(map);
-			
-			System.out.println("리스트 라이크 카운드" + list.get(0).getSubject());
-			ModelAndView mav = new ModelAndView();	
-			
-			mav.addObject("list", list);
-			mav.setViewName("jsonView");
-			return mav;
-		}
+	// 베스트작가 가져오기
+	@RequestMapping(value="/myblog/bestWriter", method=RequestMethod.POST)
+	@ResponseBody
+	public ModelAndView bestWriter() {
+		//베스트작가 가져오기
+		List<String> list = myblogService.bestWriter();
+		//베스트작가의 정보 불러오기
+		MemberDTO memberDTO = memberService.getMember2(list.get(0));			
+		ModelAndView mav = new ModelAndView();		
+		mav.addObject("memberDTO", memberDTO);
+		mav.setViewName("jsonView");
+		return mav;
+	}
+	
+	// 베스트작가의 베스트글 3개 가져오기
+	@RequestMapping(value="/myblog/bestTrip", method=RequestMethod.POST)
+	@ResponseBody
+	public ModelAndView bestTrip(@RequestParam String nickname) {			
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("nickname", nickname);			
+		map.put("startNum", "1");
+		map.put("endNum", "3");			
+		//베스트글 3개 가져오기
+		List<MyblogDTO> list = myblogService.bestTrip(map);			
+		ModelAndView mav = new ModelAndView();	
+		mav.addObject("list", list);
+		mav.setViewName("jsonView");
+		return mav;
+	}
 }

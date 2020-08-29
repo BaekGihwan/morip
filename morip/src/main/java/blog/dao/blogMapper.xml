@@ -8,8 +8,8 @@
        where rn<![CDATA[ >= ]]>#{startNum} and rn<![CDATA[ <= ]]>#{endNum}
    </select> -->
 	<select id="blogAllList" parameterType="java.util.Map" resultType="myblog" >
-      select * from(select rownum rn, tt.*from (select * from blogboardtable where step=0 and content like '%'||#{content}||'%' or 
-      subject like '%'||#{content}||'%' order by blogboardtable_seq desc)tt)
+      select * from(select rownum rn, tt.*from (select * from blogboardtable where step=0 and (content like '%'||#{content}||'%' or 
+      subject like '%'||#{content}||'%') order by blogboardtable_seq desc)tt)
        where rn<![CDATA[ >= ]]>#{startNum} and rn<![CDATA[ <= ]]>#{endNum}
    </select>
 </mapper>

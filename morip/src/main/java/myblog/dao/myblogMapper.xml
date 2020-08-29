@@ -162,7 +162,7 @@
 	<!-- 베스트작가의 탑3개 뽑아오기 -->
 	<select id="bestTrip" parameterType="java.util.Map" resultType="myblog">
 		select * from(select rownum rn, tt.*from 
-			(select * from blogboardtable where  nickname = #{nickname} and step=0 order by blogboardtable_seq desc)tt)
+			(select * from blogboardtable where  nickname = #{nickname} and step=0 order by likecount desc, blogboardtable_seq desc)tt)
  			where rn<![CDATA[ >= ]]>#{startNum} and rn<![CDATA[ <= ]]>#{endNum}
 	</select>	
 </mapper>
