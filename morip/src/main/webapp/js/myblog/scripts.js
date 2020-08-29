@@ -365,8 +365,7 @@ $(document).ready(function(){
 							$('#contentFilter').html(items.content);
 							let content = $('#contentFilter').text();
 							//처음 시작을 여는 div
-							if(tempNumber%3==0){
-							
+							if(tempNumber%3==0){							
 								height+=350;
 								$('.content').css('height',height+'px');
 								list += '<div class="myblogList" id="myblogList" data-aos="fade-up" data-aos-duration="3000">';
@@ -422,7 +421,21 @@ $(document).ready(function(){
     
     //뷰 페이지 진입
    	function viewEnter(seq){
-   		location.href="view?seq="+seq;
+	   	if($('#sessionEmail').val()=='') {
+			Swal.fire({
+				icon: 'info',
+				confirmButtonText: '확인',
+				title: '로그인을 먼저 하세요.',
+				text: '로그인 화면으로 넘어갑니다.',
+			}).then((result) => {
+				if (result.value) {											
+				location.href="../member/loginForm";
+				}
+			}) 
+		}else {
+			location.href="view?seq="+seq;
+		}
+   		
    	}
    	
    	function loadBoardCount(){

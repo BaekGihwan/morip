@@ -112,6 +112,13 @@ select {
 	border-style: solid;
 	border-radius: 10px;
 	border-width: 1px;
+	-webkit-appearance: none;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
 }
 /*=============================*/
 .container-idFindFormBtn {
@@ -186,7 +193,7 @@ select {
 	font-size: 23px;
 	color: #555555;
 	padding-top: 40px;
-	margin-left: 60px;
+	margin-left: 170px;
 	letter-spacing: 8px;
 }
 
@@ -195,22 +202,16 @@ select {
 	font-size: 20px;
 	color: #555555;
 	padding-top: 25px;
-	margin-left: 60px;
+	margin-left: 150px;
 	font-weight: bolder;
 }
-/* #modalspan{
-	display:inline-block;
-    font-size: 20px;
-    color: #555555;
-    padding-top: 38px;
-    margin-left: 5px;
-} */
+
 #modalId {
 	display: inline-block;
 	font-size: 20px;
 	color: #555555;
 	padding-top: 25px;
-	margin-left: 60px;
+	margin-left: 120px;
 	font-weight: bolder;
 }
 

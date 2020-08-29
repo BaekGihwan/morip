@@ -39,7 +39,7 @@
       	<div class="userMenu">
       	  <input type="hidden"  id="clickCheck" value="on">
       	  <button class="userPageBtn">
-      	    <i class="fas fa-user-alt mypage" aria-hidden="true"></i>&nbsp;&nbsp;마이페이지
+      	    <i class="fas fa-user-alt mypage" aria-hidden="true"></i>&nbsp;&nbsp;관리자페이지
       	  </button>      	  
       	  <button class="userSettingBtn">
       	    <i class="far fas fa-cog modify" aria-hidden="true"></i>&nbsp;&nbsp;정보수정

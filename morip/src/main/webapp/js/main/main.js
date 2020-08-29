@@ -45,7 +45,24 @@ $.ajax({
 		success: function(data){
 			$('.profile_image').attr("src","../storage/"+data.memberDTO.image);
 			$('.profile_name').text(data.memberDTO.nickname);
-			$('.blog_link').attr("href", "/morip/myblog/mypage?nickname="+data.memberDTO.nickname);		
+			//$('.blog_link').attr("href", "/morip/myblog/mypage?nickname="+data.memberDTO.nickname);		
+			$('.blog_link').click(function(){
+				if($('#email').val()=='') {
+					Swal.fire({
+						icon: 'info',
+						confirmButtonText: '확인',
+						title: '로그인을 먼저 하세요.',
+						text: '로그인 화면으로 넘어갑니다.',
+					}).then((result) => {
+						if (result.value) {											
+							location.href="../member/loginForm";
+						}
+					}) 
+				}else {
+					location.href='../myblog/mypage?nickname='+data.memberDTO.nickname;
+				}
+			});
+						
 			//베스트작가의 베스트 글 3개 뿌려주기
 			$.ajax({
 				type: 'post',
@@ -107,13 +124,33 @@ $(document).ready(function(){
 	});	
 });
 
- $('.writer_post').on('click','.post', function(){
-	  	location.href='../myblog/view?seq='+$(this).children().first().val();
-	 	//alert($(this).children().first().text());
-	 });
-	 
- $('.bestFood_post').on('click','.food_post', function(){
-	  	location.href='../matzip/matzipView?title='+$(this).children().first().text();
-	 	//alert($(this).children().first().text());
-	 });
+// 베스트글 글 누르면 뷰로 이동
+$('.writer_post').on('click','.post', function(){
+	if($('#email').val()=='') {
+		Swal.fire({
+			icon: 'info',
+			confirmButtonText: '확인',
+			title: '로그인을 먼저 하세요.',
+			text: '로그인 화면으로 넘어갑니다.',
+		}).then((result) => {
+			if (result.value) {											
+			location.href="../member/loginForm";
+			}
+		}) 
+	}else {
+		location.href='../myblog/view?seq='+$(this).children().first().val();
+	}
+});
+
+// 맛집 누르면 뷰로 이동	 
+$('.bestFood_post').on('click','.food_post', function(){
+	location.href='../matzip/matzipView?title='+$(this).children().first().text();
+});
+
+
+// 슬라이더 누르면 리스트로 이동
+$('.morip_banner_slider').on('click','.img', function(){
+	  	location.href='../blog/blogList2?title='+$(this).children().first().text();
+});
+
 

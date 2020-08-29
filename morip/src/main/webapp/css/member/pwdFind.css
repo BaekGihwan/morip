@@ -163,7 +163,7 @@ input:focus, #writeFormId:focus {
    font-size: 20px;
    color: #555555;
    padding-top: 50px;
-   margin-left: 50px;
+   margin-left: 90px;
    letter-spacing: 10px;
 }
 
@@ -173,7 +173,7 @@ input:focus, #writeFormId:focus {
    height: 50px;
    width: 220px;
    padding: 0 20px;
-   margin-left: 35px;
+   margin-left: 45px;
    border-style: solid;
    border-radius: 10px;
    border-top-width: 1px;
@@ -189,7 +189,7 @@ input:focus, #writeFormId:focus {
    height: 50px;
    width: 220px;
    padding: 0 20px;
-   margin-left: 35px;
+   margin-left: 45px;
    border-style: solid;
    border-radius: 10px;
    border-top-width: 1px;

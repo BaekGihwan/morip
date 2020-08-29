@@ -34,6 +34,10 @@
 	<context:component-scan base-package="hashtag.service"/>
 	<context:component-scan base-package="hashtag.dao"/>
 	<context:component-scan base-package="hashtag.bean"/> 
+	<!-- admin  -->   
+	<context:component-scan base-package="admin.service"/>
+	<context:component-scan base-package="admin.dao"/>
+	<context:component-scan base-package="admin.bean"/> 
 	<!-- ................................................................. -->	
 	<!-- 이메일 발송 bean 설정 -->
 	<beans:bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">

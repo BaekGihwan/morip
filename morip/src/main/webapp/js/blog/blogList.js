@@ -1,31 +1,62 @@
-/*작성 버튼 클릭 시  OptionModal 창 띄워주기*/
+/* 슬라이더를 자동으로이동 */
+$('.morip_banner_slider').slick({
+   slidesToShow: 7,
+   slidesToScroll: 1,
+   autoplay: true,
+   autoplaySpeed: 2000,
+   nextArrow: $('.next'),
+   prevArrow: $('.prev'),
+   responsive: [
+    {
+      breakpoint: 1024,
+      settings: {
+        slidesToShow: 3,
+        slidesToScroll: 3,
+        infinite: true,
+        dots: true
+      }
+    },
+    {
+      breakpoint: 600,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 2
+      }
+    },
+    {
+      breakpoint: 480,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1
+      }
+    }
+    // You can unslick at a given breakpoint now by adding:
+    // settings: "unslick"
+    // instead of a settings object
+  ]
+});
+
+
+// 블로그 작성하기 버튼 눌렀을때
 $('#writeOptionBtn').click(function(){
-	$('#writeOptionModal').modal();
-});
-
-/*글 작성 모달에서 여행기 버튼 클릭시 */
-$('#travelsWriteImg').click(function(){
-	location.href="/morip/myblog/travlesWrite1";
-});
-
-/*글 작성 모달에서 에세이 버튼 클릭시 */
-$('#writeBlogImg').click(function(){
-	location.href="/morip/myblog/writeBlog1";
+	location.href="/morip/myblog/writeBlog0";
 });
 
 //해쉬태그 검색 버튼 눌렀을때
-
 $('.hashtagSearchBtn').click(function(){
 var ar = new Array();
 $('.blogList_wrapper').empty();
 console.log($('.blogList_wrapper').html());
 	if($('.hashtagText').val()==''){
-		//alert('검색어를 입력해주세요!');
 		Swal.fire({
 			icon: 'warning',
 			confirmButtonText: '확인',
 			title: '검색어를<br>입력해주세요!'
-		})
+		}).then((result) => {
+			if (result.value) {											
+				$('#divImg0').trigger('click');
+			}
+		}) 
 	}else{
 		$('.blogList_wrapper').empty();
 		list='';
@@ -36,17 +67,14 @@ console.log($('.blogList_wrapper').html());
 			dataType:'json',
 			success:function(data){
 				$.each(data.list,function(index,items){
-// 					ar[index]=data.list[index].blogBoardSeq;
 					ar.push(data.list[index].blogBoardTable_Seq);
 				})
-				alert(ar[0]);
 				$.ajax({//2.ajax
 					type:'post',
 					url:'../blog/hashtagBlogList',
 					data:{"ar":ar},
 					dataType:'json',
 					success:function(data){
-						alert(data.list[0].subject);
 				var tempNumber= 0;
 				if(data.list.length!='0'){   //데이터가 존재할 때
 				$('.blogList_wrapper').empty();
@@ -77,7 +105,7 @@ console.log($('.blogList_wrapper').html());
 					tempNumber++;
 				});
 				$('.blogList_wrapper').append(list);
-				list='';
+				list='';				
 				}
 					},
 					error:function(err){
@@ -85,15 +113,12 @@ console.log($('.blogList_wrapper').html());
 					}
 					
 				});//2.ajax
-				
-				
 			},
 			error:function(err){
 				console.log(err);
-			}
-			
+			}					
 		});//1.ajax
-	}	
+	} // else 
 	
 });
 
@@ -134,12 +159,6 @@ Number.prototype.zf = function (len) { return this.toString().zf(len); };
 //페이지 로딩 되자마자 1pg 뜨기
 $(document).ready(function(){
 	loadingPage();
-/*	if($('#pageNickname').val().equals($('#nickname').val())){
-		$('#writeOptionBtn').show();
-	} else {
-	
-	}
-	*/
 	$('.userMenu').css("z-index","90");
 });
 //변수 선언
@@ -182,6 +201,8 @@ function loadingPage(){
 					let startdate= new Date(items.startdate).format('yyyy-MM-dd'); 
 					let enddate = new Date(items.enddate).format('yyyy-MM-dd');  
 					let seq = items.blogboardtable_seq;
+					$('#contentFilter').html(items.content);
+					let content = $('#contentFilter').text();
 					//처음 시작을 여는 div
 					if(tempNumber%4==0){
 						//height+=300;
@@ -194,7 +215,7 @@ function loadingPage(){
 					list+='<div class="myblog_img">';
 					list+='<img class="listImg" src="../storage/'+items.mainimage+'"></div>';
         			list+='<div class="myblog_info"><div class="myblog_subject">'+items.subject+'</div>';
-        			list+='<div class="myblog_content">'+items.content+'</div>';
+        			list+='<div class="myblog_content">'+content+'</div>';
         			list+='<div class="myblog_userFunction"><div class="like'+seq+'" style="cursor:pointer;"onclick="likeClick('+seq+')"><i class="far fa-heart"></i></div>';
         			list+='<div class="reply"><span>'+items.likecount+'</span> </div><div class="myblog_travleDay">';
         			list+= startdate +'~'+ enddate+'</div></div></div></div>';
@@ -217,143 +238,177 @@ function loadingPage(){
 
 //뷰 페이지 진입
 function viewEnter(seq){
-	location.href="../myblog/view?seq="+seq;
+	if($('#email').val()=='') {
+		Swal.fire({
+			icon: 'info',
+			confirmButtonText: '확인',
+			title: '로그인을 먼저 하세요.',
+			text: '로그인 화면으로 넘어갑니다.',
+		}).then((result) => {
+			if (result.value) {											
+			location.href="../member/loginForm";
+			}
+		}) 
+	}else {
+		location.href="../myblog/view?seq="+seq;
+	}
 }
 
-
+// 지역누르면 뿌려주는거
+$('.img0').click(function(){
+	content = "";
+	pg = '1';
+	$('.blogList_wrapper').empty();
+	loadingPage();
+});
 
 $('.img1').click(function(){
 	content = $('#content1').text();
-	$('#pg').val(1);
-	pg = $('#pg').val();
+	pg = '1';
 	$('.blogList_wrapper').empty();
 	loadingPage();
 });
 
 $('.img2').click(function(){
 	content = $('#content2').text();
-	$('#pg').val(1);
-	pg = $('#pg').val();
+	pg = '1';
 	$('.blogList_wrapper').empty();
 	loadingPage();
 });
 
 $('.img3').click(function(){
 	content = $('#content3').text();
-	$('#pg').val(1);
-	pg = $('#pg').val();
+	pg = '1';
 	$('.blogList_wrapper').empty();
 	loadingPage();
 });
 
 $('.img4').click(function(){
 	content = $('#content4').text();
-	$('#pg').val(1);
-	pg = $('#pg').val();
+	pg = '1';
 	$('.blogList_wrapper').empty();
 	loadingPage();
 });
 
 $('.img5').click(function(){
 	content = $('#content5').text();
-	$('#pg').val(1);
-	pg = $('#pg').val();
+	pg = '1';
 	$('.blogList_wrapper').empty();
 	loadingPage();
 });
 
 $('.img6').click(function(){
 	content = $('#content6').text();
-	$('#pg').val(1);
-	pg = $('#pg').val();
+	pg = '1';
 	$('.blogList_wrapper').empty();
 	loadingPage();
 });
 
 $('.img7').click(function(){
 	content = $('#content7').text();
-	$('#pg').val(1);
-	pg = $('#pg').val();
+	pg = '1';
 	$('.blogList_wrapper').empty();
 	loadingPage();
 });
 
 $('.img8').click(function(){
 	content = $('#content8').text();
-	$('#pg').val(1);
-	pg = $('#pg').val();
+	pg = '1';
 	$('.blogList_wrapper').empty();
 	loadingPage();
 });
 
 $('.img9').click(function(){
 	content = $('#content9').text();
-	$('#pg').val(1);
-	pg = $('#pg').val();
+	pg = '1';
 	$('.blogList_wrapper').empty();
 	loadingPage();
 });
 
 $('.img10').click(function(){
 	content = $('#content10').text();
-	$('#pg').val(1);
-	pg = $('#pg').val();
+	pg = '1';
 	$('.blogList_wrapper').empty();
 	loadingPage();
 });
 
 $('.img11').click(function(){
 	content = $('#content11').text();
-	$('#pg').val(1);
-	pg = $('#pg').val();
+	pg = '1';
 	$('.blogList_wrapper').empty();
 	loadingPage();
 });
 
 $('.img12').click(function(){
 	content = $('#content12').text();
-	$('#pg').val(1);
-	pg = $('#pg').val();
+	pg = '1';
 	$('.blogList_wrapper').empty();
 	loadingPage();
 });
 
 $('.img13').click(function(){
 	content = $('#content13').text();
-	$('#pg').val(1);
-	pg = $('#pg').val();
+	pg = '1';
 	$('.blogList_wrapper').empty();
 	loadingPage();
 });
 
 $('.img14').click(function(){
 	content = $('#content14').text();
-	$('#pg').val(1);
-	pg = $('#pg').val();
+	pg = '1';
 	$('.blogList_wrapper').empty();
 	loadingPage();
 });
 
 $('.img15').click(function(){
 	content = $('#content15').text();
-	$('#pg').val(1);
-	pg = $('#pg').val();
+	pg = '1';
 	$('.blogList_wrapper').empty();
 	loadingPage();
 });
 
 $('.img16').click(function(){
 	content = $('#content16').text();
-	$('#pg').val(1);
-	pg = $('#pg').val();
+	pg = '1';
 	$('.blogList_wrapper').empty();
 	loadingPage();
 });
 
-$('.img0').click(function(){
-	content = "";
-	$('#pg').val(1);
-	pg = $('#pg').val();
-	$('.blogList_wrapper').empty();
-	loadingPage();
-});
+// 메인에서 슬라이더 누르면 이동
+if($('#title').val()==''){
+		$('#divImg0').trigger('click');
+	}else if($('#title').val()=='전체'){
+		$('#divImg0').trigger('click');
+	}else if($('#title').val()=='서울'){
+		$('#divImg1').trigger('click');
+	}else if($('#title').val()=='부산'){
+		$('#divImg2').trigger('click');
+	}else if($('#title').val()=='대구'){
+		$('#divImg3').trigger('click');
+	}else if($('#title').val()=='인천'){
+		$('#divImg4').trigger('click');
+	}else if($('#title').val()=='광주'){
+		$('#divImg5').trigger('click');
+	}else if($('#title').val()=='대전'){
+		$('#divImg6').trigger('click');
+	}else if($('#title').val()=='울산'){
+		$('#divImg7').trigger('click');
+	}else if($('#title').val()=='강원도'){
+		$('#divImg8').trigger('click');
+	}else if($('#title').val()=='경기도'){
+		$('#divImg9').trigger('click');
+	}else if($('#title').val()=='충북'){
+		$('#divImg10').trigger('click');
+	}else if($('#title').val()=='충남'){
+		$('#divImg11').trigger('click');
+	}else if($('#title').val()=='전북'){
+		$('#divImg12').trigger('click');
+	}else if($('#title').val()=='전남'){
+		$('#divImg13').trigger('click');
+	}else if($('#title').val()=='경북'){
+		$('#divImg14').trigger('click');
+	}else if($('#title').val()=='경남'){
+		$('#divImg15').trigger('click');
+	}else if($('#title').val()=='제주도'){
+		$('#divImg16').trigger('click');
+	}
