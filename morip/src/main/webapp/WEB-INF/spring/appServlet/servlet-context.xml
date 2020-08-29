@@ -47,5 +47,6 @@
 	<context:component-scan base-package="member.controller"/>
 	<context:component-scan base-package="board.controller"/>
 	<context:component-scan base-package="serviceCenter.controller"/>
+		<context:component-scan base-package="admin.controller"/>
 
 </beans:beans>

@@ -1,12 +1,14 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
     <title></title>
-    <link href="../css/styles.css" rel="stylesheet" />
-    <link href="../css/dashboard.css" rel="stylesheet">
-    <link href="../css/sb-admin-2.min.css" rel="stylesheet">
-    <link href="../css/sb-admin-2.css" rel="stylesheet">
+    <link href="../css/admin/styles.css" rel="stylesheet" />
+    <link href="../css/admin/dashboard.css" rel="stylesheet">
+    <link href="../css/admin/sb-admin-2.min.css" rel="stylesheet">
+    <link href="../css/admin/sb-admin-2.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
     <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" crossorigin="anonymous"></script>
@@ -27,11 +29,11 @@
         <!-- Nav Item - User Information -->
         <li class="nav-item dropdown no-arrow">
           <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <img class="img-profile rounded-circle" src="../img/noimage.png">
+            <img class="img-profile rounded-circle" src="../image/myblog/noimage.png">
           </a>
           <!-- Dropdown - User Information -->
           <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-            <a class="dropdown-item" href="#">
+            <a class="dropdown-item" href="../main/index">
               <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
               메인으로 이동
             </a>
@@ -49,7 +51,7 @@
                 <div class="sb-sidenav-menu">
                     <div class="nav">
                         <div class="sb-sidenav-menu-heading">Core</div>
-                        <a class="nav-link" href="dashboard.html">
+                        <a class="nav-link" href="dashboard">
                             <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
                             통계
                         </a>
@@ -61,9 +63,9 @@
                         </a>
                         <div class="collapse" id="matzip" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
-                              <a class="nav-link" href="matzipDB.html">맛집 DB 관리</a>
-                              <a class="nav-link" href="matzipWriteForm.html">맛집 추가</a>
-                                <a class="nav-link" href="layout-sidenav-light.html">맛집 페이지 이동</a>
+                              <a class="nav-link" href="matzipDB">맛집 DB 관리</a>
+                              <a class="nav-link" href="matzipWriteForm">맛집 추가</a>
+                                <a class="nav-link" href="../matzip/matzipListShow">맛집 페이지 이동</a>
                             </nav>
                         </div>
                         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#blog" aria-expanded="false" aria-controls="collapseLayouts">
@@ -73,8 +75,8 @@
                         </a>
                         <div class="collapse" id="blog" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="blogDB.html">블로그 DB 관리</a>
-                                <a class="nav-link" href="layout-sidenav-light.html">블로그 페이지 이동</a>
+                                <a class="nav-link" href="blogDB">블로그 DB 관리</a>
+                                <a class="nav-link" href="../blog/blogList">블로그 페이지 이동</a>
                             </nav>
                         </div>
                         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#board" aria-expanded="false" aria-controls="collapsePages">
@@ -84,17 +86,17 @@
                         </a>
                         <div class="collapse" id="board" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
-                              <a class="nav-link" href="communityDB.html">커뮤니티 DB 관리</a>
-                              <a class="nav-link" href="communityWriteForm.html">커뮤니티 공지사항 등록</a>
-                                <a class="nav-link" href="layout-sidenav-light.html">커뮤니티 페이지 이동</a>
+                              <a class="nav-link" href="communityDB">커뮤니티 DB 관리</a>
+                              <a class="nav-link" href="communityWriteForm">커뮤니티 공지사항 등록</a>
+                                <a class="nav-link" href="../board/boardList">커뮤니티 페이지 이동</a>
                             </nav>
                         </div>
-                        <a class="nav-link collapsed" href="memberDB.html">
+                        <a class="nav-link collapsed" href="memberDB">
                             <div class="sb-nav-link-icon"><i class="fas fa-user"></i></div>
                               회원 DB 관리
                         </a>
                         <div class="sb-sidenav-menu-heading">Addons</div>
-                        <a class="nav-link" href="charts.html">
+                        <a class="nav-link" href="../main/index">
                             <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
                             메인화면으로 이동
                         </a>
@@ -321,9 +323,9 @@
   <!-- Bootstrap core JavaScript-->
   <script src="https://code.jquery.com/jquery-3.5.1.min.js" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-  <script src="../js/sb-admin-2.min.js"></script>
-  <script src="../js/Chart.min.js"></script>
-  <script src="../js/chart-area-demo.js"></script>
-  <script src="../js/scripts.js"></script>
+  <script src="../js/admin/sb-admin-2.min.js"></script>
+  <script src="../js/admin/Chart.min.js"></script>
+  <script src="../js/admin/chart-area-demo.js"></script>
+  <script src="../js/admin/scripts.js"></script>
 
 </html>
