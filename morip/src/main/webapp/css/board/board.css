@@ -162,6 +162,12 @@ article{
     width:90%;
 }
 /***************************boardView.jsp*********************************/
+#nickNameSpan{
+	font-size: 18px;
+	margin-top: 5px;
+	font-family: 'Noto Sans KR', sans-serif;
+}
+
 .boardWrapper{
   width:70%;
   height:100%;
