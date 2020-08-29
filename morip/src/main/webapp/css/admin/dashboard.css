@@ -1,0 +1,14 @@
+content{
+  margin-top:30px;
+  font-size: 13px;
+}
+#btnWrapper{
+ display:flex;
+ width:100px;
+ justify-content: space-between;
+ align-items: center;
+}
+#monthBtn, #weekBtn{
+  cursor: pointer;
+}
+/*남녀 비율용 도넛 그래프*/
