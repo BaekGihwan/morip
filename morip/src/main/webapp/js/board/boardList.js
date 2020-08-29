@@ -8,7 +8,7 @@ $(document).ready(function(){
 			//alert(JSON.stringify(data));
 			
 			$.each(data.list, function(index, items){
-			if(items.nickname == "지지지") {
+			if(items.nickname == "운영자") {
 				$('<tr/>').append($('<td/>',{
 					align: 'center',
 					text: items.boardtable_seq
@@ -17,7 +17,7 @@ $(document).ready(function(){
 					}).append($('<a/>',{
 						id: 'subjectA',
 						href: '#',
-						text: items.subject,
+						text: "[공지] " + items.subject,
 						class: items.boardtable_seq+''
 					}))
 				).append($('<td/>',{
@@ -134,7 +134,7 @@ $('#boardSearchBtn').click(function(event, str){
 				$('#boardListTable tr:gt(0)').remove();
 					
 				$.each(data.list, function(index, items){
-			if(items.nickname == "지지지") {
+			if(items.nickname == "운영자") {
 				$('<tr/>').append($('<td/>',{
 					align: 'center',
 					text: items.boardtable_seq
@@ -143,7 +143,7 @@ $('#boardSearchBtn').click(function(event, str){
 					}).append($('<a/>',{
 						id: 'subjectA',
 						href: '#',
-						text: items.subject,
+						text: "[공지] " + items.subject,
 						class: items.boardtable_seq+''
 					}))
 				).append($('<td/>',{

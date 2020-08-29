@@ -30,9 +30,9 @@
       </div>
       <!-- 로그인후 버튼 -->
       <div class="header_login header_afterLogin">
-        <button type="button"><i class="fas fa-home fa-2x"></i></button>&emsp;
+        <button type="button" class="homeBtn"><i class="fas fa-home fa-2x"></i></button>&emsp;
         <!-- <button type="button"><i class="fas fa-envelope fa-2x"></i></button>&emsp; -->
-	    <button type="button"><i class="fas fa-heart fa-2x"></i></button>&emsp;
+	    <button type="button" id="dddd"><i class="fas fa-heart fa-2x"></i></button>&emsp;
 		<img class="userPhoto" alt="" src="../storage/${image }">
 		
 		<!-- userPhoto을 누르면 나오는 메뉴바 -->

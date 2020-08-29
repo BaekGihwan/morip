@@ -6,6 +6,10 @@
   <jsp:include page="header.jsp"/>
 </c:if>      
 
-<c:if test="${memEmail ne null }">
+<c:if test="${memEmail ne null and memEmail ne 'admin' }">
   <jsp:include page="header2.jsp"/>   
+</c:if>      
+
+<c:if test="${memEmail ne null and memEmail eq 'admin' }">
+  <jsp:include page="header3.jsp"/>   
 </c:if>      

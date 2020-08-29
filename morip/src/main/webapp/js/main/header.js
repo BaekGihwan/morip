@@ -11,6 +11,10 @@ $('.userPhoto').click(function(){
 	});
 });
 
+//집버튼 클릭
+$('.homeBtn').click(function(){
+	location.href='../main/index';	
+});
 // 블로그버튼
 $('#blog').click(function(){
 	location.href='../blog/blogList';	
@@ -33,7 +37,12 @@ $('.header_loginBtn').click(function(){
 });
 // 마이페이지 버튼
 $('.userPageBtn').click(function(){
-	location.href='../myblog/mypage?nickname='+$('#nickname').val();
+	if($('#memEmail').val() == 'admin'){
+		location.href='../admin/adminMain';
+	}else{
+		location.href='../myblog/mypage?nickname='+$('#nickname').val();
+	}
+	
 });
 // 정보수정 버튼
 $('.userSettingBtn').click(function(){

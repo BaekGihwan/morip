@@ -252,7 +252,11 @@ $('#loginBtn').click(function(){
 		dataType : 'json',
 		success : function(data) {
 			if (data.memberDTO != null && data.passMatch == true) {
-				location.href = '../main/index';
+				if(data.memberDTO.email == 'admin'){
+					location.href = '../admin/adminMain';						
+				}else {
+					location.href = '../main/index';						 
+				}
 			} else {
 				Swal.fire({
 					title: '로그인 실패',
@@ -260,7 +264,7 @@ $('#loginBtn').click(function(){
 					icon: 'warning',
 					confirmButtonColor: '#3085d6',
 					cancelButtonColor: '#d33',
-					confirmButtonText: 'Yes'
+					confirmButtonText: '확인'
 				}).then((result) => {
 					if (result.value) {
 						location.href='../member/loginForm';

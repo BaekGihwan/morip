@@ -60,4 +60,9 @@ public class MemberServiceImpl implements MemberService {
 	public void memberModify2(Map<String, String> map) {
 		memberDAO.memberModify2(map);		
 	}
+
+	@Override
+	public MemberDTO getMember2(String email) {
+		return memberDAO.getMember2(email);
+	}
 }

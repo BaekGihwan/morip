@@ -11,6 +11,7 @@
 <!--===============================================================================================-->
 </head>
 <body class="morip_main">
+  <input type="hidden" id="email" value="${memEmail }">
   <br><br>  
   <!-- morip banner -->
   <div class="morip_banner">
@@ -116,72 +117,70 @@
     <div class="morip_bestBlogWriter">    
       <div class="writer_info">  
       	<div class="profile_bg">
-      	  <img class="profile_image" alt="" src="../storage/${image }">
-      	  <!-- <div class="profile_image" style="background-image: url('../image/test.jpg')"></div> -->
+      	  <img class="profile_image" alt="" src="">
       	</div>
       	<div class="profile_detail">
-      	  <p class="profile_name">순수쟁이 기환</p>
+      	  <p class="profile_name"></p>
       	  <p class="description"></p>
       	  <div>
-      	    <div>
-      	      <button class="follow_button">
-      	      	<span>+ 팔로우</span>
-      	      </button>
-      	    </div>
       	  </div>
       	  <div class="link_wrapper">
-      	    <a href="" class="blog_link">더 많은 여행기 보기 ></a>
+      	    <button class="blog_link">더 많은 여행기 보기 ></button>
       	  </div>
       	</div>    	
       </div>      
       <div class="writer_post">
+      	<!-- 1번! -->
       	<div class="post">
-      	  <div class="post_image" style="background-image: url('../image/main/testimg.png')">
+      	  <input type="hidden" id="post_seq1">
+      	  <div class="post_image" id="post_image1" style="">
       	    <div class="post_image_like">
-      	      <span class="post_image_like_text">115</span>
+      	      <span class="post_image_like_text" id="post_image_like_text1"></span>
       	    </div>
       	  </div>
       	  <div class="post_text"> 
 	        <div class="post_title">
-	          <p class="post_title_p">제주도 5박6일정도만 여유 있게 즐기기~ 오똔데?</p>
+	          <p class="post_title_p" id="post_title_p1"></p>
 	        </div>	          
 	      	<div class="post_content">
-			  <p class="post_content_p">
-				왜 이렇게 사는게 힘들기만 한지
-				누가 인생이 아름답다고 말한건지
-				태어났을 떄부터 삶이 내게 준건
-				끝없이 이겨내야 했던 고난들 뿐인걸
-				그럴떄마다 나는 거울 속에 나 에게 물어봤지
-				뭘 잘못했지 도대체 내가 뭘 잘못했길래
-				내게만 이래 이제 달라질것같지 않아
-				매일 또그래
-				하지만 그러면 안되 주저 앉으면 안되
-				세상이 주는대로 그저 주어진 대로
-				이렇게 불공평한 세상이 주는대로
-				그저 받기만 하면
-				모든 것은 그대로
-				싸울텐가 포기할텐가
-				주어진 운명 앞에 굴복하고 말텐가
-				세상앞에 고개 숙이지 마라
-				기죽지 마라 그리고 우릴 봐라
-	      	  </p>
+			  <p class="post_content_p" id="post_content_p1"></p>
+	      	</div>
+      	  </div>
+        </div>        
+        <!-- 2번! -->
+        <div class="post">
+          <input type="hidden" id="post_seq2">
+      	  <div class="post_image" id="post_image2" style="">
+      	    <div class="post_image_like">
+      	      <span class="post_image_like_text" id="post_image_like_text2"></span>
+      	    </div>
+      	  </div>
+      	  <div class="post_text"> 
+	        <div class="post_title">
+	          <p class="post_title_p" id="post_title_p2"></p>
+	        </div>	          
+	      	<div class="post_content">
+			  <p class="post_content_p" id="post_content_p2"></p>
 	      	</div>
       	  </div>
         </div>
+        <!-- 3번! -->
         <div class="post">
-          <div class="post_image"></div>
-      	  <div class="post_text">
-	        <div class="post_title"></div>
-	      	<div class="post_content"></div>
+          <input type="hidden" id="post_seq3">
+      	  <div class="post_image" id="post_image3" style="">
+      	    <div class="post_image_like">
+      	      <span class="post_image_like_text" id="post_image_like_text3"></span>
+      	    </div>
       	  </div>
-        </div>
-        <div class="post">
-          <div class="post_image"></div>
-      	  <div class="post_text">
-	        <div class="post_title"></div>
-	      	<div class="post_content"></div>
+      	  <div class="post_text"> 
+	        <div class="post_title">
+	          <p class="post_title_p" id="post_title_p3"></p>
+	        </div>	          
+	      	<div class="post_content">
+			  <p class="post_content_p" id="post_content_p3"></p>
+	      	</div>
       	  </div>
-        </div>        
+        </div> <!-- 3번끝! --> 		          
       </div>
     </div>
   </div> 
@@ -271,8 +270,7 @@
         </div>
       </div>
      </div>
-  </div>
-  
+  </div>  
   <br><br>
   <br><br>
   <br><br>
@@ -281,12 +279,4 @@
 <script type="text/javascript" src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>		
 <script type="text/javascript" src="../js/main/main.js" ></script>
-<script type="text/javascript">
-$(document).ready(function(){
-	//alert("ddddd");
-	
-	
-	
-});
-
-</script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
