@@ -14,25 +14,21 @@ $('.switch').mouseout(function(){
   $('.switch_infomation').hide();
 });
 
-
-
 $('#boardWriteBtn').click(function(){
 	$('#subjectDiv').empty();
 	$('#contentDiv').empty();	
 	if($('#subject').val() ==''){
 		Swal.fire({
-			icon: 'success',
+			icon: 'warning',
 			title: '제목을 입력하세요.',
 			confirmButtonText: '확인'
-			}).then((result) => {
-		})
+			})
 	}else if($('#summernote').val() ==''){
 		Swal.fire({
-			icon: 'success',
+			icon: 'warning',
 			title: '내용을 입력하세요.',
 			confirmButtonText: '확인'
-			}).then((result) => {
-		})
+			})
 	}else{
 		$.ajax({
 			type: 'post',

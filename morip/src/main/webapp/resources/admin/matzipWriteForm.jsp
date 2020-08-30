@@ -9,12 +9,15 @@
     <link href="../css/admin/sb-admin-2.min.css" rel="stylesheet">
     <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" crossorigin="anonymous"></script>
+    
+    <!-- ======================================================================== -->
+    <link href="../css/admin/matzipWriteForm.css" rel="stylesheet" type="text/css">
+    <!-- ======================================================================== -->
   </head>
   <body>
     <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
       <div class="">
-        <a class="navbar-brand" href="dashboard.html">[MO:RIP]</a>
-        <button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#"><i class="fas fa-bars"></i></button>
+        <a class="navbar-brand" href="dashboard">[MO:RIP]</a>
         <!-- Navbar Search-->
         <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
 
@@ -22,25 +25,7 @@
         <!-- Navbar-->
         <div class="topbar-divider d-none d-sm-block"></div>
       </div>
-
-        <!-- Nav Item - User Information -->
-        <li class="nav-item dropdown no-arrow">
-          <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <img class="img-profile rounded-circle" src="../image/myblog/noimage.png">
-          </a>
-          <!-- Dropdown - User Information -->
-          <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-            <a class="dropdown-item" href="../main/index">
-              <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-              메인으로 이동
-            </a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">
-              <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-              로그아웃
-            </a>
-          </div>
-        </li>
+      <button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#"><i class="fas fa-bars"></i></button>
     </nav>
     <div id="layoutSidenav">
         <div id="layoutSidenav_nav">
@@ -53,18 +38,6 @@
                             통계
                         </a>
                         <div class="sb-sidenav-menu-heading">management</div>
-                        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#matzip" aria-expanded="false" aria-controls="collapseLayouts">
-                            <div class="sb-nav-link-icon"><i class="fas fa-utensils"></i></div>
-                              맛집 관리
-                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                        </a>
-                        <div class="collapse" id="matzip" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
-                            <nav class="sb-sidenav-menu-nested nav">
-                              <a class="nav-link" href="matzipDB">맛집 DB 관리</a>
-                              <a class="nav-link" href="matzipWriteForm">맛집 추가</a>
-                                <a class="nav-link" href="../matzip/matzipListShow">맛집 페이지 이동</a>
-                            </nav>
-                        </div>
                         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#blog" aria-expanded="false" aria-controls="collapseLayouts">
                             <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
                               블로그 관리
@@ -74,6 +47,18 @@
                             <nav class="sb-sidenav-menu-nested nav">
                                 <a class="nav-link" href="blogDB">블로그 DB 관리</a>
                                 <a class="nav-link" href="../blog/blogList">블로그 페이지 이동</a>
+                            </nav>
+                        </div>
+                        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#matzip" aria-expanded="false" aria-controls="collapseLayouts">
+                            <div class="sb-nav-link-icon"><i class="fas fa-utensils" style="width: 16.2px; height: 14.5px;"></i></div>
+                              맛집 관리
+                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        </a>
+                        <div class="collapse" id="matzip" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
+                            <nav class="sb-sidenav-menu-nested nav">
+                              <a class="nav-link" href="matzipDB">맛집 DB 관리</a>
+                              <a class="nav-link" href="matzipWriteForm">맛집 등록</a>
+                                <a class="nav-link" href="../matzip/matzipListShow">맛집 페이지 이동</a>
                             </nav>
                         </div>
                         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#board" aria-expanded="false" aria-controls="collapsePages">
@@ -89,16 +74,16 @@
                             </nav>
                         </div>
                         <a class="nav-link collapsed" href="memberDB">
-                            <div class="sb-nav-link-icon"><i class="fas fa-user"></i></div>
+                            <div class="sb-nav-link-icon"><i class="fas fa-user" style="width: 16.2px; height: 14.5px;"></i></div>
                               회원 DB 관리
                         </a>
                         <div class="sb-sidenav-menu-heading">Addons</div>
                         <a class="nav-link" href="../main/index">
-                            <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
+                            <div class="sb-nav-link-icon"><i class="fas fa-home"></i></i></div>
                             메인화면으로 이동
                         </a>
-                        <a class="nav-link" href="tables.html">
-                            <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                        <a class="nav-link" href="../member/logout">
+                            <div class="sb-nav-link-icon"><i class="fas fa-sign-out-alt"></i></div>
                             관리자 로그아웃
                         </a>
                     </div>
@@ -110,9 +95,81 @@
             </nav>
         </div>
         <div id="layoutSidenav_content">
-          <content>
-            여기는 맛집 추가하는 글 작성 쪽 페이지 입니당 여기에 코드 복붙 해주시면 됩니다!!!
-            css나 js 따로 넣으실거면 별도의 파일로 추가 부탁드릴게요!
+          <content>          
+          <form>
+          <div class="container-matzipWriteForm">            
+              <div class="title">
+				<span>맛집 등록</span>
+			</div>
+			<div class="matzipWriteForm">			
+			  <div class="mainImage">			
+				<div class="imageInput">
+			      <p class="matzipText">대표이미지</p>
+				  <div class="matzipChoiceImage">
+				    <img id="mainImg" src="../storage/noimage2.png" style="width: 100%; height: 100%;">
+				  </div><br>					 
+				  <div class="changeMatzipImage">
+             	    <label for="image">이미지 등록</label>
+		     		<input type="file" name="img" id="image" class="btn-file" onchange="change(this.files)">
+             	  </div>
+				</div>
+			  </div>
+			  <div class="information">
+				<div class="matzipTitleForm">
+				  <div class="matzipForm">
+				    <span class="matzipText">가게이름</span>
+				  </div>
+				  <input type="text" id="matzipTitle" class="matzip" placeholder="ex)밀레니엄 안동찜닭">
+				  <div id="matzipTitleDiv"></div>
+				</div>			  
+			    <div class="matzipCategoryForm">			    
+				  <div class="matzipForm">
+					<span class="matzipText">카테고리</span>
+				  </div>
+				  <input type="text" id="matzipCategory" class="matzip" placeholder="ex)한식>찜닭">
+				  <div id="matzipCategoryDiv"></div>
+			    </div>
+				<div class="matzipTelephoneForm">
+				  <div class="matzipForm">
+					<span class="matzipText">전화번호</span>
+				  </div>
+				  <input type="text" id="matzipTelephone" class="matzip" placeholder="전화번호를 입력해주세요.">
+				  <div id="matzipTelephoneDiv"></div>
+				</div>
+				<div class="matzipRoadaddressForm">
+				  <div class="matzipForm">
+					<span class="matzipText">도로명주소</span>
+				  </div>
+				  <input type="text" id="matzipRoadaddress" class="matzip" placeholder="도로명주소를 입력해주세요.">
+				  <div id="matzipRoadaddressDiv"></div>
+				</div>
+				<div class="matzipAddressForm">
+				  <div class="matzipForm">
+					<span class="matzipText">지번주소</span>
+				  </div>
+				  <input type="text" id="matzipAddress" class="matzip" placeholder="지번주소를 입력해주세요.">
+				  <div id="matzipAddressDiv"></div>
+				</div>			    
+				<div class="matzipTimeForm">
+				  <div class="matzipForm">
+				    <span class="matzipText">영업시간</span>
+				  </div>
+				  <input type="text" id="matzipTime" class="matzip" placeholder="영업시간을 적어주세요">
+				</div>
+				<div class="matzipLinkForm">
+				  <div class="matzipForm">
+				    <span class="matzipText">홈페이지주소</span>
+				  </div>
+				  <input type="text" id="matzipLink" class="matzip" placeholder="없을경우 작성하지마시오.">
+				</div>
+			  </div>
+            </div><br>
+			<div class="matzipButtonForm">
+			  <button type="button" class="matzipBtn" id="matzipWriteBtn">작성하기</button>
+			  <button type="reset" class="matzipBtn">다시작성</button>
+			</div><br><br>
+          </div>
+          </form>
           </content>
         </div>
     </div>

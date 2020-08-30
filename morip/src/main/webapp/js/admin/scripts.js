@@ -4,7 +4,7 @@ $("#sidebarToggle").on("click", function(e) {
 });
 //dashboard 페이지
 $(document).ready(function(){
-  monthChartShow();
+  weekChartShow();
 });
 $('#monthBtn').click(function(){
   monthChartShow();

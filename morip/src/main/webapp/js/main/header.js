@@ -38,7 +38,7 @@ $('.header_loginBtn').click(function(){
 // 마이페이지 버튼
 $('.userPageBtn').click(function(){
 	if($('#memEmail').val() == 'admin'){
-		location.href='../admin/adminMain';
+		location.href='../admin/dashboard';
 	}else{
 		location.href='../myblog/mypage?nickname='+$('#nickname').val();
 	}
