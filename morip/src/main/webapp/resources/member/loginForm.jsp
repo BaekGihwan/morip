@@ -253,7 +253,7 @@ $('#loginBtn').click(function(){
 		success : function(data) {
 			if (data.memberDTO != null && data.passMatch == true) {
 				if(data.memberDTO.email == 'admin'){
-					location.href = '../admin/adminMain';						
+					location.href = '../admin/dashboard';						
 				}else {
 					location.href = '../main/index';						 
 				}

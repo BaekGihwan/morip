@@ -9,12 +9,20 @@
     <link href="../css/admin/sb-admin-2.min.css" rel="stylesheet">
     <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" crossorigin="anonymous"></script>
+ 	<!-- 추가본 -->
+ 	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+ 	<link href="../css//admin/communityWriteForm.css" rel="stylesheet" type="text/css">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+	<!-- 이놈만 쓰면 CSS 다 망가진다! 근데 이걸 안하면 섬머 노트가 이상해진다 -->
+	<!-- <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet"> --> 
   </head>
   <body>
     <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
       <div class="">
-        <a class="navbar-brand" href="dashboard.html">[MO:RIP]</a>
-        <button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#"><i class="fas fa-bars"></i></button>
+        <a class="navbar-brand" href="dashboard">[MO:RIP]</a>
         <!-- Navbar Search-->
         <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
 
@@ -22,25 +30,7 @@
         <!-- Navbar-->
         <div class="topbar-divider d-none d-sm-block"></div>
       </div>
-
-        <!-- Nav Item - User Information -->
-        <li class="nav-item dropdown no-arrow">
-          <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <img class="img-profile rounded-circle" src="../image/myblog/noimage.png">
-          </a>
-          <!-- Dropdown - User Information -->
-          <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-            <a class="dropdown-item" href="../main/index">
-              <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-              메인으로 이동
-            </a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">
-              <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-              로그아웃
-            </a>
-          </div>
-        </li>
+      <button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#"><i class="fas fa-bars"></i></button>
     </nav>
     <div id="layoutSidenav">
         <div id="layoutSidenav_nav">
@@ -53,18 +43,6 @@
                             통계
                         </a>
                         <div class="sb-sidenav-menu-heading">management</div>
-                        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#matzip" aria-expanded="false" aria-controls="collapseLayouts">
-                            <div class="sb-nav-link-icon"><i class="fas fa-utensils"></i></div>
-                              맛집 관리
-                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                        </a>
-                        <div class="collapse" id="matzip" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
-                            <nav class="sb-sidenav-menu-nested nav">
-                              <a class="nav-link" href="matzipDB">맛집 DB 관리</a>
-                              <a class="nav-link" href="matzipWriteForm">맛집 추가</a>
-                                <a class="nav-link" href="../matzip/matzipListShow">맛집 페이지 이동</a>
-                            </nav>
-                        </div>
                         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#blog" aria-expanded="false" aria-controls="collapseLayouts">
                             <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
                               블로그 관리
@@ -74,6 +52,18 @@
                             <nav class="sb-sidenav-menu-nested nav">
                                 <a class="nav-link" href="blogDB">블로그 DB 관리</a>
                                 <a class="nav-link" href="../blog/blogList">블로그 페이지 이동</a>
+                            </nav>
+                        </div>
+                        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#matzip" aria-expanded="false" aria-controls="collapseLayouts">
+                            <div class="sb-nav-link-icon"><i class="fas fa-utensils" style="width: 16.2px; height: 14.5px;"></i></div>
+                              맛집 관리
+                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        </a>
+                        <div class="collapse" id="matzip" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
+                            <nav class="sb-sidenav-menu-nested nav">
+                              <a class="nav-link" href="matzipDB">맛집 DB 관리</a>
+                              <a class="nav-link" href="matzipWriteForm">맛집 등록</a>
+                                <a class="nav-link" href="../matzip/matzipListShow">맛집 페이지 이동</a>
                             </nav>
                         </div>
                         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#board" aria-expanded="false" aria-controls="collapsePages">
@@ -89,16 +79,16 @@
                             </nav>
                         </div>
                         <a class="nav-link collapsed" href="memberDB">
-                            <div class="sb-nav-link-icon"><i class="fas fa-user"></i></div>
+                            <div class="sb-nav-link-icon"><i class="fas fa-user" style="width: 16.2px; height: 14.5px;"></i></div>
                               회원 DB 관리
                         </a>
                         <div class="sb-sidenav-menu-heading">Addons</div>
-                        <a class="nav-link" href="charts.html">
-                            <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
+                        <a class="nav-link" href="../main/index">
+                            <div class="sb-nav-link-icon"><i class="fas fa-home"></i></i></div>
                             메인화면으로 이동
                         </a>
-                        <a class="nav-link" href="../main/index">
-                            <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                        <a class="nav-link" href="../member/logout">
+                            <div class="sb-nav-link-icon"><i class="fas fa-sign-out-alt"></i></div>
                             관리자 로그아웃
                         </a>
                     </div>
@@ -111,16 +101,53 @@
         </div>
         <div id="layoutSidenav_content">
           <content>
-            여기는 공지사항 글 작성 쪽 페이지 입니당 여기에 코드 복붙 해주시면 됩니다!!!
-            css나 js 따로 넣으실거면 별도의 파일로 추가 부탁드릴게요!
+            <!-- 글작성부분  -->
+		    <article class="container">		    
+			<form class="communityWriteForm" method="post" action="/write">
+			<div class="container_writeForm">
+				<div class="writeForm">
+					<div class="subjectForm">
+					<br>
+						<input type="text" id="subject" name="subject" placeholder="제  목">
+						<div id="subjectDiv"></div>
+						<hr align="center" width="100%" size="15">
+					</div>
+					<div id="summernote"><p></p></div>
+					<div id="summernoteDiv"></div>
+				</div>
+			</div>
+			<div class="writeOption">
+				<div class="saveOptionWrapper">
+					<button type="reset" class="btn- resetBtn" id="boardResetBtn">다시작성</button>
+					<br>
+					<button type="button" class="btn-" id="boardWriteBtn">저장하기</button>
+				</div>
+			</div>
+			</form>
+		  </article>  
           </content>
         </div>
     </div>
   </body>
-  <script src="https://code.jquery.com/jquery-3.5.1.min.js" crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-  <script src="../js/admin/scripts.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
-  <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
-  <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
+<!-- 위에 있어서 필요 없고 -->
+<!-- <script src="https://code.jquery.com/jquery-3.5.1.min.js" crossorigin="anonymous"></script> -->
+<script src="../js/admin/scripts.js"></script>
+<!-- 다필요 없는거같은데 잘 모르겠다. -->
+<!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
+<script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script> -->
+<!-- 추가 -->
+<script type="text/javascript" src="../js/admin/communityWriteForm.js"></script>
+<script>
+	$(document).ready(function() {
+    	$('#summernote').summernote({
+    		placeholder: "content",
+	    	minHeight: 600,             // 최소 높이
+	   	 	maxHeight: 600,             // 최대 높이
+	    	focus: true,                  // 에디터 로딩후 포커스를 맞출지 여부
+	    	lang: "ko-KR"	    	
+    	});
+	}); 
+</script>
 </html>

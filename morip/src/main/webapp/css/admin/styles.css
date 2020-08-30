@@ -2937,7 +2937,7 @@ fieldset:disabled a.btn {
   font-size: 0.875rem;
   line-height: 1.5;
   border-radius: 0.2rem;
-  margin-bottom: 8px;
+  /*margin-bottom: 8px;*/
 }
 
 .btn-block {
@@ -3993,6 +3993,7 @@ input[type=button].btn-block {
   font-size: 1.25rem;
   line-height: inherit;
   white-space: nowrap;
+  text-align: center;
 }
 .navbar-brand:hover, .navbar-brand:focus {
   text-decoration: none;
@@ -10146,11 +10147,14 @@ body {
 }
 .sb-topnav.navbar-dark #sidebarToggle {
   color: rgba(255, 255, 255, 0.5);
+  line-height: 56px;
 }
 .sb-topnav.navbar-light #sidebarToggle {
   color: #212529;
 }
-
+*:focus {
+  outline: none;
+}
 .sb-sidenav {
   display: flex;
   flex-direction: column;
