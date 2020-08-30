@@ -98,8 +98,8 @@
         <div id="btnWrapper">
         	<button type="button" class="btn btn-outline-secondary" id="writeOptionBtn" style="font-size:13px; width:120px; height:40px;  margin-left:5px; margin-right:5px;">글 작성</button>
 	        <button type="button" class="btn btn-outline-secondary" id="modifyMemberBtn" style="font-size:13px; width:120px; height:40px; margin-left:5px; margin-right:5px;">회원정보수정</button>
-	        <c:if test="${memberDTO.email != memEmail }">
-	        <button type="button" class="btn btn-outline-primary" id="followBtn" style="font-size:13px; width:120px; height:40px;">팔로우</button>
+	        <c:if test="${memberDTO.email ne memEmail }">
+	        	<button type="button" class="btn btn-outline-primary" id="followBtn" style="font-size:13px; width:120px; height:40px;">팔로우</button>
 	        </c:if>
         </div>
 
@@ -109,7 +109,7 @@
       <div class="myBlog_wrapper">
         <table id="tableHeadder">
           <tr>
-            <td style="font-size:9px; border-top:2px solid; font-weight:bold; width:8%; height:30px;">여행기</td>
+            <td style="font-size:12px; border-top:2px solid; font-weight:bold; width:8%; height:30px;">여행기</td>
             <td style="border-top: 1px solid; width:92%;"></td>
           </tr>
         </table>

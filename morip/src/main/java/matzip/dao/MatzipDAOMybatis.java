@@ -22,7 +22,6 @@ public class MatzipDAOMybatis implements MatzipDAO {
 
 	@Override
 	public List<MatzipDTO> matzipList(int startNum, int endNum, String address) {
-		// TODO Auto-generated method stub
 		Map<String,Object> map = new HashMap<String, Object>();
 		map.put("startNum", startNum);
 		map.put("endNum", endNum);
@@ -32,13 +31,11 @@ public class MatzipDAOMybatis implements MatzipDAO {
 
 	@Override
 	public List<MatzipDTO> matzipList() {
-		// TODO Auto-generated method stub
 		return sqlSession.selectList("matzipSQL.matzipList2");
 	}
 
 	@Override
 	public MatzipDTO getMatzipView(String title) {
-		// TODO Auto-generated method stub
 		return sqlSession.selectOne("matzipSQL.getMatzipView", title);
 	}
 	
@@ -59,17 +56,13 @@ public class MatzipDAOMybatis implements MatzipDAO {
 	public List<MyblogDTO> getMatzipReview(String title, int startNum, int endNum) {
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("keyword", title);
-		//System.out.println(map.get("keyword"));
 		map.put("startNum", startNum);
 	    map.put("endNum", endNum);
-	    //List<MyblogDTO> list = sqlSession.selectList("matzipSQL.getMatzipReview",map);
-	    //System.out.println(list.get(0).getSubject());
 		return sqlSession.selectList("matzipSQL.getMatzipReview",map);
 	}
 
 	@Override
 	public String getReviewCount(String keyword) {
-		// TODO Auto-generated method stub
 		return sqlSession.selectOne("matzipSQL.getReviewCount",keyword);
 	}
 

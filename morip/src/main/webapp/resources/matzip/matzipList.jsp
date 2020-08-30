@@ -33,7 +33,7 @@
 								<!-- <div><lottie-player src="https://assets2.lottiefiles.com/packages/lf20_o1WDlm.json"  background="transparent"  speed="0.6"  style="width: 400px; height: 400px;"  loop  autoplay></lottie-player></div> -->
 								<div class="row gtr-uniform gtr-50">
 									<div class="col-8 col-12-xsmall">
-										<input type="text" id="matzipText" name="matzipText">
+										<input type="text" id="matzipText" name="matzipText" placeholder="원하시는 지역을 입력하세요.">
 									</div>
 									<div class="col-4 col-12-xsmall">
 										<input class="fit primary" type="submit" value="검색" id="matzipSearchBtn">
@@ -497,13 +497,10 @@
 		    let result1;
 		    $('#matzipSearchBtn').click(function(){
 		       if($('#matzipText').val()==''){
-		          //alert('검색어를 입력해주세요!');
 		          Swal.fire({
 				  icon: 'warning',
 				  title: '검색어를<br>입력해주세요!'
-				  //text: 'Something went wrong!',
-				  //footer: '<a href>Why do I have this issue?</a>'
-				})
+				  })
 		       }else {
 		          $.ajax({
 		             type: 'post',
@@ -535,14 +532,8 @@
 		                   ).appendTo($('#showMatzipList'));
 		                   //test=items.title;
 		                });
-		                
-		                //alert($('#matzipAddress0').val());
-		                alert('맛집서치버튼클릭!');
-		                alert($('#matzipText').val());
 		                result1='success';
-		                //alert(result1);
-		                
-		                
+             
 		                if(result1=='success'){
 		                   		//$('#ex1').css('font-family',"'Noto Sans KR', sans-serif");
 		                         var matzipAddress=document.getElementById('matzipAddress0').value;

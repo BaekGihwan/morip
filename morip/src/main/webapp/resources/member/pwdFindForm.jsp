@@ -37,8 +37,8 @@
 <!---------------------------------------------------------------------------->
 				<div id="modal">
 					<div class="modal_content">
-						<span class = "modaltext">새 비밀번호 </span><br><br>
-						<hr align="center" width="300px" size="2" color="black">
+						<span class = "modaltext">비밀번호변경 </span><br><br>
+						<hr align="center" width="100%" size="2" color="black">
 						
 						<input id="modalpwd" type="password" placeholder="새 비밀번호를 입력하세요"><br>
 						<div id="modalDiv"></div>
@@ -70,14 +70,14 @@ $('#pwdFindBtn').click(function(){
 	    if($('#pwdFindFormId').val() == '') { 
 	        $('#nameDiv').text('이메일을 입력하세요.');
 	        $('#nameDiv').css('color', 'red');
-	        $('#nameDiv').css('font-size', '8pt');
+	        $('#nameDiv').css('font-size', '10pt');
 	        $('#nameDiv').css('font-weight', 'bold');
 	        $('#pwdFindFormId').focus();
 	        
 	    } else  if(!regEmail.test($('#pwdFindFormId').val())){
 	    	$('#nameDiv').text('이메일 형식이 올바르지 않습니다.');
 	        $('#nameDiv').css('color', 'red');
-	        $('#nameDiv').css('font-size', '8pt');
+	        $('#nameDiv').css('font-size', '10pt');
 	        $('#nameDiv').css('font-weight', 'bold');
 	        $('#pwdFindFormId').focus();         
 	       
@@ -93,14 +93,14 @@ $('#pwdFindBtn').click(function(){
 	    } else if($('#email-id').val() == '') {
 	    	$('#reidDiv').text('메일인증번호를 입력하세요');
 	        $('#reidDiv').css('color', 'red');
-	        $('#reidDiv').css('font-size', '8pt');
+	        $('#reidDiv').css('font-size', '10pt');
 	        $('#reidDiv').css('font-weight', 'bold');
 	        $('#email-id').focus(); 
 	        
 	    }else if($('#email-id').val() != $('#emailCode').val()){
 	    	$('#reidDiv').text('인증번호가 일치하지 않습니다.');
 	        $('#reidDiv').css('color', 'red');
-	        $('#reidDiv').css('font-size', '8pt');
+	        $('#reidDiv').css('font-size', '10pt');
 	        $('#reidDiv').css('font-weight', 'bold');
 	        $('#emailCode').focus();
 	       	
@@ -119,13 +119,13 @@ $('#emailBtn').click(function(){
 	if($('#pwdFindFormId').val() == ''){
 		$('#nameDiv').text('이메일을 입력하세요.');
 		$('#nameDiv').css('color', 'red');
-        $('#nameDiv').css('font-size', '8pt');
+        $('#nameDiv').css('font-size', '10pt');
         $('#nameDiv').css('font-weight', 'bold');
         $('#pwdFindFormId').focus();
 	} else  if(!regEmail.test($('#pwdFindFormId').val())){
    		$('#nameDiv').text('이메일 형식이 올바르지 않습니다.');
         $('#nameDiv').css('color', 'red');
-        $('#nameDiv').css('font-size', '8pt');
+        $('#nameDiv').css('font-size', '10pt');
         $('#nameDiv').css('font-weight', 'bold');
         $('#pwdFindFormId').focus();		 
 	 } else {
@@ -143,8 +143,9 @@ $('#emailBtn').click(function(){
 						icon: 'warning',
 						confirmButtonColor: '#3085d6',
 						cancelButtonColor: '#d33',
-						confirmButtonText: 'Yes'
+						confirmButtonText: '확인'
 					})
+					$('#pwdFindFormId').val('');
 				} else {
 					$('.idDiv').show();
 					$.ajax({
@@ -182,35 +183,35 @@ $('#modalBtn').click(function(){
 	if($('#modalpwd').val() == '') {
 	$('#modalDiv').text('8-15자 이내의 영문, 숫자, 특수문자 조합으로 입력해주세요!.');
     $('#modalDiv').css('color', 'red');
-    $('#modalDiv').css('font-size', '8pt');
+    $('#modalDiv').css('font-size', '10pt');
     $('#modalDiv').css('font-weight', 'bold');
     $('#modalpwd').focus();
     
 	} else  if(!regPwd.test($('#modalpwd').val())){
 		$('#modalDiv').text('8-15자 이내의 영문, 숫자, 특수문자 조합으로 입력해주세요.!');
 	    $('#modalDiv').css('color', 'red');
-	    $('#modalDiv').css('font-size', '8pt');
+	    $('#modalDiv').css('font-size', '10pt');
 	    $('#modalDiv').css('font-weight', 'bold');
 	    $('#modalpwd').focus();
 	
 	}else if($('#modalrepwd').val() == '') {
 		$('#repwdDiv').text('8-15자 이내의 영문, 숫자, 특수문자 조합으로 입력해주세요!.');
 	    $('#repwdDiv').css('color', 'red');
-	    $('#repwdDiv').css('font-size', '8pt');
+	    $('#repwdDiv').css('font-size', '10pt');
 	    $('#repwdDiv').css('font-weight', 'bold');
 	    $('#modalrepwd').focus();
 	    
 	} else if(!regPwd.test($('#modalrepwd').val())){
 		$('#remodalDiv').text('8-15자 이내의 영문, 숫자, 특수문자 조합으로 입력해주세요.!');
 	    $('#remodalDiv').css('color', 'red');
-	    $('#remodalDiv').css('font-size', '8pt');
+	    $('#remodalDiv').css('font-size', '10pt');
 	    $('#remodalDiv').css('font-weight', 'bold');
 	    $('#modalrepwd').focus();
 	    
 	} else if($('#modalpwd').val() != $('#modalrepwd').val()){
 		$('#remodalDiv').text('비밀번호가 일치하지 않습니다.');
 	    $('#remodalDiv').css('color', 'red');
-	    $('#remodalDiv').css('font-size', '8pt');
+	    $('#remodalDiv').css('font-size', '10pt');
 	    $('#remodalDiv').css('font-weight', 'bold');
 	    $('#modalrepwd').focus();
 	}else {
@@ -229,7 +230,7 @@ $('#modalBtn').click(function(){
 					icon: 'success',
 					confirmButtonColor: '#3085d6',
 					cancelButtonColor: '#d33',
-					confirmButtonText: 'Yes'
+					confirmButtonText: '확인'
 				}).then((result) => {
 					if (result.value) {
 						location.href='../member/loginForm';
@@ -243,6 +244,13 @@ $('#modalBtn').click(function(){
 		
 	}
 
+});
+
+// 다시작성 버튼
+$('#pwdFindresetBtn').click(function(){
+	$('.idDiv').hide();
+	$('#nameDiv').empty();
+	$('#pwdFindFormId').val('');	
 });
 
 document.getElementById("cancelBtn").onclick = function() {

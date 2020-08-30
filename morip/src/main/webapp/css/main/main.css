@@ -209,6 +209,14 @@
 }
 
 /* 베스트여행작가 */
+.blog_link{
+	background: none;
+	color: red;
+	outline: none;
+	border: none;
+	cursor: pointer;
+}
+
 .morip_bestBlog {
 	/* border: 1px solid green; */	
 	width: 1120px;
@@ -467,6 +475,10 @@ span {
 
  
  /* food_post */
+ .food_post{
+ 	cursor: pointer;
+ }
+ 
 .food_post_bg_image{	
 	width: 1120px;
 	height: 600px;	
