@@ -235,7 +235,7 @@
                           <div class="h5 mb-0 font-weight-bold text-gray-800">392개</div>
                         </div>
                         <div class="col-auto">
-                          <i class="fas fa-users fa-2x text-gray-300s"></i>
+                          <i class="fas fa-users fa-2x text-gray-300"></i>
                         </div>
                       </div>
                     </div>

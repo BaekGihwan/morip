@@ -13,9 +13,10 @@
 }
 
 .matzipWriteForm{
-	width: 40%;
+	width: 50%;
 	margin: 0 auto;
 	display: flex;	
+	justify-content: space-between;
 }
 
 .mainImage {
@@ -70,13 +71,13 @@
 }
 
 .matzipText{
-	font-size: 20px;
 	text-align: center;
+	color:#8e93ae;
 }
 
 .information {
 	margin-left: 20px;
-	width: 70%;
+	width: 60%;
 }
 
 .matzipForm{
