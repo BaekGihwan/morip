@@ -6,7 +6,8 @@
 <meta charset="UTF-8">
 <!--===============================================================================================-->
 <link rel="stylesheet" type="text/css" href="../css/member/idFind.css">
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500&display=swap" rel="stylesheet">
+<!-- Google fonts-->
+<link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
 <!--===============================================================================================-->
 </head>
 <body>
@@ -46,7 +47,7 @@
 				<div id="modal" style="border: 1px red solid;">
 					<div class="modal_content" style="border: 1px blue solid;">
 						<span class = "modaltext">아이디 찾기 </span><br><br>
-						<hr align="center" width="100%" size="2" color="black">
+						<hr align="center" width="80%" size="2" color="black" style="margin: 0 auto";>
 						
 						<div id="modalId-">
 							<div id="modalname"> </div> <span id="modalspan">회원님의 아이디는 </span></br>

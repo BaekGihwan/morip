@@ -1,78 +1,128 @@
 @charset "UTF-8";
 
-
-
-.container-boardList{
-	padding; margin: 0 auto;
-		width: 1120px;
-} 
-
-#paging{
-color: black;
- text-decoration : none;
- cursor : pointer;
+.container-boardList {padding;
+	margin: 0 auto;
+	width: 1120px;
 }
 
-#currentPaging{
-color: red;
- text-decoration : underline;
-  cursor : pointer;
+thead {
+	border-top: 2px solid #151515;
+	border-bottom: 2px solid #aaa;
+}
+
+th {
+	background: #d5d9f0; /*=============================*/
+	padding: 8px 10px;
+	letter-spacing: 10px;
+	font-weight: normal;
+}
+
+#boardListTable td {
+	padding: 15px 10px;
+	letter-spacing: 2px;
+}
+
+#paging {
+	cursor: pointer;
+	text-decoration: none;
+	color: #555;
+	display: inline-block;
+	text-align: center;
+	min-width: 44px;
+	line-height: 44px;
+	font-size: 16px;
+	vertical-align: middle;
+	border: 1px solid #c9c9c9;
+	margin: 0px 1px;
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+#currentPaging {
+	cursor: pointer;
+	background: #000;
+	color: #fff;
+	border: 1px solid #000;
+	display: inline-block;
+	text-align: center;
+	min-width: 44px;
+	line-height: 44px;
+	font-size: 16px;
+	vertical-align: middle;
+	border: 1px solid #c9c9c9;
+	margin: 0px 1px;
+	background-repeat: no-repeat;
+	background-position: center;
 }
 /*=============================*/
 .bordListTitle {
-    margin-left: 30px;
+	font-family: 'Jua', sans-serif;
+	letter-spacing: 3px;
+	margin-left: 30px;
 	font-size: 30px;
-	line-height: 80px;
+	line-height: 130px;
 }
 
-#boardWriteBtn{
-    border: 1px solid #c9c9c9;
+#boardWriteBtn {
+	border: 1px solid #c9c9c9;
 	width: 150px;
 	height: 50px;
 	float: right;
-	margin-right: 15px;
-	margin-top: 15px;
-	font-size: 15px;
-	color: #3f3f3f;
+	border-color: #6c757d;
+	margin-top: 70px;
+	font-size: 16px;
+	color: #6c757d;
 	text-align: center;
 	line-height: 50px;
 	cursor: pointer;
+	font-family: 'Jua', sans-serif;
 }
-#boardListTable{
+
+#boardListTable {
+	font-family: 'Jua', sans-serif;
 	height: 30px;
 	font-size: 20px;
 }
-.searchba{
+
+.searchba {
 	width: 1120px;
 	text-align: center;
 }
-#searchOption{
-	margin-top: 10px;
-	height: 30px;
-	width: 100px; 
+
+#searchOption {
+	font-family: 'Jua', sans-serif;
+	letter-spacing: 2px;
+	margin-top: 20px;
+	height: 40px;
+	width: 130px;
 	padding-left: 10px;
 	font-size: 16px;
 }
-#keyword{
-	height: 30px;
-	width: 300px; 
+
+#keyword {
+	font-family: 'Jua', sans-serif;
+	letter-spacing: 2px;
+	height: 40px;
+	width: 350px;
 	padding-left: 10px;
 	font-size: 16px;
-	
 }
-#subjectA{
+
+#subjectA {
 	color: red;
 }
-#boardSearchBtn{
-	height: 30px;
-	width: 80px; 
+
+#boardSearchBtn {
+	font-family: 'Jua', sans-serif;
+	letter-spacing: 2px;
+	height: 40px;
+	width: 130px;
 	padding: 0 10px;
 	background-color: #333333;
-	border-radius: 10px;
 	font-size: 16px;
 	color: #fff;
 	outline: none !important;
 	border: none;
 	cursor: pointer;
-	
+	border-radius: 10px;
 }

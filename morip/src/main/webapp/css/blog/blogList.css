@@ -1,7 +1,7 @@
 @charset "UTF-8";
 .blogSearch {
 /* 	border: 1px solid red; */
-	
+	font-family: 'Jua', sans-serif; 
 	width: 800px;
 	height: 60px;
 	display: flex;
@@ -34,7 +34,7 @@
     padding: 0 17px;
     background-color: #333333;
     border-radius: 10px;
-    font-size: 16px;
+    font-size: 18px;
     color: #fff;
     outline: none !important;
     border: none;
@@ -239,7 +239,7 @@
  font-size: 18px;
 	margin: 10px;
 	text-align: left;
-	font-family: 'Nanum Pen Script', cursive;
+	font-family: 'Jua', sans-serif;    
 	height: 75px;
 	overflow: hidden;
   
@@ -249,7 +249,7 @@
 	font-size: 18px;
 	margin: 10px;
 	text-align: left;
-	font-family: 'Nanum Pen Script', cursive;
+	font-family: 'Jua', sans-serif;    
 	height: 75px;
 	overflow: hidden;
 }
@@ -404,23 +404,32 @@
 }
 
 .write_text {
+	font-family: 'Jua', sans-serif;    
+color: #6d6d6d;         
+font-weight: 400;
 	margin-left: 30px;
 	font-size: 30px;
 	line-height: 80px;
 }
 
 .write_blog {
+	font-family: 'Jua', sans-serif; 
 	border: 1px solid #c9c9c9;
 	width: 150px;
 	height: 50px;
 	float: right;
 	margin-right: 15px;
 	margin-top: 15px;
-	font-size: 15px;
+	font-size: 20px;
 	color: #3f3f3f;
 	text-align: center;
 	line-height: 50px;
 	cursor: pointer;
+}
+#writeOptionBtn:hover{
+	background-color: white;
+	color: #6c757d;
+	outline: none !important;
 }
 
 
@@ -430,7 +439,7 @@
 }
 .bodyHeader{
 	height:50px;
-	font-family: 'Gothic A1', sans-serif;
+	font-family: 'Jua', sans-serif;    
 	color:#8aacc8;
 	font-size:23px;
 }
@@ -479,7 +488,7 @@
 }
 .bodyHeader{
 	height:50px;
-	font-family: 'Gothic A1', sans-serif;
+	font-family: 'Jua', sans-serif;    
 	color:#8aacc8;
 	font-size:23px;
 }

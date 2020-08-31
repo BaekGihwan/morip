@@ -1,138 +1,149 @@
 @charset "UTF-8";
 
 button:hover {
-   cursor: pointer;
+	cursor: pointer;
 }
 
 input:focus, #writeFormId:focus {
-   outline: none;
-   border: 1.5px solid #000;
+	outline: none;
+	border: 1.5px solid #000;
 }
 
 .container-pwdFindForm {padding;
-   margin: 0 auto;
-   align: center;
-   /* display: flex;
+	margin: 0 auto;
+	align: center;
+	/* display: flex;
    align-content: center; */
-   width: 100%;
+	width: 100%;
 }
 /*=============================*/
 .pwdFindFormTitle {
-   font-family: 'Noto Sans KR', sans-serif;
-   letter-spacing: 10px;
-   text-align: center;
-   width: 100%;
-   display: block;
-   font-size: 39px;
-   color: #555555;
-   line-height: 1.2;
-   padding-bottom: 53px;
-   padding-top: 100px;
+	font-family: 'Jua', sans-serif;
+	color: #6d6d6d;
+	font-weight: 400;
+	padding-top: 62px;
+	letter-spacing: 10px;
+	text-align: center;
+	width: 100%;
+	display: block;
+	font-size: 39px;
+	line-height: 1.2;
+	padding-bottom: 53px;
 }
 /*=============================*/
 .container-pwdFindForm-text {
-   margin: 0 auto;
-   width: 400px;
+	margin: 0 auto;
+	width: 400px;
 }
 /*=============================*/
 .pwdFindForm-Id {
-   display: inline-block;
-   font-size: 16px;
-   color: #555555;
-   padding-top: 25px;
-   padding-bottom: 10px;
-   letter-spacing: 2px;
+	font-family: 'Jua', sans-serif;
+	display: inline-block;
+	font-size: 16px;
+	color: #555555;
+	padding-top: 25px;
+	padding-bottom: 10px;
+	letter-spacing: 2px;
 }
 
 #pwdFindFormId {
-   color: #333333;
-   font-size: 16px;
-   height: 50px;
-   width: 220px;
-   padding: 0 20px;
-   margin-left: 10px;
-   margin-right: 20px;
-   border-style: solid;
-   border-radius: 10px;
-   border-top-width: 1px;
-   border-bottom-width: 1px;
-   border-left-width: 1px;
-   border-right-width: 1px;
-   margin-bottom: 10px;
+	font-family: 'Jua', sans-serif;
+	letter-spacing: 2px;
+	font-family: 'Gothic A1', sans-serif;
+	color: #333333;
+	font-size: 16px;
+	height: 50px;
+	width: 220px;
+	padding: 0 20px;
+	margin-left: 10px;
+	margin-right: 20px;
+	border-style: solid;
+	border-radius: 10px;
+	border-top-width: 1px;
+	border-bottom-width: 1px;
+	border-left-width: 1px;
+	border-right-width: 1px;
+	margin-bottom: 10px;
 }
 
 #emailBtn {
-   text-align: center;
-   padding: 0 15px;
-   height: 50px;
-   background-color: #333333;
-   border-radius: 10px;
-   font-size: 16px;
-   color: #fff;
-   outline: none !important;
-   border: none;
+	font-family: 'Jua', sans-serif;
+	text-align: center;
+	padding: 0 15px;
+	height: 50px;
+	background-color: #333333;
+	border-radius: 10px;
+	font-size: 16px;
+	color: #fff;
+	outline: none !important;
+	border: none;
 }
 
 #email-id {
-   color: #333333;
-   font-size: 16px;
-   height: 50px;
-   width: 340px;
-   padding: 0 20px;
-   margin-left: 10px;
-   margin-right: 20px;
-   border-style: solid;
-   border-radius: 10px;
-   border-top-width: 1px;
-   border-bottom-width: 1px;
-   border-left-width: 1px;
-   border-right-width: 1px;
-   margin-bottom: 10px;
+	font-family: 'Jua', sans-serif;
+	letter-spacing: 2px;
+	color: #333333;
+	font-size: 16px;
+	height: 50px;
+	width: 340px;
+	padding: 0 20px;
+	margin-left: 10px;
+	margin-right: 20px;
+	border-style: solid;
+	border-radius: 10px;
+	border-top-width: 1px;
+	border-bottom-width: 1px;
+	border-left-width: 1px;
+	border-right-width: 1px;
+	margin-bottom: 10px;
 }
 /*=============================*/
 .container-pwdFindFormBtn {
-   margin-top: 35px;
-   margin-bottom: 35px;
-   margin-left: 10px;
+	font-family: 'Jua', sans-serif;
+	margin-top: 35px;
+	margin-bottom: 62px;
+	margin-left: 10px;
 }
 /*=============================*/
 #pwdFindBtn {
-   text-align: center;
-   padding: 0 60px;
-   height: 60px;
-   width: 180px;
-   background-color: #333333;
-   border-radius: 10px;
-   font-size: 16px;
-   color: #fff;
-   outline: none !important;
-   border: none;
-   margin-right: 20px;
+	font-family: 'Jua', sans-serif;
+	text-align: center;
+	padding: 0 60px;
+	height: 60px;
+	width: 180px;
+	background-color: #333333;
+	border-radius: 10px;
+	font-size: 16px;
+	color: #fff;
+	outline: none !important;
+	border: none;
+	margin-right: 20px;
 }
 
 #pwdFindresetBtn {
-   text-align: center;
-   padding: 0 40px;
-   height: 60px;
-   width: 180px;
-   background-color: #333333;
-   border-radius: 10px;
-   font-size: 16px;
-   color: #fff;
-   outline: none !important;
-   border: none;
+	font-family: 'Jua', sans-serif;
+	text-align: center;
+	padding: 0 40px;
+	height: 60px;
+	width: 180px;
+	background-color: #333333;
+	border-radius: 10px;
+	font-size: 16px;
+	color: #fff;
+	outline: none !important;
+	border: none;
 }
 /*=============================*/
 #nameDiv {
-   margin-left: 20px;
+	margin-left: 20px;
 }
 
 #reidDiv {
-   margin-left: 20px;
+	margin-left: 20px;
 }
 /*=============================*/
 #modal {
-  	width: 500px;
+	width: 500px;
 	height: 300px;
 	display: none;
 	position: fixed;
@@ -142,99 +153,103 @@ input:focus, #writeFormId:focus {
 }
 
 #modal .modal_content {
-   width: 350px;
-   height: 400px;
-   background: #fff;
-   border: 2px solid #666;
+	width: 350px;
+	height: 400px;
+	background: #fff;
+	border: 2px solid #666;
 }
 
 #modal .modal_layer {
-   position: fixed;
-   top: 0;
-   left: 0;
-   width: 100%;
-   height: 100%;
-   background: rgba(0, 0, 0, 0.5); /*rgb가아닌 투명도가 포함된 rgba 화면 살짝어둡게한거*/
-   z-index: -1; /* 가장앞에 나올수있게?? */
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.5); /*rgb가아닌 투명도가 포함된 rgba 화면 살짝어둡게한거*/
+	z-index: -1; /* 가장앞에 나올수있게?? */
 }
 
 .modaltext {
-   display: inline-block;
-   font-size: 20px;
-   color: #555555;
-   padding-top: 50px;
-   margin-left: 90px;
-   letter-spacing: 10px;
+	font-family: 'Jua', sans-serif;
+	display: inline-block;
+	font-size: 20px;
+	color: #555555;
+	padding-top: 50px;
+	margin-left: 90px;
+	letter-spacing: 10px;
 }
 
 #modalpwd {
-   color: #333333;
-   font-size: 16px;
-   height: 50px;
-   width: 220px;
-   padding: 0 20px;
-   margin-left: 45px;
-   border-style: solid;
-   border-radius: 10px;
-   border-top-width: 1px;
-   border-bottom-width: 1px;
-   border-left-width: 1px;
-   border-right-width: 1px;
-   margin-top: 20px;
+	font-family: 'Jua', sans-serif;
+	color: #333333;
+	font-size: 16px;
+	height: 50px;
+	width: 220px;
+	padding: 0 20px;
+	margin-left: 45px;
+	border-style: solid;
+	border-radius: 10px;
+	border-top-width: 1px;
+	border-bottom-width: 1px;
+	border-left-width: 1px;
+	border-right-width: 1px;
+	margin-top: 20px;
 }
 
 #modalrepwd {
-   color: #333333;
-   font-size: 16px;
-   height: 50px;
-   width: 220px;
-   padding: 0 20px;
-   margin-left: 45px;
-   border-style: solid;
-   border-radius: 10px;
-   border-top-width: 1px;
-   border-bottom-width: 1px;
-   border-left-width: 1px;
-   border-right-width: 1px;
+	font-family: 'Jua', sans-serif;
+	color: #333333;
+	font-size: 16px;
+	height: 50px;
+	width: 220px;
+	padding: 0 20px;
+	margin-left: 45px;
+	border-style: solid;
+	border-radius: 10px;
+	border-top-width: 1px;
+	border-bottom-width: 1px;
+	border-left-width: 1px;
+	border-right-width: 1px;
 }
 
 #modalBtn {
-   margin-left: 80px;
-   margin-right: 30px;
-   padding: 0 15px;
-   height: 45px;
-   width: 75px;
-   background-color: #333333;
-   border-radius: 10px;
-   font-size: 16px;
-   color: #fff;
-   outline: none !important;
-   border: none;
+	font-family: 'Jua', sans-serif;
+	margin-left: 65px;
+	margin-right: 20px;
+	padding: 0 15px;
+	height: 40px;
+	width: 100px;
+	background-color: #333333;
+	border-radius: 10px;
+	font-size: 16px;
+	color: #fff;
+	outline: none !important;
+	border: none;
 }
 
 #cancelBtn {
-   padding: 0 15px;
-   height: 45px;
-   width: 75px;
-   background-color: #333333;
-   border-radius: 10px;
-   font-size: 16px;
-   color: #fff;
-   outline: none !important;
-   border: none;
+	font-family: 'Jua', sans-serif;
+	padding: 0 15px;
+	height: 40px;
+	width: 100px;
+	background-color: #333333;
+	border-radius: 10px;
+	font-size: 16px;
+	color: #fff;
+	outline: none !important;
+	border: none;
 }
 
 #modalDiv {
-   margin-left: 30px;
-   margin-bottom: 20px;
+	margin-left: 30px;
+	margin-bottom: 20px;
 }
 
 #remodalDiv {
-   margin-left: 30px;
-   margin-bottom: 20px;
+	margin-left: 30px;
+	margin-bottom: 20px;
 }
 /*=============================*/
-
 .hr {
 	border-bottom: 4px solid black;
 	width: 400px;

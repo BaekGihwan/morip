@@ -5,18 +5,20 @@
 }
 /*=============================*/
 .semiWriteTitle {
-	font-family: 'Noto Sans KR', sans-serif;
+	font-family: 'Jua', sans-serif; 
+    color: #6d6d6d;
+    font-weight: 400;
 	letter-spacing: 15px;
     width: 100%;
     display: block;
     font-size: 39px;
-    color: #555555;
     line-height: 1.2;
     text-align: center;
     padding-bottom: 53px;
-    padding-top: 100px;
+    padding-top: 62px;
 }
 .semiWriteText{
+	font-family: 'Jua', sans-serif; 
 	width: 100%;
     display: block;
     font-size: 20px;
@@ -59,6 +61,7 @@ button:hover{
 	outline: none !important;
     border: none;
 	background-color: #fff;
+	padding-bottom: 62px;
 }
 .hr {
 	border-bottom: 4px solid black;

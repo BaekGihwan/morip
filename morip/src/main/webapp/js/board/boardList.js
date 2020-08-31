@@ -8,7 +8,7 @@ $(document).ready(function(){
 			//alert(JSON.stringify(data));
 			
 			$.each(data.list, function(index, items){
-			if(items.nickname == "운영자") {
+			if(items.nickname == "지지지") {
 				$('<tr/>').append($('<td/>',{
 					align: 'center',
 					text: items.boardtable_seq
@@ -112,7 +112,7 @@ $('#boardSearchBtn').click(function(event, str){
 				Swal.fire({
  					icon: 'success',
  					confirmButtonText: '확인',
-  					title: '검색어를 입력하세요!'
+  					title: '검색어를 입력해주세요!'
   					
 				}).then((result) => {
 					if (result.value) {											
@@ -134,7 +134,7 @@ $('#boardSearchBtn').click(function(event, str){
 				$('#boardListTable tr:gt(0)').remove();
 					
 				$.each(data.list, function(index, items){
-			if(items.nickname == "운영자") {
+			if(items.nickname == "지지지") {
 				$('<tr/>').append($('<td/>',{
 					align: 'center',
 					text: items.boardtable_seq

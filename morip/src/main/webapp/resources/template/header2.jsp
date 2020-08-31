@@ -3,7 +3,7 @@
 <head>
 <!--===============================================================================================-->
 <link rel="stylesheet" href="../css/main/header.css">
-<link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
 <script src="https://kit.fontawesome.com/75c3f69c14.js" crossorigin="anonymous" ></script>
 <!--===============================================================================================-->
 </head>

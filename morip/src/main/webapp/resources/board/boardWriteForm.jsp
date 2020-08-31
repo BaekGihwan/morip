@@ -4,6 +4,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <!--==================================================CSS==================================================-->
+<!-- Google fonts-->
+<link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="../css/board/boardWriteForm.css">
 <link rel="stylesheet" type="text/css" href="../css/board/board.css">
 <!--hover.css-->
@@ -44,7 +46,7 @@
 				<br>
 				<div style="width: 95%; margin: auto;">
 					<form method="post" action="/write">
-						<input type="text" id="subject" name="subject" placeholder="제  목">
+						<input type="text" id="subject" name="subject" placeholder="제 목">
 						<div id="sujectDiv"></div>
 						<hr align="center" width="100%" size="15" color="black">
 						<textarea id="summernote" name="content"></textarea>
@@ -57,10 +59,10 @@
 			<div class="writeOption">
 				<div class="saveOptionWrapper">
 					<button type="reset" class="btn- resetBtn" id="boardWriteBtn-"
-						style="font-size: 13px; border-radius: 20px; border: 1px solid #343a40; outline: none !important; margin: 5px; height: 40px;">다시작성</button>
+						style="font-size: 13px; border-radius: 20px; border: 1px solid gray; outline: none !important; margin: 5px; height: 40px;">다시작성</button>
 					<br>
 					<button type="button" class="btn-" id="boardWriteBtn"
-						style="font-size: 13px; border-radius: 20px; border: 1px solid #343a40; outline: none !important; margin: 5px; height: 40px;">저장하기</button>
+						style="font-size: 13px; border-radius: 20px; border: 1px solid gray; outline: none !important; margin: 5px; height: 40px;">저장하기</button>
 				</div>
 			</div>
 			</form>
@@ -93,8 +95,8 @@
  $(document).ready(function() {
 	  $('#summernote').summernote({
  	    	placeholder: 'content',
-	        minHeight: 700, //최소높이
-	        maxHeight: 700, //최대높이
+	        minHeight: 550, //최소높이
+	        maxHeight: 550, //최대높이
 	        focus: true,  //에디터 로딩 후 초커스를 맞출지 여부
 	        lang : 'ko-KR' // 한글 설정
 	  });

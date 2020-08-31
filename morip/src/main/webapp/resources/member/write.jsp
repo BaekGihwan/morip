@@ -3,7 +3,8 @@
 <head>
 <!--===============================================================================================-->	
 <link rel="stylesheet" type="text/css" href="../css/member/write.css">
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500&display=swap" rel="stylesheet">
+<!-- Google fonts-->
+<link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
 <!--===============================================================================================-->	
 </head>
 <body>

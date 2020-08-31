@@ -8,7 +8,8 @@ margin-top :60px;
 margin-bottom:60px;
 }
 .contentHeader{
-  font-size: 20px;
+	font-family: 'Jua', sans-serif; 
+  font-size: 22px;
   color:#5a5a56;
   font-weight: bold;
   width:100%;
@@ -25,7 +26,7 @@ margin-bottom:60px;
 }
 .contentWrapper{
   width:100%;
-  height:100%;;
+  height:100%;
 }
 .content{
   display: flex;
@@ -50,20 +51,22 @@ margin-bottom:60px;
   display: flex;
 }
 .step1,.step2,.step3,.step4{
+	  
   width:25%;
   margin:2px;
   margin-bottom:0;
   padding:10px auto;
 }
 .stepHeader{
+	font-family: 'Jua', sans-serif;  
   width:100px;
   height:35px;
   margin-left:15px;
   margin-top:10px;
   font-size: 20px;
-  font-family: 'Noto Sans KR', sans-serif;
 }
 .stepContent{
+font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
   width:80%;
   margin:15px;
   font-size: 13px;
@@ -93,6 +96,7 @@ margin-bottom:60px;
   align-items: center;
 }
 #backwardBtn, #forwardBtn{
+	font-family: 'Jua', sans-serif; 
   display: flex;
   align-items: center;
   justify-content: center;
@@ -103,6 +107,7 @@ margin-bottom:60px;
   border:3px solid #e9eae4;
 /*background-color: #e9eae4;*/
   cursor: pointer;
+  font-size: 17px;
 }
 /*dayList*/
 #dayList{
@@ -222,7 +227,14 @@ margin-bottom:60px;
 .switch_infomation p{
  margin:10px auto;
 }
-
+#previewBtn{
+	font-family: 'Jua', sans-serif; 
+	letter-spacing: 2px; 
+}
+#saveBtn{
+	font-family: 'Jua', sans-serif; 
+	letter-spacing: 2px; 
+}
 /************************해쉬 태그 인풋**************************/
 .hashtagWrapper{
 	margin-top:95%;
@@ -232,11 +244,13 @@ margin-bottom:60px;
 	height:150px;
 }
 #hashtagInputText{
+	font-family: 'Jua', sans-serif;     
 	margin:auto;
 	height:100px;
 	width:80%;
 }
 .hashtagTitle{
+	font-family: 'Jua', sans-serif;   
 	height:50px;
 	color:gray;
 	font-weight: bold;
@@ -266,6 +280,7 @@ body {
 }
 
 #infoBoxWrapper {
+	font-family: 'Jua', sans-serif; 
 	width: 200px;
 	height: 100px;
 	display: flex;

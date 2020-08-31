@@ -199,7 +199,7 @@ function deleteBtnClick(boardtable_seq){
 	            '<textarea id="replyInputBox'+boardtable_seq+'" word-break:break-all; class="form-control" style="resize: none; white-space:pre;" aria-label="With textarea"></textarea>'+
 	            '<div class="reply_inputOption">'+
 	              '<button type="button" id="resetBtn" class="btn btn-light" onclick="resetBtn()">취소</button>'+
-	              '<button type="button" id="modifyBtn" class="btn btn-light" onclick="modify('+boardtable_seq+')" style="margin: 10px; width: 100px; font-size: 13px;">수정</button>'+
+	              '<button type="button" id="modifyBtn" class="btn modi  btn-light" onclick="modify('+boardtable_seq+')" style="margin: 10px; width: 100px; font-size: 16px;">수정</button>'+
 	            '</div>'+
 	        '</div>'+
 	      '</div>'+
@@ -321,7 +321,7 @@ function loadReply(){
 							                    '</div>'+
 							                    
 							                    '<div class="reply_content">'+
-							                     '<pre style="overflow:auto; white-space:pre-wrap; word-break:break-all;">'+
+							                     '<pre id="replypre" style="overflow:auto; white-space:pre-wrap; word-break:break-all;">'+
 							                       items.content+
 							                     '</pre>'+
 							                    '</div>'+

@@ -4,20 +4,23 @@
 <head>
 <!--===============================================================================================-->
   <link rel="stylesheet" href="../css/main/main.css">
+  <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,400&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:ital@1&display=swap" rel="stylesheet">  
   <script src="https://kit.fontawesome.com/75c3f69c14.js" crossorigin="anonymous"></script>
 <!--===============================================================================================-->
 </head>
+
+  <!-- morip banner -->
+  <div class="morip_banner">
+	<img alt="" src="../image/main/mainbanner5.png">
+  </div>
+  <br><br>  
 <body class="morip_main">
   <input type="hidden" id="email" value="${memEmail }">
   <br><br>  
-  <!-- morip banner -->
-  <div class="morip_banner">
-    <img alt="" src="../image/main/banner1.png">
-  </div>
-  <br><br>  
+
   <!-- morip slider -->
  <!--  <i class="fas fa-chevron-left prev"></i>
   <i class="fas fa-chevron-right next"></i> -->

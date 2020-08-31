@@ -15,12 +15,13 @@ input:focus, #writeFormId:focus{
 }
 /*=============================*/
 .writeFormTitle {
-	font-family: 'Noto Sans KR', sans-serif;
+	font-family: 'Jua', sans-serif; 
+    color: #6d6d6d;
+    font-weight: 400;
 	text-align: center;
     width: 100%;
     display: block;
     font-size: 39px;
-    color: #555555;
     line-height: 1.2;
     padding-bottom: 53px;
     padding-top: 100px;
@@ -28,6 +29,7 @@ input:focus, #writeFormId:focus{
 }
 /*=============================*/
 .container-writeForm-text{
+	font-family: 'Jua', sans-serif; 
 	margin: 0 auto;
 	width: 400px;
 }
@@ -129,7 +131,7 @@ select{
     font-size: 18px;
     height: 50px;
     width: 168px;
-    /* padding: 0 20px; */
+    padding: 0 20px;
     margin-left: 10px;
     margin-right: 10px;
     border-style: solid;
@@ -169,6 +171,7 @@ input[type="radio"]{
 	margin-bottom: 35px;
 }
 #writeBtn{
+	font-family: 'Jua', sans-serif; 
 	text-align: center;
     padding: 0 60px;
     height: 60px;
@@ -181,6 +184,7 @@ input[type="radio"]{
     margin-right: 20px;
 }
 #writeFormresetBtn{
+	font-family: 'Jua', sans-serif; 
 	text-align: center;
     padding: 0 60px;
     height: 60px;
@@ -194,13 +198,16 @@ input[type="radio"]{
 /*=============================*/
 #nameDiv{
 	margin-left: 20px;
+	margin-top: 7px;
 }
 #nickNameDiv{
 	margin-left: 20px;
+	margin-top: 7px;
 }
 #writeForm-residenDiv{
 	margin-left: 20px;
-	font-size: 8pt;
+	font-size: 9pt;
+	margin-top: 7px;
 }
 /*=============================*/
 .hr {

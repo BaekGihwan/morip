@@ -12,7 +12,8 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <!-- Font Awesome icons (free version)-->
     <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" crossorigin="anonymous"></script>
-    <!-- Google fonts-->
+   <!-- Google fonts-->
+<link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
@@ -43,8 +44,8 @@
  $(document).ready(function() {
 	  $('#summernote').summernote({
  	    	placeholder: 'content',
-	        minHeight: 700, //최소높이
-	        maxHeight: 700, //최대높이
+	        minHeight: 550, //최소높이
+	        maxHeight: 550, //최대높이
 	        focus: true,  //에디터 로딩 후 초커스를 맞출지 여부
 	        lang : 'ko-KR' // 한글 설정
 	  });
@@ -79,8 +80,8 @@
         </div>
         <div class="writeOption">
           <div class="saveOptionWrapper">
-            <button type="reset" class="btn- resetBtn" id="boardWriteBtn-" style="font-size:13px; border-radius:20px; border: 1px solid #343a40; outline: none !important; margin:5px; height:40px;" >다시작성</button><br>
-            <button type="button" class="btn-" id="boardModifyBtn"style="font-size:13px; border-radius:20px; border: 1px solid #343a40; outline: none !important; margin:5px; height:40px;">수정하기</button>
+            <button type="reset" class="btn- resetBtn" id="boardWriteBtn-" style="font-size:14px; border-radius:20px; border: 1px solid #343a40; outline: none !important; margin:5px; height:40px;" >다시작성</button><br>
+            <button type="button" class="btn-" id="boardModifyBtn"style="font-size:14px; border-radius:20px; border: 1px solid #343a40; outline: none !important; margin:5px; height:40px;">수정하기</button>
             
           </div>
         </div>

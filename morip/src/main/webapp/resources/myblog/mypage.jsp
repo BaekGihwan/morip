@@ -7,6 +7,9 @@
     <meta charset="utf-8">
     <title>mypage</title>
     
+    <!-- Google fonts-->
+	<link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
+    
   	<!-- sweetAlert -->
 	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 	
@@ -96,8 +99,8 @@
           </div>
         </div>
         <div id="btnWrapper">
-        	<button type="button" class="btn btn-outline-secondary" id="writeOptionBtn" style="font-size:13px; width:120px; height:40px;  margin-left:5px; margin-right:5px;">글 작성</button>
-	        <button type="button" class="btn btn-outline-secondary" id="modifyMemberBtn" style="font-size:13px; width:120px; height:40px; margin-left:5px; margin-right:5px;">회원정보수정</button>
+        	<button type="button" class="btn btn-outline-secondary" id="writeOptionBtn" style="font-size:15px; width:120px; height:40px;  margin-left:5px; margin-right:5px;">글 작성</button>
+	        <button type="button" class="btn btn-outline-secondary" id="modifyMemberBtn" style="font-size:15px; width:120px; height:40px; margin-left:5px; margin-right:5px;">회원정보수정</button>
 	        <c:if test="${memberDTO.email ne memEmail }">
 	        	<button type="button" class="btn btn-outline-primary" id="followBtn" style="font-size:13px; width:120px; height:40px;">팔로우</button>
 	        </c:if>
@@ -109,7 +112,7 @@
       <div class="myBlog_wrapper">
         <table id="tableHeadder">
           <tr>
-            <td style="font-size:12px; border-top:2px solid; font-weight:bold; width:8%; height:30px;">여행기</td>
+            <td style="font-size:12px; border-top:2px solid; font-weight:bold; width:8%; height:30px;">#여행기</td>
             <td style="border-top: 1px solid; width:92%;"></td>
           </tr>
         </table>
@@ -265,7 +268,7 @@
  					icon: 'success',
  					confirmButtonText: '확인',
   					title: '배경사진이 수정되었습니다!'
-				}).then((result) => {
+				}).then((result) =>{
 					if (result.value) {
 						location.reload(true);
 					}
