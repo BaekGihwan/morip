@@ -142,7 +142,7 @@ var minutes = (new Date()).getMinutes();//분
 	            '<textarea id="replyInputBox'+seq+'" class="form-control" style="resize: none;" aria-label="With textarea"></textarea>'+
 	            '<div class="reply_inputOption">'+
 	              '<button type="button" id="resetBtn" class="btn btn-light" onclick="resetBtn()">취소</button>'+
-	              '<button type="button" id="modifyBtn" class="btn btn-light" style="margin: 10px; width: 100px; font-size: 13px;" onclick="modifyBtn('+seq+')">수정</button>'+
+	              '<button type="button" id="modifyBtn" class="btn modi btn-light" style="margin: 10px; width: 100px; font-size: 16px;" onclick="modifyBtn('+seq+')">수정</button>'+
 	            '</div>'+
 	        '</div>'+
 	      '</div>'+

@@ -21,6 +21,7 @@
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 <!-- 구글 폰트 -->
+<link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
 <link
 	href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@700&display=swap"
 	rel="stylesheet">
@@ -86,12 +87,12 @@
 					<div class="view_boardReplyInputWrapper">
 						<div class="view_replyContentInputWrapper">
 							<div class="reply_contentInput">
-								<div class="reply_userID">${nickname}</div>
+								<div class="reply_userID">   ${nickname}</div>
 								<textarea id="replyInputBox${seq }" class="form-control"
 									aria-label="With textarea" style="resize: none;"></textarea>
 								<div class="reply_inputOption">
 									<button id="insertBtn" class="btn btn-light"
-										onclick="insertBtn(${seq})">등록</button>
+										onclick="insertBtn(${seq})">등 록</button>
 								</div>
 							</div>
 						</div>

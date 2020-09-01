@@ -33,10 +33,10 @@
 								<!-- <div><lottie-player src="https://assets2.lottiefiles.com/packages/lf20_o1WDlm.json"  background="transparent"  speed="0.6"  style="width: 400px; height: 400px;"  loop  autoplay></lottie-player></div> -->
 								<div class="row gtr-uniform gtr-50">
 									<div class="col-8 col-12-xsmall">
-										<input type="text" id="matzipText" name="matzipText" placeholder="원하시는 지역을 입력하세요.">
+										<input type="text" id="matzipText" name="matzipText" placeholder="  원하시는 지역을 입력하세요.">
 									</div>
 									<div class="col-4 col-12-xsmall">
-										<input class="fit primary" type="submit" value="검색" id="matzipSearchBtn">
+										<input class="fit primary" type="submit" value="검 색" id="matzipSearchBtn">
 									</div>
 								</div>
 							</header>

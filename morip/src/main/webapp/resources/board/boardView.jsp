@@ -11,6 +11,7 @@
 <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js"
 	crossorigin="anonymous"></script>
 <!-- Google fonts-->
+<link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
 <link
 	href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@900&display=swap"
 	rel="stylesheet">

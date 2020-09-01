@@ -16,15 +16,16 @@ input:focus, #writeFormId:focus {
 }
 /*=============================*/
 .idFindFormTitle {
-	font-family: 'Noto Sans KR', sans-serif;
+	font-family: 'Jua', sans-serif;  
+	color: #6d6d6d;
+	font-weight: 400;
+	padding-top: 62px;
 	text-align: center;
 	width: 100%;
 	display: block;
 	font-size: 39px;
-	color: #555555;
 	line-height: 1.2;
 	padding-bottom: 53px;
-	padding-top: 100px;
 	letter-spacing: 10px;
 }
 
@@ -34,6 +35,7 @@ input:focus, #writeFormId:focus {
 }
 /*=============================*/
 .idFindForm-Id {
+	font-family: 'Jua', sans-serif;  
 	display: inline-block;
 	font-size: 16px;
 	color: #555555;
@@ -43,6 +45,8 @@ input:focus, #writeFormId:focus {
 }
 
 #name {
+	font-family: 'Jua', sans-serif;
+	letter-spacing: 2px;
 	color: #333333;
 	font-size: 16px;
 	height: 50px;
@@ -56,43 +60,11 @@ input:focus, #writeFormId:focus {
 	border-bottom-width: 1px;
 	border-left-width: 1px;
 	border-right-width: 1px;
-}
-/*=============================*/
-/* .idFindForm-tel {
-	display: inline-block;
-	font-size: 16px;
-	color: #555555;
-	padding-top: 25px;
-	padding-bottom: 10px;
+	
 }
 
-select {
-	color: #333333;
-	font-size: 18px;
-	height: 50px;
-	width: 110px;
-	padding: 0 20px;
-	margin-left: 10px;
-	border-style: solid;
-	border-radius: 10px;
-	border-top-width: 1px;
-	border-bottom-width: 1px;
-	border-left-width: 1px;
-	border-right-width: 1px;
-}
-
-.telBox {
-	color: #333333;
-	font-size: 18px;
-	height: 50px;
-	width: 65px;
-	border-style: solid;
-	border-radius: 10px;
-	border-width: 1px;
-	padding: 0 25px;
-} */
-/*=============================*/
 .idFindForm-resident {
+	font-family: 'Jua', sans-serif;  
 	display: inline-block;
 	font-size: 16px;
 	color: #555555;
@@ -102,6 +74,8 @@ select {
 }
 
 .idFindFormResident {
+	font-family: 'Jua', sans-serif;  
+	letter-spacing: 2px;
 	color: #333333;
 	font-size: 18px;
 	height: 50px;
@@ -115,21 +89,22 @@ select {
 	-webkit-appearance: none;
 }
 
-input[type="number"]::-webkit-outer-spin-button,
-input[type="number"]::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
+input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-inner-spin-button
+	{
+	-webkit-appearance: none;
+	margin: 0;
 }
 /*=============================*/
 .container-idFindFormBtn {
 	margin-top: 50px;
-	margin-bottom: 35px;
+	margin-bottom: 62px;
 	margin-left: 10px;
 }
 
 #idFindBtn {
+	font-family: 'Jua', sans-serif;  
 	text-align: center;
-	padding: 0 45px;
+	padding: 0 47px;
 	height: 60px;
 	background-color: #333333;
 	border-radius: 10px;
@@ -141,8 +116,9 @@ input[type="number"]::-webkit-inner-spin-button {
 }
 
 #idFindFormresetBtn {
+	font-family: 'Jua', sans-serif;  
 	text-align: center;
-	padding: 0 55px;
+	padding: 0 60px;
 	height: 60px;
 	background-color: #333333;
 	border-radius: 10px;
@@ -189,8 +165,9 @@ input[type="number"]::-webkit-inner-spin-button {
 }
 
 .modaltext {
+	font-family: 'Jua', sans-serif;  
 	display: inline-block;
-	font-size: 23px;
+	font-size: 22px;
 	color: #555555;
 	padding-top: 40px;
 	margin-left: 170px;
@@ -198,6 +175,7 @@ input[type="number"]::-webkit-inner-spin-button {
 }
 
 #modalname {
+	font-family: 'Jua', sans-serif;  
 	display: inline-block;
 	font-size: 20px;
 	color: #555555;
@@ -207,6 +185,7 @@ input[type="number"]::-webkit-inner-spin-button {
 }
 
 #modalId {
+	font-family: 'Jua', sans-serif;  
 	display: inline-block;
 	font-size: 20px;
 	color: #555555;
@@ -220,26 +199,28 @@ input[type="number"]::-webkit-inner-spin-button {
 }
 
 #modalBtn {
-	margin-left: 150px;
+	font-family: 'Jua', sans-serif;  
+	margin-left: 120px;
 	margin-right: 40px;
 	padding: 0 15px;
-	height: 50px;
-	width: 80px;
+	height: 40px;
+	width: 100px;
 	background-color: #333333;
 	border-radius: 10px;
-	font-size: 20px;
+	font-size: 16px;
 	color: #fff;
 	outline: none !important;
 	border: none;
 }
 
 #cancelBtn {
+	font-family: 'Jua', sans-serif;  
 	padding: 0 15px;
-	height: 50px;
-	width: 80px;
+	height: 40px;
+	width: 100px;
 	background-color: #333333;
 	border-radius: 10px;
-	font-size: 20px;
+	font-size: 16px;
 	color: #fff;
 	outline: none !important;
 	border: none;
@@ -247,16 +228,16 @@ input[type="number"]::-webkit-inner-spin-button {
 
 #modalDiv {
 	margin-left: 30px;
+	margin-top: 10px;
 }
 
 #remodalDiv {
 	margin-left: 30px;
+	margin-top: 10px;
 }
 /*=============================*/
-
 .hr {
 	border-bottom: 4px solid black;
 	width: 400px;
 	margin: 0 auto;
 }
-

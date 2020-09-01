@@ -7,18 +7,19 @@ input:focus, #writeFormId:focus{
 }
 /* 위에 이름 부분 */
 .memberModifyFormTitle {
+	font-family: 'Jua', sans-serif;    
 	text-align: center;
     width: 100%;
     display: block;
-    font-family: Poppins-Regular;
     font-size: 39px;
     color: #555555;
     line-height: 1.2;
     padding-bottom: 53px;
     padding-top: 100px;
+    letter-spacing: 7px;
 }
 
-.container-memberModifyForm-text{	
+.container-memberModifyForm-text{
 	margin: 0 auto;
 	width: 600px;
 	display: flex;
@@ -31,10 +32,13 @@ input:focus, #writeFormId:focus{
 }
 
 .box22 {
+	font-family: 'Jua', sans-serif;
 }
 
 /* 사진프로필쪽 */
 .container-memberModifyprofile {
+	font-family: 'Jua', sans-serif;
+	letter-spacing: 3px;
 	margin: 0 auto;
 	margin-right: 35px;
 	text-align: center;
@@ -60,7 +64,7 @@ input:focus, #writeFormId:focus{
 .memberModifyForm-repwd,
 .memberModifyForm-nickName {
 	display:inline-block;
-	font-family: Poppins-Regular;
+	font-family: 'Jua', sans-serif;
     font-size: 16px;
     color: #555555;
     padding-top: 10px;
@@ -71,7 +75,7 @@ input:focus, #writeFormId:focus{
 #memberModifyFormPwd,
 #memberModifyFormRepwd,
 #memberModifyFormNickName{
-	font-family: Poppins-Regular;
+	font-family: 'Jua', sans-serif; 
     color: #333333;
     font-size: 16px;
     height: 50px;
@@ -91,7 +95,7 @@ input:focus, #writeFormId:focus{
 /* 성별부분*/
 .memberModifyForm-gender{
 	display:inline-block;
-	font-family: Poppins-Regular;
+	font-family: 'Jua', sans-serif;  
     font-size: 16px;
     color: #555555;
     padding-top: 10px;
@@ -99,12 +103,12 @@ input:focus, #writeFormId:focus{
 }
 
 #gender1{
-	font-family: Poppins-Regular;
+	font-family: 'Jua', sans-serif;  
 	margin-left: 30px;
 }
 
 #gender2{
-	font-family: Poppins-Regular;
+	font-family: 'Jua', sans-serif;  
 	margin-left: 30px;
 }
 
@@ -145,11 +149,11 @@ input:focus, #writeFormId:focus{
 #memberModifyFormResetBtn,
 #memberModifyFormDropBtn {
 	text-align: center;
-	padding: 0 17px;
+	padding: 0 23px;
 	height: 50px;
 	background-color: #333333;
 	border-radius: 10px;
-    font-family: Poppins-Regular;
+    font-family: 'Jua', sans-serif;
     font-size: 16px;
     color: #fff;
     outline: none !important;

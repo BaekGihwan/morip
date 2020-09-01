@@ -4,7 +4,8 @@
 <html>
 <!--===============================================================================================-->	
 <link rel="stylesheet" type="text/css" href="../css/member/pwdFind.css">
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500&display=swap" rel="stylesheet">
+<!-- Google fonts-->
+<link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
 <!--===============================================================================================-->
 </head>
 
@@ -38,7 +39,7 @@
 				<div id="modal">
 					<div class="modal_content">
 						<span class = "modaltext">비밀번호변경 </span><br><br>
-						<hr align="center" width="100%" size="2" color="black">
+						<hr align="center" width="80%" size="2" color="black" style="margin: 0 auto";>
 						
 						<input id="modalpwd" type="password" placeholder="새 비밀번호를 입력하세요"><br>
 						<div id="modalDiv"></div>

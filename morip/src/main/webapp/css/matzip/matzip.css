@@ -122,8 +122,9 @@ input, select, textarea {
 	body, input, select, textarea {
 		color: #585858;
 		/* font-family: "Source Sans Pro", Helvetica, sans-serif; */
+		font-family: 'Jua', sans-serif;
+		letter-spacing: 2px;
 		font-size: 16pt;
-		font-weight: 300;
 		line-height: 1.75;
 	}
 
@@ -2460,13 +2461,13 @@ List
 		-ms-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
 		transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
 		background-color: transparent;
-		border-radius: 4px;
+		border-radius: 10px;
 		border: 0;
 		box-shadow: inset 0 0 0 2px #585858;
 		color: #585858 !important;
 		cursor: pointer;
 		display: inline-block;
-		font-size: 0.8em;
+		font-size: 18PX;
 		font-weight: 900;
 		height: 3.5em;
 		letter-spacing: 0.35em;
@@ -2478,6 +2479,7 @@ List
 		text-overflow: ellipsis;
 		text-transform: uppercase;
 		white-space: nowrap;
+		height: 55px;
 	}
 
 		input[type="submit"].icon:before,
@@ -2535,7 +2537,7 @@ List
 		button.primary,
 		.button.primary {
 			box-shadow: none;
-			background-color: #585858;
+			background-color: #333333;
 			color: #ffffff !important;
 		}
 
@@ -3131,3 +3133,9 @@ a{
     text-align: left;
     background-color: #fff;
 }
+
+
+
+
+
+

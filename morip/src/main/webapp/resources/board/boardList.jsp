@@ -5,8 +5,9 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!--===============================================================================================-->
 <link rel="stylesheet" type="text/css" href="../css//board/boardList.css">
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500&display=swap" rel="stylesheet">
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+<!-- Google fonts-->
+<link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
 <!--===============================================================================================-->
 </head>
 <body>	
@@ -14,20 +15,23 @@
 		<input type="hidden" value="${memEmail }" id="email">
 		<input type="hidden" id="pg" value="${pg }">
 		<div class="bordListTitle-">
-		<span class="bordListTitle">커뮤니티</span> <!-- <button type="button" id="boardWriteBtn">글쓰기</button> -->
+		<span class="bordListTitle">#커뮤니티</span>
 		<p id="boardWriteBtn">게시판 작성하기</p>
 		</div>
 		<table id="boardListTable" cellspacing="0" cellpadding="3" frame="hsides" rules="rows" height="100px;">
+			<thead>
 			<tr>
-				<th width='160' >글번호</th>
-				<th width='475'>제목</th>
-				<th width='160'>작성자</th>
-				<th width='160'>작성일</th>
-				<th width='160'>조회</th>
+				<th width='130' >글번호</th>
+				<th width='565'>제목</th>
+				<th width='140'>작성자</th>
+				<th width='140'>작성일</th>
+				<th width='140'>조회</th>
 			</tr>
+			</thead>
 		</table>
 		<br>
 		<div id="boardPagingDiv" style="text-align: center;"></div>
+
 		<form>
 			<input type="hidden" name="pg" value="1">
 			<div class="searchba"style="width: 1120px; text-align: center;">
@@ -37,7 +41,7 @@
 				</select>
 				 <input type="search" name="keyword" id="keyword" placeholder="검색어를 입력하세요."
 					value="${keyword }"> 
-					<input type="button" id="boardSearchBtn" value="검색">
+					<input type="button" id="boardSearchBtn" value="검 색">
 			</div>
 			<br>
 		</form>

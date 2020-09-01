@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <head>
+  <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../css/blog/blogList.css">
   <script src="https://kit.fontawesome.com/75c3f69c14.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -16,8 +17,8 @@
   <br><br> 
  
   <div class="blogSearch">
-    <input type="text" name="hashtagText" class="hashtagText" placeholder=" #해쉬태그를 입력하세요">
-  	<input type="submit" class="hashtagSearchBtn" value="검 색" >  
+    <input type="text" name="hashtagText" class="hashtagText" placeholder="     #해쉬태그를 입력하세요">
+  	<input type="submit" class="hashtagSearchBtn" value="검  색" >  
   </div>
   <br><br>  
   <div class="morip_banner_slider">
@@ -108,7 +109,7 @@
   </div>  
   <!-- 리스트 보여주기 -->
   <div class="writeBlog">
-    <span class="write_text">여행기</span>
+    <span class="write_text">#여행기</span>
     <!-- <p class="write_blog">블로그 작성하기</p> -->
     <button type="button" class="btn btn-outline-secondary write_blog" id="writeOptionBtn" >블로그 작성하기</button>
   </div>

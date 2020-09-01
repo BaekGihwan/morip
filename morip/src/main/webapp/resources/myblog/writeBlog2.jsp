@@ -7,7 +7,8 @@
 
 <!--AOS 라이브러리-->
 <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
-
+<!-- Google fonts-->
+<link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
 <!--hover.css-->
 <link href="../css/hover.css" rel="stylesheet" />
 <!-- Core theme CSS (includes Bootstrap)-->
@@ -67,7 +68,7 @@ iframe {
 					</div>
 					<div class="step2">
 						<div class="stepHeader">STEP2</div>
-						<div class="stepContent">에세이 제목과 배경 설정</div>
+						<div class="stepContent">에세이 제목과 배경설정</div>
 					</div>
 					<div class="step3">
 						<div class="stepHeader">STEP3</div>
@@ -114,7 +115,7 @@ iframe {
 						<div class="hashtagTitle">해쉬태그</div>
 						<div class="hashtagInput">
 							<textarea id="hashtagInputText" style="resize: none;"
-								placeholder="#해쉬태그 #입력하세요"></textarea>
+								placeholder="#해쉬태그#입력하세요"></textarea>
 						</div>
 					</div>
 				</div>
