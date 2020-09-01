@@ -4,7 +4,6 @@ body, html{
   margin:0;
   padding:0;
   width:100%;
-  background-color: #fffffb;
   display:block;
 }
 .communityWriteForm{
@@ -24,7 +23,8 @@ article{
 }
 .container_writeForm{
 	border:1px solid #cfd8dc;
-	height:85vh;
+	height:75vh;
+	margin-bottom: 100px;
 }
 /*content*/
 .contentWrapper{
@@ -52,7 +52,7 @@ article{
 }
 .writeOption{
   width:20%;
-  height:85vh;
+  height:75vh;
   border:1px solid #cfd8dc;
 }
 /*saveOption*/

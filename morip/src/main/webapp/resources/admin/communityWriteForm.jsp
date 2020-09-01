@@ -6,7 +6,6 @@
     <meta charset="utf-8">
     <title></title>
     <link href="../css/admin/styles.css" rel="stylesheet" />
-    <link href="../css/admin/sb-admin-2.min.css" rel="stylesheet">
     <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" crossorigin="anonymous"></script>
  	<!-- 추가본 -->
@@ -16,8 +15,8 @@
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-	<!-- 이놈만 쓰면 CSS 다 망가진다! 근데 이걸 안하면 섬머 노트가 이상해진다 -->
-	<!-- <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet"> --> 
+	<link href="../css/admin/bootstrap.min.css" rel="stylesheet" />
+	<link href="../css/admin/sb-admin-2.min.css" rel="stylesheet">
   </head>
   <body>
     <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
@@ -101,6 +100,10 @@
         </div>
         <div id="layoutSidenav_content">
           <content>
+            <div class="card shadow mb-4">
+              <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold">커뮤니티 공지사항 등록</h6>
+              </div>
             <!-- 글작성부분  -->
 		    <article class="container">		    
 			<form class="communityWriteForm" method="post" action="/write">
@@ -124,7 +127,8 @@
 				</div>
 			</div>
 			</form>
-		  </article>  
+		  </article>
+            </div>
           </content>
         </div>
     </div>
@@ -143,8 +147,8 @@
 	$(document).ready(function() {
     	$('#summernote').summernote({
     		placeholder: "content",
-	    	minHeight: 600,             // 최소 높이
-	   	 	maxHeight: 600,             // 최대 높이
+	    	minHeight: 500,             // 최소 높이
+	   	 	maxHeight: 500,             // 최대 높이
 	    	focus: true,                  // 에디터 로딩후 포커스를 맞출지 여부
 	    	lang: "ko-KR"	    	
     	});
