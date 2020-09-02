@@ -76,5 +76,4 @@ public class BlogController {
 		return mav;
 	}
 	
-	
 }
