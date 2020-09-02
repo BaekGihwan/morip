@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="adminSQL">
+ 	<!-- 방문자수 증가 -->
+ 	<update id="countEnter">
+ 		update todaytable set countEnter = countEnter + 1
+ 	</update>
+ 	<!-- 투데이 디비 가져오기 -->
+ 	<select id="dashboard" resultType="today">
+ 		select * from todaytable
+ 	</select>
+ 	<!-- 총회원수 뽑아오기 -->
+ 	<select id="totalmember" resultType="int">
+ 		select count(*) from membertable where nickname not like '%'||'운영자'||'%'
+ 	</select>
+ 	<!-- 총블로그수 뽑아오기 -->
+ 	<select id="totalblog" resultType="int">
+ 		select count(*) from blogboardtable
+ 	</select>
+ 	<!-- 총게시판수 뽑아오기 -->
+ 	<select id="totalboard" resultType="int">
+ 		select count(*) from boardtable where step = 0 and nickname not like '%'||'운영자'||'%'
+ 	</select>
+ 	<!-- 총맛집수 뽑아오기 -->
+ 	<select id="totalmatzip" resultType="int">
+ 		select count(*) from matziptable
+ 	</select>
+ 	<!-- 남자회원수 뽑아오기 -->
+ 	<select id="totalMan" resultType="int">
+ 		select count(*) from membertable where gender = 0
+ 	</select>
+ 	<!-- 여자회원수 뽑아오기 -->
+ 	<select id="totalWoman" resultType="int">
+ 		select count(*) from membertable where gender = 1
+ 	</select>
+ </mapper>

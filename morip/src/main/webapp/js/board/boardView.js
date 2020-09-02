@@ -224,9 +224,11 @@ function deleteBtnClick(boardtable_seq){
 			data: 'boardtable_seq='+boardtable_seq+'&content='+content,
 			success: function(){
 			Swal.fire({
-                icon: 'success',
-                confirmButtonText: '확인',
-                 title: '댓글이 수정되었습니다.'
+                title: '수정 완료!',
+				text: '댓글이 수정되었습니다!',
+				icon: 'success',
+				confirmButtonText: '확인',
+				confirmButtonColor: '#3085d6',
             }).then((result) => {
             if (result.value) {                                 
                   loadReply();

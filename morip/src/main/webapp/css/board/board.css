@@ -62,7 +62,7 @@ article{
 }
 #boardWriteBtn-{
 	font-family: 'Jua', sans-serif;
-letter-spacing: 2px;
+	letter-spacing: 2px;
 }
 #boardWriteBtn-:hover{
 	background-color: #6c757d;
@@ -71,7 +71,7 @@ letter-spacing: 2px;
 
 #boardWriteBtn{
 	font-family: 'Jua', sans-serif;
-letter-spacing: 2px;
+	letter-spacing: 2px;
 }
 #boardWriteBtn:hover{
 	background-color: #6c757d;

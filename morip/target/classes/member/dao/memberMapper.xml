@@ -25,8 +25,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!-- 회원가입  -->
 	<insert id="moripWrite" parameterType="member">
+	begin
 		insert into membertable(membertable_seq, email, pwd, name, nickname, idCardNumber1, idCardNumber2, gender, image ,checkid)
-			values(membertable_seq.nextval, #{email}, #{pwd}, #{name}, #{nickname}, #{idCardNumber1}, #{idCardNumber2}, #{gender}, #{image}, #{checkid})
+			values(membertable_seq.nextval, #{email}, #{pwd}, #{name}, #{nickname}, #{idCardNumber1}, #{idCardNumber2}, #{gender}, #{image}, #{checkid});
+
+		update todaytable set countsignup = countsignup + 1;	
+	end;
 	</insert>
 	
 	<!-- 새비밀번호 -->
@@ -51,7 +55,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!-- 회원탈퇴 -->
 	<update id="dropMorip" parameterType="java.util.Map">
-		delete membertable where email=#{email} and checkid=#{checkid}
+	begin
+		delete membertable where email=#{email} and checkid=#{checkid};
+		
+		update todaytable set countsignout = countsignout + 1;	
+	end;
 	</update>
 	
 	<!-- 회원정보 수정(email) -->

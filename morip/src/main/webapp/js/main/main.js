@@ -70,13 +70,15 @@ $.ajax({
 				data: 'nickname='+data.memberDTO.nickname,
 				dataType: 'json',
 				success: function(data){
-					//alert(data.blogboard1.nickname);
 					$.each(data.list,function(index,items){
+						$('#contentFilter').html(data.list[index].content);
+						let content = $('#contentFilter').text();
+						
 						$('#post_seq'+(index+1)).val(data.list[index].blogboardtable_seq);
 						$('#post_image'+(index+1)).css('background-image','url("../storage/'+data.list[index].mainimage+'")');
 	            		$('#post_image_like_text'+(index+1)).text(data.list[index].likecount);
 	            		$('#post_title_p'+(index+1)).text(data.list[index].subject);
-	            		$('#post_content_p'+(index+1)).html(data.list[index].content);
+	            		$('#post_content_p'+(index+1)).text(content);
 					});
 				},
 				error: function(err){

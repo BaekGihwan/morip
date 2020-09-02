@@ -3,6 +3,7 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
+    <title>morip</title>
     <meta charset="utf-8">
     <title></title>
     <link href="../css/admin/styles.css" rel="stylesheet" />
@@ -14,6 +15,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" crossorigin="anonymous"></script>
   </head>
   <body>
+  <input type="hidden" class="man" value="${man }">
+  <input type="hidden" class="woman" value="${woman }">
     <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
       <div class="">
         <a class="navbar-brand" href="dashboard">[MO:RIP]</a>
@@ -110,7 +113,7 @@
                       <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
                           <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">총 회원 수</div>
-                          <div class="h5 mb-0 font-weight-bold text-gray-800">507,049명</div>
+                          <div class="h5 mb-0 font-weight-bold text-gray-800" id="totalmember"></div>
                         </div>
                         <div class="col-auto">
                           <i class="fas fa-user fa-2x text-gray-300"></i>
@@ -127,7 +130,7 @@
                       <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
                           <div class="text-xs font-weight-bold text-success text-uppercase mb-1">총 블로그 수</div>
-                          <div class="h5 mb-0 font-weight-bold text-gray-800">50,392개</div>
+                          <div class="h5 mb-0 font-weight-bold text-gray-800" id="totalblog"></div>
                         </div>
                         <div class="col-auto">
                           <i class="fas fa-book-open fa-2x text-gray-300"></i>
@@ -144,7 +147,7 @@
                       <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
                           <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">총 커뮤니티 작성 수</div>
-                          <div class="h5 mb-0 font-weight-bold text-gray-800">63,392개</div>
+                          <div class="h5 mb-0 font-weight-bold text-gray-800" id="totalboard"></div>
                         </div>
                         <div class="col-auto">
                           <i class="fas fa-file-alt fa-2x text-gray-300"></i>
@@ -161,7 +164,7 @@
                       <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
                           <div class="text-xs font-weight-bold text-info text-uppercase mb-1">총 맛집 등록 개수</div>
-                          <div class="h5 mb-0 font-weight-bold text-gray-800">392개</div>
+                          <div class="h5 mb-0 font-weight-bold text-gray-800" id="totalmatzip"></div>
                         </div>
                         <div class="col-auto">
                           <i class="fas fa-utensils fa-2x text-gray-300"></i>
@@ -181,7 +184,7 @@
                       <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
                           <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">일일 신규 회원 수</div>
-                          <div class="h5 mb-0 font-weight-bold text-gray-800">1,049명</div>
+                          <div class="h5 mb-0 font-weight-bold text-gray-800" id="todaySignUp"></div>
                         </div>
                         <div class="col-auto">
                           <i class="fas fa-user fa-2x text-gray-300"></i>
@@ -198,7 +201,7 @@
                       <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
                           <div class="text-xs font-weight-bold text-success text-uppercase mb-1">일일 블로그 작성 수</div>
-                          <div class="h5 mb-0 font-weight-bold text-gray-800">1,392개</div>
+                          <div class="h5 mb-0 font-weight-bold text-gray-800" id="todayblog"></div>
                         </div>
                         <div class="col-auto">
                           <i class="fas fa-book-open fa-2x text-gray-300"></i>
@@ -215,7 +218,7 @@
                       <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
                           <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">일일 커뮤니티 작성 수</div>
-                          <div class="h5 mb-0 font-weight-bold text-gray-800">492개</div>
+                          <div class="h5 mb-0 font-weight-bold text-gray-800" id="todayboard"></div>
                         </div>
                         <div class="col-auto">
                           <i class="fas fa-file-alt fa-2x text-gray-300"></i>
@@ -232,7 +235,7 @@
                       <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
                           <div class="text-xs font-weight-bold text-info text-uppercase mb-1">일일 방문자 현황</div>
-                          <div class="h5 mb-0 font-weight-bold text-gray-800">392개</div>
+                          <div class="h5 mb-0 font-weight-bold text-gray-800" id="todayEnter"></div>
                         </div>
                         <div class="col-auto">
                           <i class="fas fa-users fa-2x text-gray-300"></i>
@@ -308,5 +311,5 @@
   <script src="../js/admin/Chart.min.js"></script>
   <script src="../js/admin/chart-area-demo.js"></script>
   <script src="../js/admin/scripts.js"></script>
-
+  <script type="text/javascript" src="../js/admin/dashboard.js"></script>
 </html>

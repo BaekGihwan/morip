@@ -16,7 +16,7 @@
 			</div>
 			<!-- 가운데 메뉴 -->
 			<div class="header_menu">
-				<ul style="margin: 0px; line-height: 1.5;">
+				<ul style="margin: 0px; line-height: 1.5; margin-bottom: 0;">
 					<li><span id="blog">블로그</span></li>
 					<li><span id="matzip">지역맛집</span></li>
 					<li><span id="board">커뮤니티</span></li>
@@ -32,8 +32,7 @@
 	</header>
 </body>
 <!--===============================================================================================-->
-<script type="text/javascript"
-	src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script type="text/javascript" src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script type="text/javascript" src="../js/main/header.js"></script>
 
 

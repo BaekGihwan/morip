@@ -284,6 +284,7 @@ public class MyblogController {
 
 	@RequestMapping(value = "/myblog/updateReply", method = { RequestMethod.GET })
 	public @ResponseBody void updateReply(HttpSession session, @RequestParam Map<String, String> map) {
+		System.out.println("asdfasdfasdfas");
 		myblogService.updateReply(map);
 	}
 

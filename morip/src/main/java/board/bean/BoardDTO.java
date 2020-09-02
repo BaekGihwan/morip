@@ -21,7 +21,4 @@ public class BoardDTO {
 	 @JsonFormat(shape=JsonFormat.Shape.STRING, pattern = "yyy.MM.dd")
 	 private Date logtime;
 	 private String image;
-	  
-	  
-	
 }
