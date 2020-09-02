@@ -8,7 +8,7 @@ $(document).ready(function(){
 			//alert(JSON.stringify(data));
 			
 			$.each(data.list, function(index, items){
-			if(items.nickname == "지지지") {
+			if(items.nickname == "운영자") {
 				$('<tr/>').append($('<td/>',{
 					align: 'center',
 					text: items.boardtable_seq
@@ -134,7 +134,7 @@ $('#boardSearchBtn').click(function(event, str){
 				$('#boardListTable tr:gt(0)').remove();
 					
 				$.each(data.list, function(index, items){
-			if(items.nickname == "지지지") {
+			if(items.nickname == "운영자") {
 				$('<tr/>').append($('<td/>',{
 					align: 'center',
 					text: items.boardtable_seq
@@ -182,12 +182,8 @@ $('#boardSearchBtn').click(function(event, str){
 				})).appendTo($('#boardListTable'));
 				}      
 			}); //each
-			
-			
-				
 				//페이징 처리
-				$('#boardPagingDiv').html(data.boardPaging.pagingHTML);
-			
+				$('#boardPagingDiv').html(data.boardPaging.pagingHTML);			
 			},
 			error: function(err){
 				console.log(err);

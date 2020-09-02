@@ -82,6 +82,8 @@ console.log($('.blogList_wrapper').html());
 					let startdate= new Date(items.startdate).format('yyyy-MM-dd'); 
 					let enddate = new Date(items.enddate).format('yyyy-MM-dd');  
 					let seq = items.blogboardtable_seq;
+					$('#contentFilter').html(items.content);
+					let content = $('#contentFilter').text();
 					//처음 시작을 여는 div
 					if(tempNumber%4==0){
 						height+=230;
@@ -92,7 +94,7 @@ console.log($('.blogList_wrapper').html());
 					list+='<div class="myblog_img">';
 					list+='<img class="listImg" src="../storage/'+items.mainimage+'"></div>';
         			list+='<div class="myblog_info"><div class="myblog_subject">'+items.subject+'</div>';
-        			list+='<div class="myblog_content">'+items.content+'</div>';
+        			list+='<div class="myblog_content">'+content+'</div>';
         			list+='<div class="myblog_userFunction"><div class="like'+seq+'" style="cursor:pointer;"onclick="likeClick('+seq+')"><i class="far fa-heart"></i></div>';
         			list+='<div class="reply"><span>'+items.likecount+'</span> </div><div class="myblog_travleDay">';
         			list+= startdate +'~'+ enddate+'</div></div></div></div>';
@@ -159,9 +161,9 @@ Number.prototype.zf = function (len) { return this.toString().zf(len); };
 //페이지 로딩 되자마자 1pg 뜨기
 $(document).ready(function(){
 	loadingPage();
-	$('.userMenu').css("z-index","90");
-});
-//변수 선언
+		$('.userMenu').css("z-index","90");
+	});
+	//변수 선언
 var $window = $(this);
 var scrollTop = $window.scrollTop();
 var windowHeight = $window.height();

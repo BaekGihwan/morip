@@ -64,18 +64,22 @@ th {
 }
 
 #boardWriteBtn {
-	border: 1px solid #c9c9c9;
+	/* border: 1px solid #c9c9c9; */
+	border: 1px solid #6c757d !important;
 	width: 150px;
 	height: 50px;
-	float: right;
-	border-color: #6c757d;
+	float: right;	
+	/* border-color: #6c757d; */
 	margin-top: 70px;
-	font-size: 16px;
-	color: #6c757d;
+	/* font-size: 16px; */
+	font-size: 20px;
+	/* color: #6c757d; */
+	 color: #6c757d !important;
 	text-align: center;
 	line-height: 50px;
 	cursor: pointer;
-	font-family: 'Jua', sans-serif;
+	font-family: 'Jua', sans-serif;	
+	border-radius: 5px;
 }
 
 #boardListTable {

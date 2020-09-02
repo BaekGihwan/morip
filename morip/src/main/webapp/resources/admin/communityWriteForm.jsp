@@ -3,6 +3,7 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
+    <title>morip</title>
     <meta charset="utf-8">
     <title></title>
     <link href="../css/admin/styles.css" rel="stylesheet" />

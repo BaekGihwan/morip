@@ -80,15 +80,22 @@ article{
 #subjectDiv{
 	padding: 0 40px;
 }
-
 .saveOptionWrapper button{
 	font-size: 13px;
-	border-radius: 20px;
-	border: 1px solid #343a40;
+	border-radius: 20px;	
+	/* border: 1px solid #343a40; */
+	border: 1px solid gray;
 	outline: none !important;
 	margin: 5px;
 	height: 40px; 
-	width: 90%;
+	width: 80%;
+	letter-spacing: 2px;
+	background-color: white;
+}
+
+.saveOptionWrapper button:hover{
+	background-color: #6c757d;
+	color: black;
 }
 
 hr {

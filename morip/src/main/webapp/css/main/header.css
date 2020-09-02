@@ -99,6 +99,7 @@ img {
 ul {
 	list-style:none; 
 	cursor:pointer;
+	margin-bottom: 0 !important;
 }
 
 li {   

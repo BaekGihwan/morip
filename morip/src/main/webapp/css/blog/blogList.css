@@ -266,15 +266,6 @@
   text-align: right;
 }
 
-/* 
-.myblog_content{
-  font-size: 18px;
-  margin:10px;
-  text-align: left;
-  font-family: 'Nanum Pen Script', cursive;
-} */
-
-
 .reply{
   flex-grow: 1;
 }
@@ -286,117 +277,6 @@
   flex-grow: 1;
 }
 
-
-
-/* 블로그 보여주기 기환 버젼! */
-/* 
-.blogList_wrapper2 {
-	border: 1px solid red;
-	position:relative;
-	width:70%;
-	height:300px;
-	padding:40px auto;
-	margin:0 auto;
-}
-
-#blogList_feed{
-  width: 270px;
-  height: 400px;
-  margin: 10px;
-  background-color: #dcdcd3;
-  border-radius: 20px;
-}
-
-.listImg{
-  width:250px;
-  height:200px;
-  margin-top: 5px;
-  margin-left: 5px;
-  margin-left: 20px;
-  border-radius: 20px;
-}
-
-
-
-.blogList_subject{
-  font-size: 18px;
-  font-weight: bold;
-  margin:10px;
-  margin-bottom:10px;
-  text-align: left;
-  
-}
-.blogList_content{
-  font-size: 18px;
-  margin:10px;
-  text-align: left;
-  font-family: 'Nanum Pen Script', cursive;
-}
-
-.blogList_userFunction{
-  display: flex;
-  align-items: center;
-}
-
-.like{
-	border-left: 5px;
-  flex-grow: 1;
-}
-.reply{
-  flex-grow: 1;
-}
-
-
-
-.blogList_travleDay{
- font-size: 10px;
-  flex-grow:5;
-  text-align: right;
-}
-
-
-
-
-
-.blogList_userFunction{
-	border: 1px solid red;
-	display: flex;
-	justify-content: space-between
-	align-items: center;
-}
-
-.like{
-  	margin-left: 5px;
-}
-
-.reply{
-  flex-grow: 1;
-  margin-left: 10px; 
-}
-
-.blogList_travleDay {
-	margin-right: 5px;
-	margin-top: 4px;
-	font-size: 13px;
-}
- */
-
-/* 
-.blogList_travleDay{
-  flex-grow:5;
-  text-align: right;
-}
-
-
-.blogList_travleDay{
-  font-size: 10px;
-}
-
- */
-
-
-
-
 .writeBlog {
 	width: 1120px;
 	height: 80px;
@@ -405,8 +285,8 @@
 
 .write_text {
 	font-family: 'Jua', sans-serif;    
-color: #6d6d6d;         
-font-weight: 400;
+	color: #6d6d6d;         
+	font-weight: 400;
 	margin-left: 30px;
 	font-size: 30px;
 	line-height: 80px;
@@ -414,16 +294,16 @@ font-weight: 400;
 
 .write_blog {
 	font-family: 'Jua', sans-serif; 
-	border: 1px solid #c9c9c9;
+	border: 1px solid #6c757d !important;
 	width: 150px;
 	height: 50px;
 	float: right;
 	margin-right: 15px;
 	margin-top: 15px;
 	font-size: 20px;
-	color: #3f3f3f;
+	color: #6c757d !important;
 	text-align: center;
-	line-height: 50px;
+	line-height: 40px;
 	cursor: pointer;
 }
 #writeOptionBtn:hover{
@@ -431,112 +311,3 @@ font-weight: 400;
 	color: #6c757d;
 	outline: none !important;
 }
-
-
-/* 모달창 */
-.modal-body{
-	text-align:center;
-}
-.bodyHeader{
-	height:50px;
-	font-family: 'Jua', sans-serif;    
-	color:#8aacc8;
-	font-size:23px;
-}
-.writeOptionWrapper{
-	margin:20px;
-	height:200px;
-	display:flex;
-	justify-content:center;
-}
-.travelsWriteWrapper{
-	width:200px;
-	height:200px;
-}
-.writeBlogWrapper{
-	width:200px;
-	height:300px;
-}
-#travelsWriteImg,#writeBlogImg{
-	display:flex;
-	width:100px;
-	height:100px;
-	margin:0 auto;
-	text-align:center;
-	border-radius: 75px;
-	border:2px solid #8aacc8;;
-	align-items: center;
-	justify-content:center;
-	cursor:pointer;
-}
-#writeOptionImg{
-	font-size: 30px;
-	color:#8aacc8;
-}
-#optionText{
-	width:150px;
-	font-size:8px;
-	margin:0 auto;
-	color:#525f72;
-}
-.optionContentWrapper{
-	margin:0 auto;
-
-/*글작성BTN 모달창*/
-.modal-body{
-	text-align:center;
-}
-.bodyHeader{
-	height:50px;
-	font-family: 'Jua', sans-serif;    
-	color:#8aacc8;
-	font-size:23px;
-}
-.writeOptionWrapper{
-	margin:20px;
-	height:200px;
-	display:flex;
-	justify-content:center;
-}
-.travelsWriteWrapper{
-	width:200px;
-	height:200px;
-}
-.writeBlogWrapper{
-	width:200px;
-	height:300px;
-}
-#travelsWriteImg,#writeBlogImg{
-	display:flex;
-	width:100px;
-	height:100px;
-	margin:0 auto;
-	text-align:center;
-	border-radius: 75px;
-	border:2px solid #8aacc8;;
-	align-items: center;
-	justify-content:center;
-	cursor:pointer;
-}
-#writeOptionImg{
-	font-size: 30px;
-	color:#8aacc8;
-}
-#optionText{
-	width:150px;
-	font-size:8px;
-	margin:0 auto;
-	color:#525f72;
-}
-.optionContentWrapper{
-	margin:0 auto;
-}
-
-/* 무한스크롤 */
-.aaa {
-	border: 1px solid red;
-	width: 1120px;
-	margin:0 auto;
-}
-
-

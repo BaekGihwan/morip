@@ -24,8 +24,7 @@ public class BoardServiceImpl implements BoardService {
 
 	@Override
 	public void boardWrite(Map<String, String> map) {
-		boardDAO.boardWrite(map);
-		
+		boardDAO.boardWrite(map);		
 	}
 
 	@Override
@@ -47,7 +46,7 @@ public class BoardServiceImpl implements BoardService {
 		
 		boardPaging.setCurrentPage(Integer.parseInt(pg));
 		boardPaging.setPageBlock(5);
-		boardPaging.setPageSize(15);
+		boardPaging.setPageSize(10);
 		boardPaging.setTotalA(totalA);
 		boardPaging.makePagingHTML();
 		return boardPaging;

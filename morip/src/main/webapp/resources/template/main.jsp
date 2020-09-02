@@ -14,7 +14,7 @@
 
   <!-- morip banner -->
   <div class="morip_banner">
-	<img alt="" src="../image/main/mainbanner5.png">
+	<img alt="" src="../image/main/mainbanner5.png" style="width: 100%; height: 450px;">
   </div>
   <br><br>  
 <body class="morip_main">
@@ -276,7 +276,8 @@
   </div>  
   <br><br>
   <br><br>
-  <br><br>
+  <!-- contentFilter -->
+  <div id="contentFilter" style="display: none;"></div>
 </body>
 
 <script type="text/javascript" src="http://code.jquery.com/jquery-3.5.1.min.js"></script>

@@ -8,7 +8,11 @@
  		where email= #{email} and rn<![CDATA[ >= ]]>#{startNum} and rn<![CDATA[ <= ]]>#{endNum}
 	</select>
 	<insert id="insertWriteBlog" parameterType="java.util.Map">
-	 	insert into blogboardtable(blogboardtable_seq, nickname ,email, subject, content, mainimage, startdate, enddate, logtime, publicoption)  values(blogboardtable_seq.nextval, #{nickname },#{email }, #{subject }, #{content},#{backgroundImg }, #{startdate}, #{enddate}, sysdate,#{publicoption })
+	begin
+		insert into blogboardtable(blogboardtable_seq, nickname ,email, subject, content, mainimage, startdate, enddate, logtime, publicoption)  values(blogboardtable_seq.nextval, #{nickname },#{email }, #{subject }, #{content},#{backgroundImg }, #{startdate}, #{enddate}, sysdate,#{publicoption });
+          
+		update todaytable set countblog = countblog + 1;	
+	end;
 	</insert>
 	<select id="getView" resultType="myblog" parameterType="Integer">
 		select * from blogboardtable where blogboardtable_seq=#{seq}

@@ -200,7 +200,7 @@ var myPieChart = new Chart(document.getElementById("myPieChart"), {
   data: {
     labels: ["man", "woman"],
     datasets: [{
-      data: [60,40],
+      data: [$('.man').val(), $('.woman').val()],
       backgroundColor: ['#8e93ae', '#bec3e0'],
       hoverBackgroundColor: ['#2e59d9', '#17a673'],
       hoverBorderColor: "rgba(234, 236, 244, 1)",
@@ -224,3 +224,6 @@ var myPieChart = new Chart(document.getElementById("myPieChart"), {
     cutoutPercentage: 80,
   },
 });
+
+
+
