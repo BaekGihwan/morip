@@ -5,6 +5,7 @@
 <mapper namespace="boardSQL">
    <!-- 글쓰기 -->
    <insert id="boardWrite" parameterType="java.util.Map">
+   begin
       INSERT INTO boardtable (boardtable_seq, nickname, email, subject, content, image, ref, step) 
       values(boardtable_seq.nextval
           , #{nickname}
@@ -13,22 +14,26 @@
           , #{content}
           , #{image}
           , boardtable_seq.currval
-          , '0')
+          , '0');
+          
+      update todaytable set countboard = countboard + 1;	
+   end;
    </insert>
    
    <!-- 목록 -->
    <select id="getBoardList" parameterType="java.util.Map" resultType="board">
+     
       <![CDATA[
       select * from
       (select rownum rn, tt.* from
-      (select * from boardtable where step=0 order by boardtable_seq desc)tt 
+      (select * from boardtable where step=0 order by CASE WHEN nickname IN ('운영자') THEN 0 ELSE 1 END, boardtable_seq desc)tt 
       )where rn>=#{startNum} and rn<=#{endNum}
       ]]>
    </select>
    
    <!-- 총글수 -->
    <select id="getBoardTotalA" resultType="int">
-      select count(*) from boardtable
+      select count(*) from boardtable where step=0
    </select>
    
    <!-- 작성한 글 확인 -->
@@ -41,8 +46,8 @@
       <![CDATA[
       select * from
       (select rownum rn, tt.* from
-      (select * from boardtable where ${searchOption} like '%'||#{keyword}||'%' and step = 0
-                      order by ref desc, step asc)tt
+      	(select * from boardtable where nickname = '운영자' or (${searchOption} like '%'||#{keyword}||'%' and step = 0)
+      	order by CASE WHEN nickname IN ('운영자') THEN 0 ELSE 1 END, ref desc, step asc)tt
       )where rn>=#{startNum} and rn<=#{endNum} 
       ]]>
    </select>
@@ -73,15 +78,15 @@
    <!-- 댓글 입력 -->
    <insert id="insertReply" parameterType="java.util.Map">
     insert into boardtable(boardtable_seq, nickname, email, content, logtime, ref, step, pseq, image) 
-    	values(boardtable_seq.nextval
-    	     , #{nickname }
-    	     , #{email}
-    	     , #{content}
-    	     , sysdate
-    	     , #{ref}
-    	     , #{step}
-    	     , #{pseq}
-    	     , #{image})
+       values(boardtable_seq.nextval
+            , #{nickname }
+            , #{email}
+            , #{content}
+            , sysdate
+            , #{ref}
+            , #{step}
+            , #{pseq}
+            , #{image})
    </insert>
    
    <!-- 댓글 전부 불러오기 -->

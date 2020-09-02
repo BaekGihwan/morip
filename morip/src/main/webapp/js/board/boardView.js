@@ -199,7 +199,7 @@ function deleteBtnClick(boardtable_seq){
 	            '<textarea id="replyInputBox'+boardtable_seq+'" word-break:break-all; class="form-control" style="resize: none; white-space:pre;" aria-label="With textarea"></textarea>'+
 	            '<div class="reply_inputOption">'+
 	              '<button type="button" id="resetBtn" class="btn btn-light" onclick="resetBtn()">취소</button>'+
-	              '<button type="button" id="modifyBtn" class="btn btn-light" onclick="modify('+boardtable_seq+')" style="margin: 10px; width: 100px; font-size: 13px;">수정</button>'+
+	              '<button type="button" id="modifyBtn" class="btn modi  btn-light" onclick="modify('+boardtable_seq+')" style="margin: 10px; width: 100px; font-size: 16px;">수정</button>'+
 	            '</div>'+
 	        '</div>'+
 	      '</div>'+
@@ -224,9 +224,11 @@ function deleteBtnClick(boardtable_seq){
 			data: 'boardtable_seq='+boardtable_seq+'&content='+content,
 			success: function(){
 			Swal.fire({
-                icon: 'success',
-                confirmButtonText: '확인',
-                 title: '댓글이 수정되었습니다.'
+                title: '수정 완료!',
+				text: '댓글이 수정되었습니다!',
+				icon: 'success',
+				confirmButtonText: '확인',
+				confirmButtonColor: '#3085d6',
             }).then((result) => {
             if (result.value) {                                 
                   loadReply();
@@ -256,7 +258,6 @@ function deleteBtnClick(boardtable_seq){
 	 	console.log(content);
 		if(pseq == view_seq){
 		 	//본문글의 답글
-		 	alert("11");
 	 		step = 1; 
 	 	} else {
 	 	 	 //본문의 댓글의 답글
@@ -322,7 +323,7 @@ function loadReply(){
 							                    '</div>'+
 							                    
 							                    '<div class="reply_content">'+
-							                     '<pre style="overflow:auto; white-space:pre-wrap; word-break:break-all;">'+
+							                     '<pre id="replypre" style="overflow:auto; white-space:pre-wrap; word-break:break-all;">'+
 							                       items.content+
 							                     '</pre>'+
 							                    '</div>'+

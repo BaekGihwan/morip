@@ -11,6 +11,7 @@
 <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js"
 	crossorigin="anonymous"></script>
 <!-- Google fonts-->
+<link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
 <link
 	href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@900&display=swap"
 	rel="stylesheet">
@@ -59,7 +60,7 @@
 							<div class="view_userInfo">
 								<img class="view_userImg" src="../storage/${boardDTO.image }">
 								<div class="view_userId">
-									<span id="nickNameSpan"></span>
+									<pre id="nickNameSpan" ></pre>
 								</div>
 							</div>
 							<div class="view_controlOption">

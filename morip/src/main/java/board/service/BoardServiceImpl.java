@@ -24,15 +24,14 @@ public class BoardServiceImpl implements BoardService {
 
 	@Override
 	public void boardWrite(Map<String, String> map) {
-		boardDAO.boardWrite(map);
-		
+		boardDAO.boardWrite(map);		
 	}
 
 	@Override
 	public List<BoardDTO> getBoardList(String pg) {
 		//1페이지당 5개씩
-		int endNum = Integer.parseInt(pg)*15;
-		int startNum = endNum-14;
+		int endNum = Integer.parseInt(pg)*10;
+		int startNum = endNum-9;
 		
 		Map<String,Integer> map = new HashMap<String,Integer>();
 		map.put("startNum", startNum);
@@ -47,7 +46,7 @@ public class BoardServiceImpl implements BoardService {
 		
 		boardPaging.setCurrentPage(Integer.parseInt(pg));
 		boardPaging.setPageBlock(5);
-		boardPaging.setPageSize(15);
+		boardPaging.setPageSize(10);
 		boardPaging.setTotalA(totalA);
 		boardPaging.makePagingHTML();
 		return boardPaging;
@@ -62,8 +61,8 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public List<BoardDTO> getBoardSearch(Map<String, String> map) {
 		//1페이지당 5개씩
-		int endNum = Integer.parseInt(map.get("pg"))*15;
-		int startNum = endNum-14;
+		int endNum = Integer.parseInt(map.get("pg"))*10;
+		int startNum = endNum-9;
 		
 		map.put("startNum", startNum+"");
 		map.put("endNum", endNum+"");
@@ -77,7 +76,7 @@ public class BoardServiceImpl implements BoardService {
 		
 		boardPaging.setCurrentPage(Integer.parseInt(map.get("pg")));
 		boardPaging.setPageBlock(5);
-		boardPaging.setPageSize(15);
+		boardPaging.setPageSize(10);
 		boardPaging.setTotalA(totalA);
 		boardPaging.makePagingHTML();
 		return boardPaging;

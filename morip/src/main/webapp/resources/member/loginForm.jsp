@@ -6,7 +6,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->	
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500&display=swap" rel="stylesheet">
+<!-- Google fonts-->
+<link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
 <!--===============================================================================================-->	
 	<link rel="icon" type="image/png" href="../image/member/favicon.ico"/>
 <!--===============================================================================================-->	
@@ -252,7 +253,11 @@ $('#loginBtn').click(function(){
 		dataType : 'json',
 		success : function(data) {
 			if (data.memberDTO != null && data.passMatch == true) {
-				location.href = '../main/index';
+				if(data.memberDTO.email == 'admin'){
+					location.href = '../admin/dashboard';						
+				}else {
+					location.href = '../main/index';						 
+				}
 			} else {
 				Swal.fire({
 					title: '로그인 실패',
@@ -260,7 +265,7 @@ $('#loginBtn').click(function(){
 					icon: 'warning',
 					confirmButtonColor: '#3085d6',
 					cancelButtonColor: '#d33',
-					confirmButtonText: 'Yes'
+					confirmButtonText: '확인'
 				}).then((result) => {
 					if (result.value) {
 						location.href='../member/loginForm';

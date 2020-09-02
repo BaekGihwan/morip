@@ -14,59 +14,12 @@
 <script src='../js/myblog/packages/daygrid/main.js'></script>
 <script src='../js/myblog/packages/timegrid/main.js'></script>
 <script src='../js/myblog/packages/list/main.js'></script>
-<style>
-body {
-	margin: 40px 10px;
-	padding: 0;
-	font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
-	font-size: 14px;
-}
-
-#calendar {
-	max-width: 900px;
-	margin: 0 auto;
-}
-
-.fc-event, .fc-event-dot {
-	background-color: #d7ccc8;
-} /* 
-  .fc-title{
-  	color:white;
-  } */
-.fc-event {
-	border: #d7ccc8;
-}
-
-#infoBoxWrapper {
-	width: 200px;
-	height: 100px;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	position: absolute;
-	left:72%;
-	top:40%;
-	border:2px gray;
-	border-radius: 10px;
-	background-color:white;
-	border-style:groove;
-}
-#infoIcon{
-	width:20px;
-	height:20px;
-	position: absolute;
-	left:72%;
-	top:37%;
-	display:flex;
-	justify-content: center;
-}
-</style>
 
 <!-- Font Awesome icons (free version)-->
 <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js"
 	crossorigin="anonymous"></script>
 <!-- Google fonts-->
-
+<link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
 <!--AOS 라이브러리-->
 <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
 <!--hover.css-->
@@ -99,7 +52,7 @@ body {
 		enctype="multipart/form-data" action="">
 		<article class="contentWrapper">
 			<!-- 일정에 대한 안내문구를 나타낼 div영역 -->
-			<div id="infoIcon"><i class="fas fa-exclamation-circle" id="exclamation-circle"></i></div>
+			<div id="infoIcon" style="cursor:pointer"><i class="fas fa-exclamation-circle" id="exclamation-circle"></i></div>
 			<div id="infoBoxWrapper">
 				<div id="infoBox">
 					기록할 여행의 날짜를<br> 드래그로 입력해 보세요!
@@ -117,7 +70,7 @@ body {
 						</div>
 						<div class="step2">
 							<div class="stepHeader">STEP2</div>
-							<div class="stepContent">에세이 제목과 배경 설정</div>
+							<div class="stepContent">에세이 제목과 배경설정</div>
 						</div>
 						<div class="step3">
 							<div class="stepHeader">STEP3</div>
@@ -145,6 +98,9 @@ body {
 
 	</form>
 </body>
+<!-- sweetAlert -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+
 <!-- Bootstrap core JS-->
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -157,84 +113,10 @@ body {
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <!-- Core theme JS-->
 <script src="../js/myblog/writeBlog.js"></script>
+<script src="../js/myblog/writeBlog0.js"></script>
 
 <script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
-<script>
-	let start;
-	let end;
-	let count = 0;
-	document.addEventListener('DOMContentLoaded', function() {
-		var calendarEl = document.getElementById('calendar');
-
-		var calendar = new FullCalendar.Calendar(calendarEl, {
-			plugins : [ 'interaction', 'dayGrid', 'timeGrid' ],
-			header : {
-				left : 'prev,next today',
-				center : 'title',
-				right : 'dayGridMonth,timeGridWeek,timeGridDay'
-			},
-			defaultDate : '2020-02-12',
-			navLinks : true, // can click day/week names to navigate views
-			selectable : true,
-			selectMirror : true,
-			select : function(arg) {
-				var title = prompt('간단한 여행 일정을 등록하세요!');
-				if(count==1){
-					count=0;
-					//let events = calendar.getEvents();
-				}
-				if (title) {
-					calendar.addEvent({
-						title : title,
-						start : arg.start,
-						end : arg.end,
-						allDay : arg.allDay
-					})
-					count++;
-				}
-				start = arg.start;
-				end = arg.end;
-				console.log(count);
-				calendar.unselect()
-			},
-			editable : true,
-			eventLimit : true, // allow "more" link when too many events
-			events : []
-		});
-		calendar.render();
-	});
-
-	//height 영역 값에 맞춰서 달력 생성
-	$(document).ready(function() {
-		var calendarH = $('#calendarWrapper').height();
-		$('.editorContent').css("height", calendarH + 20);
-		$('.editorContentWrapper').css("height", calendarH + 100);
-		showMinute();
-	});
-	function showMinute(){
-		setTimeout(function() {
-			$('#infoBoxWrapper').fadeOut(500);
-		}, 3000);
-	}
-
-
-	$('#forwardBtn').click(
-			function() {
-				let startdate = new Date(start).format('yyyy-MM-dd');
-				let enddate = new Date(end).format('yyyy-MM-dd');
-				console.log(startdate);
-				console.log(enddate);
-				location.href = "/morip/myblog/writeBlog1?startdate="
-						+ startdate + "&enddate=" + enddate;
-			});
-	$('#infoIcon').mouseover(function(){
-		$('#infoBoxWrapper').show();
-	});
- 	$('#infoIcon').mouseout(function(){
-		$('#infoBoxWrapper').hide();
-	}); 
-</script>
 </html>
 >

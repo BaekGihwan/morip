@@ -337,7 +337,6 @@ $(document).ready(function(){
     var page = 1;   //불러올 페이지
 	
     $(window).scroll(function(){
-    console.log("documentHeight:" + documentHeight + " | scrollTop:" + scrollTop + " | windowHeight: " + windowHeight );
         if($(window).scrollTop()+200>=$(document).height() - $(window).height())
         {
             if(!loading)    //실행 가능 상태라면?
@@ -363,9 +362,10 @@ $(document).ready(function(){
 							let startdate= new Date(items.startdate).format('yyyy-MM-dd'); 
 							let enddate = new Date(items.enddate).format('yyyy-MM-dd');  
 							let seq = items.blogboardtable_seq;
+							$('#contentFilter').html(items.content);
+							let content = $('#contentFilter').text();
 							//처음 시작을 여는 div
-							if(tempNumber%3==0){
-							
+							if(tempNumber%3==0){							
 								height+=350;
 								$('.content').css('height',height+'px');
 								list += '<div class="myblogList" id="myblogList" data-aos="fade-up" data-aos-duration="3000">';
@@ -374,14 +374,13 @@ $(document).ready(function(){
 							list+='<div class="myblog_img">';
 							list+='<img class="listImg" src="../storage/'+items.mainimage+'"></div>';
             				list+='<div class="myblog_info"><div class="myblog_subject">'+items.subject+'</div>';
-            				list+='<div class="myblog_content">'+items.content+'</div>';
+            				list+='<div class="myblog_content">'+content+'</div>';
             				list+='<div class="myblog_userFunction"><div class="like'+seq+'" style="cursor:pointer;"onclick="likeClick('+seq+')"><i class="far fa-heart"></i></div>';
             				list+='<div class="likeCount'+seq+'"></div><div class="myblog_travleDay">';
             				list+= startdate +'~'+ enddate+'</div></div></div></div>';
             				list+='<input type="hidden" id="likeCheck'+seq+'" value="unlike">';
             				//닫아주는 div
 							if(tempNumber%3==2){
-							console.log(tempNumber);
 								list+='</div>';
 							}
 							tempNumber++;
@@ -422,11 +421,24 @@ $(document).ready(function(){
     
     //뷰 페이지 진입
    	function viewEnter(seq){
-   		location.href="view?seq="+seq;
+	   	if($('#sessionEmail').val()=='') {
+			Swal.fire({
+				icon: 'info',
+				confirmButtonText: '확인',
+				title: '로그인을 먼저 하세요.',
+				text: '로그인 화면으로 넘어갑니다.',
+			}).then((result) => {
+				if (result.value) {											
+				location.href="../member/loginForm";
+				}
+			}) 
+		}else {
+			location.href="view?seq="+seq;
+		}
+   		
    	}
    	
    	function loadBoardCount(){
-   	console.log("보드개수 카운팅");
    	$.ajax({
          type: 'post',
          url: '/morip/myblog/boardSize',

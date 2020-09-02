@@ -7,7 +7,5 @@ import myblog.bean.MyblogDTO;
 
 public interface BlogDAO {
 
-	List<MyblogDTO> blogAllList(int startNum, int endNum);
-
-	
+	List<MyblogDTO> blogAllList(int startNum, int endNum, String content);
 }

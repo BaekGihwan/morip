@@ -25,8 +25,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!-- 회원가입  -->
 	<insert id="moripWrite" parameterType="member">
+	begin
 		insert into membertable(membertable_seq, email, pwd, name, nickname, idCardNumber1, idCardNumber2, gender, image ,checkid)
-			values(membertable_seq.nextval, #{email}, #{pwd}, #{name}, #{nickname}, #{idCardNumber1}, #{idCardNumber2}, #{gender}, #{image}, #{checkid})
+			values(membertable_seq.nextval, #{email}, #{pwd}, #{name}, #{nickname}, #{idCardNumber1}, #{idCardNumber2}, #{gender}, #{image}, #{checkid});
+
+		update todaytable set countsignup = countsignup + 1;	
+	end;
 	</insert>
 	
 	<!-- 새비밀번호 -->
@@ -51,13 +55,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!-- 회원탈퇴 -->
 	<update id="dropMorip" parameterType="java.util.Map">
-		delete membertable where email=#{email} and checkid=#{checkid}
+	begin
+		delete membertable where email=#{email} and checkid=#{checkid};
+		
+		update todaytable set countsignout = countsignout + 1;	
+	end;
 	</update>
 	
 	<!-- 회원정보 수정(email) -->
 	<update id="memberModify" parameterType="java.util.Map">
 	begin
-		update membertable set nickname = #{nickname}, gender = #{gender}, image = #{image}
+		update membertable set nickname = #{nickname}, pwd=#{pwd}, gender = #{gender}, image = #{image}
 		where email = #{email} and checkid = #{checkid};
 	
 		update boardtable set nickname = #{nickname}, image = #{image} 
@@ -81,4 +89,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where email = #{email};
 	end;
 	</update>
+	
+	<!-- 이메일을 가지고 한명분의 데이터 가져오기 -->
+	<select id="getMember2" parameterType="string" resultType="member">
+		select * from membertable where email=#{email}
+	</select>
 </mapper>

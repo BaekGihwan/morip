@@ -18,22 +18,16 @@ public class HashtagDAOMybatis implements HashtagDAO {
 
 	@Override
 	public void insertHashTag(String hashtag) {
-		sqlSession.insert("hashtagSQL.insertHashTag",hashtag);
-		
+		sqlSession.insert("hashtagSQL.insertHashTag",hashtag);		
 	}
 	
 	@Override
-	public List<HashtagDTO> hashtagSearch(String hashtagText) {
-		
+	public List<HashtagDTO> hashtagSearch(String hashtagText) {		
 		return sqlSession.selectList("hashtagSQL.hashtagSearch",hashtagText);
 	}
 
 	@Override
-	public MyblogDTO hashtagBlogList(String seq) {
-		
+	public MyblogDTO hashtagBlogList(String seq) {		
 		return sqlSession.selectOne("hashtagSQL.hashtagBlogList",Integer.parseInt(seq));
 	}
-
-	
-
 }

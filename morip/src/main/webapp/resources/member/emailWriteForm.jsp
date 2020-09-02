@@ -3,7 +3,8 @@
 
 <!--===============================================================================================-->	
 <link rel="stylesheet" type="text/css" href="../css/member/emailWriteForm.css">
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500&display=swap" rel="stylesheet">
+<!-- Google fonts-->
+<link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
 <!--===============================================================================================-->
 </head>
 <body>
@@ -77,33 +78,33 @@ $('#emailWriteFormBtn').click(function(){
 			icon: 'warning',
 			confirmButtonColor: '#3085d6',
 			cancelButtonColor: '#d33',
-			confirmButtonText: 'Yes'
+			confirmButtonText: '확인'
 		})
 	} else if($('#emailWriteFormId').val() == '') { // 이거는 id속성으로 해서 찾는거다
         $('#nameDiv').text('이메일을 입력하세요.');
         $('#nameDiv').css('color', 'red');
-        $('#nameDiv').css('font-size', '8pt');
+        $('#nameDiv').css('font-size', '9pt');
         $('#nameDiv').css('font-weight', 'bold');
         $('#emailWriteFormId').focus();
        
     } else if($('#email-id').val() == '') {
     	$('#reidDiv').text('인증번호를 입력하세요');
         $('#reidDiv').css('color', 'red');
-        $('#reidDiv').css('font-size', '8pt');
+        $('#reidDiv').css('font-size', '9pt');
         $('#reidDiv').css('font-weight', 'bold');
         $('#email-id').focus();    
         
     } else if($('#emailWriteFormPwd').val() == '') {
     	$('#pwdDiv').text('비밀번호를 입력하세요');
         $('#pwdDiv').css('color', 'red');
-        $('#pwdDiv').css('font-size', '8pt');
+        $('#pwdDiv').css('font-size', '9pt');
         $('#pwdDiv').css('font-weight', 'bold');
         $('#emailWriteFormPwd').focus();
     
     } else if($('#emailWriteFormPwd').val() != $('#repwd').val()){
     	$('#repwdDiv').text('비밀번호가 일치하지 않습니다.');
         $('#repwdDiv').css('color', 'red');
-        $('#repwdDiv').css('font-size', '8pt');
+        $('#repwdDiv').css('font-size', '9pt');
         $('#repwdDiv').css('font-weight', 'bold');
         $('#repwd').focus();    
         
@@ -114,7 +115,7 @@ $('#emailWriteFormBtn').click(function(){
 			icon: 'warning',
 			confirmButtonColor: '#3085d6',
 			cancelButtonColor: '#d33',
-			confirmButtonText: 'Yes'
+			confirmButtonText: '확인'
 		})
 	} else {
 		$.ajax({
@@ -132,12 +133,24 @@ $('#emailWriteFormBtn').click(function(){
 	}
 });
 
+//다시 작성 버튼
+$('#emailWriteFormresetBtn').click(function(){
+	$('#nameDiv').empty();
+	$('#reidDiv').empty();
+	$('#pwdDiv').empty();
+	$('#repwdDiv').empty();
+	$('#emailWriteFormId').val('');
+	$('#email-id').val('');
+	$('#emailWriteFormPwd').val('');
+	$('#repwd').val('');
+	$('#emailWriteFormId').focus();
+});
 
 $('#emailWriteFormPwd').focusout(function(){
 	if(!regPwd.test($('#emailWriteFormPwd').val())){
-		$('#pwdDiv').text('8-15자 이내의 영문, 숫자, 특수문자 조합으로 입력해주세요!.');
+		$('#pwdDiv').text('8-15자 이내의 영문, 숫자, 특수문자 조합으로 입력해주세요!');
         $('#pwdDiv').css('color', 'red');
-        $('#pwdDiv').css('font-size', '8pt');
+        $('#pwdDiv').css('font-size', '9pt');
         $('#pwdDiv').css('font-weight', 'bold');
         $('#emailWriteFormPwd').focus();
 	} else{
@@ -157,13 +170,13 @@ $('#emailBtn').click(function(){
 	if($('#emailWriteFormId').val() == ''){
 		$('#nameDiv').text('이메일을 입력하세요.');
         $('#nameDiv').css('color', 'red');
-        $('#nameDiv').css('font-size', '8pt');
+        $('#nameDiv').css('font-size', '9pt');
         $('#nameDiv').css('font-weight', 'bold');
         $('#emailWriteFormId').focus();
 	} else if(!regEmail.test($('#emailWriteFormId').val())){
 		$('#nameDiv').text('이메일 형식이 올바르지 않습니다.');
         $('#nameDiv').css('color', 'red');
-        $('#nameDiv').css('font-size', '8pt');
+        $('#nameDiv').css('font-size', '9pt');
         $('#nameDiv').css('font-weight', 'bold');
         $('#emailWriteFormId').focus();
     }else{
@@ -192,7 +205,7 @@ $('#emailBtn').click(function(){
     			} else {
     				$('#nameDiv').text('존재하는 아이디입니다.');
     				$('#nameDiv').css('color', 'red');
-    				$('#nameDiv').css('font-size', '8pt');
+    				$('#nameDiv').css('font-size', '9pt');
     		        $('#nameDiv').css('font-weight', 'bold');
     		        $('#emailWriteFormId').focus();
     			}
@@ -208,21 +221,21 @@ $('#okBtn').click(function(){
 	if($('#email-id').val() == ''){
 		$('#reidDiv').text('메일인증번호를 입력하세요');
         $('#reidDiv').css('color', 'red');
-        $('#reidDiv').css('font-size', '8pt');
+        $('#reidDiv').css('font-size', '9pt');
         $('#reidDiv').css('font-weight', 'bold');
         $('#email-id').focus();  
 	} else{
 		if($('#email-id').val() == code){
 			$('#reidDiv').text('인증번호가 일치합니다.');
 			$('#reidDiv').css('color', 'blue');
-	        $('#reidDiv').css('font-size', '8pt');
+	        $('#reidDiv').css('font-size', '9pt');
 	        $('#reidDiv').css('font-weight', 'bold');
 	        $('#emailWriteFormPwd').focus();
 			$('#checkCode').val('1');
 		} else{
 			$('#reidDiv').text('인증번호가 일치하지 않습니다.');
 	        $('#reidDiv').css('color', 'red');
-	        $('#reidDiv').css('font-size', '8pt');
+	        $('#reidDiv').css('font-size', '9pt');
 	        $('#reidDiv').css('font-weight', 'bold');
 	        $('#email-id').focus();  
 		}		

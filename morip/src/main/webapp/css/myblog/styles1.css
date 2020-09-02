@@ -108,7 +108,9 @@ li {
 	height: 100px;
 	font-size: 25px;
 	font-weight: bold;
-	font-family: 'Noto Sans KR', sans-serif;
+	font-family: 'Jua', sans-serif;     
+	color: #555;
+letter-spacing: 3px;
 }
 /*user private infomation*/
 .content_wrapper {
@@ -124,6 +126,8 @@ li {
 	top: 200px;
 	text-align: center;
 	z-index:5;
+	display: flex;
+    justify-content: space-between;
 }
 
 .profileMessage {
@@ -149,6 +153,7 @@ li {
 }
 
 .follower {
+	font-family: 'Jua', sans-serif;  
 	width: 100px;
 	height: 30px;
 	border-right: 1px solid #b6b8c3;
@@ -158,6 +163,7 @@ li {
 }
 
 .following {
+	font-family: 'Jua', sans-serif;  
 	width: 100px;
 	height: 30px;
 	border-right: 1px solid #b6b8c3;
@@ -167,11 +173,24 @@ li {
 }
 
 .listCount {
+	font-family: 'Jua', sans-serif;  
 	width: 100px;
 	height: 50px;
 	padding-right: 20px;
 	padding-left: 20px;
 }
+#writeOptionBtn{
+	font-family: 'Jua', sans-serif;
+	letter-spacing: 3px;
+	color: black;
+}
+#modifyMemberBtn{
+	font-family: 'Jua', sans-serif;
+	letter-spacing: 3px; 
+	color: black; 
+}
+
+
 
 .myBlog_wrapper {
 	position: relative;
@@ -221,7 +240,7 @@ li {
 	margin: 10px;
 	margin-bottom: 10px;
 	text-align: left;
-	height: 50px;
+	height: 30px;
 	overflow: hidden;
 }
 
@@ -229,7 +248,7 @@ li {
 	font-size: 18px;
 	margin: 10px;
 	text-align: left;
-	font-family: 'Nanum Pen Script', cursive;
+	font-family: 'Nanum Pen Script';
 	height: 75px;
 	overflow: hidden;
 }

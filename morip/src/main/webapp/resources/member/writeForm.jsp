@@ -4,7 +4,8 @@
 
 <!--===============================================================================================-->	
 <link rel="stylesheet" type="text/css" href="../css/member/writeForm.css">
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500&display=swap" rel="stylesheet">
+<!-- Google fonts-->
+<link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
 <!--===============================================================================================-->
 
 </head>
@@ -141,7 +142,7 @@ $('#nickName').focusout(function(){
 	if ($('#nickName').val() == '') {
 		$('#nickNameDiv').text('닉네임을 입력해주세요.');
 		$('#nickNameDiv').css('color', 'red');
-		$('#nameDiv').css('font-size', '8pt');
+		$('#nameDiv').css('font-size', '9pt');
         $('#nickNameDiv').css('font-weight', 'bold');
         $('#nickName').focus();
 	} else {
@@ -154,12 +155,12 @@ $('#nickName').focusout(function(){
 				if (data.memberDTO == null) {
 					$('#nickNameDiv').text('사용가능한 닉네임입니다.');
 					$('#nickNameDiv').css('color', 'blue');
-					$('#nameDiv').css('font-size', '8pt');
+					$('#nameDiv').css('font-size', '9pt');
 			        $('#nickNameDiv').css('font-weight', 'bold');
 				} else {
 					$('#nickNameDiv').text('존재하는 닉네임입니다.');
 					$('#nickNameDiv').css('color', 'red');
-					$('#nameDiv').css('font-size', '8pt');
+					$('#nameDiv').css('font-size', '9pt');
 			        $('#nickNameDiv').css('font-weight', 'bold');
 			        $('#nickName').focus();
 				}

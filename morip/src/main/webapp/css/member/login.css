@@ -7,6 +7,7 @@
 body, html {
 	height: 100%;
 }
+
 /*---------------------------------------------*/
 a {
 	font-size: 14px;
@@ -144,12 +145,14 @@ iframe {
 /*//////////////////////////////////////////////////////////////////
 [ Utility ]*/
 .txt1 {
+	font-family: 'Jua', sans-serif;   
 	font-size: 16px;
 	color: #555555;
 	line-height: 1.5;
 }
 
 .txt2 {
+	font-family: 'Jua', sans-serif;   
 	font-size: 14px;
 	color: #999999;
 	line-height: 1.5;
@@ -197,19 +200,23 @@ iframe {
 }
 
 .login100-form-title {
-	font-family: 'Noto Sans KR', sans-serif;
+	font-family: 'Jua', sans-serif;   
 	width: 100%;
 	display: block;
 	font-size: 39px;
-	color: #555555;
 	line-height: 1.2;
 	text-align: center;
 	letter-spacing: 15px;
+	color: #6d6d6d;
+	font-weight: 400;
+	
 }
 
 /*------------------------------------------------------------------
 [ Button sign in with ]*/
 .btn-face, .btn-google {
+	font-weight: 500;
+	font-family: 'Jua', sans-serif;   
 	font-size: 18px;
 	line-height: 1.2;
 	display: -webkit-box;
@@ -362,6 +369,7 @@ iframe {
 }
 
 .login100-form-btn {
+	font-family: 'Jua', sans-serif;   
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: -moz-box;

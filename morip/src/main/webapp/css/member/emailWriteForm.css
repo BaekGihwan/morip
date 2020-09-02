@@ -18,19 +18,21 @@ input:focus, #writeFormId:focus {
 }
 /*=============================*/
 .emailWriteFormTitle {
-	font-family: 'Noto Sans KR', sans-serif;
+	font-family: 'Jua', sans-serif; 
+	color: #6d6d6d;         
+	font-weight: 400;
+	padding-top: 62px;
 	text-align: center;
 	width: 100%;
 	display: block;
 	font-size: 39px;
-	color: #555555;
 	line-height: 1.2;
 	padding-bottom: 53px;
-	padding-top: 100px;
 	letter-spacing: 15px;
 }
 
 .container-emailWriteForm-text {
+	font-family: 'Jua', sans-serif; 
 	margin: 0 auto;
 	width: 400px;
 }
@@ -45,6 +47,8 @@ input:focus, #writeFormId:focus {
 }
 
 #emailWriteFormId {
+	font-family: 'Jua', sans-serif;
+	letter-spacing: 2px; 
 	color: #333333;
 	font-size: 16px;
 	height: 50px;
@@ -63,6 +67,7 @@ input:focus, #writeFormId:focus {
 }
 
 #emailBtn {
+	font-family: 'Jua', sans-serif; 
 	text-align: center;
 	padding: 0 15px;
 	height: 50px;
@@ -75,6 +80,8 @@ input:focus, #writeFormId:focus {
 }
 /*=============================*/
 #email-id {
+	font-family: 'Jua', sans-serif; 
+	letter-spacing: 2px;
 	color: #333333;
 	font-size: 16px;
 	height: 50px;
@@ -92,6 +99,7 @@ input:focus, #writeFormId:focus {
 }
 
 #okBtn {
+	font-family: 'Jua', sans-serif; 
 	text-align: center;
 	padding: 0 31px;
 	height: 50px;
@@ -104,6 +112,7 @@ input:focus, #writeFormId:focus {
 }
 /*=============================*/
 .emailWriteForm-pwd {
+	font-family: 'Jua', sans-serif; 
 	display: inline-block;
 	font-size: 16px;
 	color: #555555;
@@ -113,6 +122,8 @@ input:focus, #writeFormId:focus {
 }
 
 #emailWriteFormPwd {
+	letter-spacing: 2px;
+	font-family: 'Jua', sans-serif; 
 	color: #333333;
 	font-size: 16px;
 	height: 50px;
@@ -132,9 +143,11 @@ input:focus, #writeFormId:focus {
 /*=============================*/
 .emailWriteFormrepwd {
 	display: none;
+	letter-spacing: 2px;
 }
 
 #repwd {
+	font-family: 'Jua', sans-serif; 
 	color: #333333;
 	font-size: 16px;
 	height: 50px;
@@ -153,6 +166,7 @@ input:focus, #writeFormId:focus {
 }
 /*=============================*/
 #emailWriteFormBtn {
+	font-family: 'Jua', sans-serif; 
 	text-align: center;
 	padding: 0 60px;
 	height: 60px;
@@ -168,6 +182,7 @@ input:focus, #writeFormId:focus {
 }
 
 #emailWriteFormresetBtn {
+	font-family: 'Jua', sans-serif; 
 	text-align: center;
 	padding: 0 60px;
 	height: 60px;
@@ -177,6 +192,7 @@ input:focus, #writeFormId:focus {
 	color: #fff;
 	outline: none !important;
 	border: none;
+	margin-bottom: 62px;
 }
 /*=============================*/
 #nameDiv {
@@ -184,12 +200,14 @@ input:focus, #writeFormId:focus {
 }
 
 #reidDiv {
+	margin-top:10px;
 	margin-left: 20px;
 }
 
 #pwdDiv {
 	margin-left: 20px;
-	margin-bottom: 15px;
+	margin-top:10px;
+	margin-bottom: 10px;
 }
 
 #repwdDiv {

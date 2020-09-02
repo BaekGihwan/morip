@@ -9,25 +9,25 @@ $('#memberModifyFormBtn').click(function(){
 	if($('#memberModifyFormPwd').val() == '') {
     	$('#pwdDiv').text('비밀번호를 입력하세요');
         $('#pwdDiv').css('color', 'red');
-        $('#pwdDiv').css('font-size', '8pt');
+        $('#pwdDiv').css('font-size', '10pt');
         $('#pwdDiv').css('font-weight', 'bold');
         $('#memberModifyFormPwd').focus();    
     }else if($('#memberModifyFormRepwd').val() == '') {
     	$('#repwdDiv').text('재확인비밀번호를 입력하세요');
         $('#repwdDiv').css('color', 'red');
-        $('#repwdDiv').css('font-size', '8pt');
+        $('#repwdDiv').css('font-size', '10pt');
         $('#repwdDiv').css('font-weight', 'bold');
         $('#memberModifyFormRepwd').focus();     	
     }else if($('#memberModifyFormPwd').val() != $('#memberModifyFormRepwd').val()){
     	$('#repwdDiv').text('비밀번호가 일치하지 않습니다.');
         $('#repwdDiv').css('color', 'red');
-        $('#repwdDiv').css('font-size', '8pt');
+        $('#repwdDiv').css('font-size', '10pt');
         $('#repwdDiv').css('font-weight', 'bold');
         $('#memberModifyFormRepwd').focus();            
     }else if($('#memberModifyFormNickName').val() == ''){
     	$('#nickNameDiv').text('닉네임을 입력하세요.');
         $('#nickNameDiv').css('color', 'red');
-        $('#nickNameDiv').css('font-size', '8pt');
+        $('#nickNameDiv').css('font-size', '10pt');
         $('#nickNameDiv').css('font-weight', 'bold');
         $('#memberModifyFormNickName').focus();    
     }else {
@@ -100,7 +100,7 @@ $('#memberModifyFormPwd').focusout(function(){
 	if(!regPwd.test($('#memberModifyFormPwd').val())){
 		$('#pwdDiv').text('8-15자 이내의 영문, 숫자, 특수문자 조합으로 입력해주세요!.');
         $('#pwdDiv').css('color', 'red');
-        $('#pwdDiv').css('font-size', '8pt');
+        $('#pwdDiv').css('font-size', '10pt');
         $('#pwdDiv').css('font-weight', 'bold');
         $('#memberModifyFormPwd').focus();
 	} else{

@@ -19,12 +19,11 @@ public class BlogDAOMybatis implements BlogDAO {
 	private SqlSession sqlSession;
 	
 	@Override
-	public List<MyblogDTO> blogAllList(int startNum, int endNum) {
-		Map<String, Integer> map = new HashMap<String, Integer>();
-		map.put("startNum", startNum);
-	    map.put("endNum", endNum);
+	public List<MyblogDTO> blogAllList(int startNum, int endNum, String content) {
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("content", content);
+		map.put("startNum", startNum+"");
+	    map.put("endNum", endNum+"");
 		return sqlSession.selectList("blogSQL.blogAllList",map);
 	}
-
-	
 }

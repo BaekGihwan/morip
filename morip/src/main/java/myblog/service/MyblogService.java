@@ -1,11 +1,10 @@
 package myblog.service;
 
+import java.util.List;
 import java.util.Map;
 
+import hashtag.bean.HashtagDTO;
 import member.bean.MemberDTO;
-
-import java.util.List;
-
 import myblog.bean.FollowDTO;
 import myblog.bean.LikeDTO;
 import myblog.bean.MyblogDTO;
@@ -64,6 +63,13 @@ public interface MyblogService {
 
 	public void modifyBoard(Map<String, String> map);
 
+	public void boardHit(String seq);
 
+	public List<HashtagDTO> loadHashtag(String seq);
 
+	public void modifyHashtag(int seq, String hashtag);
+
+	public List<String> bestWriter();
+
+	public List<MyblogDTO> bestTrip(Map<String, String> map);
 }
