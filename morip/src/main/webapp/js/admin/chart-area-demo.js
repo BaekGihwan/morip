@@ -27,13 +27,12 @@ function number_format(number, decimals, dec_point, thousands_sep) {
   return s.join(dec);
 }
 
-
 //일간 차트
 var weekChart = document.getElementById("weekChart");
 var myLineChart = new Chart(weekChart, {
   type: 'line',
   data: {
-    labels: ["sun", "mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
+    labels: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
     datasets: [{
       label: '# of Votes',
       backgroundColor: "rgba(75, 76, 88, 0.05)",
@@ -42,7 +41,7 @@ var myLineChart = new Chart(weekChart, {
       pointBorderColor: "rgba(47, 53, 80, 1)",
       pointHoverBackgroundColor: "rgba(47, 53, 80, 1)",
       pointHoverBorderColor: "rgba(47, 53, 80, 1)",
-      data: [350, 500, 250, 420, 421, 265, 250],
+      data: [$('#sun').val(), $('#mon').val(), $('#tue').val(), $('#wed').val(), $('#thur').val(), $('#fri').val(), $('#sat').val()],
     }],
   },
   options: {
@@ -125,7 +124,7 @@ var myLineChart = new Chart(monthChart, {
       pointBorderColor: "rgba(47, 53, 80, 1)",
       pointHoverBackgroundColor: "rgba(47, 53, 80, 1)",
       pointHoverBorderColor: "rgba(47, 53, 80, 1)",
-      data: [0, 10000, 5000, 15000, 10000, 20000, 15000, 25000, 20000, 30000, 25000, 40000],
+      data: [$('#jan').val(), $('#feb').val(), $('#mar').val(), $('#apr').val(), $('#may').val(), $('#jun').val(), $('#jul').val(), $('#aug').val(), $('#sep').val(), $('#oct').val(), $('#nov').val(), $('#dec').val()],
     }],
   },
   options: {
