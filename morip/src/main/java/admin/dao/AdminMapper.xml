@@ -35,4 +35,24 @@
  	<select id="totalWoman" resultType="int">
  		select count(*) from membertable where gender = 1
  	</select>
+ 	<update id="resetToday">
+ 		update todaytable set countenter=0,countsignup=0,countblog=0,countboard=0,countsignout=0
+ 	</update>
+ 	<update id="resetWeek">
+ 		update weektable set mon=0,tue=0,wed=0,thur=0,fri=0,sat=0,sun=0
+ 	</update>
+ 	<update id="countWeek" parameterType="string">
+ 		update weektable set ${dayOfWeek}=${dayOfWeek}+1
+ 	</update>
+ 	<update id="countMonth" parameterType="string">
+ 		update monthtable set ${month}=${month}+1
+ 	</update>
+ 	<!-- 한 주 디비 가져오기 -->
+ 	<select id="getWeekData" resultType="week">
+ 		select * from weektable
+ 	</select>
+ 	<!-- 일 년 디비 가져오기 -->
+ 	<select id="getMonthData" resultType="month">
+ 		select * from monthtable
+ 	</select>
  </mapper>
