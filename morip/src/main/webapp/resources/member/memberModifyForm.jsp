@@ -3,8 +3,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <head>
-<title>회원정보 수정</title>
 <!--===============================================================================================-->
+<!-- Google fonts-->
+<link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="../css/member/memberModifyForm.css">
 <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
@@ -17,6 +18,7 @@
       <span class="memberModifyFormTitle">회원정보 수정</span>	
       <!-- <hr align="center" width="400px" size="4" color="black"><br> -->
       <div class="hr"></div>
+      <br>
       <div class="container-memberModifyForm-text">
       <div class="box11">
          <div class="container-memberModifyprofile">
@@ -30,6 +32,7 @@
            </div>
          </div>
       </div> <!-- box11 -->
+      
       <div class="box22">
          <!-- 이메일 보여주는 부분 여기는 수정 불가! -->
 		<div class="container-memberModifyFormEmail">

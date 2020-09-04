@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="boardSQL">
+   <!-- 글쓰기 -->
+   <insert id="boardWrite" parameterType="java.util.Map">
+   begin
+      INSERT INTO boardtable (boardtable_seq, nickname, email, subject, content, image, ref, step) 
+      values(boardtable_seq.nextval
+          , #{nickname}
+          , #{email}
+          , #{subject}
+          , #{content}
+          , #{image}
+          , boardtable_seq.currval
+          , '0');
+          
+      update todaytable set countboard = countboard + 1;	
+   end;
+   </insert>
+   
+   <!-- 목록 -->
+   <select id="getBoardList" parameterType="java.util.Map" resultType="board">
+     
+      <![CDATA[
+      select * from
+      (select rownum rn, tt.* from
+      (select * from boardtable where step=0 order by CASE WHEN nickname IN ('운영자') THEN 0 ELSE 1 END, boardtable_seq desc)tt 
+      )where rn>=#{startNum} and rn<=#{endNum}
+      ]]>
+   </select>
+   
+   <!-- 총글수 -->
+   <select id="getBoardTotalA" resultType="int">
+      select count(*) from boardtable where step=0
+   </select>
+   
+   <!-- 작성한 글 확인 -->
+   <select id="getBoard" parameterType="int" resultType="board">
+      select * from boardtable where boardtable_seq=#{boardtable_seq}
+   </select>
+   
+   <!-- 검색 -->
+   <select id="getBoardSearch" parameterType="java.util.Map" resultType="board">
+      <![CDATA[
+      select * from
+      (select rownum rn, tt.* from
+      	(select * from boardtable where nickname = '운영자' or (${searchOption} like '%'||#{keyword}||'%' and step = 0)
+      	order by CASE WHEN nickname IN ('운영자') THEN 0 ELSE 1 END, ref desc, step asc)tt
+      )where rn>=#{startNum} and rn<=#{endNum} 
+      ]]>
+   </select>
+   
+   <!-- 검색 총글수 -->
+   <select id="getBoardSearchTotalA" resultType="int">
+      select count(*) from boardtable where ${searchOption} like '%'||#{keyword}||'%'
+   </select>
+   
+   <!-- 글수정 -->
+   <update id="boardModify" parameterType="java.util.Map">
+      UPDATE boardtable SET subject=#{subject}
+                      ,content=#{content}
+                      ,logtime=sysdate
+      WHERE boardtable_seq=#{boardtable_seq}
+   </update>
+   
+   <!-- 글삭제 -->
+   <delete id="boardDelete" parameterType="int">
+      delete boardtable where boardtable_seq = #{boardtable_seq}
+   </delete>
+   
+   <!-- 조회수 -->
+   <update id="boardHit" parameterType="int">
+      UPDATE boardtable SET hit=hit+1 WHERE boardtable_seq=#{boardtable_seq}
+   </update>
+   
+   <!-- 댓글 입력 -->
+   <insert id="insertReply" parameterType="java.util.Map">
+    insert into boardtable(boardtable_seq, nickname, email, content, logtime, ref, step, pseq, image) 
+       values(boardtable_seq.nextval
+            , #{nickname }
+            , #{email}
+            , #{content}
+            , sysdate
+            , #{ref}
+            , #{step}
+            , #{pseq}
+            , #{image})
+   </insert>
+   
+   <!-- 댓글 전부 불러오기 -->
+   <select id="loadReply"  parameterType="Integer" resultType="board">
+      select * from boardtable where ref=#{ref} and step != 0 order by step, boardtable_seq desc
+   </select>
+   
+   <!-- 댓글삭제 -->
+   <delete id="deleteReplyBoard" parameterType="java.util.Map">
+      delete boardtable where boardtable_seq=#{boardtable_seq} or pseq=#{boardtable_seq}
+   </delete>
+   
+   <!-- 댓글수정 -->
+   <update id="updateReply" parameterType="java.util.Map">
+      update boardtable set content = #{content}, logtime = sysdate where boardtable_seq = #{boardtable_seq}
+   </update>
+   
+   <!-- viewPage -->
+   <select id="viewPage"  parameterType="Integer" resultType="board">
+      select * from boardtable where boardtable_seq=#{boardtable_seq}
+   </select>
+</mapper>   

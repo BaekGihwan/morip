@@ -1,129 +1,105 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-    
-<!--===============================================================================================-->	
-<link rel="stylesheet" type="text/css" href="../../css/board/boardWriteForm.css">
-<link rel="stylesheet" type="text/css" href="../../css/board/board.css">
+	pageEncoding="UTF-8"%>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<!--==================================================CSS==================================================-->
+<!-- Google fonts-->
+<link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="../css/board/boardWriteForm.css">
+<link rel="stylesheet" type="text/css" href="../css/board/board.css">
+<!--hover.css-->
+<link rel="stylesheet" href="../../css/board/hover.css">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500&display=swap" rel="stylesheet">
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
-<!--===============================================================================================-->
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <!-- Font Awesome icons (free version)-->
-    <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" crossorigin="anonymous"></script>
-    <!-- Google fonts-->
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
-    <!--AOS 라이브러리-->
-     <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
-     <!--hover.css-->
-     <link href="../../css/board/hover.css" rel="stylesheet" />
-    <!-- Core theme CSS (includes Bootstrap)-->
-    <link href="../css/board/board.css" rel="stylesheet" />
-    <!-- CSS only -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-    
-    <!-- 썸머노트부분 -->
-    <!-- include libraries(jQuery, bootstrap) -->
-	<link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
-	<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script> 
-	<script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script> 
-	<!-- include summernote css/js-->
-	<link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote-bs4.css" rel="stylesheet">
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote-bs4.js"></script>
-	<!-- include summernote-ko-KR -->
-	<script src="/js/board/summernote-ko-KR.js"></script>
-    
+<!-- Font Awesome icons (free version)-->
+<script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js"crossorigin="anonymous"></script>
+<!-- Google fonts-->
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
+<!-- <!--AOS 라이브러리-->
+<link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+<!-- Core theme CSS (includes Bootstrap)-->
+<!-- CSS only -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+<!-- 썸머노트부분 -->
+<!-- include libraries(jQuery, bootstrap) -->
+<link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
+<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>
+<!-- include summernote css/js-->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote-bs4.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote-bs4.js"></script>
+<!-- include summernote-ko-KR -->
+<script src="/js/board/summernote-ko-KR.js"></script>
+<!--==================================================CSS==================================================-->
+</head>
+<body>
+	<article class="contentWrapper">
 
-    <title></title>
-<!--     
+
+<!-- 글작성 부분 -->
+		<div class="writeContent">
+			<div class="writeEditor">
+				<br>
+				<br>
+				<div style="width: 95%; margin: auto;">
+					<form method="post" action="/write">
+						<input type="text" id="subject" name="subject" placeholder="제 목">
+						<div id="sujectDiv"></div>
+						<hr align="center" width="100%" size="15" color="black">
+						<textarea id="summernote" name="content"></textarea>
+						<div id="contentDiv"></div>
+				</div>
+			</div>
+
+
+<!-- 버튼 부분  -->
+			<div class="writeOption">
+				<div class="saveOptionWrapper">
+					<button type="reset" class="btn- resetBtn" id="boardWriteBtn-"
+						style="font-size: 13px; border-radius: 20px; border: 1px solid gray; outline: none !important; margin: 5px; height: 40px;">다시작성</button>
+					<br>
+					<button type="button" class="btn-" id="boardWriteBtn"
+						style="font-size: 13px; border-radius: 20px; border: 1px solid gray; outline: none !important; margin: 5px; height: 40px;">저장하기</button>
+				</div>
+			</div>
+			</form>
+		</div>
+	</article>
+</body>
+
+
+
+<!-- Bootstrap core JS-->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
+
+<!-- Third party plugin JS-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+
+<!--AOS 라이브러리-->
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+<!-- JS, Popper.js, and jQuery -->
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+	integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+	crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+	integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+	crossorigin="anonymous"></script>
+
+<!-- Core theme JS-->
+<script src="../js/board/board.js"></script>
     <script>
  $(document).ready(function() {
 	  $('#summernote').summernote({
  	    	placeholder: 'content',
-	        minHeight: 400, //최소높이
-	        maxHeight: null, //최대높이
+	        minHeight: 550, //최소높이
+	        maxHeight: 550, //최대높이
 	        focus: true,  //에디터 로딩 후 초커스를 맞출지 여부
 	        lang : 'ko-KR' // 한글 설정
 	  });
 	}); 
-</script> -->
-
-<style>
-
-</style>
-
-  </head>
-  <body>
-    <header>
-      <div class="header">
-        <nav class="navBar">
-            네비게이션 바(나중에 합칠 떄 저 위에 header 태그 부분만 지워주시면 됩니다~^0^)
-        </nav>
-      </div>
-    </header>
-    <article class="contentWrapper">
-    
-    
-    
-      <div class="writeContent">
-        <div class="writeEditor">
-        	<br><br>
-			<div style="width: 95%; margin: auto;">
-				<form method="post" action="/write">
-				<input type="text" id="subject" name="subject" placeholder="제  목">
-				 <div id="sujectDiv"></div>
-				<hr align="center" width="100%" size="15" color="black">
-					<textarea id="summernote" name="content"></textarea>
-					<div id="contentDiv"></div>	<!-- 이거맞는건가 -->
-				</form>
-			</div>
-			
-			
-
-        </div>
-        <div class="writeOption">
-          <div class="saveOptionWrapper">
-            <button type="button" class="btn-" id="boardWriteBtn-" style="font-size:13px; border-radius:20px; border: 1px solid #343a40; outline: none !important; margin:5px; height:40px;" >미리보기</button><br>
-            <button type="button" class="btn-" id="boardWriteBtn"style="font-size:13px; border-radius:20px; border: 1px solid #343a40; outline: none !important; margin:5px; height:40px;">저장하기</button>
-            <!--switch-->
-            <div class="saveOption">
-              <div class="switch">
-                  <p>공개 설정</p>
-                  <div class="primary-switch">
-                    <input type="checkbox" id="primary-switch" checked>
-                    <label for="primary-switch"></label>
-                  </div>
-                  <div class="switch_infomation">
-                    <p>
-                    공개 여부를 설정합니다.<br>
-                    활성화 시 다른 사용자에게 공개되며,<br>
-                    비활성화시 다른유저에게 보이지 않습니다.</p>
-                  </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </article>
-  </body>
-<!--    <!-- Bootstrap core JS-->
-  
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
-  
-	<!-- Third party plugin JS-->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
-  
-   <!--AOS 라이브러리-->
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  
-  <!-- JS, Popper.js, and jQuery -->
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
-  
-  <!-- Core theme JS-->
- <script src="../../js/board/board.js"></script>
+</script> 
 </html>

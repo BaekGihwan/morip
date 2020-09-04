@@ -18,5 +18,11 @@
      	<typeAlias type="board.bean.BoardDTO" alias="board"/>
      	<!-- hashtag -->
      	<typeAlias type="hashtag.bean.HashtagDTO" alias="hashtag"/>
+     	<!-- today -->
+     	<typeAlias type="admin.bean.TodayDTO" alias="today"/>
+     	<!-- week -->
+     	<typeAlias type="admin.bean.WeekDTO" alias="week"/>
+     	<!-- month -->
+     	<typeAlias type="admin.bean.MonthDTO" alias="month"/>
      </typeAliases>
   </configuration>

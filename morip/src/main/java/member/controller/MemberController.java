@@ -110,7 +110,6 @@ public class MemberController {
 	@RequestMapping( value = "/member/sendMail" , method=RequestMethod.POST )
     @ResponseBody
     public String sendMail(@RequestParam String email){
-		System.out.println(email);
         Random r = new Random();
         int dice = r.nextInt(4589362) + 49311; //이메일로 받는 비밀번호
     
@@ -177,8 +176,8 @@ public class MemberController {
 		if(memberDTO != null) {
 			session.setAttribute("memEmail", memberDTO.getEmail());
 			session.setAttribute("nickname", memberDTO.getNickname());
+			session.setAttribute("image", memberDTO.getImage());
 			session.setAttribute("checkid", memberDTO.getCheckid());
-			session.setAttribute("nickname", memberDTO.getNickname());
 		}
 		
 		ModelAndView mav = new ModelAndView();
@@ -203,6 +202,7 @@ public class MemberController {
 			session.setAttribute("nickname", memberDTO.getNickname());
 			session.setAttribute("image", memberDTO.getImage());
 			session.setAttribute("checkid", memberDTO.getCheckid());
+			
 			mav.addObject("memberDTO", memberDTO);
 		}
 		mav.addObject("passMatch", passMatch);
@@ -241,7 +241,6 @@ public class MemberController {
 	
 	@RequestMapping(value = "/member/checkId")
 	public ModelAndView checkId(@RequestParam String email, String checkid, HttpSession session) {
-		System.out.println("이메일뭐오냐" + email);	
 		MemberDTO memberDTO = memberService.getMember(email, checkid);
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("memberDTO", memberDTO);
@@ -333,46 +332,65 @@ public class MemberController {
 		String email = (String) session.getAttribute("memEmail");
 		String checkid = (String) session.getAttribute("checkid");
 		MemberDTO memberDTO = memberService.getMember(email, checkid);
+		session.setAttribute("beforeNickname", memberDTO.getNickname());
 		model.addAttribute("memberDTO", memberDTO);
 		model.addAttribute("display", "/resources/member/memberModifyForm.jsp");
 		return "/resources/main/index";
 	}
-		
+	
 	// 회원정보 수정
 	@RequestMapping(value="/member/memberModify", method=RequestMethod.POST)
 	@ResponseBody
 	public void memberModify(@ModelAttribute MemberDTO memberDTO, 
 							 @RequestParam MultipartFile img, HttpSession session) {
-		String image =  (String)session.getAttribute("image");
+		String image =  (String) session.getAttribute("image");
 		String checkid = (String) session.getAttribute("checkid");
+		String beforeNickname = (String) session.getAttribute("beforeNickname");
 		
 		if(img.getOriginalFilename() == "") {
 			memberDTO.setImage(image);
 		}else {
 			String filePath = "E:\\spring\\gihwan\\morip\\morip\\src\\main\\webapp\\storage\\";
+			String filePath2 = "E:\\spring\\gihwan\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\morip\\storage";
 			String fileName = img.getOriginalFilename();
 			File file = new File(filePath, fileName);
+			File file2 = new File(filePath2,fileName);
 			try {
 				FileCopyUtils.copy(img.getInputStream(), new FileOutputStream(file));
+				FileCopyUtils.copy(img.getInputStream(), new FileOutputStream(file2));
 			} catch (IOException e) {
 				e.printStackTrace();
 			}		
 			memberDTO.setImage(fileName);		
 			session.setAttribute("nickname", memberDTO.getNickname());
+			session.setAttribute("beforeNickname", memberDTO.getNickname());
+			beforeNickname = (String) session.getAttribute("beforeNickname");
 			session.setAttribute("image", memberDTO.getImage());
-		}					
-		String inputPass = memberDTO.getPwd();
-		String pass = passEncoder.encode(inputPass);
-		memberDTO.setPwd(pass);
+		}		
+		if(checkid.equals("1")) {
+			String inputPass = memberDTO.getPwd();
+			String pass = passEncoder.encode(inputPass);
+			memberDTO.setPwd(pass);
+			boolean passMatch = false;			
+			passMatch = passEncoder.matches(inputPass, memberDTO.getPwd());
+		}
 		memberDTO.setCheckid(checkid);
-		memberService.memberModify(memberDTO);
-	}	
-	
-	public void aaaa(HttpSession session) {
-		String name = (String) session.getAttribute("nickname");
+		
+		
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("email", memberDTO.getEmail());
+		map.put("checkid", memberDTO.getCheckid());
+		map.put("nickname", memberDTO.getNickname());
+		map.put("pwd", memberDTO.getPwd());
+		map.put("gender", memberDTO.getGender());
+		map.put("image", memberDTO.getImage());
+		map.put("beforeNickname", beforeNickname);
+		if(checkid.equals("1")) {
+			memberService.memberModify(map);
+		}else {
+			memberService.memberModify2(map);
+		}		
 	}
 	
-	
-	
-	
+
 }

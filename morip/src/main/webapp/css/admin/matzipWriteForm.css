@@ -1,0 +1,132 @@
+@charset "UTF-8";
+.container-matzipWriteForm{
+	margin-top: 30px;
+}
+
+.title{
+	width: 40%;
+	margin: 0 auto;	
+	height: 70px;
+	font-size: 30px;
+	text-align: center;
+	border-bottom: 4px solid black;
+}
+
+.matzipWriteForm{
+	width: 50%;
+	margin: 0 auto;
+	display: flex;	
+	justify-content: space-between;
+}
+
+.mainImage {
+	width: 30%;
+	margin-top: 10px
+}
+
+.mainImage h6 {
+	text-align: center;
+}
+
+.matzipimage{
+	margin-left: 10px;
+	overflow: hidden;
+}
+
+/* 프로필 사진 변경*/ 
+.changeMatzipImage{
+	width: 100%;
+	overflow: hidden;
+	text-align: center;
+} 
+
+.changeMatzipImage label {
+    font-size: 16px;
+    color: white;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+    
+    background: #bec3ff;
+    padding: 10px;
+    border-radius: 10px;
+    
+} 
+.changeMatzipImage input[type="file"] { /* 파일 필드 숨기기 */ 
+	cursor: pointer;
+	position: absolute; 
+	width: 1px; 
+	height: 1px; 
+	padding: 0; 
+	margin: -1px; 
+	overflow: hidden; 
+	clip:rect(0,0,0,0); 
+	border: 0; 
+}
+
+.matzipChoiceImage{
+	border: 1px solid gray;
+	width: 100%;
+	height: 100%;
+}
+
+.matzipText{
+	text-align: center;
+	color:#8e93ae;
+}
+
+.information {
+	margin-left: 20px;
+	width: 60%;
+}
+
+.matzipForm{
+	display: flex;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+.matzip{
+	color: #333333;
+	font-size: 16px;
+	height: 40px;
+	width: 380px;
+	padding: 0 20px;
+	margin-left: 10px;
+	margin-right: 20px;
+	border-style: solid;
+	border-radius: 10px;
+	border-top-width: 1px;
+	border-bottom-width: 1px;
+	border-left-width: 1px;
+	border-right-width: 1px;
+	margin-bottom: 10px;
+}
+
+.matzipButtonForm{
+	padding-left: 20px;
+	width: 30%;
+	margin: 0 auto;
+}
+
+.matzipBtn{
+	text-align: center;
+    padding: 0 60px;
+    height: 60px;
+    background-color: #333333;
+    border-radius: 10px;
+    font-size: 16px;
+    color: #fff;
+    outline: none !important;
+    border: none;
+    margin-right: 20px;
+}
+
+#matzipCategoryDiv, #matzipTitleDiv, #matzipTelephoneDiv, #matzipAddressDiv, #matzipRoadaddressDiv{
+	padding-left: 20px;
+}
+
+
+
+
+

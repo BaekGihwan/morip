@@ -151,8 +151,10 @@
                     context.triggerEvent('dialog.shown');
                     self.$mapInput.focus();
                     google.maps.event.trigger(self.map, 'resize');
-                    $('.modal-backdrop').css("z-index", 10);
-
+                    
+                    if(modifyFormCheck!=true){
+                    	$('.modal-backdrop').css("z-index", 10);
+                    }
                     self.$addBtn.click(function(event) {
                         event.preventDefault();
                         deferred.resolve({
@@ -192,7 +194,7 @@
             $div.css({
                 'position': 'relative',
                 'padding-top': '25px',
-                'padding-bottom': '56.25%',
+                'padding-bottom': '30%',
                 'height': '0'
             });
 
@@ -205,8 +207,8 @@
                 'position': 'absolute',
                 'top': '0',
                 'left': '0',
-                'width': '60%',
-                'height': '60%'
+                'width': '100%',
+                'height': '100%'
             });
 
             $div.html($iframe)

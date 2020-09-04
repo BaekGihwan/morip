@@ -9,17 +9,21 @@ body, html{
 article{
   height:100%;
 }
-footer{
+/* footer{
   width:100%;
   height:300px;
   background-color: #c4c4bb;
-}
+} */
 /*header------나중에 속성 지워주기*/
 .navBar{
   width:100%;
   height:100px;
   background-color: gray;
   text-align: center;
+}
+#subject{
+	font-family: 'Jua', sans-serif;
+	letter-spacing: 3px;
 }
 /*content*/
 .contentWrapper{
@@ -29,6 +33,7 @@ footer{
   width:65%;
   margin:0 auto;
   border:1px solid #cfd8dc;
+  
 
 }
 .writeContent{
@@ -53,10 +58,28 @@ footer{
   width:100%;
   height:200px;
   text-align: center;
-  margin:20px auto;
+  margin:30px auto;
+}
+#boardWriteBtn-{
+	font-family: 'Jua', sans-serif;
+	letter-spacing: 2px;
+}
+#boardWriteBtn-:hover{
+	background-color: #6c757d;
+	color: black;
+}
+
+#boardWriteBtn{
+	font-family: 'Jua', sans-serif;
+	letter-spacing: 2px;
+}
+#boardWriteBtn:hover{
+	background-color: #6c757d;
+	color: black;
 }
 /*스위치 버튼 CSS*/
 .saveOption{
+	
   width:100%;
   height:100px;
   font-size: 15px;
@@ -159,9 +182,20 @@ footer{
  margin:10px auto;
 }
 .saveOptionWrapper button{
-    width:90%;
+    width:70%;
+    background-color: white;
+    color: #6c757d;
+    border-color: #6c757d;
 }
+
 /***************************boardView.jsp*********************************/
+#nickNameSpan{
+	font-size: 18px;
+	margin-top: 5px;
+	font-family: 'Jua', sans-serif;
+	letter-spacing: 2px;
+}
+
 .boardWrapper{
   width:70%;
   height:100%;
@@ -193,16 +227,17 @@ footer{
 }
 .view_category{
   height:100%;
-  font-family: 'Noto Sans KR', sans-serif;
+  font-family: 'Jua', sans-serif;
   color:#ccc0ae;
   letter-spacing: 7px;
   line-height:50px;
   margin-left:30px;
 }
 .view_subject{
+	letter-spacing: 2px;
   margin:10px auto;
   margin-left:30px;
-  font-family: 'Noto Sans KR', sans-serif;
+  font-family: 'Jua', sans-serif;
   font-size: 40px;
 }
 .view_userInfo{
@@ -221,9 +256,10 @@ footer{
   align-items:center;
   justify-content: flex-end;
   font-size: 20px;
-  margin-left: 350px;
+  margin-left: 70%;
 }
 .view_userImg{
+  float:left;
   width:30px;
   height:30px;
   border-radius: 75%;
@@ -233,6 +269,7 @@ footer{
   width:100px;
   margin-left:20px;
 }
+
 .boardContentWrapper{
   width:100%;
   /*
@@ -244,7 +281,7 @@ footer{
 .boardcontentSpan{
 	width:100%;
 	height: 500px;
-	overflow:scroll;
+	overflow:auto;
 	overflow-x:hidden;
 }
 .boardContentWrapper{
@@ -264,6 +301,8 @@ footer{
   padding:0.3em;
 }
 .view_likeWrapper, .view_replyWrapper{
+	font-family: 'Jua', sans-serif;
+letter-spacing: 2px;
     height:50px;
     display: flex;
     justify-content: center;
@@ -286,27 +325,35 @@ footer{
   align-items: center;
   cursor: pointer;
   background-color: white;
+  font-family: 'Jua', sans-serif;
+letter-spacing: 2px;
 }
 /*boardRepy*/
-.view_replyBoard{
-  width:70%;
-  margin:0 auto;
+.view_boardReplyInputWrapper{
+	width:80%;
+	margin:0 auto;
 }
-.view_replyListWrapper,.view_replyDiv{
+.view_replyBoard{
+	width:80%;
+	margin:0 auto;
+	margin-top: 30px;
+}
+
+.view_replyDiv{
   width:100%;
   margin:50px auto;
 }
 .view_replyDiv{
+	font-family: 'Jua', sans-serif;
+letter-spacing: 2px;
   padding-left:70px;
 }
-.view_replyList, .view_replyInputWrapper. .view_boardReplyInputWrapper{
+.view_replyList, .view_replyInputWrapper{
   width:100%;
   display: flex;
 }
 .view_userImgWrapper{
   width:10%;
-
-  margin-right:20px;
 }
 .view_userImg{
   width:40px;
@@ -321,7 +368,16 @@ footer{
   margin-top:5px;
 }
 .reply_userID{
-  font-family: 'Noto Sans KR', sans-serif;
+  font-family: 'Jua', sans-serif;
+letter-spacing: 2px;
+  
+}
+.reply_logtime{
+	font-family: 'Jua', sans-serif;
+letter-spacing: 1px;
+	font-size: 13px;
+	
+	 color: gray;
 }
 .optionBtn{
   width:10%;
@@ -334,10 +390,12 @@ footer{
   justify-content: flex-end;
 }
 .hvr-grow{
+	font-family: 'Jua', sans-serif;
+letter-spacing: 2px;
   width:40px;
   height:25px;
   border:1px solid gray;
-  font-size: 10px;
+  font-size: 11px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -349,11 +407,13 @@ footer{
   border-radius: 5px;
   display: flex;
   margin-bottom:10px;
+  margin-top: 15px;
 }
 .view_replyInputWrapper{
   padding-left:20px;
 }
 #replyInputBox{
+	resize: none;
   width:100%;
   margin-top:10px;
 }
@@ -370,9 +430,26 @@ footer{
   display:flex;
   justify-content: flex-end;
 }
-#resetBtn, #insertBtn{
+#resetBtn, #insertBtn, .modi {
+	font-family: 'Jua', sans-serif;
+letter-spacing: 5px;
   margin:10px;
   width:100px;
-  font-size: 13px;
+  font-size: 16px;
 }
+.modi{
+	font-family: 'Jua', sans-serif;
+	letter-spacing: 5px;
+  margin:10px;
+  width:100px;
+  font-size: 16px;
+}
+.writeOptionDiv{
+	display: none;
+}
+#replypre{
+	font-family: 'Jua', sans-serif;
+letter-spacing: 2px;
+}
+
 /***************************boardList.jsp**********************************/

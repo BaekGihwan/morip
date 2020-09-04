@@ -2,6 +2,8 @@ package myblog.dao;
 
 import java.util.List;
 import java.util.Map;
+
+import hashtag.bean.HashtagDTO;
 import member.bean.MemberDTO;
 import myblog.bean.FollowDTO;
 import myblog.bean.LikeDTO;
@@ -56,5 +58,17 @@ public interface MyblogDAO {
 
 	public MemberDTO loadMember(String nickname);
 
+	public void updateBgImg(Map <String, String> map);
 
+	public void modifyBoard(Map<String, String> map);
+
+	public void boardHit(String seq);
+
+	public List<HashtagDTO> loadHashtag(int seq);
+
+	public void modifyHashtag(Map<String, Object> map);
+  
+	public List<String> bestWriter();
+
+	public List<MyblogDTO> bestTrip(Map<String, String> map);
 }

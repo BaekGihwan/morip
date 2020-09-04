@@ -96,8 +96,6 @@ local.properties
 pom.properties
 MANIFEST.MF
 Servers/
-*.xml
-.xml
 
 .idea/
 mybatis-config.xml

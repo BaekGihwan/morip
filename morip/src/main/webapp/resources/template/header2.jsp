@@ -3,11 +3,11 @@
 <head>
 <!--===============================================================================================-->
 <link rel="stylesheet" href="../css/main/header.css">
-<link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
 <script src="https://kit.fontawesome.com/75c3f69c14.js" crossorigin="anonymous" ></script>
 <!--===============================================================================================-->
 </head>
-<body onLoad="pageStart()">
+<body>
 <input type="hidden" id="memEmail" value="${memEmail }">
 <input type="hidden" id="checkid" value="${checkid }">
 <input type="hidden" id="nickname" value="${nickname }">
@@ -30,9 +30,9 @@
       </div>
       <!-- 로그인후 버튼 -->
       <div class="header_login header_afterLogin">
-        <button type="button"><i class="fas fa-home fa-2x"></i></button>&emsp;
-        <button type="button"><i class="fas fa-envelope fa-2x"></i></button>&emsp;
-	    <button type="button"><i class="fas fa-heart fa-2x"></i></button>&emsp;
+        <button type="button" class="homeBtn"><i class="fas fa-home fa-2x"></i></button>&emsp;
+        <!-- <button type="button"><i class="fas fa-envelope fa-2x"></i></button>&emsp; -->
+	    <button type="button" id="dddd"><i class="fas fa-heart fa-2x"></i></button>&emsp;
 		<img class="userPhoto" alt="" src="../storage/${image }">
 		
 		<!-- userPhoto을 누르면 나오는 메뉴바 -->

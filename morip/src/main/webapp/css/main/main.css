@@ -5,21 +5,20 @@
 	/* border: 1px solid red;	 */
 	width: 1120px;
 	height: 70px;
-	
-	margin: 0 auto;
+	margin: 0 auto
 	padding-top: 30px;
 }
 
 .morip_introduce 
 .morip_text {	
-	font-family: sans-serif;
+	font-family: 'Jua', sans-serif;  
 	font-size: 30px;	
 	color: #222;
 	float: left;
 }
 
 .morip_introduce span {
-	font-family: 'Indie Flower', cursive;
+	font-family: 'Jua', sans-serif;  
 	color: blue;
 }
 
@@ -27,10 +26,10 @@
 .morip_description {
 	margin-top: 10px;
 	margin-left: 44px;
-	width: 400px;
+	width: 400px;morip_introduce
 	height: 66px;
 	opacity: .7;
-	font-family: 'Roboto', sans-serif;
+	font-family: 'Jua', sans-serif;  
 	font-size: 14px;
 	font-weight: 400;
 	font-style: normal;
@@ -42,18 +41,17 @@
 	text-align: left;
 }
 
-/* 두번째 배너문 */
+/* 두번째 배너문 
 .morip_banner {
-	width: 1120px;
-	height: 344px;
-	background-image: url('../../image/main/banner.png');
-	background-size: 1120px 344px; 
+	display: block;
+	width: 100%;
+    height: 450px;
+ 	background-image: url('../image/main/mainbanner5.png'); 
+	background-repeat: no-repeat;
+    background-position: center;
+    text-indent: -999px;
+    text-decoration: none;
 	margin: 0 auto;
-}
-
-.morip_banner > img {	
-	width: auto;
-	height: 344px;
 }
 
 /* 세번째 배너슬라이더 */
@@ -169,6 +167,7 @@
 .morip_banner_slider 
 .img 
 .content {
+	font-family: 'Jua', sans-serif;  
 	position: absolute;
 	top:50%;
 	left:50%;
@@ -209,8 +208,19 @@
 }
 
 /* 베스트여행작가 */
+.blog_link{
+	font-family: 'Jua', sans-serif;  
+	background: none;
+	color: red;
+	outline: none;
+	border: none;
+	cursor: pointer;
+}
+
 .morip_bestBlog {
 	/* border: 1px solid green; */	
+	font-family: 'Jua', sans-serif; 
+	color: #555; 
 	width: 1120px;
 	margin: 0 auto;
 }
@@ -295,7 +305,7 @@ span {
 .description {
 	width: 220px;
     height: 54px;
-    font-family: AppleSDGothicNeo;
+    font-family: 'Jua', sans-serif;    
     font-size: 13px;
     font-weight: 200;
     font-style: normal;
@@ -333,7 +343,7 @@ span {
 .profile_detail 
 .link_wrapper a{
 	height: 16px;
-    font-family: AppleSDGothicNeo;
+    font-family: 'Jua', sans-serif;  
     font-size: 13px;
     font-weight: 600;
     font-style: normal;
@@ -416,7 +426,7 @@ span {
 }
 .post_image_like span {
 	height: 16px;
-    font-family: Montserrat;
+    font-family: 'Jua', sans-serif;  
     font-size: 13px;
     font-weight: 500;
     font-style: normal;
@@ -459,7 +469,7 @@ span {
 	display:table-cell; 
 	/* text-align:center;  */
 	vertical-align:middle;
-	font-family: 'Indie Flower', cursive;
+	font-family: 'Jua', sans-serif;  
 	font-size: 13px;
 
 	
@@ -467,6 +477,10 @@ span {
 
  
  /* food_post */
+ .food_post{
+ 	cursor: pointer;
+ }
+ 
 .food_post_bg_image{	
 	width: 1120px;
 	height: 600px;	
@@ -619,6 +633,7 @@ span {
 .text1{
 	width: 1120px;
 	margin: 0 auto;
+	font-family: 'Jua', sans-serif;  
 }
 
 
@@ -628,7 +643,7 @@ span {
 }
 .bodyHeader{
 	height:50px;
-	font-family: 'Gothic A1', sans-serif;
+	font-family: 'Jua', sans-serif;  
 	color:#8aacc8;
 	font-size:23px;
 }

@@ -6,15 +6,15 @@ $('.follower').click(function(){
 	$.ajax({
 		type: 'post',
 		url: '/morip/myblog/followClick',
-		data: {'email' : 'ka28@naver.com'},
+		data: {'email' : $('#pageEmail').val()},
 		dataType: 'json',
 		success: function(data){
-			$('#modal_followtable tr:gt(0)').remove();
+			$('#modal_followtable').empty();
 			$.each(data.list, function(index, items){
 				$('<tr/>').append($('<td/>', {
 					id : 'modal_userImg'
 					}).append($('<img>', {
-						src : '../image/myblog/paris.jpg',
+						src : '../storage/'+items.image,
 						id : 'modal_userImg'
 				}))
 				).append($('<td/>', {
@@ -24,10 +24,69 @@ $('.follower').click(function(){
 					id : 'modal_userFollow'
 					}).append($('<button/>', {
 						class : 'btn btn-outline-dark',
-						id : 'followClickBtn',
+						id : 'followClickBtn'+items.membertable_seq,
 						text : '팔로잉'
 					}))
-				).appendTo($('#modal_followtable'));
+				).append($('<input>', {
+					type: 'hidden',
+					id: 'followCheck'+items.membertable_seq
+				})).appendTo($('#modal_followtable'));
+				if($('#sessionEmail').val() == items.email){
+					$('#followClickBtn'+items.membertable_seq).remove();
+				}
+				$.ajax({
+					type: 'post',
+					url: '/morip/myblog/followCheck',
+					data: {'follow_email' : items.email},
+					dataType: 'json',
+					success: function(data){
+						if(data.followDTO == null){
+							$('#followClickBtn'+items.membertable_seq).attr('class', 'btn btn-outline-primary');
+							$('#followClickBtn'+items.membertable_seq).text('팔로우');
+							$('#followCheck'+items.membertable_seq).val('uncheck');
+						}else{
+							$('#followClickBtn'+items.membertable_seq).attr('class', 'btn btn-outline-dark');
+							$('#followClickBtn'+items.membertable_seq).text('팔로잉');
+							$('#followCheck'+items.membertable_seq).val('check');
+						}
+					},
+					error: function(err){
+						console.log(err);
+					}
+				});
+				$('#followClickBtn'+items.membertable_seq).click(function(){
+					if($('#followCheck'+items.membertable_seq).val() == 'uncheck'){
+						$.ajax({
+							type: 'post',
+							url: '/morip/myblog/follow',
+							data: {'follow_email' : items.email},
+							success: function(){
+								$('#followClickBtn'+items.membertable_seq).attr('class', 'btn btn-outline-dark');
+								$('#followClickBtn'+items.membertable_seq).text('팔로잉');
+								$('#followCheck'+items.membertable_seq).val('check');
+							},
+							error: function(err){
+								console.log(err);
+							}
+				
+						});
+					}else{
+						$.ajax({
+							type: 'post',
+							url: '/morip/myblog/unfollow',
+							data: {'follow_email' : items.email},
+							success: function(){
+								$('#followClickBtn'+items.membertable_seq).attr('class', 'btn btn-outline-primary');
+								$('#followClickBtn'+items.membertable_seq).text('팔로우');
+								$('#followCheck'+items.membertable_seq).val('uncheck');
+							},
+							error: function(err){
+								console.log(err);
+							}
+				
+						});
+					}
+				});
 			});
 		}
 	});
@@ -40,16 +99,15 @@ $('.following').click(function(){
 	$.ajax({
 		type: 'post',
 		url: '/morip/myblog/followingClick',
-		data: {'follow_email' : 'ka28@naver.com'},
+		data: {'follow_email' : $('#pageEmail').val()},
 		dataType: 'json',
 		success: function(data){
-			//alert(JSON.stringify(data));
-			$('#modal_followingtable tr:gt(0)').remove();
+			$('#modal_followingtable').empty();
 			$.each(data.list, function(index, items){
 				$('<tr/>').append($('<td/>', {
 					id : 'modal_userImg'
 					}).append($('<img>', {
-						src : '../image/myblog/cake.png',
+						src : '../storage/'+items.image,
 						id : 'modal_userImg'
 				}))
 				).append($('<td/>', {
@@ -59,10 +117,69 @@ $('.following').click(function(){
 					id : 'modal_userFollow'
 					}).append($('<button/>', {
 						class : 'btn btn-outline-dark',
-						id : 'followingClickBtn',
+						id : 'followingClickBtn'+items.membertable_seq,
 						text : '팔로잉'
 					}))
-				).appendTo($('#modal_followingtable'));
+				).append($('<input>', {
+					type: 'hidden',
+					id: 'followingCheck'+items.membertable_seq
+				})).appendTo($('#modal_followingtable'));
+				if($('#sessionEmail').val() == items.follow_email){
+					$('#followingClickBtn'+items.membertable_seq).remove();
+				}
+				$.ajax({
+					type: 'post',
+					url: '/morip/myblog/followCheck',
+					data: {'follow_email' : items.follow_email},
+					dataType: 'json',
+					success: function(data){
+						if(data.followDTO == null){
+							$('#followingClickBtn'+items.membertable_seq).attr('class', 'btn btn-outline-primary');
+							$('#followingClickBtn'+items.membertable_seq).text('팔로우');
+							$('#followingCheck'+items.membertable_seq).val('uncheck');
+						}else{
+							$('#followingClickBtn'+items.membertable_seq).attr('class', 'btn btn-outline-dark');
+							$('#followingClickBtn'+items.membertable_seq).text('팔로잉');
+							$('#followingCheck'+items.membertable_seq).val('check');
+						}
+					},
+					error: function(err){
+						console.log(err);
+					}
+				});
+				$('#followingClickBtn'+items.membertable_seq).click(function(){
+					if($('#followingCheck'+items.membertable_seq).val() == 'uncheck'){
+						$.ajax({
+							type: 'post',
+							url: '/morip/myblog/follow',
+							data: {'follow_email' : items.follow_email},
+							success: function(){
+								$('#followingClickBtn'+items.membertable_seq).attr('class', 'btn btn-outline-dark');
+								$('#followingClickBtn'+items.membertable_seq).text('팔로잉');
+								$('#followingCheck'+items.membertable_seq).val('check');
+							},
+							error: function(err){
+								console.log(err);
+							}
+				
+						});
+					}else{
+						$.ajax({
+							type: 'post',
+							url: '/morip/myblog/unfollow',
+							data: {'follow_email' : items.follow_email},
+							success: function(){
+								$('#followClickBtn'+items.membertable_seq).attr('class', 'btn btn-outline-primary');
+								$('#followClickBtn'+items.membertable_seq).text('팔로우');
+								$('#followingCheck'+items.membertable_seq).val('uncheck');
+							},
+							error: function(err){
+								console.log(err);
+							}
+				
+						});
+					}
+				});
 			});
 		}
 	});
@@ -76,7 +193,7 @@ $('#followBtn').click(function(){
 		$.ajax({
 			type: 'post',
 			url: '/morip/myblog/follow',
-			data: {'follow_email' : 'ka28@naver.com'},
+			data: {'follow_email' : $('#pageEmail').val()},
 			success: function(){
 				$('#followBtn').attr('class', 'btn btn-outline-dark');
 				$('#followBtn').text('팔로잉');
@@ -92,7 +209,7 @@ $('#followBtn').click(function(){
 		$.ajax({
 			type: 'post',
 			url: '/morip/myblog/unfollow',
-			data: {'follow_email' : 'ka28@naver.com'},
+			data: {'follow_email' : $('#pageEmail').val()},
 			success: function(){
 				$('#followBtn').attr('class', 'btn btn-outline-primary');
 				$('#followBtn').text('팔로우');
@@ -148,7 +265,7 @@ $('#modifyMemberBtn').click(function(){
 /*작성 버튼 클릭 시  OptionModal 창 띄워주기*/
 $('#writeOptionBtn').click(function(){
 	//$('#writeOptionModal').modal();
-	location.href="/morip/myblog/writeBlog1";
+	location.href="/morip/myblog/writeBlog0";
 });
 /*글 작성 모달에서 에세이 버튼 클릭시 */
 $('#writeBlogImg').click(function(){
@@ -199,9 +316,11 @@ $(document).ready(function(){
 	if($('#pageNickname').val()==$('#nickname').val()){  //마이 페이지로 들어왔을 경우
 		$('#writeOptionBtn').show();
 		$('#modifyMemberBtn').show();
+		$('#bgChangeOption').show();
 	} else {
 		$('#writeOptionBtn').hide();
 		$('#modifyMemberBtn').hide();
+		$('#bgChangeOption').hide();
 	}
 	$('.userMenu').css("z-index","90");
 });
@@ -218,7 +337,6 @@ $(document).ready(function(){
     var page = 1;   //불러올 페이지
 	
     $(window).scroll(function(){
-    console.log("documentHeight:" + documentHeight + " | scrollTop:" + scrollTop + " | windowHeight: " + windowHeight );
         if($(window).scrollTop()+200>=$(document).height() - $(window).height())
         {
             if(!loading)    //실행 가능 상태라면?
@@ -244,9 +362,10 @@ $(document).ready(function(){
 							let startdate= new Date(items.startdate).format('yyyy-MM-dd'); 
 							let enddate = new Date(items.enddate).format('yyyy-MM-dd');  
 							let seq = items.blogboardtable_seq;
+							$('#contentFilter').html(items.content);
+							let content = $('#contentFilter').text();
 							//처음 시작을 여는 div
-							if(tempNumber%3==0){
-							
+							if(tempNumber%3==0){							
 								height+=350;
 								$('.content').css('height',height+'px');
 								list += '<div class="myblogList" id="myblogList" data-aos="fade-up" data-aos-duration="3000">';
@@ -255,14 +374,13 @@ $(document).ready(function(){
 							list+='<div class="myblog_img">';
 							list+='<img class="listImg" src="../storage/'+items.mainimage+'"></div>';
             				list+='<div class="myblog_info"><div class="myblog_subject">'+items.subject+'</div>';
-            				list+='<div class="myblog_content">'+items.content+'</div>';
+            				list+='<div class="myblog_content">'+content+'</div>';
             				list+='<div class="myblog_userFunction"><div class="like'+seq+'" style="cursor:pointer;"onclick="likeClick('+seq+')"><i class="far fa-heart"></i></div>';
             				list+='<div class="likeCount'+seq+'"></div><div class="myblog_travleDay">';
             				list+= startdate +'~'+ enddate+'</div></div></div></div>';
             				list+='<input type="hidden" id="likeCheck'+seq+'" value="unlike">';
             				//닫아주는 div
 							if(tempNumber%3==2){
-							console.log(tempNumber);
 								list+='</div>';
 							}
 							tempNumber++;
@@ -303,11 +421,24 @@ $(document).ready(function(){
     
     //뷰 페이지 진입
    	function viewEnter(seq){
-   		location.href="view?seq="+seq;
+	   	if($('#sessionEmail').val()=='') {
+			Swal.fire({
+				icon: 'info',
+				confirmButtonText: '확인',
+				title: '로그인을 먼저 하세요.',
+				text: '로그인 화면으로 넘어갑니다.',
+			}).then((result) => {
+				if (result.value) {											
+				location.href="../member/loginForm";
+				}
+			}) 
+		}else {
+			location.href="view?seq="+seq;
+		}
+   		
    	}
    	
    	function loadBoardCount(){
-   	console.log("보드개수 카운팅");
    	$.ajax({
          type: 'post',
          url: '/morip/myblog/boardSize',
@@ -337,4 +468,9 @@ $(document).ready(function(){
 	          console.log(err);
 	        }
 	      });	
+   	}
+   	
+   	// 옵션 버튼을 클릭했을 때
+   	function backgroundImgChange(){
+   		$('#bgImgChange').modal();
    	}

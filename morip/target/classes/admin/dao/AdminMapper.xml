@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="adminSQL">
+ 	<!-- 방문자수 증가 -->
+ 	<update id="countEnter">
+ 		update todaytable set countEnter = countEnter + 1
+ 	</update>
+ 	<!-- 투데이 디비 가져오기 -->
+ 	<select id="dashboard" resultType="today">
+ 		select * from todaytable
+ 	</select>
+ 	<!-- 총회원수 뽑아오기 -->
+ 	<select id="totalmember" resultType="int">
+ 		select count(*) from membertable where nickname not like '%'||'운영자'||'%'
+ 	</select>
+ 	<!-- 총블로그수 뽑아오기 -->
+ 	<select id="totalblog" resultType="int">
+ 		select count(*) from blogboardtable
+ 	</select>
+ 	<!-- 총게시판수 뽑아오기 -->
+ 	<select id="totalboard" resultType="int">
+ 		select count(*) from boardtable where step = 0 and nickname not like '%'||'운영자'||'%'
+ 	</select>
+ 	<!-- 총맛집수 뽑아오기 -->
+ 	<select id="totalmatzip" resultType="int">
+ 		select count(*) from matziptable
+ 	</select>
+ 	<!-- 남자회원수 뽑아오기 -->
+ 	<select id="totalMan" resultType="int">
+ 		select count(*) from membertable where gender = 0
+ 	</select>
+ 	<!-- 여자회원수 뽑아오기 -->
+ 	<select id="totalWoman" resultType="int">
+ 		select count(*) from membertable where gender = 1
+ 	</select>
+ 	<update id="resetToday">
+ 		update todaytable set countenter=0,countsignup=0,countblog=0,countboard=0,countsignout=0
+ 	</update>
+ 	<update id="resetWeek">
+ 		update weektable set mon=0,tue=0,wed=0,thur=0,fri=0,sat=0,sun=0
+ 	</update>
+ 	<update id="countWeek" parameterType="string">
+ 		update weektable set ${dayOfWeek}=${dayOfWeek}+1
+ 	</update>
+ 	<update id="countMonth" parameterType="string">
+ 		update monthtable set ${month}=${month}+1
+ 	</update>
+ 	<!-- 한 주 디비 가져오기 -->
+ 	<select id="getWeekData" resultType="week">
+ 		select * from weektable
+ 	</select>
+ 	<!-- 일 년 디비 가져오기 -->
+ 	<select id="getMonthData" resultType="month">
+ 		select * from monthtable
+ 	</select>
+ </mapper>

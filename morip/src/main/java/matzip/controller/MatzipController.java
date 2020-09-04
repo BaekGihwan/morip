@@ -29,12 +29,10 @@ public class MatzipController {
 		return "/resources/main/index";
 	}
 	
-	@RequestMapping(value="matzipList",method=RequestMethod.GET)
+	@RequestMapping(value="matzipList",method=RequestMethod.POST)
 	@ResponseBody
-	public ModelAndView matzipList(@RequestParam String address) {
-		//System.out.println(address);
-		List<MatzipDTO> list =matzipService.matzipList(address);
-		list.remove(4);
+	public ModelAndView matzipList(@RequestParam String pg, @RequestParam String address) {
+		List<MatzipDTO> list =matzipService.matzipList(Integer.parseInt(pg), address);
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("list", list);
 		mav.setViewName("jsonView");
@@ -54,8 +52,6 @@ public class MatzipController {
 	@RequestMapping(value="getMatzipView",method=RequestMethod.POST)
 	@ResponseBody
 	public ModelAndView getMatzipView(@RequestParam String title) {
-		//System.out.println(address);
-		//System.out.println(title);
 		MatzipDTO matzipDTO =matzipService.getMapzipView(title);
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("matzip", matzipDTO);
@@ -106,14 +102,13 @@ public class MatzipController {
     mav.addObject("list",list);
     mav.setViewName("jsonView");
     return mav;
- }
+	}
 	
 	// 메인창에 맛집 3개 뿌려주기
 	@RequestMapping(value="matzipThreeList", method=RequestMethod.POST)
 	@ResponseBody
 	public ModelAndView matzipThreeList() {
 		List<MatzipDTO> list = matzipService.matzipThreeList();
-		System.out.println();
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("list", list);
 		mav.setViewName("jsonView");
@@ -125,12 +120,9 @@ public class MatzipController {
 	public ModelAndView getMatzipReview(@RequestParam String title, @RequestParam String pg) {
 		
 		List<MyblogDTO> list = matzipService.getMatzipReview(title,Integer.parseInt(pg));
-		System.out.println(title);
-		//System.out.println(list.get(0).getSubject());
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("list", list);
 		mav.setViewName("jsonView");
-		//model.addAttribute("display", "/board/boardList.jsp");
 		return mav;
 	}
 	
