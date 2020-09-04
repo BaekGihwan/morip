@@ -1,5 +1,9 @@
 package admin.service;
 
+import java.util.Map;
+
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -9,7 +13,11 @@ import admin.dao.AdminDAO;
 @Service
 public class AdminServiceImpl implements AdminService {
 	@Autowired
-	private AdminDAO adminDAO;	
+	private AdminDAO adminDAO;
+	
+	@Autowired
+	private HttpSession session;
+	
 	// 일일방문자수 업데이트
 	@Override
 	public void countEnter() {
@@ -49,6 +57,20 @@ public class AdminServiceImpl implements AdminService {
 	@Override
 	public int totalWoman() {
 		return adminDAO.totalWoman();
+	}
+	
+	// 맛집 등록하기
+	@Override
+	public void writematzip(Map<String, String> map) {
+	
+		adminDAO.writematzip(map);
+		
+	}
+	
+	// 공지사항 등록하기
+	@Override
+	public void communityWrite(Map<String, String> map) {
+		adminDAO.communityWrite(map);
 	}
 
 

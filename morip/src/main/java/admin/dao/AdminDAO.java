@@ -1,5 +1,7 @@
 package admin.dao;
 
+import java.util.Map;
+
 import admin.bean.TodayDTO;
 
 public interface AdminDAO {
@@ -19,5 +21,11 @@ public interface AdminDAO {
 	public int totalMan();
 
 	public int totalWoman();
+
+	public void writematzip(Map<String, String> map);
+
+	public void communityWrite(Map<String, String> map);
+
+	
 
 }
