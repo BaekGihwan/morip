@@ -244,7 +244,7 @@
   						confirmButtonText:'확인'
   					}).then((result) => {
   						if (result.value) {
-  							location.href='../admin/matzipWriteForm';
+  							location.href='../admin/dashboard';
   						}
   					})
 

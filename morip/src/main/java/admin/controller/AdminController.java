@@ -1,16 +1,13 @@
 package admin.controller;
 
 
-import java.util.List;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Map;
 import java.util.UUID;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -161,7 +158,7 @@ public class AdminController {
 		
 		UUID uid = UUID.randomUUID();
 		String fileName = uid.toString() + "_" + matzipImage.getOriginalFilename();
-		String filePath = "C:\\project\\morip\\morip\\src\\main\\webapp\\image\\matzip";
+		String filePath = "E:\\spring\\gihwan\\morip\\morip\\src\\main\\webapp\\image\\matzip\\";
 		File file = new File(filePath,fileName);
 		try {
 			FileCopyUtils.copy(matzipImage.getInputStream(), new FileOutputStream(file));
@@ -199,14 +196,9 @@ public class AdminController {
 	@RequestMapping(value = "/admin/communityWrite", method = RequestMethod.POST)
 	@ResponseBody
 	public void communityWrite(@RequestParam Map<String, String> map, HttpSession session) {
-		String nickname = "운영자";
-		String email = "aaa@naver.com";
-		String image = "image1";
-		
-//		String nickname = (String) session.getAttribute("nickname");
-//		String email = (String) session.getAttribute("memEmail");
-//		String image = (String) session.getAttribute("image");
-		System.out.println(nickname);
+		String nickname = (String) session.getAttribute("nickname");
+		String email = (String) session.getAttribute("memEmail");
+		String image = (String) session.getAttribute("image");
 		map.put("nickname", nickname);
 		map.put("email", email);
 		map.put("image", image);
