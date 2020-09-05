@@ -70,6 +70,7 @@ public class AdminServiceImpl implements AdminService {
 	@Override
 	public void communityWrite(Map<String, String> map) {
 		adminDAO.communityWrite(map);
+	}
 	@Override
 	@Scheduled(cron="0 0 0 * * *")
 	public void resetToday() {
