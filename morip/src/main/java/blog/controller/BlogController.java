@@ -66,6 +66,7 @@ public class BlogController {
 		return mav;
 	}
 	
+
 	// 메인에서 슬라이더를 눌렀을때 이동하는거
 	@RequestMapping(value="blogList2", method=RequestMethod.GET)
 	public String blogList2(@RequestParam String title, Model model) {

@@ -101,7 +101,7 @@
               <div class="card-header py-3">
                 <h6 class="m-0 font-weight-bold">맛집 정보 등록</h6>
               </div> 
-	          <form>
+	          <form name="matzipWriteForm" id="matzipWriteForm" method="post" enctype="multipart/form-data">
 	          <div class="container-matzipWriteForm">            
 				<div class="matzipWriteForm">			
 				  <div class="mainImage">			
@@ -112,7 +112,7 @@
 					  </div><br>					 
 					  <div class="changeMatzipImage">
 	             	    <label for="image">이미지 등록</label>
-			     		<input type="file" name="img" id="image" class="btn-file" onchange="change(this.files)">
+			     		<input type="file" name="image" id="image" class="btn-file" onchange="change(this.files)">
 	             	  </div>
 					</div>
 				  </div>
@@ -121,48 +121,48 @@
 					  <div class="matzipForm">
 					    <span class="matzipText">가게이름</span>
 					  </div>
-					  <input type="text" id="matzipTitle" class="matzip" placeholder="ex) 밀레니엄 안동찜닭">
+					  <input type="text" name="matzipTitle" id="matzipTitle" class="matzip" placeholder="ex) 밀레니엄 안동찜닭">
 					  <div id="matzipTitleDiv"></div>
 					</div>			  
 				    <div class="matzipCategoryForm">			    
 					  <div class="matzipForm">
 						<span class="matzipText">카테고리</span>
 					  </div>
-					  <input type="text" id="matzipCategory" class="matzip" placeholder="ex) 한식>찜닭">
+					  <input type="text" name="matzipCategory" id="matzipCategory" class="matzip" placeholder="ex) 한식>찜닭">
 					  <div id="matzipCategoryDiv"></div>
 				    </div>
 					<div class="matzipTelephoneForm">
 					  <div class="matzipForm">
 						<span class="matzipText">전화번호</span>
 					  </div>
-					  <input type="text" id="matzipTelephone" class="matzip" placeholder="전화번호를 입력해주세요.">
+					  <input type="text" name="matzipTelephone" id="matzipTelephone" class="matzip" placeholder="전화번호를 입력해주세요.">
 					  <div id="matzipTelephoneDiv"></div>
 					</div>
 					<div class="matzipRoadaddressForm">
 					  <div class="matzipForm">
 						<span class="matzipText">도로명주소</span>
 					  </div>
-					  <input type="text" id="matzipRoadaddress" class="matzip" placeholder="도로명주소를 입력해주세요.">
+					  <input type="text" name="matzipRoadaddress" id="matzipRoadaddress" class="matzip" placeholder="도로명주소를 입력해주세요.">
 					  <div id="matzipRoadaddressDiv"></div>
 					</div>
 					<div class="matzipAddressForm">
 					  <div class="matzipForm">
 						<span class="matzipText">지번주소</span>
 					  </div>
-					  <input type="text" id="matzipAddress" class="matzip" placeholder="지번주소를 입력해주세요.">
+					  <input type="text" name="matzipAddress" id="matzipAddress" class="matzip" placeholder="지번주소를 입력해주세요.">
 					  <div id="matzipAddressDiv"></div>
 					</div>			    
 					<div class="matzipTimeForm">
 					  <div class="matzipForm">
 					    <span class="matzipText">영업시간</span>
 					  </div>
-					  <input type="text" id="matzipTime" class="matzip" placeholder="영업시간을 적어주세요">
+					  <input type="text" name="matzipTime" id="matzipTime" class="matzip" placeholder="영업시간을 적어주세요">
 					</div>
 					<div class="matzipLinkForm">
 					  <div class="matzipForm">
 					    <span class="matzipText">홈페이지주소</span>
 					  </div>
-					  <input type="text" id="matzipLink" class="matzip" placeholder="없을경우 작성하지마시오.">
+					  <input type="text" name="matzipLink" id="matzipLink" class="matzip" placeholder="없을경우 작성하지마시오.">
 					</div>
 				  </div>
 	            </div><br>
@@ -184,4 +184,92 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
   <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
   <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+  <script type="text/javascript">
+  	$('#matzipWriteBtn').click(function(){
+  		
+  		if($('#matzipTitle').val()==''){
+  			Swal.fire({
+  				icon:'warning',
+  				title:'가게이름을 입력하세요.',
+  				confirmButtonText:'확인'
+  			})
+  		}else if($('#matzipCategory').val()==''){
+  			alert($('#matzipTitle').val())
+  			Swal.fire({
+  				icon:'warning',
+  				title:'카테고리를 입력하세요.',
+  				confirmButtonText:'확인'
+  			})
+  		}else if($('#matzipTelephone').val()==''){
+  			Swal.fire({
+  				icon:'warning',
+  				title:'전화번호를 입력하세요.',
+  				confirmButtonText:'확인'
+  			})
+  		}else if($('#matzipRoadaddress').val()==''){
+  			Swal.fire({
+  				icon:'warning',
+  				title:'도로명주소를 입력하세요.',
+  				confirmButtonText:'확인'
+  			})
+  		}else if($('#matzipAddress').val()==''){
+  			Swal.fire({
+  				icon:'warning',
+  				title:'지번주소를 입력하세요.',
+  				confirmButtonText:'확인'
+  			})
+  		}else if($('#matzipTime').val()==''){
+  			Swal.fire({
+  				icon:'warning',
+  				title:'영업시간을 입력하세요.',
+  				confirmButtonText:'확인'
+  			})
+  		}else{
+  			$.ajax({
+  				type: 'post',
+  				enctype: 'multipart/form-data',
+  				processData: false, //문자열이 아닌 파일 형식으로 보내준다
+  				contentType: false,
+  				url:'../admin/writematzip',
+  				data: new FormData($('#matzipWriteForm')[0]),
+  				
+  				 
+  				success:function(){
+  					
+  					Swal.fire({
+  						icon:'success',
+  						title:'맛집등록 완료!',
+  						text:'맛집이 등록 되었습니다.',
+  						confirmButtonText:'확인'
+  					}).then((result) => {
+  						if (result.value) {
+  							location.href='../admin/matzipWriteForm';
+  						}
+  					})
+
+  				},
+  				error:function(err){
+  					console.log(err);
+
+  				}
+  			});
+  		}
+  	});
+  	
+  //사진을 업로드 하였을 때 바로 화면에 뿌려주기
+    $('#image').change(function() {
+        readURL(this);
+    });
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function(e) {
+                $('#mainImg').attr('src', e.target.result);
+            }
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+  	
+  </script>
 </html>

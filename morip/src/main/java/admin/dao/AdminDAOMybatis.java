@@ -1,5 +1,7 @@
 package admin.dao;
 
+import java.util.Map;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -54,6 +56,18 @@ public class AdminDAOMybatis implements AdminDAO {
 	public int totalWoman() {
 		return sqlSession.selectOne("adminSQL.totalWoman");
 	}
+	
+	// 맛집 등록하기
+	@Override
+	public void writematzip(Map<String, String> map) {
+		
+		sqlSession.insert("adminSQL.writematzip",map);
+	}
+	@Override
+	public void communityWrite(Map<String, String> map) {
+		sqlSession.insert("adminSQL.communityWrite", map);		
+	}
+
 	@Override
 	public void resetToday() {
 		sqlSession.update("adminSQL.resetToday");
