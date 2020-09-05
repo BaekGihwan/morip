@@ -65,4 +65,10 @@
  	<update id="updateReviewCount" parameterType="map">
  		update matziptable set reviewcount = #{reviewCount} where title=#{title}
  	</update>
+ 	<select id="matzipListAll" resultType="matzip">
+ 		select * from matziptable order by address
+ 	</select>
+ 	<delete id="deleteMatzip" parameterType="string">
+ 		delete matziptable where title = #{title}
+ 	</delete>
  </mapper> 

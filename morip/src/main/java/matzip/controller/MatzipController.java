@@ -138,4 +138,21 @@ public class MatzipController {
 		matzipService.updateReviewCount(title, reviewCount);
 	}
 	
+	@RequestMapping(value="matzipListAll",method=RequestMethod.POST)
+	@ResponseBody
+	public ModelAndView matzipListAll() {
+		List<MatzipDTO> list =matzipService.matzipListAll();
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("list", list);
+		mav.setViewName("jsonView");
+		return mav;
+		
+	}
+	
+	@RequestMapping(value="deleteMatzip",method=RequestMethod.POST)
+	@ResponseBody
+	public void deleteMatzip(@RequestParam String title) {
+		matzipService.deleteMatzip(title);
+	}
+	
 }

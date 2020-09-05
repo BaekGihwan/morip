@@ -71,4 +71,14 @@ public class MatzipDAOMybatis implements MatzipDAO {
 		sqlSession.update("matzipSQL.updateReviewCount",map);
 		
 	}
+
+	@Override
+	public List<MatzipDTO> matzipListAll() {
+		return sqlSession.selectList("matzipSQL.matzipListAll");
+	}
+
+	@Override
+	public void deleteMatzip(String title) {
+		sqlSession.delete("matzipSQL.deleteMatzip",title);
+	}
 }
