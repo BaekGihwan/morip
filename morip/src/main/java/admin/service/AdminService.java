@@ -1,8 +1,11 @@
 package admin.service;
 
+import java.util.List;
+
 import admin.bean.MonthDTO;
 import admin.bean.TodayDTO;
 import admin.bean.WeekDTO;
+import member.bean.MemberDTO;
 
 public interface AdminService {
 
@@ -33,4 +36,12 @@ public interface AdminService {
 	public WeekDTO getWeekData();
 
 	public MonthDTO getMonthData();
+
+	public List<MemberDTO> getMemberList();
+
+	public void deleteMember(int seq);
+
+	public List<MemberDTO> getBoardList(String nickname);
+
+	public void deleteBoard(int seq);
 }

@@ -1,12 +1,15 @@
 package admin.controller;
 
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -14,6 +17,7 @@ import admin.bean.MonthDTO;
 import admin.bean.TodayDTO;
 import admin.bean.WeekDTO;
 import admin.service.AdminService;
+import member.bean.MemberDTO;
 
 
 @Controller
@@ -148,4 +152,42 @@ public class AdminController {
 		mav.setViewName("jsonView");
 		return mav;
 	}
+	
+	// 회원리스트
+	@RequestMapping(value = "/admin/getMemberList", method = RequestMethod.POST)
+	@ResponseBody
+	public ModelAndView getMemberList() {
+		List<MemberDTO> list =  adminService.getMemberList();
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("list", list);
+		mav.setViewName("jsonView");
+		return mav;
+	}
+	
+	// 회원삭제
+	@RequestMapping(value="/admin/deleteMember", method=RequestMethod.POST)
+	@ResponseBody
+	public String deleteMember(@RequestParam int seq) {
+		adminService.deleteMember(seq);
+		return "../admin/memberDB";
+	}
+	
+	// 공지사항리스트
+	@RequestMapping(value = "/admin/getBoardList", method = RequestMethod.POST)
+	@ResponseBody
+	public ModelAndView getBoardList(@RequestParam String nickname) {
+		List<MemberDTO> list =  adminService.getBoardList(nickname);
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("list", list);
+		mav.setViewName("jsonView");
+		return mav;
+	}
+	
+	// 공지사항삭제
+		@RequestMapping(value="/admin/deleteBoard", method=RequestMethod.POST)
+		@ResponseBody
+		public String deleteBoard(@RequestParam int seq) {
+			adminService.deleteBoard(seq);
+			return "../admin/communityDB";
+		}
 }

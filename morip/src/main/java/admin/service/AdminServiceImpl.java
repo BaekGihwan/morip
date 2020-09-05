@@ -1,5 +1,7 @@
 package admin.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
@@ -8,11 +10,13 @@ import admin.bean.MonthDTO;
 import admin.bean.TodayDTO;
 import admin.bean.WeekDTO;
 import admin.dao.AdminDAO;
+import member.bean.MemberDTO;
 
 @Service
 public class AdminServiceImpl implements AdminService {
 	@Autowired
-	private AdminDAO adminDAO;	
+	private AdminDAO adminDAO;
+	
 	// 일일방문자수 업데이트
 	@Override
 	public void countEnter() {
@@ -83,6 +87,25 @@ public class AdminServiceImpl implements AdminService {
 	public MonthDTO getMonthData() {
 		return adminDAO.getMonthData();
 	}
-
+	
+	// 회원리스트
+	@Override
+	public List<MemberDTO> getMemberList() {
+		return adminDAO.getMemberList();
+	}
+	
+	// 회원삭제
+	@Override
+	public void deleteMember(int seq) {
+		adminDAO.deleteMember(seq);
+	}
+	@Override
+	public List<MemberDTO> getBoardList(String nickname) {
+		return adminDAO.getBoardList(nickname);
+	}
+	@Override
+	public void deleteBoard(int seq) {
+		adminDAO.deleteBoard(seq);
+	}
 
 }
