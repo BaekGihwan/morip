@@ -24,7 +24,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import admin.bean.MonthDTO;
 import admin.bean.TodayDTO;
+import admin.bean.WeekDTO;
 import admin.service.AdminService;
 import matzip.bean.MatzipDTO;
 
@@ -38,9 +40,13 @@ public class AdminController {
 	public ModelAndView dashboard(HttpSession session) {
 		ModelAndView mav = new ModelAndView();
 		int man = adminService.totalMan();		
-		int woman = adminService.totalWoman();		
+		int woman = adminService.totalWoman();	
+		WeekDTO weekDTO = adminService.getWeekData();
+		MonthDTO monthDTO = adminService.getMonthData();
 		mav.addObject("man", man);
 		mav.addObject("woman", woman);
+		mav.addObject("weekDTO", weekDTO);
+		mav.addObject("monthDTO", monthDTO);
 		mav.setViewName("/resources/admin/dashboard");
 		return mav;
 	}
@@ -184,12 +190,9 @@ public class AdminController {
 		map.put("matzipRoadaddress",matzipDTO.getRoadAddress());
 		map.put("matzipAddress",matzipDTO.getAddress());
 		map.put("matzipTime",matzipDTO.getTime());
-		map.put("matzipImage",matzipDTO.getImage1());
+		map.put("matzipImage",matzipDTO.getImage1());		
 		
-		
-		
-		adminService.writematzip(map);
-		
+		adminService.writematzip(map);		
 	}
 	
 	// 공지 등록하기
@@ -209,6 +212,16 @@ public class AdminController {
 		map.put("image", image);
 		adminService.communityWrite(map);
 	}
-	
+
+	@RequestMapping(value = "/admin/getWeekData", method = RequestMethod.POST)
+	@ResponseBody
+	public ModelAndView getWeekData() {
+		// DB
+		WeekDTO weekDTO = adminService.getWeekData();
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("weekDTO", weekDTO);
+		mav.setViewName("jsonView");
+		return mav;
+	}
 
 }

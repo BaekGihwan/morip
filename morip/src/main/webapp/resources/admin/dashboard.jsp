@@ -15,8 +15,30 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" crossorigin="anonymous"></script>
   </head>
   <body>
+  <!-- 남여 성별 그래프 값 받아오기-->
   <input type="hidden" class="man" value="${man }">
   <input type="hidden" class="woman" value="${woman }">
+  <!-- 주간 그래프 값 받아오기 -->
+  <input type="hidden" id="mon" value="${weekDTO.mon }">
+  <input type="hidden" id="tue" value="${weekDTO.tue }">
+  <input type="hidden" id="wed" value="${weekDTO.wed }">
+  <input type="hidden" id="thur" value="${weekDTO.thur }">
+  <input type="hidden" id="fri" value="${weekDTO.fri }">
+  <input type="hidden" id="sat" value="${weekDTO.sat }">
+  <input type="hidden" id="sun" value="${weekDTO.sun }">
+  <!-- 월간 그래프 값 받아오기 -->
+  <input type="hidden" id="jan" value="${monthDTO.jan }">
+  <input type="hidden" id="feb" value="${monthDTO.feb }">
+  <input type="hidden" id="mar" value="${monthDTO.mar }">
+  <input type="hidden" id="apr" value="${monthDTO.apr }">
+  <input type="hidden" id="may" value="${monthDTO.may }">
+  <input type="hidden" id="jun" value="${monthDTO.jun }">
+  <input type="hidden" id="jul" value="${monthDTO.jul }">
+  <input type="hidden" id="aug" value="${monthDTO.aug }">
+  <input type="hidden" id="sep" value="${monthDTO.sep }">
+  <input type="hidden" id="oct" value="${monthDTO.oct }">
+  <input type="hidden" id="nov" value="${monthDTO.nov }">
+  <input type="hidden" id="dec" value="${monthDTO.dec }">
     <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
       <div class="">
         <a class="navbar-brand" href="dashboard">[MO:RIP]</a>

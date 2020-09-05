@@ -5,9 +5,12 @@ import java.util.Map;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
+import admin.bean.MonthDTO;
 import admin.bean.TodayDTO;
+import admin.bean.WeekDTO;
 import admin.dao.AdminDAO;
 
 @Service
@@ -57,21 +60,42 @@ public class AdminServiceImpl implements AdminService {
 	@Override
 	public int totalWoman() {
 		return adminDAO.totalWoman();
-	}
-	
+  }	
 	// 맛집 등록하기
 	@Override
-	public void writematzip(Map<String, String> map) {
-	
-		adminDAO.writematzip(map);
-		
-	}
-	
+	public void writematzip(Map<String, String> map) {	
+		adminDAO.writematzip(map);		
+	}	
 	// 공지사항 등록하기
 	@Override
 	public void communityWrite(Map<String, String> map) {
 		adminDAO.communityWrite(map);
+	@Override
+	@Scheduled(cron="0 0 0 * * *")
+	public void resetToday() {
+		System.out.println("resetToday 스케줄러 실행");
+		adminDAO.resetToday();		
 	}
-
-
+	@Override
+	@Scheduled(cron="0 0 0 * * MON")
+	public void resetWeek() {
+		System.out.println("resetWeek 스케줄러 실행");
+		adminDAO.resetWeek();
+	}
+	@Override
+	public void countWeek(String dayOfWeek) {
+		adminDAO.countWeek(dayOfWeek);		
+	}
+	@Override
+	public void countMonth(String month) {
+		adminDAO.countMonth(month);
+	}
+	@Override
+	public WeekDTO getWeekData() {
+		return adminDAO.getWeekData();
+	}
+	@Override
+	public MonthDTO getMonthData() {
+		return adminDAO.getMonthData();
+	}
 }
