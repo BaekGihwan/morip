@@ -24,4 +24,8 @@ public interface MatzipDAO {
 
 	public void updateReviewCount(Map<String, String> map);
 
+	public List<MatzipDTO> matzipListAll();
+
+	public void deleteMatzip(String title);
+
 }

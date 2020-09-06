@@ -30,4 +30,8 @@ public interface MatzipService {
 
 	public void updateReviewCount(String title, String reviewCount);
 
+	public List<MatzipDTO> matzipListAll();
+
+	public void deleteMatzip(String title);
+
 }
