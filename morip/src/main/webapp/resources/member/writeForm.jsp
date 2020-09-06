@@ -178,6 +178,7 @@ $('#idCardNumber1').focusout(function(){
 	if($('#idCardNumber2').val()==''){
 		$('#writeForm-residenDiv').text('주민번호를 입력해주세요.');
         $('#writeForm-residenDiv').css('color', 'red');
+        $('#writeForm-residenDiv').css('font-size', '9pt');
         $('#writeForm-residenDiv').css('font-weight', 'bold');
 	}
 });
@@ -186,6 +187,7 @@ $('#idCardNumber2').focusout(function(){
 	if($('#idCardNumber1').val()=='' || $('#idCardNumber2').val()==''){
 		$('#writeForm-residenDiv').text('주민번호를 입력해주세요.')
         $('#writeForm-residenDiv').css('color', 'red')
+        $('#writeForm-residenDiv').css('font-size', '9pt');
         $('#writeForm-residenDiv').css('font-weight', 'bold')
 	}else {
 		var num1 = document.getElementById("idCardNumber1");
@@ -218,11 +220,13 @@ $('#idCardNumber2').focusout(function(){
         if((11-(tempSum%11))%10!=arrNum2[6]) {
         	$('#writeForm-residenDiv').text('올바른 주민번호가 아닙니다.')
             $('#writeForm-residenDiv').css('color', 'red')
+            $('#writeForm-residenDiv').css('font-size', '9pt');
             $('#writeForm-residenDiv').css('font-weight', 'bold')
             return false;
         }else{
         	$('#writeForm-residenDiv').text('올바른 주민번호 입니다.')
             $('#writeForm-residenDiv').css('color', 'blue')
+            $('#writeForm-residenDiv').css('font-size', '9pt');
             $('#writeForm-residenDiv').css('font-weight', 'bold')
         }
 	}

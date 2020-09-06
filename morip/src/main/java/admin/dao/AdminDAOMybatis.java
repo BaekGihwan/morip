@@ -101,8 +101,8 @@ public class AdminDAOMybatis implements AdminDAO {
 	}
 	// 회원삭제
 	@Override
-	public void deleteMember(int seq) {
-		sqlSession.update("adminSQL.deleteMember", seq);
+	public void deleteMember(Map<String, String> map) {
+		sqlSession.update("adminSQL.deleteMember", map);
 	}
 	// 공지사항리스트
 	@Override

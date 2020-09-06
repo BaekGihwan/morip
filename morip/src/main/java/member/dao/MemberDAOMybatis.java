@@ -75,4 +75,9 @@ public class MemberDAOMybatis implements MemberDAO {
 	public MemberDTO getMember2(String email) {
 		return sqlSession.selectOne("memberSQL.getMember2", email);
 	}
+
+	@Override
+	public MemberDTO getMember3(int seq) {
+		return sqlSession.selectOne("memberSQL.getMember3", seq);
+	}
 }

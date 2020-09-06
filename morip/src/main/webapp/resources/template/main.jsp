@@ -14,9 +14,9 @@
 
   <!-- morip banner -->
   <div class="morip_banner">
-	<img alt="" src="../image/main/mainbanner5.png" style="width: 100%; height: 450px;">
+	<img alt="" src="../image/main/mainbanner6.png" style="width: 100%; height: 500px;">
   </div>
-  <br><br>  
+  <br>
 <body class="morip_main">
   <input type="hidden" id="email" value="${memEmail }">
   <br><br>  

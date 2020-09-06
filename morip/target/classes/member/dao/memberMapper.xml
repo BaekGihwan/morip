@@ -94,4 +94,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="getMember2" parameterType="string" resultType="member">
 		select * from membertable where email=#{email}
 	</select>
+	
+	<!-- seq가지고 한명분의 데이터 가져오기 -->
+	<select id="getMember3" parameterType="int" resultType="member">
+		select * from membertable where membertable_seq=#{seq}
+	</select>
 </mapper>

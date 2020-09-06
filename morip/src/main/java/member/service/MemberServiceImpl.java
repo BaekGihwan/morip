@@ -65,4 +65,9 @@ public class MemberServiceImpl implements MemberService {
 	public MemberDTO getMember2(String email) {
 		return memberDAO.getMember2(email);
 	}
+
+	@Override
+	public MemberDTO getMember3(int seq) {
+		return memberDAO.getMember3(seq);
+	}
 }

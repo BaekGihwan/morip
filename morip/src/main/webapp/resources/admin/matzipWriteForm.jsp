@@ -46,7 +46,7 @@
                         </a>
                         <div class="collapse" id="blog" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="blogDB">블로그 DB 관리</a>
+                                 <!-- <a class="nav-link" href="blogDB">블로그 DB 관리</a> -->
                                 <a class="nav-link" href="../blog/blogList">블로그 페이지 이동</a>
                             </nav>
                         </div>

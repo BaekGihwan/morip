@@ -26,4 +26,6 @@ public interface MemberService {
 
 	public MemberDTO getMember2(String string);
 
+	public MemberDTO getMember3(int seq);
+
 }

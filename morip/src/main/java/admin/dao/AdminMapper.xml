@@ -79,11 +79,15 @@
 
  	<!-- 회원리스트 가져오기  -->
  	<select id="getMemberList" resultType="member">
- 		select * from membertable
+ 		select * from membertable order by membertable_seq desc
  	</select>
  	<!-- 회원 삭제 -->
-	<update id="deleteMember" parameterType="int">
-		delete membertable where membertable_seq=#{seq}
+	<update id="deleteMember" parameterType="java.util.Map">
+		begin
+			delete blogboardtable where email=#{email};
+	
+			delete membertable where membertable_seq=#{membertable_seq};
+		end;
 	</update>
 	<!-- 공지사항리스트 가져오기  -->
  	<select id="getBoardList" parameterType="string" resultType="board">

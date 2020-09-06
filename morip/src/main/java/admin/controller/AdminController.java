@@ -1,6 +1,7 @@
 package admin.controller;
 
 
+import java.util.HashMap;
 import java.util.List;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -28,12 +29,15 @@ import admin.bean.WeekDTO;
 import admin.service.AdminService;
 
 import member.bean.MemberDTO;
+import member.service.MemberService;
 import matzip.bean.MatzipDTO;
 
 @Controller
 public class AdminController {
 	@Autowired
 	AdminService adminService;
+	@Autowired
+	MemberService memberService;
   
 	@RequestMapping(value = "/admin/dashboard", method = RequestMethod.GET)
 	public ModelAndView dashboard(HttpSession session) {
@@ -177,8 +181,15 @@ public class AdminController {
 	// 회원삭제
 	@RequestMapping(value="/admin/deleteMember", method=RequestMethod.POST)
 	@ResponseBody
-	public String deleteMember(@RequestParam int seq) {
-		adminService.deleteMember(seq);
+	public String deleteMember(@RequestParam int seq) {		
+		// seq를 가지고 member가져오기
+		MemberDTO memberDTO = memberService.getMember3(seq);  
+		
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("membertable_seq", seq+"");
+		map.put("email", memberDTO.getEmail());		
+		
+		adminService.deleteMember(map);
 		return "../admin/memberDB";
 	}
 	
@@ -254,16 +265,5 @@ public class AdminController {
 		map.put("email", email);
 		map.put("image", image);
 		adminService.communityWrite(map);
-	}
-
-	@RequestMapping(value = "/admin/getWeekData", method = RequestMethod.POST)
-	@ResponseBody
-	public ModelAndView getWeekData() {
-		// DB
-		WeekDTO weekDTO = adminService.getWeekData();
-		ModelAndView mav = new ModelAndView();
-		mav.addObject("weekDTO", weekDTO);
-		mav.setViewName("jsonView");
-		return mav;
 	}
 }
