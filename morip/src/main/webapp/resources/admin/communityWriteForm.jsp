@@ -116,7 +116,7 @@
 						<div id="subjectDiv"></div>
 						<hr align="center" width="100%" size="15">
 					</div>
-					<textarea id="summernote" name="content"></textarea>
+					//<textarea id="summernote" name="content"></textarea>
 					<div id="summernoteDiv"></div>
 				</div>
 			</div>

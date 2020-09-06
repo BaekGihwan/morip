@@ -30,8 +30,6 @@
 <!-- include Bootstrap and fontawesome-->
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" />
-
-<<<<<<< HEAD
     $('#bgImageSave').click(function(){
         $.ajax({
             type: 'post',
@@ -53,15 +51,11 @@
             }
          });
     });
-    
-=======
 <!-- include summernote css/js-->
 <link rel="stylesheet"
 	href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.1/summernote.css">
 <script type="text/javascript"
 	src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.1/summernote.js"></script>
->>>>>>> master
-
 <!-- include summernote plugin-->
 <script type="text/javascript"
 	src="../js/myblog/summernote-map-plugin-master/summernote-map-plugin.js"></script>

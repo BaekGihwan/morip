@@ -1,6 +1,7 @@
 package admin.controller;
 
 
+import java.util.List;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -25,8 +26,9 @@ import admin.bean.MonthDTO;
 import admin.bean.TodayDTO;
 import admin.bean.WeekDTO;
 import admin.service.AdminService;
-import matzip.bean.MatzipDTO;
 
+import member.bean.MemberDTO;
+import matzip.bean.MatzipDTO;
 
 @Controller
 public class AdminController {
@@ -150,6 +152,55 @@ public class AdminController {
 		return mav;
 	}
 	
+	@RequestMapping(value = "/admin/getWeekData", method = RequestMethod.POST)
+	@ResponseBody
+	public ModelAndView getWeekData() {
+		// DB
+		WeekDTO weekDTO = adminService.getWeekData();
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("weekDTO", weekDTO);
+		mav.setViewName("jsonView");
+		return mav;
+	}
+	
+	// 회원리스트
+	@RequestMapping(value = "/admin/getMemberList", method = RequestMethod.POST)
+	@ResponseBody
+	public ModelAndView getMemberList() {
+		List<MemberDTO> list =  adminService.getMemberList();
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("list", list);
+		mav.setViewName("jsonView");
+		return mav;
+	}
+	
+	// 회원삭제
+	@RequestMapping(value="/admin/deleteMember", method=RequestMethod.POST)
+	@ResponseBody
+	public String deleteMember(@RequestParam int seq) {
+		adminService.deleteMember(seq);
+		return "../admin/memberDB";
+	}
+	
+	// 공지사항리스트
+	@RequestMapping(value = "/admin/getBoardList", method = RequestMethod.POST)
+	@ResponseBody
+	public ModelAndView getBoardList(@RequestParam String nickname) {
+		List<MemberDTO> list =  adminService.getBoardList(nickname);
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("list", list);
+		mav.setViewName("jsonView");
+		return mav;
+	}
+	
+	// 공지사항삭제
+		@RequestMapping(value="/admin/deleteBoard", method=RequestMethod.POST)
+		@ResponseBody
+		public String deleteBoard(@RequestParam int seq) {
+			adminService.deleteBoard(seq);
+			return "../admin/communityDB";
+		}
+
 	// 맛집 등록하기
 	@RequestMapping(value="/admin/writematzip",method = RequestMethod.POST)
 	@ResponseBody
@@ -215,5 +266,4 @@ public class AdminController {
 		mav.setViewName("jsonView");
 		return mav;
 	}
-
 }

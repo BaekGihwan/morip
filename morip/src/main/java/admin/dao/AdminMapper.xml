@@ -77,4 +77,20 @@
  		select * from monthtable
  	</select>
 
+ 	<!-- 회원리스트 가져오기  -->
+ 	<select id="getMemberList" resultType="member">
+ 		select * from membertable
+ 	</select>
+ 	<!-- 회원 삭제 -->
+	<update id="deleteMember" parameterType="int">
+		delete membertable where membertable_seq=#{seq}
+	</update>
+	<!-- 공지사항리스트 가져오기  -->
+ 	<select id="getBoardList" parameterType="string" resultType="board">
+ 		select * from boardtable where nickname=#{nickname}
+ 	</select>
+ 	<!-- 공지사항 삭제 -->
+	<update id="deleteBoard" parameterType="int">
+		delete boardtable where boardtable_seq=#{seq}
+	</update>
  </mapper>

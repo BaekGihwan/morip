@@ -1,5 +1,6 @@
 package admin.dao;
 
+import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
@@ -10,6 +11,8 @@ import org.springframework.transaction.annotation.Transactional;
 import admin.bean.MonthDTO;
 import admin.bean.TodayDTO;
 import admin.bean.WeekDTO;
+
+import member.bean.MemberDTO;
 
 @Repository
 @Transactional
@@ -56,7 +59,6 @@ public class AdminDAOMybatis implements AdminDAO {
 	public int totalWoman() {
 		return sqlSession.selectOne("adminSQL.totalWoman");
 	}
-	
 	// 맛집 등록하기
 	@Override
 	public void writematzip(Map<String, String> map) {
@@ -67,7 +69,6 @@ public class AdminDAOMybatis implements AdminDAO {
 	public void communityWrite(Map<String, String> map) {
 		sqlSession.insert("adminSQL.communityWrite", map);		
 	}
-
 	@Override
 	public void resetToday() {
 		sqlSession.update("adminSQL.resetToday");
@@ -92,5 +93,25 @@ public class AdminDAOMybatis implements AdminDAO {
 	@Override
 	public MonthDTO getMonthData() {
 		return sqlSession.selectOne("adminSQL.getMonthData");
+	}
+	// 회원리스트
+	@Override
+	public List<MemberDTO> getMemberList() {
+		return sqlSession.selectList("adminSQL.getMemberList");
+	}
+	// 회원삭제
+	@Override
+	public void deleteMember(int seq) {
+		sqlSession.update("adminSQL.deleteMember", seq);
+	}
+	// 공지사항리스트
+	@Override
+	public List<MemberDTO> getBoardList(String nickname) {
+		return sqlSession.selectList("adminSQL.getBoardList", nickname);
+	}
+	// 공지사항삭제
+	@Override
+	public void deleteBoard(int seq) {
+		sqlSession.update("adminSQL.deleteBoard", seq);
 	}
 }

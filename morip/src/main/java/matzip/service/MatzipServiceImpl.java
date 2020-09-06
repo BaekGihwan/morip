@@ -356,4 +356,5 @@ public class MatzipServiceImpl implements MatzipService {
 	public void deleteMatzip(String title) {
 		matzipDAO.deleteMatzip(title);
 	}
+
 }
