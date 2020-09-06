@@ -35,6 +35,27 @@
  	<select id="totalWoman" resultType="int">
  		select count(*) from membertable where gender = 1
  	</select>
+ 	<!-- 맛집 등록하기 -->
+ 	<insert id="writematzip" parameterType="java.util.Map">
+ 		insert into matziptable (category,title,link,time,telephone,address,roadaddress,image1,image2,image3,image4) 
+ 		values (#{matzipCategory},#{matzipTitle},#{matzipLink},#{matzipTime},#{matzipTelephone},#{matzipAddress},#{matzipRoadaddress},#{matzipImage},#{matzipImage},#{matzipImage},#{matzipImage}) 
+ 	</insert>
+ 	<!-- 공지사항 등록하기 -->
+ 	<insert id="communityWrite" parameterType="java.util.Map">
+ 		begin
+      INSERT INTO boardtable (boardtable_seq, nickname, email, subject, content, image, ref, step) 
+      values(boardtable_seq.nextval
+          , #{nickname}
+          , #{email}
+          , #{subject}
+          , #{content}
+          , #{image}
+          , boardtable_seq.currval
+          , '0');
+          
+      update todaytable set countboard = countboard + 1;	
+   end;
+   </insert>
  	<update id="resetToday">
  		update todaytable set countenter=0,countsignup=0,countblog=0,countboard=0,countsignout=0
  	</update>

@@ -1,10 +1,12 @@
 package admin.service;
 
 import java.util.List;
+import java.util.Map;
 
 import admin.bean.MonthDTO;
 import admin.bean.TodayDTO;
 import admin.bean.WeekDTO;
+
 import member.bean.MemberDTO;
 
 public interface AdminService {
@@ -24,6 +26,10 @@ public interface AdminService {
 	public int totalMan();
 
 	public int totalWoman();
+
+	public void writematzip(Map<String, String> map);
+
+	public void communityWrite(Map<String, String> map);
 	
 	public void resetToday();
 	

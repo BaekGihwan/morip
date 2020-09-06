@@ -346,4 +346,15 @@ public class MatzipServiceImpl implements MatzipService {
 		map.put("reviewCount", reviewCount);
 		matzipDAO.updateReviewCount(map);
 	}
+
+	@Override
+	public List<MatzipDTO> matzipListAll() {
+		return matzipDAO.matzipListAll();
+	}
+
+	@Override
+	public void deleteMatzip(String title) {
+		matzipDAO.deleteMatzip(title);
+	}
+
 }

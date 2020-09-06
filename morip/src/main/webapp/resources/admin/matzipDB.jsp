@@ -131,6 +131,7 @@
                         <th>Delete</th>
                       </tr>
                     </tfoot>
+                    /*
                     <tbody>
                       <tr>
                         <td>1</td>
@@ -150,6 +151,8 @@
                         <td>2010/06/09</td>
                         <td><div id="deleteBtn"><i class="fas fa-trash-alt"></i></div></td>
                       </tr>
+                    */
+                    <tbody id="matzipDBBody">
                     </tbody>
                   </table>
                 </div>
@@ -165,4 +168,6 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
   <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
   <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+  <script type="text/javascript" src="../js/admin/matzipDB.js"></script>
 </html>

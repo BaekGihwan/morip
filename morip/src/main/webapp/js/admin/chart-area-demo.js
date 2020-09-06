@@ -27,14 +27,14 @@ function number_format(number, decimals, dec_point, thousands_sep) {
   return s.join(dec);
 }
 
-//일간 차트
+//주간 차트
 var weekChart = document.getElementById("weekChart");
 var myLineChart = new Chart(weekChart, {
   type: 'line',
   data: {
     labels: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
     datasets: [{
-      label: '# of Votes',
+      label: '방문자수',
       backgroundColor: "rgba(75, 76, 88, 0.05)",
       borderColor: "rgba(47, 53, 80, 1)",
       pointBackgroundColor: "rgba(75, 76, 88, 0.05)",
@@ -72,7 +72,7 @@ var myLineChart = new Chart(weekChart, {
           padding: 10,
           // Include a dollar sign in the ticks
           callback: function(value, index, values) {
-            return '$' + number_format(value);
+            return '' + number_format(value) + '명';
           }
         },
         gridLines: {
@@ -104,7 +104,7 @@ var myLineChart = new Chart(weekChart, {
       callbacks: {
         label: function(tooltipItem, chart) {
           var datasetLabel = chart.datasets[tooltipItem.datasetIndex].label || '';
-          return datasetLabel + ': $' + number_format(tooltipItem.yLabel);
+          return datasetLabel + ': ' + number_format(tooltipItem.yLabel) + '명';
         }
       }
     }
@@ -117,7 +117,7 @@ var myLineChart = new Chart(monthChart, {
   data: {
     labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
     datasets: [{
-      label: '# of Votes',
+      label: '방문자수',
       backgroundColor: "rgba(75, 76, 88, 0.05)",
       borderColor: "rgba(47, 53, 80, 1)",
       pointBackgroundColor: "rgba(75, 76, 88, 0.05)",
@@ -155,7 +155,7 @@ var myLineChart = new Chart(monthChart, {
           padding: 10,
           // Include a dollar sign in the ticks
           callback: function(value, index, values) {
-            return '$' + number_format(value);
+            return '' + number_format(value) + '명';
           }
         },
         gridLines: {
@@ -187,7 +187,7 @@ var myLineChart = new Chart(monthChart, {
       callbacks: {
         label: function(tooltipItem, chart) {
           var datasetLabel = chart.datasets[tooltipItem.datasetIndex].label || '';
-          return datasetLabel + ': $' + number_format(tooltipItem.yLabel);
+          return datasetLabel + ': ' + number_format(tooltipItem.yLabel) + '명';
         }
       }
     }

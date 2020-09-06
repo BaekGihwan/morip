@@ -119,6 +119,34 @@
                         <th>Delete</th>
                       </tr>
                     </thead>
+                    <tfoot>
+                      <tr>
+                        <th>Num</th>
+                        <th>Subject</th>
+                        <th>Content</th>
+                        <th>NickName</th>
+                        <th>Logtime</th>
+                        <th>Delete</th>
+                      </tr>
+                    </tfoot>
+                    <tbody>
+                      <tr>
+                        <td>1</td>
+                        <td>Tiger Nixon</td>
+                        <td>System Architect</td>
+                        <td>Edinburgh</td>
+                        <td>2011/04/25</td>
+                        <td><div id="deleteBtn"><i class="fas fa-trash-alt"></i></div></td>
+                      </tr>
+                      <tr>
+                        <td>2</td>
+                        <td>Paul Byrd</td>
+                        <td>Chief Financial Officer (CFO)</td>
+                        <td>New York</td>
+                        <td>2010/06/09</td>
+                        <td><div id="deleteBtn"><i class="fas fa-trash-alt"></i></div></td>
+                      </tr>
+                    </tbody>
                   </table>
                 </div>
               </div>
@@ -136,3 +164,4 @@
   <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 </html>
+

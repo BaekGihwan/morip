@@ -1,6 +1,7 @@
 package admin.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import admin.bean.MonthDTO;
 import admin.bean.TodayDTO;
 import admin.bean.WeekDTO;
+
 import member.bean.MemberDTO;
 
 @Repository
@@ -56,6 +58,16 @@ public class AdminDAOMybatis implements AdminDAO {
 	@Override
 	public int totalWoman() {
 		return sqlSession.selectOne("adminSQL.totalWoman");
+	}
+	// 맛집 등록하기
+	@Override
+	public void writematzip(Map<String, String> map) {
+		
+		sqlSession.insert("adminSQL.writematzip",map);
+	}
+	@Override
+	public void communityWrite(Map<String, String> map) {
+		sqlSession.insert("adminSQL.communityWrite", map);		
 	}
 	@Override
 	public void resetToday() {

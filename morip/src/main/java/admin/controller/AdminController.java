@@ -2,23 +2,33 @@ package admin.controller;
 
 
 import java.util.List;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.util.Map;
+import java.util.UUID;
 
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.FileCopyUtils;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import admin.bean.MonthDTO;
 import admin.bean.TodayDTO;
 import admin.bean.WeekDTO;
 import admin.service.AdminService;
-import member.bean.MemberDTO;
 
+import member.bean.MemberDTO;
+import matzip.bean.MatzipDTO;
 
 @Controller
 public class AdminController {
@@ -190,4 +200,70 @@ public class AdminController {
 			adminService.deleteBoard(seq);
 			return "../admin/communityDB";
 		}
+
+	// 맛집 등록하기
+	@RequestMapping(value="/admin/writematzip",method = RequestMethod.POST)
+	@ResponseBody
+	public void writematzip(@ModelAttribute MatzipDTO matzipDTO, @RequestParam Map<String,String> map,@RequestParam String matzipTitle,@RequestParam String matzipCategory,@RequestParam String matzipTelephone,@RequestParam String matzipRoadaddress,@RequestParam String matzipAddress,
+			@RequestParam String matzipTime,@RequestParam String matzipLink, @RequestParam(value = "image") MultipartFile matzipImage) {
+		
+		UUID uid = UUID.randomUUID();
+		String fileName = uid.toString() + "_" + matzipImage.getOriginalFilename();
+		String filePath = "E:\\spring\\gihwan\\morip\\morip\\src\\main\\webapp\\image\\matzip\\";
+		File file = new File(filePath,fileName);
+		try {
+			FileCopyUtils.copy(matzipImage.getInputStream(), new FileOutputStream(file));
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		matzipDTO.setImage1(fileName);
+		matzipDTO.setImage2(fileName);
+		matzipDTO.setImage3(fileName);
+		matzipDTO.setImage4(fileName);
+		matzipDTO.setTitle(matzipTitle);
+		matzipDTO.setCategory(matzipCategory);
+		matzipDTO.setLink(matzipLink);
+		matzipDTO.setTelephone(matzipTelephone);
+		matzipDTO.setRoadAddress(matzipRoadaddress);
+		matzipDTO.setAddress(matzipAddress);
+		matzipDTO.setTime(matzipTime);
+		
+		System.out.println(matzipDTO.getTitle());
+		map.put("matzipTitle",matzipDTO.getTitle());
+		map.put("matzipCategory",matzipDTO.getCategory());
+		map.put("matzipLink",matzipDTO.getLink());
+		map.put("matzipTelephone",matzipDTO.getTelephone());
+		map.put("matzipRoadaddress",matzipDTO.getRoadAddress());
+		map.put("matzipAddress",matzipDTO.getAddress());
+		map.put("matzipTime",matzipDTO.getTime());
+		map.put("matzipImage",matzipDTO.getImage1());		
+		
+		adminService.writematzip(map);		
+	}
+	
+	// 공지 등록하기
+	@RequestMapping(value = "/admin/communityWrite", method = RequestMethod.POST)
+	@ResponseBody
+	public void communityWrite(@RequestParam Map<String, String> map, HttpSession session) {
+		String nickname = (String) session.getAttribute("nickname");
+		String email = (String) session.getAttribute("memEmail");
+		String image = (String) session.getAttribute("image");
+		map.put("nickname", nickname);
+		map.put("email", email);
+		map.put("image", image);
+		adminService.communityWrite(map);
+	}
+
+	@RequestMapping(value = "/admin/getWeekData", method = RequestMethod.POST)
+	@ResponseBody
+	public ModelAndView getWeekData() {
+		// DB
+		WeekDTO weekDTO = adminService.getWeekData();
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("weekDTO", weekDTO);
+		mav.setViewName("jsonView");
+		return mav;
+	}
 }

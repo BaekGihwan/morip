@@ -121,6 +121,40 @@
                         <th>delete</th>
                       </tr>
                     </thead>
+                    <tfoot>
+                      <tr>
+                        <th>Num</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Nickname</th>
+                        <th>IdcardNumber1</th>
+                        <th>Gender</th>
+                        <th>Image</th>
+                        <th>delete</th>
+                      </tr>
+                    </tfoot>
+                    <tbody>
+                      <tr>
+                        <td>1</td>
+                        <td>Tiger Nixon</td>
+                        <td>System Architect</td>
+                        <td>Edinburgh</td>
+                        <td>61</td>
+                        <td>61</td>
+                        <td>2011/04/25</td>
+                        <td><div id="deleteBtn"><i class="fas fa-trash-alt"></i></div></td>
+                      </tr>
+                      <tr>
+                        <td>2</td>
+                        <td>Paul Byrd</td>
+                        <td>Chief Financial Officer (CFO)</td>
+                        <td>New York</td>
+                        <td>64</td>
+                        <td>61</td>
+                        <td>2010/06/09</td>
+                        <td><div id="deleteBtn"><i class="fas fa-trash-alt"></i></div></td>
+                      </tr>
+                    </tbody>
                   </table>
                 </div>
               </div>

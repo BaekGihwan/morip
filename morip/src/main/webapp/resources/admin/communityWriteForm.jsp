@@ -116,7 +116,7 @@
 						<div id="subjectDiv"></div>
 						<hr align="center" width="100%" size="15">
 					</div>
-					<div id="summernote"><p></p></div>
+					//<textarea id="summernote" name="content"></textarea>
 					<div id="summernoteDiv"></div>
 				</div>
 			</div>
@@ -153,6 +153,6 @@
 	    	focus: true,                  // 에디터 로딩후 포커스를 맞출지 여부
 	    	lang: "ko-KR"	    	
     	});
-	}); 
+	});	
 </script>
 </html>
