@@ -54,13 +54,15 @@ $(document).ready(function(){
 						$.ajax({
 							type : 'post',
 							url : '/morip/admin/deleteMember',
-							data: '&seq=' + seq,
+							data: 'seq=' + seq,
 							dataType: 'text',
 							success: function(data){
-								Swal.fire(
-									'회원삭제완료',
-					      			'success'
-					    		).then((result) => {
+								Swal.fire({
+				      				icon: 'success',
+							  		title: '회원삭제완료!!',
+							  		showConfirmButton: true,
+							  		confirmButtonText: '확인'
+			    				}).then((result) => {
 					    			if (result.value) {
 					    				location.href = data;
 					    			}

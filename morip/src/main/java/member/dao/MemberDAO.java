@@ -26,4 +26,6 @@ public interface MemberDAO {
 
 	public MemberDTO getMember2(String email);
 
+	public MemberDTO getMember3(int seq);
+
 }

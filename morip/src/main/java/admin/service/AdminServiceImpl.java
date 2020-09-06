@@ -109,8 +109,8 @@ public class AdminServiceImpl implements AdminService {
 	}	
 	// 회원삭제
 	@Override
-	public void deleteMember(int seq) {
-		adminDAO.deleteMember(seq);
+	public void deleteMember(Map<String, String> map) {
+		adminDAO.deleteMember(map);
 	}
 	@Override
 	public List<MemberDTO> getBoardList(String nickname) {
@@ -119,5 +119,5 @@ public class AdminServiceImpl implements AdminService {
 	@Override
 	public void deleteBoard(int seq) {
 		adminDAO.deleteBoard(seq);
-	}
+	}	
 }

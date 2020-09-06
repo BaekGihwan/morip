@@ -50,7 +50,7 @@
                         </a>
                         <div class="collapse" id="blog" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="blogDB">블로그 DB 관리</a>
+                                 <!-- <a class="nav-link" href="blogDB">블로그 DB 관리</a> -->
                                 <a class="nav-link" href="../blog/blogList">블로그 페이지 이동</a>
                             </nav>
                         </div>
@@ -116,7 +116,7 @@
 						<div id="subjectDiv"></div>
 						<hr align="center" width="100%" size="15">
 					</div>
-					//<textarea id="summernote" name="content"></textarea>
+					<textarea id="summernote" name="content"></textarea>
 					<div id="summernoteDiv"></div>
 				</div>
 			</div>

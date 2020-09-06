@@ -47,7 +47,7 @@ public interface AdminDAO {
 
 	public List<MemberDTO> getMemberList();
 
-	public void deleteMember(int seq);
+	public void deleteMember(Map<String, String> map);
 
 	public List<MemberDTO> getBoardList(String nickname);
 

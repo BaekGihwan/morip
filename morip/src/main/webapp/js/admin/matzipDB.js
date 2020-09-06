@@ -41,10 +41,27 @@ $(document).ready(function(){
  		data:'title='+$(this).parent().siblings().eq(2).text(),
  		success:function(){
  			Swal.fire({
-			  icon: 'success',
-			  title: '삭제했습니다!',
-			  showConfirmButton: false,
-			  timer: 1500
+ 			  icon: 'warning',
+ 			  title: '삭제하시겠습니까?',
+ 			  text: "삭제하면 복구할수없습니다!",
+  			  showCancelButton: true,
+  			  confirmButtonColor: '#3085d6',
+  			  cancelButtonColor: '#d33',
+  			  confirmButtonText: '확인',
+  			  cancelButtonText: '취소'
+			}).then((result) => {
+ 				if (result.value) {
+ 					Swal.fire({
+	      				icon: 'success',
+				  		title: '삭제했습니다!',
+				  		showConfirmButton: true,
+				  		confirmButtonText: '확인'
+    				}).then((result) => {
+						if(result.value){
+						location.href = location.href;
+						}			
+					})
+  				}  				
 			})
  		},
  		error:function(err){

@@ -7,13 +7,15 @@ $(document).ready(function(){
 		dataType: 'json',
 		success : function(data){
 			//alert(JSON.stringify(data));
-			$.each(data.list, function(index, items){		
+			$.each(data.list, function(index, items){	
+				$('#contentFilter').html(items.content);
+				let content = $('#contentFilter').text();				
 				$('<tr/>').append($('<td/>',{
 					text: items.boardtable_seq
 				})).append($('<td/>',{
 					text: items.subject
 				})).append($('<td/>',{
-					text: items.content
+					text: content
 				})).append($('<td/>',{
 					text: items.nickname
 				})).append($('<td/>',{
@@ -49,10 +51,12 @@ $(document).ready(function(){
 							data: '&seq=' + seq,
 							dataType: 'text',
 							success: function(data){
-								Swal.fire(
-									'공지사항 삭제완료',
-					      			'success'
-					    		).then((result) => {
+								Swal.fire({
+									icon: 'success',
+			  						title: '공시사항 삭제했습니다!',
+			  						showConfirmButton: true,
+			  						confirmButtonText: '확인'
+					    		}).then((result) => {
 					    			if (result.value) {
 					    				location.href = data;
 					    			}
