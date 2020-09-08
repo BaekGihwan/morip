@@ -30,27 +30,6 @@
 <!-- include Bootstrap and fontawesome-->
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" />
-    $('#bgImageSave').click(function(){
-        $.ajax({
-            type: 'post',
-            enctype: 'multipart/form-data',
-            processData: false, //문자열이 아닌 파일 형식으로 보내준다
-            contentType: false,
-            url: "/morip/myblog/imageSave",
-            //data: sendingData, //imageboardWriteForm안의 0번째 방에있는 data들을 모두 가져간다
-            data: new FormData($('#modifyForm')[0]),
-            dataType:"text",
-            success: function(fileName){
-            	$('.backgroundImg').css('background','url("../storage/'+fileName+'") no-repeat 50% 50%');
-            	$('.backgroundImg').css('background-size','cover');
-            	bgImgName = fileName;
-            	$('.bgImgName').val(fileName);
-            	alert(bgImgName+"저장 완료!!!");
-            },error: function(err){
-               console.log(err);
-            }
-         });
-    });
 <!-- include summernote css/js-->
 <link rel="stylesheet"
 	href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.1/summernote.css">

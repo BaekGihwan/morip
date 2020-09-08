@@ -530,3 +530,16 @@ function loadHashtag(){
         }
      });
 }
+
+//상단 네비 애니메이션
+$(window).on("scroll",function(){
+	  if($(window).scrollTop()){
+	 	$('header').hide();
+	 	$('#header').hide();
+	 	
+	  } else {
+	 	$('header').show();
+	 	$('#header').show(); 
+	 	$('.sideBar').css('top','650px');
+	  }
+});
