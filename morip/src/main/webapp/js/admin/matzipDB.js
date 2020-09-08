@@ -16,7 +16,7 @@ $(document).ready(function(){
 				})).append($('<td/>',{
 					text: items.address
 				})).append($('<td/>',{
-					text: items.roadAddress
+					text: items.time
 				})).append($('<td/>',{
 					}).append($('<div/>',{
 						id: 'deleteBtn',

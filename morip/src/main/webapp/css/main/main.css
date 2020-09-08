@@ -80,8 +80,10 @@
 }
 
 .img0 {
-	background-image: url('../../image/main/전체.jpg'); 
-	background-size: 175px 155px;		
+	background-image: url('../../image/main/전체3.png'); 
+	/* background-size: 175px 155px; */
+	background-size: cover;		
+	
 }
 
 .img1 {

@@ -138,6 +138,7 @@ input:focus, #writeFormId:focus {
 	border-bottom-width: 1px;
 	border-left-width: 1px;
 	border-right-width: 1px;
+	letter-spacing: 2px;
 	
 }
 /*=============================*/
@@ -163,6 +164,7 @@ input:focus, #writeFormId:focus {
 	border-left-width: 1px;
 	border-right-width: 1px;
 	margin-bottom: 15px;
+	letter-spacing: 2px;
 }
 /*=============================*/
 #emailWriteFormBtn {
