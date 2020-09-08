@@ -280,6 +280,7 @@
   });
   //페이지 로딩되자마자 작업 진행
   $(document).ready(function(){
+
 	  //숨길 영역 숨기기
 	  $('#contentFilter').hide();
 		//팔로우 체크
@@ -352,5 +353,18 @@
 	      } // error
 	 	}); // ajax
 	});
+  //상단 네비 애니메이션
+  $(window).on("scroll",function(){
+	  if($(window).scrollTop()){
+	 	$('header').hide();
+	 	$('#header').hide();
+	 	$('.profileImg_wrapper').css('top','250px');
+	 	
+	  } else {
+ 	 	$('header').show();
+	 	$('#header').show(); 
+	 	$('.profileImg_wrapper').css('top','350px');
+	  }
+});
   </script>
 </html>
