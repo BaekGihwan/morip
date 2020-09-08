@@ -116,7 +116,7 @@
                         <th>Title</th>
                         <th>Telephone</th>
                         <th>Address</th>
-                        <th>RoadAddress</th>
+                        <th>Time</th>
                         <th>Delete</th>
                       </tr>
                     </thead>
