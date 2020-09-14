@@ -11,7 +11,13 @@
   <script src="https://kit.fontawesome.com/75c3f69c14.js" crossorigin="anonymous"></script>
 <!--===============================================================================================-->
 </head>
+<!-- 
+<h1><p class="typing-txt"> 타이핑될 텍스트 입니다.</p> </h1> 
+  <p class="typing"></p> 
+  
 
+
+ -->
   <!-- morip banner -->
   <div class="morip_banner">
 	<img alt="" src="../image/main/mainbanner6.png" style="width: 100%; height: 500px;">
@@ -27,7 +33,7 @@
   
   <div class="morip_banner_slider">
   	<div class="img img0">
-  	  <div class="content">전체</div>
+  	  <div class="content"><i class="fab fa-sistrix fa-2x"></i></div>
       <div class="img-cover"></div>
   	</div>
   

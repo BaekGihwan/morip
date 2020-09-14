@@ -626,7 +626,7 @@
 					      //alert($(this).prop('html'));
 					      //alert(test);
 					      //alert(title);
-					      alert(title);
+					      //alert(title);
 					      title = title.replace('<b>','');
 					      title = title.replace('</b>','');
 					      location.href='../matzip/matzipView?title='+title;
