@@ -149,7 +149,13 @@
    	
    	<!--  해쉬태그 호출 -->
    	<select id="loadHashtag" resultType="hashtag" parameterType="int">
-		select * from hashtagtable where blogboardtable_seq = #{seq}
+		<!-- select * from hashtagtable where blogboardtable_seq = #{seq} -->
+		
+				
+		select * from
+      (select rownum rn, tt.* from
+      (select * from hashtagtable where blogboardtable_seq = #{seq})tt 
+      ) order by rn DESC
 	</select>
 	<!-- 해쉬태그 삭제 -->
 	<delete id="deleteHashtag" parameterType="int">

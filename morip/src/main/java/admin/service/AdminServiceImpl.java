@@ -81,7 +81,7 @@ public class AdminServiceImpl implements AdminService {
 		adminDAO.resetToday();		
 	}
 	@Override
-	@Scheduled(cron="0 0 0 * * MON")
+	@Scheduled(cron="0 0 0 * * SUN")
 	public void resetWeek() {
 		System.out.println("resetWeek 스케줄러 실행");
 		adminDAO.resetWeek();

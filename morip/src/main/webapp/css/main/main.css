@@ -80,10 +80,11 @@
 }
 
 .img0 {
-	background-image: url('../../image/main/전체3.png'); 
-	/* background-size: 175px 155px; */
+	/* background-image: url('../../image/main/전체3.png'); 
+	background-size: 175px 155px;
 	background-size: cover;		
-	
+	 */
+	 background-color: #C2E0E0;
 }
 
 .img1 {
@@ -513,7 +514,7 @@ span {
 	/* border-bottom: 3px solid black; */
 	line-height: 70px;
 	margin-left: 50px;
-	font-size: 25px;
+	font-size: 20px;
 	font-weight: 800;
 }
 .food_post_bg_image 
@@ -688,7 +689,7 @@ span {
 .optionContentWrapper{
 	margin:0 auto;
 
-
+}
 /* 
  
 #aaa {
@@ -763,3 +764,18 @@ span {
 	font-size: 3em;
 }
  */
+p.typing-txt{display: none;}
+  
+
+.typing {  
+/*       position: absolute;*/ 
+     display: inline-block; 
+      animation-name: cursor; 
+      animation-duration: 0.3s; 
+      animation-iteration-count: infinite; 
+    } 
+    @keyframes cursor{ 
+      0%{border-right: 1px solid #fff} 
+      50%{border-right: 1px solid #000} 
+      100%{border-right: 1px solid #fff} 
+    }

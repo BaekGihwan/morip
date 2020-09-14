@@ -1,3 +1,5 @@
+window.setTimeout('window.location.reload(true)',36000000);
+
 $(document).ready(function(){
 	// 일일방문자, 블로그, 게시판, 신규회원 불러오기  
 	$.ajax({

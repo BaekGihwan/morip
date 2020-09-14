@@ -26,17 +26,17 @@
   <br><br>  
   <div class="morip_banner_slider">
   	<div class="img img0" id="divImg0">
-  	  <div class="content" id="content0">전체</div>
+  	  <div class="content" id="content0"><i class="fab fa-sistrix fa-2x"></i></div>
       <div class="img-cover"></div>
   	</div>
   
 	<div class="img img1" id="divImg1">
-  	  <div class="content" id="content1">서울</div>
+  	  <div class="content" id="content1"> 서울 </div>
       <div class="img-cover"></div>
   	</div>
   
   	<div class="img img2" id="divImg2">
-  	  <div class="content" id="content2">부산</div>
+  	  <div class="content" id="content2"> 부산 </div>
   	  <div class="img-cover"></div>
   	</div>
   	
@@ -46,7 +46,7 @@
   	</div>
   	
   	<div class="img img4" id="divImg4">
-  	  <div class="content" id="content4">인천</div>
+  	  <div class="content" id="content4"> 인천 </div>
   	  <div class="img-cover"></div>
   	</div>
   	

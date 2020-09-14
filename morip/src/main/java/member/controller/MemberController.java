@@ -361,7 +361,16 @@ public class MemberController {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}		
-			memberDTO.setImage(fileName);		
+			memberDTO.setImage(fileName);	
+			
+			
+			
+			/*
+			 * session.invalidate(); session.setAttribute("memEmail", memberDTO.getEmail());
+			 * session.setAttribute("checkid", memberDTO.getCheckid());
+			 */
+			
+			
 			session.setAttribute("nickname", memberDTO.getNickname());
 			session.setAttribute("beforeNickname", memberDTO.getNickname());
 			beforeNickname = (String) session.getAttribute("beforeNickname");

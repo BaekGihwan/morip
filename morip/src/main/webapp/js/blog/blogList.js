@@ -160,7 +160,7 @@ Number.prototype.zf = function (len) { return this.toString().zf(len); };
 /*무한스크롤*/
 //페이지 로딩 되자마자 1pg 뜨기
 $(document).ready(function(){
-	loadingPage();
+	//loadingPage();
 		$('.userMenu').css("z-index","90");
 	});
 	//변수 선언
@@ -179,9 +179,11 @@ var content = "";
 $(window).scroll(function(){
 console.log("documentHeight:" + documentHeight + " | scrollTop:" + scrollTop + " | windowHeight: " + windowHeight );
     if($(window).scrollTop()+200>=$(document).height() - $(window).height())
+    console.log(loading);
     {
-        if(!loading)    //실행 가능 상태라면?
+        if(loading == false)    //실행 가능 상태라면?
         {
+        console.log(loading);
             loading = true; //실행 불가능 상태로 변경
             loadingPage(); 
         }

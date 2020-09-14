@@ -2406,7 +2406,7 @@ $('#searchBtn').click(function(){
 /*
 $('#smallDiv').click(function(){
 	//location.href='../matzip/test2.jsp';
-	alert($(this).children().first().text());
+	//alert($(this).children().first().text());
 });
 */
  $('#allDiv').on('click','#smallDiv', function(){
